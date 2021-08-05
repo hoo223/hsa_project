@@ -1,9 +1,11 @@
 # hsa_project
-## docker 
+## [docker](https://github.com/hoo223/hsa_project/tree/master/docker)
 : docker image and container generation code
 
-## host_install 
+## [host_install](https://github.com/hoo223/hsa_project/tree/master/host_install)
 : .sh files for host PC setting (Ubuntu 18.04), which includes CUDA 11.4, (nvidia) docker, ROS melodic, geomagic Touch driver (USB version) with related ROS package (https://github.com/bharatm11/Geomagic_Touch_ROS_Drivers.git)
+
+
 
 ## Related Pages
 ### ros-control
