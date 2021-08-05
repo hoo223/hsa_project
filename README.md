@@ -16,3 +16,15 @@ Guide
 2) Get permission to execute files by 
   sudo chmod +x *
 3) Execute files in order (1_ -> 2_ ...)
+
+
+## Related pages
+### ros-control
+http://gazebosim.org/tutorials/?tut=ros_control
+http://wiki.ros.org/ros_control
+http://www.theoj.org/joss-papers/joss.00456/10.21105.joss.00456.pdf
+
+### Unity-ROS project
+https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/tutorials/ros_unity_integration/publisher.md
+https://github.com/fsstudio-team/ZeroSimROSUnity#setting-up-a-new-unity-project
+https://github.com/Mediemanden/Unity3D-ROS-RL
