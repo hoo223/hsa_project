@@ -4,5 +4,5 @@ sudo docker run --gpus all -it --net=host --privileged \
     -v /home/hmci/Downloads:/root/Downloads \
     -v `pwd`/share:/root/share \
     --name unity \
-    cuda_unity_18.04:latest \
+    lhs223/unity:latest \
     bash
