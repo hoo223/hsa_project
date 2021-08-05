@@ -14,8 +14,7 @@
 Guide
 1) Download cuDNN v8.2.2 for CUDA 11.4 in host_install folder from https://developer.nvidia.com/rdp/cudnn-download
 2) Copy contents in 0_bashrc.sh to ~/.bashrc -> source ~/.bashrc
-3) Get permission to execute files by 
-  sudo chmod +x *
+3) Get permission to execute files by sudo chmod +x *
 4) Execute files in order (1_ -> 2_ ...)
 
 
