@@ -10,7 +10,9 @@
 ## Related Pages
 ### ros-control
 http://gazebosim.org/tutorials/?tut=ros_control
+
 http://wiki.ros.org/ros_control
+
 http://www.theoj.org/joss-papers/joss.00456/10.21105.joss.00456.pdf
 
 ### Unity-ROS Project
