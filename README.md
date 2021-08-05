@@ -15,8 +15,9 @@ Guide
 1) Download prerequsites in the "host_install" folder
     * **cudnn-11.4-linux-x64-v8.2.2.26.tgz** - cuDNN v8.2.2 for CUDA 11.4 from https://developer.nvidia.com/rdp/cudnn-download
     * **Openhaptics for Linux v3.4** and **Touch Device Driver v2019.2.15** from https://support.3dsystems.com/s/article/OpenHaptics-for-Linux-Developer-Edition-v34?language=en_US
-3) Copy contents in 0_bashrc.sh to ~/.bashrc -> source ~/.bashrc
-4) Get permission to execute files by sudo chmod +x *
+3) Copy contents in 0_bashrc to ~/.bashrc -> source ~/.bashrc
+4) Get permission to execute files by 
+    * sudo chmod +x *
 5) Execute files in order (1_ -> 2_ ...)
 
 ### Haptic device connection check
