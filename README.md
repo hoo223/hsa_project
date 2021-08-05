@@ -1,8 +1,12 @@
 # hsa_project
 ## docker 
 : docker image and container generation code
-- ros ->  20.04
-- unity -> 18.04
+- ros 
+  * Ubuntu version: 20.04 
+  * Target docker image: https://hub.docker.com/repository/docker/lhs223/unity
+- unity
+  * Ubuntu version: 18.04 
+  * Target docker image: https://hub.docker.com/repository/docker/lhs223/ros_noetic
 
 ## host_install 
 : .sh files for host PC setting (Ubuntu 18.04), which includes CUDA 11.4, (nvidia) docker, ROS melodic, geomagic Touch driver (USB version) with related ROS package (https://github.com/bharatm11/Geomagic_Touch_ROS_Drivers.git)
