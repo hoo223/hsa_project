@@ -67,7 +67,7 @@ set(ros_tcp_endpoint_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(ros_tcp_endpoint_SOURCE_PREFIX /root/share/catkin_ws/src/ROS-TCP-Endpoint)
+  set(ros_tcp_endpoint_SOURCE_PREFIX /root/share/catkin_ws/src/unity/ROS-TCP-Endpoint)
   set(ros_tcp_endpoint_DEVEL_PREFIX /root/share/catkin_ws/devel)
   set(ros_tcp_endpoint_INSTALL_PREFIX "")
   set(ros_tcp_endpoint_PREFIX ${ros_tcp_endpoint_DEVEL_PREFIX})
@@ -110,7 +110,7 @@ if(NOT " " STREQUAL " ")
         message(FATAL_ERROR "Project 'ros_tcp_endpoint' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'ros_tcp_endpoint' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/root/share/catkin_ws/src/ROS-TCP-Endpoint/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'ros_tcp_endpoint' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/root/share/catkin_ws/src/unity/ROS-TCP-Endpoint/${idir}'.  ${_report}")
     endif()
     _list_append_unique(ros_tcp_endpoint_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /root/share/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /root/share/catkin_ws/devel/lib;/root/share/catkin_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

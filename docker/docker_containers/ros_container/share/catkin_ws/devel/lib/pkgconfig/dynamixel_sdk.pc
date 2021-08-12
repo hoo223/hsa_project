@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/devel
+
+Name: dynamixel_sdk
+Description: Description of dynamixel_sdk
+Version: 3.4.7
+Cflags: -I/root/share/catkin_ws/src/niryo/niryo_one_ros/dynamixel_sdk/include
+Libs: -L${prefix}/lib -ldynamixel_sdk
+Requires: 

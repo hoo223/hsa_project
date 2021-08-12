@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637637480090000000
-    m_Hash: 488419497
+      ticks: 637641613410000000
+    m_Hash: 2003206312
   m_LockFileStatus:
     m_FilePath: /root/share/unity/project/New Unity Project/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637637480090000000
-    m_Hash: 3716330820
+      ticks: 637641613410000000
+    m_Hash: 1381415468
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -66,6 +66,8 @@ m_ResolvedPackages:
     - 1.5.7
     - 1.6.0
     - 1.7.1
+    - 1.8.0
+    - 1.9.0
     - 2.0.0-preview.6
     - 2.0.0-preview.8
     - 2.0.0-preview.15
@@ -80,6 +82,8 @@ m_ResolvedPackages:
     - 1.5.7
     - 1.6.0
     - 1.7.1
+    - 1.8.0
+    - 1.9.0
     - 2.0.0-preview.6
     - 2.0.0-preview.8
     - 2.0.0-preview.15
@@ -399,7 +403,7 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 
     nextVersion: 
-- packageId: com.unity.robotics.urdf-importer@https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer
+- packageId: com.unity.robotics.urdf-importer@https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer#v0.5.0
   testable: 0
   isDirectDependency: 1
   version: 0.5.0-preview

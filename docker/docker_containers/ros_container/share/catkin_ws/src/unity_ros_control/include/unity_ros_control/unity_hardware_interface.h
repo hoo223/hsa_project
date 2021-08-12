@@ -1,0 +1,165 @@
+#include <ros/ros.h>
+#include <controller_manager/controller_manager.h>
+#include <sensor_msgs/JointState.h>
+#include <std_msgs/Float64MultiArray.h>
+
+#include <hardware_interface/joint_command_interface.h>
+#include <hardware_interface/joint_state_interface.h>
+#include <hardware_interface/robot_hw.h>
+
+class UnityUR10 : public hardware_interface::RobotHW
+{
+public:
+  UnityUR10();
+
+  void read(const ros::Time& time, const ros::Duration& period);
+  void write(const ros::Time& time, const ros::Duration& period);
+  void stateCallback(const sensor_msgs::JointStateConstPtr& msg);
+  void doSwitch(const std::list<hardware_interface::ControllerInfo>& start_list,
+                const std::list<hardware_interface::ControllerInfo>& stop_list);
+  bool checkControllerClaims(const std::set<std::string>& claimed_resources);
+
+private:
+  hardware_interface::JointStateInterface js_interface_;
+  hardware_interface::PositionJointInterface pj_interface_;
+  std::vector<double> joint_position_command_;
+  std::vector<double> joint_positions_;
+  std::vector<double> joint_velocities_;
+  std::vector<double> joint_efforts_;
+  std::vector<std::string> joint_names_;
+  bool position_controller_running_;
+  bool velocity_controller_running_;
+
+  ros::NodeHandle nh;
+  ros::Publisher position_command_pub;
+  std_msgs::Float64MultiArray command;
+};
+
+UnityUR10::UnityUR10()
+: joint_position_command_({ 0, 0, 0, 0, 0, 0 })
+, joint_positions_{ { 0, 0, 0, 0, 0, 0 } } 
+, joint_velocities_{ { 0, 0, 0, 0, 0, 0 } }
+, joint_efforts_{ { 0, 0, 0, 0, 0, 0 } }
+, joint_names_( {"shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"} ) 
+, position_controller_running_(false)
+, velocity_controller_running_(false)
+{ 
+  // Create ros_control interfaces
+  for (std::size_t i = 0; i < joint_positions_.size(); ++i)
+  {
+    ROS_DEBUG_STREAM("Registering handles for joint " << joint_names_[i]);
+    // Create joint state interface for all joints
+    js_interface_.registerHandle(hardware_interface::JointStateHandle(joint_names_[i], &joint_positions_[i],
+                                                                      &joint_velocities_[i], &joint_efforts_[i]));
+
+    // Create joint position control interface
+    pj_interface_.registerHandle(
+        hardware_interface::JointHandle(js_interface_.getHandle(joint_names_[i]), &joint_position_command_[i]));
+  }
+
+  registerInterface(&js_interface_);
+  registerInterface(&pj_interface_);
+
+  position_command_pub = nh.advertise<std_msgs::Float64MultiArray>("action", 10);
+}
+
+void UnityUR10::read(const ros::Time& time, const ros::Duration& period)
+{
+  //ROS_INFO_STREAM(joint_names_[0]);
+}
+
+void UnityUR10::write(const ros::Time& time, const ros::Duration& period)
+{
+  //ROS_INFO_STREAM("write! " << position_controller_running_);
+  if (position_controller_running_)
+  {
+    // for(int i=0; i<joint_positions_.size(); i++)
+    // {
+    //     command.data.push_back(joint_position_command_[i]);
+    // }
+    command.data = joint_position_command_;
+    position_command_pub.publish(command);
+  }
+}
+
+void UnityUR10::stateCallback(const sensor_msgs::JointStateConstPtr& msg)
+{
+  joint_positions_ = msg->position;
+  // ROS_INFO_STREAM("joint1: " << joint_positions_[0] << "\n");
+  // ROS_INFO_STREAM("joint2: " << joint_positions_[1] << "\n");
+  // ROS_INFO_STREAM("joint3: " << joint_positions_[2] << "\n");
+  // ROS_INFO_STREAM("joint4: " << joint_positions_[3] << "\n");
+  // ROS_INFO_STREAM("joint5: " << joint_positions_[4] << "\n");
+  // ROS_INFO_STREAM("joint6: " << joint_positions_[5] << "\n");
+}
+
+void UnityUR10::doSwitch(const std::list<hardware_interface::ControllerInfo>& start_list,
+              const std::list<hardware_interface::ControllerInfo>& stop_list)
+{
+    ROS_INFO("switch");
+  for (auto& controller_it : stop_list)
+  {
+    for (auto& resource_it : controller_it.claimed_resources)
+    {
+      if (checkControllerClaims(resource_it.resources))
+      {
+        if (resource_it.hardware_interface == "ur_controllers::ScaledPositionJointInterface")
+        {
+          position_controller_running_ = false;
+        }
+        if (resource_it.hardware_interface == "hardware_interface::PositionJointInterface")
+        {
+          position_controller_running_ = false;
+        }
+        if (resource_it.hardware_interface == "ur_controllers::ScaledVelocityJointInterface")
+        {
+          velocity_controller_running_ = false;
+        }
+        if (resource_it.hardware_interface == "hardware_interface::VelocityJointInterface")
+        {
+          velocity_controller_running_ = false;
+        }
+      }
+    }
+  }
+  for (auto& controller_it : start_list)
+  {
+    for (auto& resource_it : controller_it.claimed_resources)
+    {
+      if (checkControllerClaims(resource_it.resources))
+      {
+        if (resource_it.hardware_interface == "ur_controllers::ScaledPositionJointInterface")
+        {
+          position_controller_running_ = true;
+        }
+        if (resource_it.hardware_interface == "hardware_interface::PositionJointInterface")
+        {
+          position_controller_running_ = true;
+        }
+        if (resource_it.hardware_interface == "ur_controllers::ScaledVelocityJointInterface")
+        {
+          velocity_controller_running_ = true;
+        }
+        if (resource_it.hardware_interface == "hardware_interface::VelocityJointInterface")
+        {
+          velocity_controller_running_ = true;
+        }
+      }
+    }
+  }
+}
+
+bool UnityUR10::checkControllerClaims(const std::set<std::string>& claimed_resources)
+{
+  for (const std::string& it : joint_names_)
+  {
+    for (const std::string& jt : claimed_resources)
+    {
+      if (it == jt)
+      {
+        return true;
+      }
+    }
+  }
+  return false;
+}

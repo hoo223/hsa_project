@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/devel
+
+Name: chomp_motion_planner
+Description: Description of chomp_motion_planner
+Version: 1.1.5
+Cflags: -I/root/share/catkin_ws/src/moveit/moveit_planners/chomp/chomp_motion_planner/include
+Libs: -L${prefix}/lib -lchomp_motion_planner
+Requires: 
