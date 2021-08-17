@@ -13,7 +13,7 @@ public class UR10StatePublisher : MonoBehaviour
     private float timeElapsed;
 
     // Publish the cube's position and rotation every N seconds
-    public float publishMessageFrequency = 0.01f;
+    public float publishMessageFrequency = 0.001f;
 
     // Articulation Bodies
     private ArticulationBody[] jointArticulationBodies;
@@ -27,12 +27,15 @@ public class UR10StatePublisher : MonoBehaviour
     public string topicName = "unity_ur10_joint_states";
 
     public GameObject UR10;
+    List<float> positions = new List<float>();
+    List<float> velocities = new List<float>();
 
     // Start is called before the first frame update
     void Start()
     {
         // Get ROS connection static instance
         ros = ROSConnection.instance;
+        ros.RegisterPublisher<JointStateMsg>(topicName);
         jointArticulationBodies = new ArticulationBody[numRobotJoints];
         
         string shoulder_link = "world/base_link/shoulder_link";
@@ -63,12 +66,22 @@ public class UR10StatePublisher : MonoBehaviour
         {
             JointStateMsg joint_states = new JointStateMsg();
             joint_states.position = new double[numRobotJoints];
-            joint_states.position[0] = jointArticulationBodies[0].xDrive.target;
-            joint_states.position[1] = jointArticulationBodies[1].xDrive.target;
-            joint_states.position[2] = jointArticulationBodies[2].xDrive.target;
-            joint_states.position[3] = jointArticulationBodies[3].xDrive.target;
-            joint_states.position[4] = jointArticulationBodies[4].xDrive.target;
-            joint_states.position[5] = jointArticulationBodies[5].xDrive.target;
+            jointArticulationBodies[0].GetJointPositions(positions);
+            jointArticulationBodies[0].GetJointVelocities(velocities);
+            joint_states.position[0] = (double)positions[0];
+            joint_states.position[1] = (double)positions[1];
+            joint_states.position[2] = (double)positions[2];
+            joint_states.position[3] = (double)positions[3];
+            joint_states.position[4] = (double)positions[4];
+            joint_states.position[5] = (double)positions[5];
+
+            joint_states.velocity = new double[numRobotJoints];
+            joint_states.velocity[0] = (double)velocities[0];
+            joint_states.velocity[1] = (double)velocities[1];
+            joint_states.velocity[2] = (double)velocities[2];
+            joint_states.velocity[3] = (double)velocities[3];
+            joint_states.velocity[4] = (double)velocities[4];
+            joint_states.velocity[5] = (double)velocities[5];
 
             // Finally send the message to server_endpoint.py running in ROS
             ros.Send(topicName, joint_states);

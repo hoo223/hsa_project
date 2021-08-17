@@ -30,11 +30,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-noetic-desktop-full=1.5.0-1* \
     && rm -rf /var/lib/apt/lists/*
 
-RUN /bin/bash -c "echo \"source /opt/ros/noetic/setup.bash"\" >> ~/.bashrc
+RUN /bin/bash -c "echo \"source /opt/ros/noetic/setup.bash\"" >> ~/.bashrc
 RUN /bin/bash -c "source ~/.bashrc"
 
 RUN apt update
-RUN apt install -y python3-rosdep-modules python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+RUN apt install -y python3-rosdep-modules python3-rosinstall python3-rosinstall-generator python3-wstool build-essential python3-flask python3-pymodbus
 
 # setup entrypoint
 COPY ./ros_entrypoint.sh /

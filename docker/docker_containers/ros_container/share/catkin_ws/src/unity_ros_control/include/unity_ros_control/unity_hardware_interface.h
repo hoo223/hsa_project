@@ -22,8 +22,11 @@ public:
 private:
   hardware_interface::JointStateInterface js_interface_;
   hardware_interface::PositionJointInterface pj_interface_;
+  hardware_interface::VelocityJointInterface vj_interface_;
   std::vector<double> joint_position_command_;
+  std::vector<double> joint_velocity_command_;
   std::vector<double> joint_positions_;
+  std::vector<double> unity_joint_positions_;
   std::vector<double> joint_velocities_;
   std::vector<double> joint_efforts_;
   std::vector<std::string> joint_names_;
@@ -32,6 +35,7 @@ private:
 
   ros::NodeHandle nh;
   ros::Publisher position_command_pub;
+  ros::Publisher velocity_command_pub;
   std_msgs::Float64MultiArray command;
 };
 
@@ -55,17 +59,22 @@ UnityUR10::UnityUR10()
     // Create joint position control interface
     pj_interface_.registerHandle(
         hardware_interface::JointHandle(js_interface_.getHandle(joint_names_[i]), &joint_position_command_[i]));
+
+    // // Create joint velocity control interface
+    // vj_interface_.registerHandle(
+    //     hardware_interface::JointHandle(vj_interface_.getHandle(joint_names_[i]), &joint_velocity_command_[i]));
   }
 
   registerInterface(&js_interface_);
   registerInterface(&pj_interface_);
 
-  position_command_pub = nh.advertise<std_msgs::Float64MultiArray>("action", 10);
+  position_command_pub = nh.advertise<std_msgs::Float64MultiArray>("position_command", 100);
+  //velocity_command_pub = nh.advertise<std_msgs::Float64MultiArray>("velocity_command", 100);
 }
 
 void UnityUR10::read(const ros::Time& time, const ros::Duration& period)
 {
-  //ROS_INFO_STREAM(joint_names_[0]);
+  joint_positions_ = unity_joint_positions_;
 }
 
 void UnityUR10::write(const ros::Time& time, const ros::Duration& period)
@@ -73,18 +82,19 @@ void UnityUR10::write(const ros::Time& time, const ros::Duration& period)
   //ROS_INFO_STREAM("write! " << position_controller_running_);
   if (position_controller_running_)
   {
-    // for(int i=0; i<joint_positions_.size(); i++)
-    // {
-    //     command.data.push_back(joint_position_command_[i]);
-    // }
     command.data = joint_position_command_;
     position_command_pub.publish(command);
   }
+  // else if (velocity_controller_running_)
+  // {
+  //   command.data = joint_velocity_command_;
+  //   position_command_pub.publish(command);
+  // }
 }
 
 void UnityUR10::stateCallback(const sensor_msgs::JointStateConstPtr& msg)
 {
-  joint_positions_ = msg->position;
+  unity_joint_positions_ = msg->position;
   // ROS_INFO_STREAM("joint1: " << joint_positions_[0] << "\n");
   // ROS_INFO_STREAM("joint2: " << joint_positions_[1] << "\n");
   // ROS_INFO_STREAM("joint3: " << joint_positions_[2] << "\n");

@@ -54,10 +54,10 @@ public class UR10ActionSubsrciber : MonoBehaviour
         jointArticulationBodies[5] = UR10.transform.Find(hand_link).GetComponent<ArticulationBody>();
 
         // Subscriber
-        ROSConnection.instance.Subscribe<Float64MultiArrayMsg>("action", Action);
+        ROSConnection.instance.Subscribe<Float64MultiArrayMsg>("position_command", PositionCommand);
     }
 
-    void Action(Float64MultiArrayMsg actionMessage)
+    void PositionCommand(Float64MultiArrayMsg actionMessage)
     {
  
         // Set the joint values for every joint

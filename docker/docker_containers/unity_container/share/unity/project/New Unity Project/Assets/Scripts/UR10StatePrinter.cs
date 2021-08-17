@@ -25,11 +25,8 @@ public class UR10StatePrinter : MonoBehaviour
     private readonly float jointAssignmentWait = 0.1f;
     private readonly float poseAssignmentWait = 0.5f;
 
-    // Variables required for ROS communication 
-    public string topicName = "joint_states";
-
     public GameObject UR10;
-    public Text text;
+    public Text text1, text2, text3, text4, text5, text6;
 
     // Start is called before the first frame update
     void Start()
@@ -60,11 +57,13 @@ public class UR10StatePrinter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Joint1: " + jointArticulationBodies[0].xDrive.target.ToString() + " " 
-                  + "Joint2: " + jointArticulationBodies[1].xDrive.target.ToString() + " "
-                  + "Joint3: " + jointArticulationBodies[2].xDrive.target.ToString() + "\n"
-                  + "Joint4: " + jointArticulationBodies[3].xDrive.target.ToString() + " "
-                  + "Joint5: " + jointArticulationBodies[4].xDrive.target.ToString() + " "
-                  + "Joint6: " + jointArticulationBodies[5].xDrive.target.ToString() + "\n";
+        List<float> positions = new List<float>();
+        jointArticulationBodies[0].GetJointPositions(positions);
+        text1.text = "Joint1: " + positions[0].ToString();
+        text2.text = "Joint2: " + positions[1].ToString();
+        text3.text = "Joint3: " + positions[2].ToString();
+        text4.text = "Joint4: " + positions[3].ToString();
+        text5.text = "Joint5: " + positions[4].ToString();
+        text6.text = "Joint6: " + positions[5].ToString();
     }
 }
