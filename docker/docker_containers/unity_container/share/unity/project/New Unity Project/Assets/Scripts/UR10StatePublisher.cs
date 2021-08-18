@@ -13,15 +13,13 @@ public class UR10StatePublisher : MonoBehaviour
     private float timeElapsed;
 
     // Publish the cube's position and rotation every N seconds
-    public float publishMessageFrequency = 0.001f;
+    public float publishMessageFrequency = 1/125.0f;
 
     // Articulation Bodies
     private ArticulationBody[] jointArticulationBodies;
 
     // Hardcoded variables 
     private int numRobotJoints = 6;
-    private readonly float jointAssignmentWait = 0.1f;
-    private readonly float poseAssignmentWait = 0.5f;
 
     // Variables required for ROS communication 
     public string topicName = "unity_ur10_joint_states";

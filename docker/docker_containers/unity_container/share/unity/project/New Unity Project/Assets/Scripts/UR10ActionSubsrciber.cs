@@ -27,6 +27,11 @@ public class UR10ActionSubsrciber : MonoBehaviour
 
 
     public GameObject UR10;
+    float time = 0;
+    float pre_t = 0;
+
+    List<float> targets = new List<float>();
+    List<float> targetVelocities = new List<float>();
 
     // Start is called before the first frame update
     void Start()
@@ -54,25 +59,57 @@ public class UR10ActionSubsrciber : MonoBehaviour
         jointArticulationBodies[5] = UR10.transform.Find(hand_link).GetComponent<ArticulationBody>();
 
         // Subscriber
-        ROSConnection.instance.Subscribe<Float64MultiArrayMsg>("position_command", PositionCommand);
+        //ROSConnection.instance.Subscribe<Float64MultiArrayMsg>("position_command", PositionCommand);
+        ROSConnection.instance.Subscribe<Float64MultiArrayMsg>("velocity_command", VelocityCommand);
     }
 
     void PositionCommand(Float64MultiArrayMsg actionMessage)
     {
- 
         // Set the joint values for every joint
         for (int joint = 0; joint < jointArticulationBodies.Length; joint++)
         {
             var joint1XDrive = jointArticulationBodies[joint].xDrive;
             joint1XDrive.target = (float)actionMessage.data[joint] * (float)57.2958;
             jointArticulationBodies[joint].xDrive = joint1XDrive;
-
         }
+    }
+
+    void VelocityCommand(Float64MultiArrayMsg actionMessage)
+    {
+        
+        float cur_t = time;
+        float dt = cur_t - pre_t;
+        //Debug.Log(dt);
+        pre_t = cur_t;
+
+        jointArticulationBodies[0].GetJointPositions(targets);
+        //Debug.Log(targets[0]);
+        jointArticulationBodies[0].GetJointVelocities(targetVelocities);
+        //jointArticulationBodies[0].GetJointForces(targetVelocities);
+        // Set the joint values for every joint
+        for (int joint = 0; joint < jointArticulationBodies.Length; joint++)
+        {
+            //var joint1XDrive = jointArticulationBodies[joint].xDrive;
+            //joint1XDrive.target = targets[joint] + (float)actionMessage.data[joint] * (float)57.2958;
+            //joint1XDrive.targetVelocity = (float)actionMessage.data[joint] * (float)57.2958;
+            //jointArticulationBodies[joint].xDrive = joint1XDrive;
+            targetVelocities[joint] = ((float)actionMessage.data[joint]);
+            targets[joint] += targetVelocities[joint] * dt;
+        }
+        //Debug.Log(targetVelocities.Count);
+        jointArticulationBodies[0].SetDriveTargets(targets);
+        jointArticulationBodies[0].SetDriveTargetVelocities(targetVelocities);
+        //jointArticulationBodies[0].SetJointForces(targetVelocities);
+        //targetVelocities.Clear();
+
+        
+        //Debug.Log(targetVelocities.Count);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        time += Time.deltaTime;
     }
 }

@@ -1,6 +1,8 @@
  <launch>
     <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
-    <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface" />
+    <arg name="transmission_hw_interface" default="hardware_interface/VelocityJointInterface" />
+
+    <param name="controller_type" type="string" value="vel"/>
 
     <!-- send robot urdf to param server -->
     <include file="$(find ur_description)/launch/ur10_upload.launch">

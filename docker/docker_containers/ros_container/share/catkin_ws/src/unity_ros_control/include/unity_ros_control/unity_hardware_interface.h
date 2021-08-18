@@ -7,6 +7,8 @@
 #include <hardware_interface/joint_state_interface.h>
 #include <hardware_interface/robot_hw.h>
 
+#include <iostream>
+
 class UnityUR10 : public hardware_interface::RobotHW
 {
 public:
@@ -37,10 +39,12 @@ private:
   ros::Publisher position_command_pub;
   ros::Publisher velocity_command_pub;
   std_msgs::Float64MultiArray command;
+  std::string con_type;
 };
 
 UnityUR10::UnityUR10()
 : joint_position_command_({ 0, 0, 0, 0, 0, 0 })
+, joint_velocity_command_({ 0, 0, 0, 0, 0, 0 })
 , joint_positions_{ { 0, 0, 0, 0, 0, 0 } } 
 , joint_velocities_{ { 0, 0, 0, 0, 0, 0 } }
 , joint_efforts_{ { 0, 0, 0, 0, 0, 0 } }
@@ -55,21 +59,40 @@ UnityUR10::UnityUR10()
     // Create joint state interface for all joints
     js_interface_.registerHandle(hardware_interface::JointStateHandle(joint_names_[i], &joint_positions_[i],
                                                                       &joint_velocities_[i], &joint_efforts_[i]));
-
-    // Create joint position control interface
+ 
     pj_interface_.registerHandle(
-        hardware_interface::JointHandle(js_interface_.getHandle(joint_names_[i]), &joint_position_command_[i]));
+          hardware_interface::JointHandle(js_interface_.getHandle(joint_names_[i]), &joint_position_command_[i]));
 
-    // // Create joint velocity control interface
-    // vj_interface_.registerHandle(
-    //     hardware_interface::JointHandle(vj_interface_.getHandle(joint_names_[i]), &joint_velocity_command_[i]));
+    vj_interface_.registerHandle(
+          hardware_interface::JointHandle(js_interface_.getHandle(joint_names_[i]), &joint_velocity_command_[i]));
+
+    // // Get controller type
+    // nh.getParam("controller_type", con_type);
+    // ROS_INFO("%s", con_type.c_str());
+
+    // if(!con_type.compare("pos")){
+    //   // Create joint position control interface
+    //   ROS_INFO("Position Interface!");
+    //   pj_interface_.registerHandle(
+    //       hardware_interface::JointHandle(js_interface_.getHandle(joint_names_[i]), &joint_position_command_[i]));
+    // }
+    // else if(!con_type.compare("vel")){
+    //   // Create joint velocity control interface
+    //   ROS_INFO("Velocity Interface!");
+    //   vj_interface_.registerHandle(
+    //       hardware_interface::JointHandle(js_interface_.getHandle(joint_names_[i]), &joint_velocity_command_[i]));
+    // }
+    // else{
+    //   ROS_INFO("No pos or vel type controller");
+    // }
   }
 
   registerInterface(&js_interface_);
   registerInterface(&pj_interface_);
+  registerInterface(&vj_interface_);
 
   position_command_pub = nh.advertise<std_msgs::Float64MultiArray>("position_command", 100);
-  //velocity_command_pub = nh.advertise<std_msgs::Float64MultiArray>("velocity_command", 100);
+  velocity_command_pub = nh.advertise<std_msgs::Float64MultiArray>("velocity_command", 100);
 }
 
 void UnityUR10::read(const ros::Time& time, const ros::Duration& period)
@@ -79,17 +102,17 @@ void UnityUR10::read(const ros::Time& time, const ros::Duration& period)
 
 void UnityUR10::write(const ros::Time& time, const ros::Duration& period)
 {
-  //ROS_INFO_STREAM("write! " << position_controller_running_);
+  //ROS_INFO_STREAM("pos: " << position_controller_running_ << ", vel: " << velocity_controller_running_);
   if (position_controller_running_)
   {
     command.data = joint_position_command_;
     position_command_pub.publish(command);
   }
-  // else if (velocity_controller_running_)
-  // {
-  //   command.data = joint_velocity_command_;
-  //   position_command_pub.publish(command);
-  // }
+  else if (velocity_controller_running_)
+  {
+    command.data = joint_velocity_command_;
+    velocity_command_pub.publish(command);
+  }
 }
 
 void UnityUR10::stateCallback(const sensor_msgs::JointStateConstPtr& msg)

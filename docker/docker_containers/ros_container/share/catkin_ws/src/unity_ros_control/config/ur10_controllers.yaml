@@ -18,7 +18,7 @@ joint_state_controller:
    publish_rate: *loop_hz
 
 arm_controller:
-   type: position_controllers/JointTrajectoryController
+   type: velocity_controllers/JointTrajectoryController
    joints: *robot_joints
    stop_trajectory_duration: 0.5
    state_publish_rate: *loop_hz
@@ -34,32 +34,32 @@ arm_controller:
       wrist_3_joint: {trajectory: 0.2, goal: 0.1}
    gains: &gain
       shoulder_pan_joint:
-         p: 100
+         p: 10
          d: 1
          i: 1
          i_clamp: 1
       shoulder_lift_joint:
-         p: 100
+         p: 10
          d: 1
          i: 1
          i_clamp: 1
       elbow_joint:
-         p: 100
+         p: 10
          d: 1
          i: 1
          i_clamp: 1
       wrist_1_joint:
-         p: 100
+         p: 10
          d: 1
          i: 1
          i_clamp: 1
       wrist_2_joint:
-         p: 100
+         p: 10
          d: 1
          i: 1
          i_clamp: 1
       wrist_3_joint:
-         p: 100
+         p: 10
          d: 1
          i: 1
          i_clamp: 1
@@ -67,6 +67,7 @@ arm_controller:
 joint_group_vel_controller:
    type: velocity_controllers/JointGroupVelocityController
    joints: *robot_joints
+   gains: *gain
 
 joint_group_pos_controller:
    type: position_controllers/JointGroupPositionController
