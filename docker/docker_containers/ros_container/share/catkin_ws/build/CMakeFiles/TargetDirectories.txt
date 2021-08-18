@@ -106,6 +106,13 @@
 /root/share/catkin_ws/build/niryo/niryo_one_urdf/CMakeFiles/rebuild_cache.dir
 /root/share/catkin_ws/build/niryo/niryo_one_urdf/CMakeFiles/edit_cache.dir
 /root/share/catkin_ws/build/niryo/niryo_one_urdf/CMakeFiles/test.dir
+/root/share/catkin_ws/build/rqt_joint_trajectory_controller/CMakeFiles/install/strip.dir
+/root/share/catkin_ws/build/rqt_joint_trajectory_controller/CMakeFiles/install/local.dir
+/root/share/catkin_ws/build/rqt_joint_trajectory_controller/CMakeFiles/install.dir
+/root/share/catkin_ws/build/rqt_joint_trajectory_controller/CMakeFiles/list_install_components.dir
+/root/share/catkin_ws/build/rqt_joint_trajectory_controller/CMakeFiles/rebuild_cache.dir
+/root/share/catkin_ws/build/rqt_joint_trajectory_controller/CMakeFiles/edit_cache.dir
+/root/share/catkin_ws/build/rqt_joint_trajectory_controller/CMakeFiles/test.dir
 /root/share/catkin_ws/build/unity/unity_robotics_demo_msgs/CMakeFiles/install/local.dir
 /root/share/catkin_ws/build/unity/unity_robotics_demo_msgs/CMakeFiles/_unity_robotics_demo_msgs_generate_messages_check_deps_UnityColor.dir
 /root/share/catkin_ws/build/unity/unity_robotics_demo_msgs/CMakeFiles/unity_robotics_demo_msgs_genpy.dir
@@ -1761,12 +1768,3 @@
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/ur10_python_interface_genlisp.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/topic_tools_generate_messages_py.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_py.dir
-/root/share/catkin_ws/build/universal_robot/ur_kinematics/CMakeFiles/install/strip.dir
-/root/share/catkin_ws/build/universal_robot/ur_kinematics/CMakeFiles/install/local.dir
-/root/share/catkin_ws/build/universal_robot/ur_kinematics/CMakeFiles/edit_cache.dir
-/root/share/catkin_ws/build/universal_robot/ur_kinematics/CMakeFiles/test.dir
-/root/share/catkin_ws/build/universal_robot/ur_kinematics/CMakeFiles/ur10_moveit_plugin.dir
-/root/share/catkin_ws/build/universal_robot/ur_kinematics/CMakeFiles/install.dir
-/root/share/catkin_ws/build/universal_robot/ur_kinematics/CMakeFiles/list_install_components.dir
-/root/share/catkin_ws/build/universal_robot/ur_kinematics/CMakeFiles/rebuild_cache.dir
-/root/share/catkin_ws/build/universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir

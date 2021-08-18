@@ -508,7 +508,7 @@ RT_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
 SETUPTOOLS_DEB_LAYOUT:BOOL=ON
 
 //Name of the computer/site where compile is being run
-SITE:STRING=lhs
+SITE:STRING=hmci
 
 //LSB Distrib tag
 UBUNTU:BOOL=TRUE
@@ -766,9 +766,6 @@ interactive_markers_DIR:PATH=/opt/ros/noetic/share/interactive_markers/cmake
 //The directory containing a CMake configuration file for joint_limits_interface.
 joint_limits_interface_DIR:PATH=/opt/ros/noetic/share/joint_limits_interface/cmake
 
-//The directory containing a CMake configuration file for kdl_conversions.
-kdl_conversions_DIR:PATH=/opt/ros/noetic/share/kdl_conversions/cmake
-
 //The directory containing a CMake configuration file for kdl_parser.
 kdl_parser_DIR:PATH=/opt/ros/noetic/share/kdl_parser/cmake
 
@@ -776,7 +773,7 @@ kdl_parser_DIR:PATH=/opt/ros/noetic/share/kdl_parser/cmake
 laser_geometry_DIR:PATH=/opt/ros/noetic/share/laser_geometry/cmake
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/noetic/lib/libtf.so
+lib:FILEPATH=/opt/ros/noetic/lib/libtopic_tools.so
 
 //The directory containing a CMake configuration file for map_msgs.
 map_msgs_DIR:PATH=/opt/ros/noetic/share/map_msgs/cmake
@@ -906,9 +903,6 @@ moveit_kinematic_constraints_LIB_DEPENDS:STATIC=general;moveit_robot_model;gener
 
 //Value Computed by CMake
 moveit_kinematics_BINARY_DIR:STATIC=/root/share/catkin_ws/build/moveit/moveit_kinematics
-
-//The directory containing a CMake configuration file for moveit_kinematics.
-moveit_kinematics_DIR:PATH=/root/share/catkin_ws/devel/share/moveit_kinematics/cmake
 
 //Value Computed by CMake
 moveit_kinematics_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/moveit/moveit_kinematics
@@ -1555,6 +1549,12 @@ rostest_DIR:PATH=/opt/ros/noetic/share/rostest/cmake
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/noetic/share/rostime/cmake
 
+//Value Computed by CMake
+rqt_joint_trajectory_controller_BINARY_DIR:STATIC=/root/share/catkin_ws/build/rqt_joint_trajectory_controller
+
+//Value Computed by CMake
+rqt_joint_trajectory_controller_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/rqt_joint_trajectory_controller
+
 //The directory containing a CMake configuration file for rviz.
 rviz_DIR:PATH=/opt/ros/noetic/share/rviz/cmake
 
@@ -1606,9 +1606,6 @@ tf2_ros_DIR:PATH=/opt/ros/noetic/share/tf2_ros/cmake
 //The directory containing a CMake configuration file for tf.
 tf_DIR:PATH=/opt/ros/noetic/share/tf/cmake
 
-//The directory containing a CMake configuration file for tf_conversions.
-tf_conversions_DIR:PATH=/opt/ros/noetic/share/tf_conversions/cmake
-
 //The directory containing a CMake configuration file for topic_tools.
 topic_tools_DIR:PATH=/opt/ros/noetic/share/topic_tools/cmake
 
@@ -1654,9 +1651,6 @@ ur10_moveit_config_BINARY_DIR:STATIC=/root/share/catkin_ws/build/universal_robot
 //Value Computed by CMake
 ur10_moveit_config_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/universal_robot/ur10_moveit_config
 
-//Dependencies for the target
-ur10_moveit_plugin_LIB_DEPENDS:STATIC=general;moveit_rdf_loader;general;moveit_kinematics_plugin_loader;general;moveit_robot_model_loader;general;moveit_constraint_sampler_manager_loader;general;moveit_planning_pipeline;general;moveit_trajectory_execution_manager;general;moveit_plan_execution;general;moveit_planning_scene_monitor;general;moveit_collision_plugin_loader;general;moveit_cpp;general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;moveit_ros_occupancy_map_monitor;general;moveit_exceptions;general;moveit_background_processing;general;moveit_kinematics_base;general;moveit_robot_model;general;moveit_transforms;general;moveit_robot_state;general;moveit_robot_trajectory;general;moveit_planning_interface;general;moveit_collision_detection;general;moveit_collision_detection_fcl;general;moveit_collision_detection_bullet;general;moveit_kinematic_constraints;general;moveit_planning_scene;general;moveit_constraint_samplers;general;moveit_planning_request_adapter;general;moveit_profiler;general;moveit_python_tools;general;moveit_trajectory_processing;general;moveit_distance_field;general;moveit_collision_distance_field;general;moveit_kinematics_metrics;general;moveit_dynamics_solver;general;moveit_utils;general;moveit_test_utils;general;/usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.71.0;general;/opt/ros/noetic/lib/x86_64-linux-gnu/libfcl.so.0.6.1;general;/usr/lib/x86_64-linux-gnu/libBulletSoftBody.so;general;/usr/lib/x86_64-linux-gnu/libBulletDynamics.so;general;/usr/lib/x86_64-linux-gnu/libBulletCollision.so;general;/usr/lib/x86_64-linux-gnu/libLinearMath.so;general;/opt/ros/noetic/lib/libkdl_parser.so;general;/opt/ros/noetic/lib/liburdf.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_world.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/noetic/lib/librosconsole_bridge.so;general;/opt/ros/noetic/lib/libsrdfdom.so;general;/opt/ros/noetic/lib/libgeometric_shapes.so;general;/opt/ros/noetic/lib/liboctomap.so;general;/opt/ros/noetic/lib/liboctomath.so;general;/opt/ros/noetic/lib/librandom_numbers.so;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/x86_64-linux-gnu/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython3.8.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/noetic/lib/libtf_conversions.so;general;/opt/ros/noetic/lib/libkdl_conversions.so;general;/usr/lib/liborocos-kdl.so;general;/opt/ros/noetic/lib/libtf.so;general;/opt/ros/noetic/lib/libtf2_ros.so;general;/opt/ros/noetic/lib/libactionlib.so;general;/opt/ros/noetic/lib/libmessage_filters.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/libtf2.so;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4;general;Boost::system;general;ur10_kin;
-
 //Value Computed by CMake
 ur10_python_interface_BINARY_DIR:STATIC=/root/share/catkin_ws/build/ur10_python_interface
 
@@ -1687,14 +1681,8 @@ ur_gazebo_BINARY_DIR:STATIC=/root/share/catkin_ws/build/universal_robot/ur_gazeb
 //Value Computed by CMake
 ur_gazebo_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/universal_robot/ur_gazebo
 
-//Value Computed by CMake
-ur_kinematics_BINARY_DIR:STATIC=/root/share/catkin_ws/build/universal_robot/ur_kinematics
-
 //The directory containing a CMake configuration file for ur_kinematics.
 ur_kinematics_DIR:PATH=ur_kinematics_DIR-NOTFOUND
-
-//Value Computed by CMake
-ur_kinematics_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/universal_robot/ur_kinematics
 
 //Value Computed by CMake
 ur_msgs_BINARY_DIR:STATIC=/root/share/catkin_ws/build/universal_robot/ur_msgs
@@ -1957,7 +1945,7 @@ COMPILER_HAS_HIDDEN_INLINE_VISIBILITY:INTERNAL=1
 //Test COMPILER_HAS_HIDDEN_VISIBILITY
 COMPILER_HAS_HIDDEN_VISIBILITY:INTERNAL=1
 //Details about finding Boost
-FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake][cfound components: system ][v1.71.0()]
+FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake][cfound components: system filesystem date_time thread ][v1.71.0()]
 //Details about finding Bullet
 FIND_PACKAGE_MESSAGE_DETAILS_Bullet:INTERNAL=[BulletSoftBody;BulletDynamics;BulletCollision;LinearMath][/usr/include/bullet][v2.88(2.87)]
 //Details about finding GLEW

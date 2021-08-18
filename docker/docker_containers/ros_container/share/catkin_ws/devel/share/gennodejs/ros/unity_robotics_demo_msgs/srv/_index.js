@@ -1,10 +1,10 @@
 
 "use strict";
 
-let ObjectPoseService = require('./ObjectPoseService.js')
 let PositionService = require('./PositionService.js')
+let ObjectPoseService = require('./ObjectPoseService.js')
 
 module.exports = {
-  ObjectPoseService: ObjectPoseService,
   PositionService: PositionService,
+  ObjectPoseService: ObjectPoseService,
 };

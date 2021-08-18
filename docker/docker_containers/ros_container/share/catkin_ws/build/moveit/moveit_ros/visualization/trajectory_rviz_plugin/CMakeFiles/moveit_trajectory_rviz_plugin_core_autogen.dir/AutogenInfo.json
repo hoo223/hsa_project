@@ -146,7 +146,7 @@
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
-	"PARALLEL" : 4,
+	"PARALLEL" : 12,
 	"PARSE_CACHE_FILE" : "/root/share/catkin_ws/build/moveit/moveit_ros/visualization/trajectory_rviz_plugin/CMakeFiles/moveit_trajectory_rviz_plugin_core_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt5/bin/moc",
 	"QT_UIC_EXECUTABLE" : "",

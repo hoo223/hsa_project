@@ -10710,32 +10710,6 @@ ur10_python_interface_generate_messages_py/fast:
 	$(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_py.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_py.dir/build
 .PHONY : ur10_python_interface_generate_messages_py/fast
 
-#=============================================================================
-# Target rules for targets named ur10_moveit_plugin
-
-# Build rule for target.
-ur10_moveit_plugin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ur10_moveit_plugin
-.PHONY : ur10_moveit_plugin
-
-# fast build rule for target.
-ur10_moveit_plugin/fast:
-	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10_moveit_plugin.dir/build
-.PHONY : ur10_moveit_plugin/fast
-
-#=============================================================================
-# Target rules for targets named ur10_kin
-
-# Build rule for target.
-ur10_kin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ur10_kin
-.PHONY : ur10_kin
-
-# fast build rule for target.
-ur10_kin/fast:
-	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/build
-.PHONY : ur10_kin/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -11560,8 +11534,6 @@ help:
 	@echo "... ur10_python_interface_genlisp"
 	@echo "... topic_tools_generate_messages_py"
 	@echo "... ur10_python_interface_generate_messages_py"
-	@echo "... ur10_moveit_plugin"
-	@echo "... ur10_kin"
 .PHONY : help
 
 
