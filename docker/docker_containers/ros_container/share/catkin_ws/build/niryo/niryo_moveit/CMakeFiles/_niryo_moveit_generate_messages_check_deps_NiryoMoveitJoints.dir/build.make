@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /root/share/catkin_ws/build
 include niryo/niryo_moveit/CMakeFiles/_niryo_moveit_generate_messages_check_deps_NiryoMoveitJoints.dir/progress.make
 
 niryo/niryo_moveit/CMakeFiles/_niryo_moveit_generate_messages_check_deps_NiryoMoveitJoints:
-	cd /root/share/catkin_ws/build/niryo/niryo_moveit && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py niryo_moveit /root/share/catkin_ws/src/niryo/niryo_moveit/msg/NiryoMoveitJoints.msg geometry_msgs/Pose:geometry_msgs/Quaternion:geometry_msgs/Point
+	cd /root/share/catkin_ws/build/niryo/niryo_moveit && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py niryo_moveit /root/share/catkin_ws/src/niryo/niryo_moveit/msg/NiryoMoveitJoints.msg geometry_msgs/Pose:geometry_msgs/Point:geometry_msgs/Quaternion
 
 _niryo_moveit_generate_messages_check_deps_NiryoMoveitJoints: niryo/niryo_moveit/CMakeFiles/_niryo_moveit_generate_messages_check_deps_NiryoMoveitJoints
 _niryo_moveit_generate_messages_check_deps_NiryoMoveitJoints: niryo/niryo_moveit/CMakeFiles/_niryo_moveit_generate_messages_check_deps_NiryoMoveitJoints.dir/build.make

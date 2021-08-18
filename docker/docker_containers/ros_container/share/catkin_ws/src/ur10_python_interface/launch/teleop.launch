@@ -5,7 +5,7 @@
   <node name="joy2target_converter" pkg="ur10_python_interface" type="joy2target.py" output="log"/>
 
   <!-- ik solver node -->
-  <node name="ik_solver" pkg="moveit_tutorials" type="ik_publisher" output="log"/>
+  <node name="ik_solver" pkg="ur10_python_interface" type="ik_publisher" output="log"/>
 
   <!-- teleop controller node -->
   <node name="teleop_controller" pkg="ur10_python_interface" type="teleop_controller.py" output="log"/>

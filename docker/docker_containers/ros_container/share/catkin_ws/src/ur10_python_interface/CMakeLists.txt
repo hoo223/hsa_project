@@ -26,6 +26,7 @@ find_package(catkin REQUIRED
     tf2_eigen
     tf2_geometry_msgs
     message_generation
+    eigen_conversions
 )
 
 find_package(Eigen3 REQUIRED)
@@ -59,6 +60,7 @@ catkin_package(
     std_msgs
     geometry_msgs
     message_runtime
+    eigen_conversions
   DEPENDS
     EIGEN3
 )
@@ -69,3 +71,6 @@ catkin_package(
 ###########
 
 include_directories(${THIS_PACKAGE_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIR} ${EIGEN3_INCLUDE_DIRS})
+
+add_executable(ik_publisher src/ik_publisher.cpp)
+target_link_libraries(ik_publisher ${catkin_LIBRARIES})

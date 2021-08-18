@@ -67,7 +67,7 @@ set(unity_ros_control_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(unity_ros_control_SOURCE_PREFIX /root/share/catkin_ws/src/unity_ros_control)
+  set(unity_ros_control_SOURCE_PREFIX /root/share/catkin_ws/src/unity/unity_ros_control)
   set(unity_ros_control_DEVEL_PREFIX /root/share/catkin_ws/devel)
   set(unity_ros_control_INSTALL_PREFIX "")
   set(unity_ros_control_PREFIX ${unity_ros_control_DEVEL_PREFIX})
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(unity_ros_control_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/root/share/catkin_ws/src/unity_ros_control/include " STREQUAL " ")
+if(NOT "/root/share/catkin_ws/src/unity/unity_ros_control/include " STREQUAL " ")
   set(unity_ros_control_INCLUDE_DIRS "")
-  set(_include_dirs "/root/share/catkin_ws/src/unity_ros_control/include")
+  set(_include_dirs "/root/share/catkin_ws/src/unity/unity_ros_control/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/root/share/catkin_ws/src/unity_ros_control/include " STREQUAL " ")
         message(FATAL_ERROR "Project 'unity_ros_control' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'unity_ros_control' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/root/share/catkin_ws/src/unity_ros_control/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'unity_ros_control' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/root/share/catkin_ws/src/unity/unity_ros_control/${idir}'.  ${_report}")
     endif()
     _list_append_unique(unity_ros_control_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /root/share/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /root/share/catkin_ws/devel/lib;/root/share/catkin_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

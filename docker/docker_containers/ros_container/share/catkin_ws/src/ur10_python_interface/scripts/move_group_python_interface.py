@@ -158,6 +158,7 @@ class MoveGroupPythonInteface(object):
     self.verbose = verbose
 
     # teleop parameters
+    self.button = 0.0
     self.speed_gain = 0.001 # for input scale
     self.p_gain = 3         # for target tracking
     self.speed_level = 7    

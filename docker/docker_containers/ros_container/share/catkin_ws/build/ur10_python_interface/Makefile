@@ -168,6 +168,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+ur10_python_interface/CMakeFiles/ik_publisher.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ik_publisher.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/ik_publisher.dir/rule
+
+# Convenience name for target.
+ik_publisher: ur10_python_interface/CMakeFiles/ik_publisher.dir/rule
+
+.PHONY : ik_publisher
+
+# fast build rule for target.
+ik_publisher/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ik_publisher.dir/build.make ur10_python_interface/CMakeFiles/ik_publisher.dir/build
+.PHONY : ik_publisher/fast
+
+# Convenience name for target.
 ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
 .PHONY : ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
@@ -602,6 +617,33 @@ ur10_python_interface_generate_messages_py/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_py.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_py.dir/build
 .PHONY : ur10_python_interface_generate_messages_py/fast
 
+src/ik_publisher.o: src/ik_publisher.cpp.o
+
+.PHONY : src/ik_publisher.o
+
+# target to build an object file
+src/ik_publisher.cpp.o:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ik_publisher.dir/build.make ur10_python_interface/CMakeFiles/ik_publisher.dir/src/ik_publisher.cpp.o
+.PHONY : src/ik_publisher.cpp.o
+
+src/ik_publisher.i: src/ik_publisher.cpp.i
+
+.PHONY : src/ik_publisher.i
+
+# target to preprocess a source file
+src/ik_publisher.cpp.i:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ik_publisher.dir/build.make ur10_python_interface/CMakeFiles/ik_publisher.dir/src/ik_publisher.cpp.i
+.PHONY : src/ik_publisher.cpp.i
+
+src/ik_publisher.s: src/ik_publisher.cpp.s
+
+.PHONY : src/ik_publisher.s
+
+# target to generate assembly for a file
+src/ik_publisher.cpp.s:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ik_publisher.dir/build.make ur10_python_interface/CMakeFiles/ik_publisher.dir/src/ik_publisher.cpp.s
+.PHONY : src/ik_publisher.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -611,6 +653,7 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... test"
+	@echo "... ik_publisher"
 	@echo "... topic_tools_generate_messages_cpp"
 	@echo "... pcl_msgs_generate_messages_eus"
 	@echo "... pcl_msgs_generate_messages_py"
@@ -644,6 +687,9 @@ help:
 	@echo "... ur10_python_interface_genlisp"
 	@echo "... topic_tools_generate_messages_py"
 	@echo "... ur10_python_interface_generate_messages_py"
+	@echo "... src/ik_publisher.o"
+	@echo "... src/ik_publisher.i"
+	@echo "... src/ik_publisher.s"
 .PHONY : help
 
 

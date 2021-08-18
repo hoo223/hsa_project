@@ -81,10 +81,10 @@ class TeleopController(object):
 
   def current_joint_callback(self, data):
     self.current_joints = list(data.position)
-    # gazebo에서 나온 joint states 순서가 바뀌어 있음
-    temp = self.current_joints[0]
-    self.current_joints[0] = self.current_joints[2]
-    self.current_joints[2] = temp
+    # # gazebo에서 나온 joint states 순서가 바뀌어 있음
+    # temp = self.current_joints[0]
+    # self.current_joints[0] = self.current_joints[2]
+    # self.current_joints[2] = temp
     #print(self.current_joints)
 
   def teleop_state_callback(self, data):
@@ -92,7 +92,7 @@ class TeleopController(object):
 
 # main function
 def main():
-  tc = TeleopController(env=True)
+  tc = TeleopController(env=False)
   rospy.init_node("teleop_controller", anonymous=True)
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():

@@ -2,6 +2,8 @@
     <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
     <arg name="transmission_hw_interface" default="hardware_interface/VelocityJointInterface" />
 
+    <!--include file="$(find ros_tcp_endpoint)/launch/endpoint.launch"/-->
+
     <param name="controller_type" type="string" value="vel"/>
 
     <!-- send robot urdf to param server -->

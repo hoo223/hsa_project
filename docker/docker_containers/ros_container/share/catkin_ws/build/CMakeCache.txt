@@ -669,6 +669,9 @@ dynamixel_sdk_LIB_DEPENDS:STATIC=general;/opt/ros/noetic/lib/libroscpp.so;genera
 //Value Computed by CMake
 dynamixel_sdk_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/niryo/niryo_one_ros/dynamixel_sdk
 
+//The directory containing a CMake configuration file for eigen_conversions.
+eigen_conversions_DIR:PATH=/opt/ros/noetic/share/eigen_conversions/cmake
+
 //The directory containing a CMake configuration file for eigen_stl_containers.
 eigen_stl_containers_DIR:PATH=/opt/ros/noetic/share/eigen_stl_containers/cmake
 
@@ -773,7 +776,7 @@ kdl_parser_DIR:PATH=/opt/ros/noetic/share/kdl_parser/cmake
 laser_geometry_DIR:PATH=/opt/ros/noetic/share/laser_geometry/cmake
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/noetic/lib/libtopic_tools.so
+lib:FILEPATH=/usr/lib/liborocos-kdl.so
 
 //The directory containing a CMake configuration file for map_msgs.
 map_msgs_DIR:PATH=/opt/ros/noetic/share/map_msgs/cmake
@@ -1628,10 +1631,10 @@ unity_robotics_demo_msgs_BINARY_DIR:STATIC=/root/share/catkin_ws/build/unity/uni
 unity_robotics_demo_msgs_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/unity/unity_robotics_demo_msgs
 
 //Value Computed by CMake
-unity_ros_control_BINARY_DIR:STATIC=/root/share/catkin_ws/build/unity_ros_control
+unity_ros_control_BINARY_DIR:STATIC=/root/share/catkin_ws/build/unity/unity_ros_control
 
 //Value Computed by CMake
-unity_ros_control_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/unity_ros_control
+unity_ros_control_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/unity/unity_ros_control
 
 //Value Computed by CMake
 universal_robot_BINARY_DIR:STATIC=/root/share/catkin_ws/build/universal_robot/universal_robot
