@@ -56,6 +56,18 @@ CMAKE_BINARY_DIR = /root/share/catkin_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -89,18 +101,6 @@ test:
 test/fast: test
 
 .PHONY : test/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
 
 # Special rule for the target install
 install: preinstall
@@ -183,51 +183,6 @@ ur10_moveit_plugin/fast:
 .PHONY : ur10_moveit_plugin/fast
 
 # Convenience name for target.
-universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/rule
-.PHONY : universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/rule
-
-# Convenience name for target.
-ur5_moveit_plugin: universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/rule
-
-.PHONY : ur5_moveit_plugin
-
-# fast build rule for target.
-ur5_moveit_plugin/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/build
-.PHONY : ur5_moveit_plugin/fast
-
-# Convenience name for target.
-universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/rule
-.PHONY : universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/rule
-
-# Convenience name for target.
-ur3_moveit_plugin: universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/rule
-
-.PHONY : ur3_moveit_plugin
-
-# fast build rule for target.
-ur3_moveit_plugin/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/build
-.PHONY : ur3_moveit_plugin/fast
-
-# Convenience name for target.
-universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/rule
-.PHONY : universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/rule
-
-# Convenience name for target.
-ur5_kin: universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/rule
-
-.PHONY : ur5_kin
-
-# fast build rule for target.
-ur5_kin/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/build
-.PHONY : ur5_kin/fast
-
-# Convenience name for target.
 universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/rule
 .PHONY : universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/rule
@@ -242,30 +197,13 @@ ur10_kin/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/build
 .PHONY : ur10_kin/fast
 
-# Convenience name for target.
-universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/rule
-.PHONY : universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/rule
-
-# Convenience name for target.
-ur3_kin: universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/rule
-
-.PHONY : ur3_kin
-
-# fast build rule for target.
-ur3_kin/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/build
-.PHONY : ur3_kin/fast
-
 src/ur_kin.o: src/ur_kin.cpp.o
 
 .PHONY : src/ur_kin.o
 
 # target to build an object file
 src/ur_kin.cpp.o:
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/src/ur_kin.cpp.o
 	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/src/ur_kin.cpp.o
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/src/ur_kin.cpp.o
 .PHONY : src/ur_kin.cpp.o
 
 src/ur_kin.i: src/ur_kin.cpp.i
@@ -274,9 +212,7 @@ src/ur_kin.i: src/ur_kin.cpp.i
 
 # target to preprocess a source file
 src/ur_kin.cpp.i:
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/src/ur_kin.cpp.i
 	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/src/ur_kin.cpp.i
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/src/ur_kin.cpp.i
 .PHONY : src/ur_kin.cpp.i
 
 src/ur_kin.s: src/ur_kin.cpp.s
@@ -285,9 +221,7 @@ src/ur_kin.s: src/ur_kin.cpp.s
 
 # target to generate assembly for a file
 src/ur_kin.cpp.s:
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/src/ur_kin.cpp.s
 	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/src/ur_kin.cpp.s
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/src/ur_kin.cpp.s
 .PHONY : src/ur_kin.cpp.s
 
 src/ur_moveit_plugin.o: src/ur_moveit_plugin.cpp.o
@@ -297,8 +231,6 @@ src/ur_moveit_plugin.o: src/ur_moveit_plugin.cpp.o
 # target to build an object file
 src/ur_moveit_plugin.cpp.o:
 	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10_moveit_plugin.dir/src/ur_moveit_plugin.cpp.o
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/src/ur_moveit_plugin.cpp.o
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/src/ur_moveit_plugin.cpp.o
 .PHONY : src/ur_moveit_plugin.cpp.o
 
 src/ur_moveit_plugin.i: src/ur_moveit_plugin.cpp.i
@@ -308,8 +240,6 @@ src/ur_moveit_plugin.i: src/ur_moveit_plugin.cpp.i
 # target to preprocess a source file
 src/ur_moveit_plugin.cpp.i:
 	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10_moveit_plugin.dir/src/ur_moveit_plugin.cpp.i
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/src/ur_moveit_plugin.cpp.i
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/src/ur_moveit_plugin.cpp.i
 .PHONY : src/ur_moveit_plugin.cpp.i
 
 src/ur_moveit_plugin.s: src/ur_moveit_plugin.cpp.s
@@ -319,8 +249,6 @@ src/ur_moveit_plugin.s: src/ur_moveit_plugin.cpp.s
 # target to generate assembly for a file
 src/ur_moveit_plugin.cpp.s:
 	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10_moveit_plugin.dir/src/ur_moveit_plugin.cpp.s
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/src/ur_moveit_plugin.cpp.s
-	cd /root/share/catkin_ws/build && $(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/src/ur_moveit_plugin.cpp.s
 .PHONY : src/ur_moveit_plugin.cpp.s
 
 # Help Target
@@ -329,19 +257,15 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... ur10_moveit_plugin"
-	@echo "... ur5_moveit_plugin"
-	@echo "... ur3_moveit_plugin"
-	@echo "... install/strip"
-	@echo "... ur5_kin"
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... ur10_kin"
-	@echo "... ur3_kin"
 	@echo "... src/ur_kin.o"
 	@echo "... src/ur_kin.i"
 	@echo "... src/ur_kin.s"

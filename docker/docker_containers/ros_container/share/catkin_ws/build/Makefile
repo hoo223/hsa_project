@@ -5914,45 +5914,6 @@ moveit_srv_kinematics_plugin/fast:
 .PHONY : moveit_srv_kinematics_plugin/fast
 
 #=============================================================================
-# Target rules for targets named moveit_cached_ur10_kinematics_plugin
-
-# Build rule for target.
-moveit_cached_ur10_kinematics_plugin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 moveit_cached_ur10_kinematics_plugin
-.PHONY : moveit_cached_ur10_kinematics_plugin
-
-# fast build rule for target.
-moveit_cached_ur10_kinematics_plugin/fast:
-	$(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/build
-.PHONY : moveit_cached_ur10_kinematics_plugin/fast
-
-#=============================================================================
-# Target rules for targets named moveit_cached_ur5_kinematics_plugin
-
-# Build rule for target.
-moveit_cached_ur5_kinematics_plugin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 moveit_cached_ur5_kinematics_plugin
-.PHONY : moveit_cached_ur5_kinematics_plugin
-
-# fast build rule for target.
-moveit_cached_ur5_kinematics_plugin/fast:
-	$(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/build
-.PHONY : moveit_cached_ur5_kinematics_plugin/fast
-
-#=============================================================================
-# Target rules for targets named moveit_cached_ur3_kinematics_plugin
-
-# Build rule for target.
-moveit_cached_ur3_kinematics_plugin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 moveit_cached_ur3_kinematics_plugin
-.PHONY : moveit_cached_ur3_kinematics_plugin
-
-# fast build rule for target.
-moveit_cached_ur3_kinematics_plugin/fast:
-	$(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/build
-.PHONY : moveit_cached_ur3_kinematics_plugin/fast
-
-#=============================================================================
 # Target rules for targets named moveit_cached_ik_kinematics_plugin
 
 # Build rule for target.
@@ -10763,45 +10724,6 @@ ur10_moveit_plugin/fast:
 .PHONY : ur10_moveit_plugin/fast
 
 #=============================================================================
-# Target rules for targets named ur5_moveit_plugin
-
-# Build rule for target.
-ur5_moveit_plugin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ur5_moveit_plugin
-.PHONY : ur5_moveit_plugin
-
-# fast build rule for target.
-ur5_moveit_plugin/fast:
-	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/build
-.PHONY : ur5_moveit_plugin/fast
-
-#=============================================================================
-# Target rules for targets named ur3_moveit_plugin
-
-# Build rule for target.
-ur3_moveit_plugin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ur3_moveit_plugin
-.PHONY : ur3_moveit_plugin
-
-# fast build rule for target.
-ur3_moveit_plugin/fast:
-	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/build
-.PHONY : ur3_moveit_plugin/fast
-
-#=============================================================================
-# Target rules for targets named ur5_kin
-
-# Build rule for target.
-ur5_kin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ur5_kin
-.PHONY : ur5_kin
-
-# fast build rule for target.
-ur5_kin/fast:
-	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/build
-.PHONY : ur5_kin/fast
-
-#=============================================================================
 # Target rules for targets named ur10_kin
 
 # Build rule for target.
@@ -10813,19 +10735,6 @@ ur10_kin: cmake_check_build_system
 ur10_kin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/build
 .PHONY : ur10_kin/fast
-
-#=============================================================================
-# Target rules for targets named ur3_kin
-
-# Build rule for target.
-ur3_kin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ur3_kin
-.PHONY : ur3_kin
-
-# fast build rule for target.
-ur3_kin/fast:
-	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/build
-.PHONY : ur3_kin/fast
 
 # Help Target
 help:
@@ -11282,9 +11191,6 @@ help:
 	@echo "... moveit_kdl_kinematics_plugin"
 	@echo "... moveit_lma_kinematics_plugin"
 	@echo "... moveit_srv_kinematics_plugin"
-	@echo "... moveit_cached_ur10_kinematics_plugin"
-	@echo "... moveit_cached_ur5_kinematics_plugin"
-	@echo "... moveit_cached_ur3_kinematics_plugin"
 	@echo "... moveit_cached_ik_kinematics_plugin"
 	@echo "... moveit_cached_ik_kinematics_base"
 	@echo "... benchmark_ik"
@@ -11655,11 +11561,7 @@ help:
 	@echo "... topic_tools_generate_messages_py"
 	@echo "... ur10_python_interface_generate_messages_py"
 	@echo "... ur10_moveit_plugin"
-	@echo "... ur5_moveit_plugin"
-	@echo "... ur3_moveit_plugin"
-	@echo "... ur5_kin"
 	@echo "... ur10_kin"
-	@echo "... ur3_kin"
 .PHONY : help
 
 

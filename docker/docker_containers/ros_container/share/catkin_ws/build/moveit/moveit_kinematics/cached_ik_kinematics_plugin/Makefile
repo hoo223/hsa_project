@@ -168,51 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/rule
-.PHONY : moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/rule
-
-# Convenience name for target.
-moveit_cached_ur10_kinematics_plugin: moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/rule
-
-.PHONY : moveit_cached_ur10_kinematics_plugin
-
-# fast build rule for target.
-moveit_cached_ur10_kinematics_plugin/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/build
-.PHONY : moveit_cached_ur10_kinematics_plugin/fast
-
-# Convenience name for target.
-moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/rule
-.PHONY : moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/rule
-
-# Convenience name for target.
-moveit_cached_ur5_kinematics_plugin: moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/rule
-
-.PHONY : moveit_cached_ur5_kinematics_plugin
-
-# fast build rule for target.
-moveit_cached_ur5_kinematics_plugin/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/build
-.PHONY : moveit_cached_ur5_kinematics_plugin/fast
-
-# Convenience name for target.
-moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/rule
-.PHONY : moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/rule
-
-# Convenience name for target.
-moveit_cached_ur3_kinematics_plugin: moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/rule
-
-.PHONY : moveit_cached_ur3_kinematics_plugin
-
-# fast build rule for target.
-moveit_cached_ur3_kinematics_plugin/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/build
-.PHONY : moveit_cached_ur3_kinematics_plugin/fast
-
-# Convenience name for target.
 moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ik_kinematics_plugin.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ik_kinematics_plugin.dir/rule
 .PHONY : moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ik_kinematics_plugin.dir/rule
@@ -269,39 +224,6 @@ src/cached_ik_kinematics_plugin.cpp.s:
 	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ik_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ik_kinematics_plugin.dir/src/cached_ik_kinematics_plugin.cpp.s
 .PHONY : src/cached_ik_kinematics_plugin.cpp.s
 
-src/cached_ur_kinematics_plugin.o: src/cached_ur_kinematics_plugin.cpp.o
-
-.PHONY : src/cached_ur_kinematics_plugin.o
-
-# target to build an object file
-src/cached_ur_kinematics_plugin.cpp.o:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/src/cached_ur_kinematics_plugin.cpp.o
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/src/cached_ur_kinematics_plugin.cpp.o
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/src/cached_ur_kinematics_plugin.cpp.o
-.PHONY : src/cached_ur_kinematics_plugin.cpp.o
-
-src/cached_ur_kinematics_plugin.i: src/cached_ur_kinematics_plugin.cpp.i
-
-.PHONY : src/cached_ur_kinematics_plugin.i
-
-# target to preprocess a source file
-src/cached_ur_kinematics_plugin.cpp.i:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/src/cached_ur_kinematics_plugin.cpp.i
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/src/cached_ur_kinematics_plugin.cpp.i
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/src/cached_ur_kinematics_plugin.cpp.i
-.PHONY : src/cached_ur_kinematics_plugin.cpp.i
-
-src/cached_ur_kinematics_plugin.s: src/cached_ur_kinematics_plugin.cpp.s
-
-.PHONY : src/cached_ur_kinematics_plugin.s
-
-# target to generate assembly for a file
-src/cached_ur_kinematics_plugin.cpp.s:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur10_kinematics_plugin.dir/src/cached_ur_kinematics_plugin.cpp.s
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur5_kinematics_plugin.dir/src/cached_ur_kinematics_plugin.cpp.s
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/build.make moveit/moveit_kinematics/cached_ik_kinematics_plugin/CMakeFiles/moveit_cached_ur3_kinematics_plugin.dir/src/cached_ur_kinematics_plugin.cpp.s
-.PHONY : src/cached_ur_kinematics_plugin.cpp.s
-
 src/ik_cache.o: src/ik_cache.cpp.o
 
 .PHONY : src/ik_cache.o
@@ -342,17 +264,11 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... moveit_cached_ur10_kinematics_plugin"
-	@echo "... moveit_cached_ur5_kinematics_plugin"
-	@echo "... moveit_cached_ur3_kinematics_plugin"
 	@echo "... moveit_cached_ik_kinematics_plugin"
 	@echo "... moveit_cached_ik_kinematics_base"
 	@echo "... src/cached_ik_kinematics_plugin.o"
 	@echo "... src/cached_ik_kinematics_plugin.i"
 	@echo "... src/cached_ik_kinematics_plugin.s"
-	@echo "... src/cached_ur_kinematics_plugin.o"
-	@echo "... src/cached_ur_kinematics_plugin.i"
-	@echo "... src/cached_ur_kinematics_plugin.s"
 	@echo "... src/ik_cache.o"
 	@echo "... src/ik_cache.i"
 	@echo "... src/ik_cache.s"
