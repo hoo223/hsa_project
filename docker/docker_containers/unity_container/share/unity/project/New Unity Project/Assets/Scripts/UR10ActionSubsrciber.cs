@@ -60,7 +60,7 @@ public class UR10ActionSubsrciber : MonoBehaviour
 
         // Subscriber
         //ROSConnection.instance.Subscribe<Float64MultiArrayMsg>("position_command", PositionCommand);
-        ROSConnection.instance.Subscribe<Float64MultiArrayMsg>("velocity_command", VelocityCommand);
+        ROSConnection.instance.Subscribe<Float64MultiArrayMsg>("/unity/velocity_command", VelocityCommand);
     }
 
     void PositionCommand(Float64MultiArrayMsg actionMessage)

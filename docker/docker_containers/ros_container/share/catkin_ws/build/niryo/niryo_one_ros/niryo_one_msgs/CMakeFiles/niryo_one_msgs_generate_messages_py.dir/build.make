@@ -153,40 +153,40 @@ niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/niryo_one_msgs_generate_messages_p
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotState.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotState.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotState.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotState.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotState.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG niryo_one_msgs/RobotState"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotState.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotMoveCommand.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectoryPoint.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ToolCommand.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ShiftPose.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ToolCommand.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveCommand.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python from MSG niryo_one_msgs/RobotMoveCommand"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotMoveCommand.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
@@ -235,28 +235,28 @@ niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/niryo_one_msgs_generate_messages_p
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectoryPoint.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_TrajectoryPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating Python from MSG niryo_one_msgs/TrajectoryPlan"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
@@ -268,37 +268,37 @@ niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/niryo_one_msgs_generate_messages_p
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Position.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Position.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Position.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Position.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Position.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Position.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Position.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Generating Python from MSG niryo_one_msgs/Position"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Position.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Trajectory.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectoryPoint.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_Trajectory.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Generating Python from MSG niryo_one_msgs/Trajectory"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Trajectory.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
@@ -314,41 +314,41 @@ niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/niryo_one_msgs_generate_messages_p
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsAction.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsGoal.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsActionFeedback.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsFeedback.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsResult.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsActionGoal.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsActionResult.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsResult.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsActionFeedback.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsGoal.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsActionGoal.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Generating Python from MSG niryo_one_msgs/JoystickJointsAction"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsAction.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionGoal.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionGoal.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsActionGoal.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionGoal.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsGoal.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionGoal.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionGoal.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionGoal.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsGoal.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Generating Python from MSG niryo_one_msgs/JoystickJointsActionGoal"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsActionGoal.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionResult.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionResult.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsActionResult.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionResult.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionResult.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsResult.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Generating Python from MSG niryo_one_msgs/JoystickJointsActionResult"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsActionResult.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionFeedback.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionFeedback.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsActionFeedback.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionFeedback.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsFeedback.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionFeedback.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_JoystickJointsActionFeedback.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsFeedback.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Generating Python from MSG niryo_one_msgs/JoystickJointsActionFeedback"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/JoystickJointsActionFeedback.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
@@ -370,86 +370,86 @@ niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/niryo_one_msgs_generate_messages_p
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveAction.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectoryPoint.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotMoveCommand.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveActionResult.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ToolCommand.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveResult.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveActionGoal.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveGoal.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveFeedback.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveActionFeedback.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveActionResult.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveResult.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ShiftPose.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveFeedback.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ToolCommand.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveActionGoal.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotMoveCommand.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveGoal.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotState.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveAction.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Generating Python from MSG niryo_one_msgs/RobotMoveAction"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveAction.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveActionGoal.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectoryPoint.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ShiftPose.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ToolCommand.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotMoveCommand.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotMoveCommand.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ToolCommand.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveGoal.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ShiftPose.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveGoal.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionGoal.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Generating Python from MSG niryo_one_msgs/RobotMoveActionGoal"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveActionGoal.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionResult.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionResult.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveActionResult.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionResult.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionResult.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveResult.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionResult.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Generating Python from MSG niryo_one_msgs/RobotMoveActionResult"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveActionResult.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
@@ -457,44 +457,44 @@ niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/niryo_one_msgs_generate_messages_p
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionFeedback.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveActionFeedback.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionFeedback.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionFeedback.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionFeedback.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionFeedback.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveFeedback.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionFeedback.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionFeedback.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveFeedback.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveActionFeedback.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Generating Python from MSG niryo_one_msgs/RobotMoveActionFeedback"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveActionFeedback.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveGoal.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectoryPoint.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotMoveCommand.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ToolCommand.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ShiftPose.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ToolCommand.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotMoveCommand.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveGoal.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Generating Python from MSG niryo_one_msgs/RobotMoveGoal"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveGoal.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
@@ -505,51 +505,51 @@ niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/niryo_one_msgs_generate_messages_p
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveFeedback.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveFeedback.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveFeedback.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveFeedback.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveFeedback.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveFeedback.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_RobotMoveFeedback.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Generating Python from MSG niryo_one_msgs/RobotMoveFeedback"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/RobotMoveFeedback.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolAction.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ToolCommand.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolFeedback.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolActionResult.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolActionGoal.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolResult.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolGoal.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolActionResult.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ToolCommand.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolActionGoal.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolActionFeedback.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolGoal.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Generating Python from MSG niryo_one_msgs/ToolAction"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolAction.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionGoal.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionGoal.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolActionGoal.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionGoal.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ToolCommand.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionGoal.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionGoal.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolGoal.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionGoal.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionGoal.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Generating Python from MSG niryo_one_msgs/ToolActionGoal"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolActionGoal.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionResult.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionResult.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolActionResult.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionResult.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolResult.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionResult.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionResult.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolResult.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Generating Python from MSG niryo_one_msgs/ToolActionResult"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolActionResult.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionFeedback.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionFeedback.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolActionFeedback.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionFeedback.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolFeedback.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionFeedback.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_ToolActionFeedback.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolFeedback.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Generating Python from MSG niryo_one_msgs/ToolActionFeedback"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/ToolActionFeedback.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
@@ -571,43 +571,43 @@ niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/niryo_one_msgs_generate_messages_p
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceAction.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceFeedback.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceActionFeedback.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceGoal.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceResult.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceActionResult.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceActionGoal.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Sequence.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceResult.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceFeedback.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceGoal.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceActionResult.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceActionFeedback.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceAction.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Generating Python from MSG niryo_one_msgs/SequenceAction"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceAction.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionGoal.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionGoal.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceActionGoal.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionGoal.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionGoal.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceGoal.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionGoal.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionGoal.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Sequence.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionGoal.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceGoal.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionGoal.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionGoal.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Generating Python from MSG niryo_one_msgs/SequenceActionGoal"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceActionGoal.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionResult.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionResult.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceActionResult.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionResult.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceResult.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionResult.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionResult.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionResult.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceResult.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Generating Python from MSG niryo_one_msgs/SequenceActionResult"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceActionResult.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionFeedback.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionFeedback.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceActionFeedback.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionFeedback.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionFeedback.py: /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceFeedback.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionFeedback.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg/_SequenceActionFeedback.py: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Generating Python from MSG niryo_one_msgs/SequenceActionFeedback"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/devel/share/niryo_one_msgs/msg/SequenceActionFeedback.msg -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/msg
 
@@ -635,33 +635,33 @@ niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/niryo_one_msgs_generate_messages_p
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/RobotMove.srv
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectoryPoint.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotMoveCommand.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ToolCommand.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ShiftPose.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ToolCommand.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotMoveCommand.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_RobotMove.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Generating Python code from SRV niryo_one_msgs/RobotMove"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/RobotMove.srv -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv
 
@@ -734,79 +734,79 @@ niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/niryo_one_msgs_generate_messages_p
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManagePosition.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManagePosition.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/ManagePosition.srv
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManagePosition.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Position.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManagePosition.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManagePosition.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManagePosition.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManagePosition.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Position.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManagePosition.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Generating Python code from SRV niryo_one_msgs/ManagePosition"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/ManagePosition.srv -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetPositionList.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetPositionList.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/GetPositionList.srv
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetPositionList.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Position.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetPositionList.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetPositionList.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetPositionList.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetPositionList.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Position.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetPositionList.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Generating Python code from SRV niryo_one_msgs/GetPositionList"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/GetPositionList.srv -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/ManageTrajectory.srv
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectoryPoint.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Trajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Trajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ManageTrajectory.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Generating Python code from SRV niryo_one_msgs/ManageTrajectory"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/ManageTrajectory.srv -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/GetTrajectoryList.srv
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectoryPoint.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/geometry_msgs/msg/Transform.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotTrajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Trajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/sensor_msgs/msg/JointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/shape_msgs/msg/MeshTriangle.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/trajectory_msgs/msg/MultiDOFJointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/shape_msgs/msg/Plane.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/moveit_msgs/msg/CollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/sensor_msgs/msg/MultiDOFJointState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/trajectory_msgs/msg/JointTrajectory.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/geometry_msgs/msg/Wrench.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/geometry_msgs/msg/Twist.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/object_recognition_msgs/msg/ObjectType.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/moveit_msgs/msg/RobotState.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/shape_msgs/msg/SolidPrimitive.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/TrajectoryPlan.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/Trajectory.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/moveit_msgs/msg/AttachedCollisionObject.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTrajectoryList.py: /opt/ros/noetic/share/shape_msgs/msg/Mesh.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Generating Python code from SRV niryo_one_msgs/GetTrajectoryList"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/GetTrajectoryList.srv -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv
 
@@ -837,42 +837,42 @@ niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/niryo_one_msgs_generate_messages_p
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetCalibrationCam.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetCalibrationCam.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/GetCalibrationCam.srv
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetCalibrationCam.py: /opt/ros/noetic/share/std_msgs/msg/Empty.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetCalibrationCam.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetCalibrationCam.py: /opt/ros/noetic/share/sensor_msgs/msg/RegionOfInterest.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetCalibrationCam.py: /opt/ros/noetic/share/sensor_msgs/msg/CameraInfo.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetCalibrationCam.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetCalibrationCam.py: /opt/ros/noetic/share/std_msgs/msg/Empty.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetCalibrationCam.py: /opt/ros/noetic/share/sensor_msgs/msg/RegionOfInterest.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Generating Python code from SRV niryo_one_msgs/GetCalibrationCam"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/GetCalibrationCam.srv -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ObjDetection.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ObjDetection.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/ObjDetection.srv
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ObjDetection.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ObjDetection.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ObjectPose.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ObjDetection.py: /opt/ros/noetic/share/sensor_msgs/msg/CompressedImage.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ObjDetection.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/ObjectPose.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_ObjDetection.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Generating Python code from SRV niryo_one_msgs/ObjDetection"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/ObjDetection.srv -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_EditGrip.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_EditGrip.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/EditGrip.srv
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_EditGrip.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_EditGrip.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_EditGrip.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_EditGrip.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Generating Python code from SRV niryo_one_msgs/EditGrip"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/EditGrip.srv -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_EditWorkspace.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_EditWorkspace.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/EditWorkspace.srv
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_EditWorkspace.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_EditWorkspace.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_EditWorkspace.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_EditWorkspace.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Generating Python code from SRV niryo_one_msgs/EditWorkspace"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/EditWorkspace.srv -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTargetPose.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTargetPose.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/GetTargetPose.srv
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTargetPose.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTargetPose.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTargetPose.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetTargetPose.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Generating Python code from SRV niryo_one_msgs/GetTargetPose"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/GetTargetPose.srv -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv
 
@@ -908,23 +908,23 @@ niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/niryo_one_msgs_generate_messages_p
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetWorkspaceRobotPoses.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetWorkspaceRobotPoses.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/GetWorkspaceRobotPoses.srv
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetWorkspaceRobotPoses.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetWorkspaceRobotPoses.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RobotState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetWorkspaceRobotPoses.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_GetWorkspaceRobotPoses.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg/RPY.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Generating Python code from SRV niryo_one_msgs/GetWorkspaceRobotPoses"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/GetWorkspaceRobotPoses.srv -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_DebugMarkers.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_DebugMarkers.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/DebugMarkers.srv
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_DebugMarkers.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_DebugMarkers.py: /opt/ros/noetic/share/sensor_msgs/msg/CompressedImage.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_DebugMarkers.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Generating Python code from SRV niryo_one_msgs/DebugMarkers"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/DebugMarkers.srv -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv
 
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_DebugColorDetection.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_DebugColorDetection.py: /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/DebugColorDetection.srv
-/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_DebugColorDetection.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_DebugColorDetection.py: /opt/ros/noetic/share/sensor_msgs/msg/CompressedImage.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv/_DebugColorDetection.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Generating Python code from SRV niryo_one_msgs/DebugColorDetection"
 	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/DebugColorDetection.srv -Iniryo_one_msgs:/root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/msg -Iniryo_one_msgs:/root/share/catkin_ws/devel/share/niryo_one_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -Imoveit_msgs:/opt/ros/noetic/share/moveit_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/noetic/share/trajectory_msgs/cmake/../msg -Ishape_msgs:/opt/ros/noetic/share/shape_msgs/cmake/../msg -Iobject_recognition_msgs:/opt/ros/noetic/share/object_recognition_msgs/cmake/../msg -Ioctomap_msgs:/opt/ros/noetic/share/octomap_msgs/cmake/../msg -p niryo_one_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/niryo_one_msgs/srv
 

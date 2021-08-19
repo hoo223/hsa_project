@@ -71,9 +71,9 @@ unity/unity_robotics_demo_msgs/CMakeFiles/unity_robotics_demo_msgs_generate_mess
 
 /root/share/catkin_ws/devel/share/common-lisp/ros/unity_robotics_demo_msgs/srv/ObjectPoseService.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
 /root/share/catkin_ws/devel/share/common-lisp/ros/unity_robotics_demo_msgs/srv/ObjectPoseService.lisp: /root/share/catkin_ws/src/unity/unity_robotics_demo_msgs/srv/ObjectPoseService.srv
+/root/share/catkin_ws/devel/share/common-lisp/ros/unity_robotics_demo_msgs/srv/ObjectPoseService.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /root/share/catkin_ws/devel/share/common-lisp/ros/unity_robotics_demo_msgs/srv/ObjectPoseService.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 /root/share/catkin_ws/devel/share/common-lisp/ros/unity_robotics_demo_msgs/srv/ObjectPoseService.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
-/root/share/catkin_ws/devel/share/common-lisp/ros/unity_robotics_demo_msgs/srv/ObjectPoseService.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Lisp code from unity_robotics_demo_msgs/ObjectPoseService.srv"
 	cd /root/share/catkin_ws/build/unity/unity_robotics_demo_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /root/share/catkin_ws/src/unity/unity_robotics_demo_msgs/srv/ObjectPoseService.srv -Iunity_robotics_demo_msgs:/root/share/catkin_ws/src/unity/unity_robotics_demo_msgs/msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p unity_robotics_demo_msgs -o /root/share/catkin_ws/devel/share/common-lisp/ros/unity_robotics_demo_msgs/srv
 

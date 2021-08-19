@@ -48,7 +48,7 @@ UnityUR10::UnityUR10()
 , joint_positions_{ { 0, 0, 0, 0, 0, 0 } } 
 , joint_velocities_{ { 0, 0, 0, 0, 0, 0 } }
 , joint_efforts_{ { 0, 0, 0, 0, 0, 0 } }
-, joint_names_( {"shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"} ) 
+, joint_names_( {"elbow_joint", "shoulder_lift_joint", "shoulder_pan_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"} ) 
 , position_controller_running_(false)
 , velocity_controller_running_(false)
 { 

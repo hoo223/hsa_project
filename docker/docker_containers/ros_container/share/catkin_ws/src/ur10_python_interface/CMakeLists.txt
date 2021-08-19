@@ -10,6 +10,7 @@ find_package(catkin REQUIRED
     rospy
     std_msgs
     geometry_msgs
+    trajectory_msgs
     visualization_msgs
     interactive_markers
     moveit_core
@@ -59,6 +60,7 @@ catkin_package(
     tf2_geometry_msgs
     std_msgs
     geometry_msgs
+    trajectory_msgs
     message_runtime
     eigen_conversions
   DEPENDS

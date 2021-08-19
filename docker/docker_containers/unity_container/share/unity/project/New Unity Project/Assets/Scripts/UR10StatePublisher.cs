@@ -22,7 +22,7 @@ public class UR10StatePublisher : MonoBehaviour
     private int numRobotJoints = 6;
 
     // Variables required for ROS communication 
-    public string topicName = "unity_ur10_joint_states";
+    public string topicName = "/unity/unity_ur10_joint_states";
 
     public GameObject UR10;
     List<float> positions = new List<float>();

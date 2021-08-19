@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /root/share/catkin_ws/build
 include niryo/niryo_moveit/CMakeFiles/_niryo_moveit_generate_messages_check_deps_NiryoTrajectory.dir/progress.make
 
 niryo/niryo_moveit/CMakeFiles/_niryo_moveit_generate_messages_check_deps_NiryoTrajectory:
-	cd /root/share/catkin_ws/build/niryo/niryo_moveit && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py niryo_moveit /root/share/catkin_ws/src/niryo/niryo_moveit/msg/NiryoTrajectory.msg std_msgs/Header:geometry_msgs/Vector3:geometry_msgs/Twist:geometry_msgs/Transform:trajectory_msgs/JointTrajectory:moveit_msgs/RobotTrajectory:trajectory_msgs/MultiDOFJointTrajectory:geometry_msgs/Quaternion:trajectory_msgs/JointTrajectoryPoint:trajectory_msgs/MultiDOFJointTrajectoryPoint
+	cd /root/share/catkin_ws/build/niryo/niryo_moveit && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py niryo_moveit /root/share/catkin_ws/src/niryo/niryo_moveit/msg/NiryoTrajectory.msg trajectory_msgs/MultiDOFJointTrajectory:std_msgs/Header:geometry_msgs/Twist:geometry_msgs/Transform:moveit_msgs/RobotTrajectory:trajectory_msgs/MultiDOFJointTrajectoryPoint:trajectory_msgs/JointTrajectoryPoint:geometry_msgs/Vector3:geometry_msgs/Quaternion:trajectory_msgs/JointTrajectory
 
 _niryo_moveit_generate_messages_check_deps_NiryoTrajectory: niryo/niryo_moveit/CMakeFiles/_niryo_moveit_generate_messages_check_deps_NiryoTrajectory
 _niryo_moveit_generate_messages_check_deps_NiryoTrajectory: niryo/niryo_moveit/CMakeFiles/_niryo_moveit_generate_messages_check_deps_NiryoTrajectory.dir/build.make
