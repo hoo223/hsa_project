@@ -185,7 +185,7 @@ foreach(t ${ur10_python_interface_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "moveit_core;moveit_visual_tools;moveit_ros_planning_interface;interactive_markers;tf2_geometry_msgs;std_msgs;geometry_msgs;trajectory_msgs;message_runtime;eigen_conversions")
+set(depends "moveit_core;moveit_visual_tools;moveit_ros_planning_interface;interactive_markers;tf2;tf2_geometry_msgs;std_msgs;geometry_msgs;trajectory_msgs;omni_msgs;message_runtime;eigen_conversions")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls

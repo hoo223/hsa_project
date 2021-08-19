@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/devel_isolated/ur_description
+
+Name: ur_description
+Description: Description of ur_description
+Version: 1.2.5
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /root/share/catkin_ws/build
 include niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/_niryo_one_msgs_generate_messages_check_deps_GetCalibrationCam.dir/progress.make
 
 niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/_niryo_one_msgs_generate_messages_check_deps_GetCalibrationCam:
-	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py niryo_one_msgs /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/GetCalibrationCam.srv sensor_msgs/CameraInfo:std_msgs/Header:std_msgs/Empty:sensor_msgs/RegionOfInterest
+	cd /root/share/catkin_ws/build/niryo/niryo_one_ros/niryo_one_msgs && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py niryo_one_msgs /root/share/catkin_ws/src/niryo/niryo_one_ros/niryo_one_msgs/srv/GetCalibrationCam.srv std_msgs/Header:sensor_msgs/RegionOfInterest:sensor_msgs/CameraInfo:std_msgs/Empty
 
 _niryo_one_msgs_generate_messages_check_deps_GetCalibrationCam: niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/_niryo_one_msgs_generate_messages_check_deps_GetCalibrationCam
 _niryo_one_msgs_generate_messages_check_deps_GetCalibrationCam: niryo/niryo_one_ros/niryo_one_msgs/CMakeFiles/_niryo_one_msgs_generate_messages_check_deps_GetCalibrationCam.dir/build.make

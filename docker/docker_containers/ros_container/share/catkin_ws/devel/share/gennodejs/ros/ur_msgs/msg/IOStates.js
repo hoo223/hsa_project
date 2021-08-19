@@ -154,7 +154,7 @@ class IOStates {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '3033784e7041da89491b97cc4c1105b5';
+    return 'b341cc0bc3ea976e9cacf81c26adeb88';
   }
 
   static messageDefinition() {
@@ -173,8 +173,8 @@ class IOStates {
     
     ================================================================================
     MSG: ur_msgs/Analog
-    uint8 VOLTAGE=0
-    uint8 CURRENT=1
+    uint8 CURRENT=0
+    uint8 VOLTAGE=1
     
     uint8 pin
     uint8 domain # can be VOLTAGE or CURRENT

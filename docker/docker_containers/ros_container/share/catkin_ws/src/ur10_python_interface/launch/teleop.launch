@@ -2,7 +2,7 @@
 <launch>
 
   <!-- joy2target node -->
-  <node name="joy2target_converter" pkg="ur10_python_interface" type="joy2target.py" output="log"/>
+  <node name="joy2target_converter" pkg="ur10_python_interface" type="joy2target.py" output="screen"/>
 
   <!-- ik solver node -->
   <node name="ik_solver" pkg="ur10_python_interface" type="ik_publisher" output="log"/>

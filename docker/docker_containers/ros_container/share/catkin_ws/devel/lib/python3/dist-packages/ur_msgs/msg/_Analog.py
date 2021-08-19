@@ -8,19 +8,19 @@ import struct
 
 
 class Analog(genpy.Message):
-  _md5sum = "f41c08a810adf63713aec88712cd553d"
+  _md5sum = "6be678008703fe11fbea12281a3d6d23"
   _type = "ur_msgs/Analog"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """uint8 VOLTAGE=0
-uint8 CURRENT=1
+  _full_text = """uint8 CURRENT=0
+uint8 VOLTAGE=1
 
 uint8 pin
 uint8 domain # can be VOLTAGE or CURRENT
 float32 state
 """
   # Pseudo-constants
-  VOLTAGE = 0
-  CURRENT = 1
+  CURRENT = 0
+  VOLTAGE = 1
 
   __slots__ = ['pin','domain','state']
   _slot_types = ['uint8','uint8','float32']

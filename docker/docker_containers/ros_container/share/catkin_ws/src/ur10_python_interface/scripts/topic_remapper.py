@@ -22,15 +22,15 @@ class TopicRemapper(object):
     #self.velocity_command_sub = rospy.Subscriber('/joint_group_velocity_controller/command', Float64MultiArray, self.velocity_command_callback)
     self.joint_traj_command_sub = rospy.Subscriber('/arm_controller/command', JointTrajectory, self.joint_traj_command_callback)
     self.joint_traj_command_sub = rospy.Subscriber('/arm_controller/follow_joint_trajectory/goal', FollowJointTrajectoryActionGoal, self.follow_joint_traj_goal_callback)
-    self.joint_traj_command_sub = rospy.Subscriber('/arm_controller/follow_joint_trajectory/feedback', FollowJointTrajectoryActionFeedback, self.follow_joint_traj_feedback_callback)
-    self.joint_traj_command_sub = rospy.Subscriber('/arm_controller/follow_joint_trajectory/result', FollowJointTrajectoryActionResult, self.follow_joint_traj_result_callback)
+    #self.joint_traj_command_sub = rospy.Subscriber('/arm_controller/follow_joint_trajectory/feedback', FollowJointTrajectoryActionFeedback, self.follow_joint_traj_feedback_callback)
+    #self.joint_traj_command_sub = rospy.Subscriber('/arm_controller/follow_joint_trajectory/result', FollowJointTrajectoryActionResult, self.follow_joint_traj_result_callback)
 
     # publisher
     # self.unity_velocity_command_pub = rospy.Publisher("/unity/joint_group_velocity_controller/command", Float64MultiArray, queue_size= 10)
     self.unity_joint_traj_command_pub = rospy.Publisher("/unity/arm_controller/command", JointTrajectory, queue_size= 10)
     self.unity_follow_joint_traj_goal_pub = rospy.Publisher("/unity/arm_controller/follow_joint_trajectory/goal", FollowJointTrajectoryActionGoal, queue_size= 10)
-    self.unity_follow_joint_traj_feedback_pub = rospy.Publisher("/unity/arm_controller/follow_joint_trajectory/feedback", FollowJointTrajectoryActionFeedback, queue_size= 10)
-    self.unity_follow_joint_traj_result_pub = rospy.Publisher("/unity/arm_controller/follow_joint_trajectory/result", FollowJointTrajectoryActionResult, queue_size= 10)
+    #self.unity_follow_joint_traj_feedback_pub = rospy.Publisher("/unity/arm_controller/follow_joint_trajectory/feedback", FollowJointTrajectoryActionFeedback, queue_size= 10)
+    #self.unity_follow_joint_traj_result_pub = rospy.Publisher("/unity/arm_controller/follow_joint_trajectory/result", FollowJointTrajectoryActionResult, queue_size= 10)
 
   def velocity_command_callback(self, data):
     self.unity_velocity_command_pub.publish(data)

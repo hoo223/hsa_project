@@ -2,7 +2,7 @@
 
 message(STATUS "ur_msgs: 7 messages, 3 services")
 
-set(MSG_I_FLAGS "-Iur_msgs:/root/share/catkin_ws/src/universal_robot/ur_msgs/msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Iur_msgs:/root/share/catkin_ws/src/universal_robot/ur_msgs/msg;-Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -29,7 +29,7 @@ add_custom_target(_ur_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/IOStates.msg" NAME_WE)
 add_custom_target(_ur_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ur_msgs" "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/IOStates.msg" "ur_msgs/Analog:ur_msgs/Digital"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ur_msgs" "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/IOStates.msg" "ur_msgs/Digital:ur_msgs/Analog"
 )
 
 get_filename_component(_filename "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/RobotStateRTMsg.msg" NAME_WE)
@@ -54,7 +54,7 @@ add_custom_target(_ur_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/root/share/catkin_ws/src/universal_robot/ur_msgs/srv/SetPayload.srv" NAME_WE)
 add_custom_target(_ur_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ur_msgs" "/root/share/catkin_ws/src/universal_robot/ur_msgs/srv/SetPayload.srv" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ur_msgs" "/root/share/catkin_ws/src/universal_robot/ur_msgs/srv/SetPayload.srv" "geometry_msgs/Vector3"
 )
 
 get_filename_component(_filename "/root/share/catkin_ws/src/universal_robot/ur_msgs/srv/SetSpeedSliderFraction.srv" NAME_WE)
@@ -88,7 +88,7 @@ _generate_msg_cpp(ur_msgs
 _generate_msg_cpp(ur_msgs
   "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/IOStates.msg"
   "${MSG_I_FLAGS}"
-  "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Analog.msg;/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Digital.msg"
+  "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Digital.msg;/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Analog.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ur_msgs
 )
 _generate_msg_cpp(ur_msgs
@@ -120,7 +120,7 @@ _generate_msg_cpp(ur_msgs
 _generate_srv_cpp(ur_msgs
   "/root/share/catkin_ws/src/universal_robot/ur_msgs/srv/SetPayload.srv"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ur_msgs
 )
 _generate_srv_cpp(ur_msgs
@@ -193,7 +193,7 @@ _generate_msg_eus(ur_msgs
 _generate_msg_eus(ur_msgs
   "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/IOStates.msg"
   "${MSG_I_FLAGS}"
-  "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Analog.msg;/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Digital.msg"
+  "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Digital.msg;/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Analog.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ur_msgs
 )
 _generate_msg_eus(ur_msgs
@@ -225,7 +225,7 @@ _generate_msg_eus(ur_msgs
 _generate_srv_eus(ur_msgs
   "/root/share/catkin_ws/src/universal_robot/ur_msgs/srv/SetPayload.srv"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ur_msgs
 )
 _generate_srv_eus(ur_msgs
@@ -298,7 +298,7 @@ _generate_msg_lisp(ur_msgs
 _generate_msg_lisp(ur_msgs
   "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/IOStates.msg"
   "${MSG_I_FLAGS}"
-  "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Analog.msg;/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Digital.msg"
+  "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Digital.msg;/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Analog.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ur_msgs
 )
 _generate_msg_lisp(ur_msgs
@@ -330,7 +330,7 @@ _generate_msg_lisp(ur_msgs
 _generate_srv_lisp(ur_msgs
   "/root/share/catkin_ws/src/universal_robot/ur_msgs/srv/SetPayload.srv"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ur_msgs
 )
 _generate_srv_lisp(ur_msgs
@@ -403,7 +403,7 @@ _generate_msg_nodejs(ur_msgs
 _generate_msg_nodejs(ur_msgs
   "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/IOStates.msg"
   "${MSG_I_FLAGS}"
-  "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Analog.msg;/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Digital.msg"
+  "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Digital.msg;/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Analog.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ur_msgs
 )
 _generate_msg_nodejs(ur_msgs
@@ -435,7 +435,7 @@ _generate_msg_nodejs(ur_msgs
 _generate_srv_nodejs(ur_msgs
   "/root/share/catkin_ws/src/universal_robot/ur_msgs/srv/SetPayload.srv"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ur_msgs
 )
 _generate_srv_nodejs(ur_msgs
@@ -508,7 +508,7 @@ _generate_msg_py(ur_msgs
 _generate_msg_py(ur_msgs
   "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/IOStates.msg"
   "${MSG_I_FLAGS}"
-  "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Analog.msg;/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Digital.msg"
+  "/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Digital.msg;/root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Analog.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ur_msgs
 )
 _generate_msg_py(ur_msgs
@@ -540,7 +540,7 @@ _generate_msg_py(ur_msgs
 _generate_srv_py(ur_msgs
   "/root/share/catkin_ws/src/universal_robot/ur_msgs/srv/SetPayload.srv"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ur_msgs
 )
 _generate_srv_py(ur_msgs
@@ -605,6 +605,9 @@ if(gencpp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ur
     DESTINATION ${gencpp_INSTALL_DIR}
   )
 endif()
+if(TARGET geometry_msgs_generate_messages_cpp)
+  add_dependencies(ur_msgs_generate_messages_cpp geometry_msgs_generate_messages_cpp)
+endif()
 if(TARGET std_msgs_generate_messages_cpp)
   add_dependencies(ur_msgs_generate_messages_cpp std_msgs_generate_messages_cpp)
 endif()
@@ -615,6 +618,9 @@ if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ur
     DIRECTORY ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ur_msgs
     DESTINATION ${geneus_INSTALL_DIR}
   )
+endif()
+if(TARGET geometry_msgs_generate_messages_eus)
+  add_dependencies(ur_msgs_generate_messages_eus geometry_msgs_generate_messages_eus)
 endif()
 if(TARGET std_msgs_generate_messages_eus)
   add_dependencies(ur_msgs_generate_messages_eus std_msgs_generate_messages_eus)
@@ -627,6 +633,9 @@ if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/
     DESTINATION ${genlisp_INSTALL_DIR}
   )
 endif()
+if(TARGET geometry_msgs_generate_messages_lisp)
+  add_dependencies(ur_msgs_generate_messages_lisp geometry_msgs_generate_messages_lisp)
+endif()
 if(TARGET std_msgs_generate_messages_lisp)
   add_dependencies(ur_msgs_generate_messages_lisp std_msgs_generate_messages_lisp)
 endif()
@@ -637,6 +646,9 @@ if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_D
     DIRECTORY ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ur_msgs
     DESTINATION ${gennodejs_INSTALL_DIR}
   )
+endif()
+if(TARGET geometry_msgs_generate_messages_nodejs)
+  add_dependencies(ur_msgs_generate_messages_nodejs geometry_msgs_generate_messages_nodejs)
 endif()
 if(TARGET std_msgs_generate_messages_nodejs)
   add_dependencies(ur_msgs_generate_messages_nodejs std_msgs_generate_messages_nodejs)
@@ -649,6 +661,9 @@ if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ur_m
     DIRECTORY ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ur_msgs
     DESTINATION ${genpy_INSTALL_DIR}
   )
+endif()
+if(TARGET geometry_msgs_generate_messages_py)
+  add_dependencies(ur_msgs_generate_messages_py geometry_msgs_generate_messages_py)
 endif()
 if(TARGET std_msgs_generate_messages_py)
   add_dependencies(ur_msgs_generate_messages_py std_msgs_generate_messages_py)

@@ -12,17 +12,17 @@
 ;;//! \htmlinclude Analog.msg.html
 
 
-(intern "*VOLTAGE*" (find-package "UR_MSGS::ANALOG"))
-(shadow '*VOLTAGE* (find-package "UR_MSGS::ANALOG"))
-(defconstant ur_msgs::Analog::*VOLTAGE* 0)
 (intern "*CURRENT*" (find-package "UR_MSGS::ANALOG"))
 (shadow '*CURRENT* (find-package "UR_MSGS::ANALOG"))
-(defconstant ur_msgs::Analog::*CURRENT* 1)
+(defconstant ur_msgs::Analog::*CURRENT* 0)
+(intern "*VOLTAGE*" (find-package "UR_MSGS::ANALOG"))
+(shadow '*VOLTAGE* (find-package "UR_MSGS::ANALOG"))
+(defconstant ur_msgs::Analog::*VOLTAGE* 1)
 
 (defun ur_msgs::Analog-to-symbol (const)
   (cond
-        ((= const 0) 'ur_msgs::Analog::*VOLTAGE*)
-        ((= const 1) 'ur_msgs::Analog::*CURRENT*)
+        ((= const 0) 'ur_msgs::Analog::*CURRENT*)
+        ((= const 1) 'ur_msgs::Analog::*VOLTAGE*)
         (t nil)))
 
 (defclass ur_msgs::Analog
@@ -84,11 +84,11 @@
    self)
   )
 
-(setf (get ur_msgs::Analog :md5sum-) "f41c08a810adf63713aec88712cd553d")
+(setf (get ur_msgs::Analog :md5sum-) "6be678008703fe11fbea12281a3d6d23")
 (setf (get ur_msgs::Analog :datatype-) "ur_msgs/Analog")
 (setf (get ur_msgs::Analog :definition-)
-      "uint8 VOLTAGE=0
-uint8 CURRENT=1
+      "uint8 CURRENT=0
+uint8 VOLTAGE=1
 
 uint8 pin
 uint8 domain # can be VOLTAGE or CURRENT
@@ -98,6 +98,6 @@ float32 state
 
 
 
-(provide :ur_msgs/Analog "f41c08a810adf63713aec88712cd553d")
+(provide :ur_msgs/Analog "6be678008703fe11fbea12281a3d6d23")
 
 

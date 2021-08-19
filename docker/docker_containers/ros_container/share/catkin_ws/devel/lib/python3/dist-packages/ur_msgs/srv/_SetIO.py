@@ -8,7 +8,7 @@ import struct
 
 
 class SetIORequest(genpy.Message):
-  _md5sum = "85200c86fbe60ea3e047bae3d6574bfd"
+  _md5sum = "8e9d2a7211150d4126b8813c554cb6ed"
   _type = "ur_msgs/SetIORequest"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """# Service allows setting digital (DIO) and analog (AIO) IO, as well as flags
@@ -19,7 +19,7 @@ class SetIORequest(genpy.Message):
 # When setting DIO or AIO pins to new values:
 #
 #  fun    The function to perform
-#  pin    Numeric ID of the pin to set
+#  pin    Numeric ID of the pin to set, see constants definition below
 #  state  Desired pin state (signal level for analog or STATE_(ON|OFF) for DIO and flags)
 #
 # When configuring tool voltage:
@@ -29,6 +29,34 @@ class SetIORequest(genpy.Message):
 #  state  Desired tool voltage (use STATE_TOOL_VOLTAGE constants)
 
 # constants
+# pin mapping
+# analog out
+int8 PIN_AOUT0 = 0
+int8 PIN_AOUT1 = 1
+
+# digital out
+int8 PIN_DOUT0 = 0
+int8 PIN_DOUT1 = 1
+int8 PIN_DOUT2 = 2
+int8 PIN_DOUT3 = 3
+int8 PIN_DOUT4 = 4
+int8 PIN_DOUT5 = 5
+int8 PIN_DOUT6 = 6
+int8 PIN_DOUT7 = 7
+
+# configurable out
+int8 PIN_CONF_OUT0 = 8
+int8 PIN_CONF_OUT1 = 9
+int8 PIN_CONF_OUT2 = 10
+int8 PIN_CONF_OUT3 = 11
+int8 PIN_CONF_OUT4 = 12
+int8 PIN_CONF_OUT5 = 13
+int8 PIN_CONF_OUT6 = 14
+int8 PIN_CONF_OUT7 = 15
+
+# digital tool output
+int8 PIN_TOOL_DOUT0 = 16
+int8 PIN_TOOL_DOUT1 = 17
 
 # valid function values
 #
@@ -53,6 +81,26 @@ int8 pin
 float32 state
 """
   # Pseudo-constants
+  PIN_AOUT0 = 0
+  PIN_AOUT1 = 1
+  PIN_DOUT0 = 0
+  PIN_DOUT1 = 1
+  PIN_DOUT2 = 2
+  PIN_DOUT3 = 3
+  PIN_DOUT4 = 4
+  PIN_DOUT5 = 5
+  PIN_DOUT6 = 6
+  PIN_DOUT7 = 7
+  PIN_CONF_OUT0 = 8
+  PIN_CONF_OUT1 = 9
+  PIN_CONF_OUT2 = 10
+  PIN_CONF_OUT3 = 11
+  PIN_CONF_OUT4 = 12
+  PIN_CONF_OUT5 = 13
+  PIN_CONF_OUT6 = 14
+  PIN_CONF_OUT7 = 15
+  PIN_TOOL_DOUT0 = 16
+  PIN_TOOL_DOUT1 = 17
   FUN_SET_DIGITAL_OUT = 1
   FUN_SET_FLAG = 2
   FUN_SET_ANALOG_OUT = 3
@@ -287,6 +335,6 @@ def _get_struct_B():
     return _struct_B
 class SetIO(object):
   _type          = 'ur_msgs/SetIO'
-  _md5sum = 'e1b580ccf43a938f2efbbb98bbe3e277'
+  _md5sum = 'f539fc0b1a42859fb186a5aaba22d4b0'
   _request_class  = SetIORequest
   _response_class = SetIOResponse

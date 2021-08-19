@@ -1,0 +1,22 @@
+terminal 1
+1. ur10 docker start
+$ docker start ur10
+$ docker attach ur10
+$ roslaunch ur_robot_driver ur10_bringup.launch robot_ip:=192.168.0.2
+
+terminal 2
+$docker start yh
+$docker attach yh
+
+pakage copy and paste except ur10 
+
+install all the dependency of package
+
+$rosdep install --from-paths src --ignore-src -r -y
+
+cw && cm
+catkin_make (cm)
+
+source devel (sd)
+
+install tensorflow things

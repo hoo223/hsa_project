@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /root/share/catkin_ws/build
 include universal_robot/ur_msgs/CMakeFiles/_ur_msgs_generate_messages_check_deps_SetPayload.dir/progress.make
 
 universal_robot/ur_msgs/CMakeFiles/_ur_msgs_generate_messages_check_deps_SetPayload:
-	cd /root/share/catkin_ws/build/universal_robot/ur_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py ur_msgs /root/share/catkin_ws/src/universal_robot/ur_msgs/srv/SetPayload.srv 
+	cd /root/share/catkin_ws/build/universal_robot/ur_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py ur_msgs /root/share/catkin_ws/src/universal_robot/ur_msgs/srv/SetPayload.srv geometry_msgs/Vector3
 
 _ur_msgs_generate_messages_check_deps_SetPayload: universal_robot/ur_msgs/CMakeFiles/_ur_msgs_generate_messages_check_deps_SetPayload
 _ur_msgs_generate_messages_check_deps_SetPayload: universal_robot/ur_msgs/CMakeFiles/_ur_msgs_generate_messages_check_deps_SetPayload.dir/build.make

@@ -4,10 +4,12 @@
     <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
     <arg name="gui" default="true" doc="Starts gazebo gui" />
     <arg name="sim" default="true" />
+    <arg name="real" default="true" />
     <arg name="debug" default="false"/>
  
     <!-- Remap follow_joint_trajectory -->
     <remap if="$(arg sim)" from="/follow_joint_trajectory" to="/arm_controller/follow_joint_trajectory"/>
+    <!--remap if="$(arg real)" from="/arm_controller/follow_joint_trajectory" to="/scaled_pos_joint_traj_controller/follow_joint_trajectory"/-->
 
     <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
     <include file="$(find ur10_moveit_config)/launch/move_group.launch">

@@ -11,6 +11,7 @@ const _deserializer = _ros_msg_utils.Deserialize;
 const _arrayDeserializer = _deserializer.Array;
 const _finder = _ros_msg_utils.Find;
 const _getByteLength = _ros_msg_utils.getByteLength;
+let geometry_msgs = _finder('geometry_msgs');
 
 //-----------------------------------------------------------
 
@@ -21,22 +22,31 @@ class SetPayloadRequest {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.payload = null;
+      this.mass = null;
+      this.center_of_gravity = null;
     }
     else {
-      if (initObj.hasOwnProperty('payload')) {
-        this.payload = initObj.payload
+      if (initObj.hasOwnProperty('mass')) {
+        this.mass = initObj.mass
       }
       else {
-        this.payload = 0.0;
+        this.mass = 0.0;
+      }
+      if (initObj.hasOwnProperty('center_of_gravity')) {
+        this.center_of_gravity = initObj.center_of_gravity
+      }
+      else {
+        this.center_of_gravity = new geometry_msgs.msg.Vector3();
       }
     }
   }
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type SetPayloadRequest
-    // Serialize message field [payload]
-    bufferOffset = _serializer.float32(obj.payload, buffer, bufferOffset);
+    // Serialize message field [mass]
+    bufferOffset = _serializer.float32(obj.mass, buffer, bufferOffset);
+    // Serialize message field [center_of_gravity]
+    bufferOffset = geometry_msgs.msg.Vector3.serialize(obj.center_of_gravity, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -44,13 +54,15 @@ class SetPayloadRequest {
     //deserializes a message object of type SetPayloadRequest
     let len;
     let data = new SetPayloadRequest(null);
-    // Deserialize message field [payload]
-    data.payload = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [mass]
+    data.mass = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [center_of_gravity]
+    data.center_of_gravity = geometry_msgs.msg.Vector3.deserialize(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 4;
+    return 28;
   }
 
   static datatype() {
@@ -60,14 +72,27 @@ class SetPayloadRequest {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'd12269f931817591aa52047629ca66ca';
+    return '6a2cd594b640cc49946d268b22a837bd';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    float32 payload
+    float32 mass
+    geometry_msgs/Vector3 center_of_gravity
     
+    ================================================================================
+    MSG: geometry_msgs/Vector3
+    # This represents a vector in free space. 
+    # It is only meant to represent a direction. Therefore, it does not
+    # make sense to apply a translation to it (e.g., when applying a 
+    # generic rigid transformation to a Vector3, tf2 will only apply the
+    # rotation). If you want your data to be translatable too, use the
+    # geometry_msgs/Point message instead.
+    
+    float64 x
+    float64 y
+    float64 z
     `;
   }
 
@@ -77,11 +102,18 @@ class SetPayloadRequest {
       msg = {};
     }
     const resolved = new SetPayloadRequest(null);
-    if (msg.payload !== undefined) {
-      resolved.payload = msg.payload;
+    if (msg.mass !== undefined) {
+      resolved.mass = msg.mass;
     }
     else {
-      resolved.payload = 0.0
+      resolved.mass = 0.0
+    }
+
+    if (msg.center_of_gravity !== undefined) {
+      resolved.center_of_gravity = geometry_msgs.msg.Vector3.Resolve(msg.center_of_gravity)
+    }
+    else {
+      resolved.center_of_gravity = new geometry_msgs.msg.Vector3()
     }
 
     return resolved;
@@ -163,6 +195,6 @@ class SetPayloadResponse {
 module.exports = {
   Request: SetPayloadRequest,
   Response: SetPayloadResponse,
-  md5sum() { return '7f12eb632882cb73e5721178d0073e39'; },
+  md5sum() { return '3e3a97c1edb6d0acdd0d0c9e9e4a538a'; },
   datatype() { return 'ur_msgs/SetPayload'; }
 };

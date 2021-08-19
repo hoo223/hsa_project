@@ -151,12 +151,12 @@ struct MD5Sum< ::ur_msgs::IOStates_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "3033784e7041da89491b97cc4c1105b5";
+    return "b341cc0bc3ea976e9cacf81c26adeb88";
   }
 
   static const char* value(const ::ur_msgs::IOStates_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x3033784e7041da89ULL;
-  static const uint64_t static_value2 = 0x491b97cc4c1105b5ULL;
+  static const uint64_t static_value1 = 0xb341cc0bc3ea976eULL;
+  static const uint64_t static_value2 = 0x9cacf81c26adeb88ULL;
 };
 
 template<class ContainerAllocator>
@@ -188,8 +188,8 @@ struct Definition< ::ur_msgs::IOStates_<ContainerAllocator> >
 "\n"
 "================================================================================\n"
 "MSG: ur_msgs/Analog\n"
-"uint8 VOLTAGE=0\n"
-"uint8 CURRENT=1\n"
+"uint8 CURRENT=0\n"
+"uint8 VOLTAGE=1\n"
 "\n"
 "uint8 pin\n"
 "uint8 domain # can be VOLTAGE or CURRENT\n"

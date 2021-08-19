@@ -153,7 +153,7 @@
    self)
   )
 
-(setf (get ur_msgs::IOStates :md5sum-) "3033784e7041da89491b97cc4c1105b5")
+(setf (get ur_msgs::IOStates :md5sum-) "b341cc0bc3ea976e9cacf81c26adeb88")
 (setf (get ur_msgs::IOStates :datatype-) "ur_msgs/IOStates")
 (setf (get ur_msgs::IOStates :definition-)
       "Digital[] digital_in_states
@@ -169,8 +169,8 @@ bool state
 
 ================================================================================
 MSG: ur_msgs/Analog
-uint8 VOLTAGE=0
-uint8 CURRENT=1
+uint8 CURRENT=0
+uint8 VOLTAGE=1
 
 uint8 pin
 uint8 domain # can be VOLTAGE or CURRENT
@@ -180,6 +180,6 @@ float32 state
 
 
 
-(provide :ur_msgs/IOStates "3033784e7041da89491b97cc4c1105b5")
+(provide :ur_msgs/IOStates "b341cc0bc3ea976e9cacf81c26adeb88")
 
 

@@ -49,16 +49,16 @@ struct Analog_
 
 
 // reducing the odds to have name collisions with Windows.h 
-#if defined(_WIN32) && defined(VOLTAGE)
-  #undef VOLTAGE
-#endif
 #if defined(_WIN32) && defined(CURRENT)
   #undef CURRENT
 #endif
+#if defined(_WIN32) && defined(VOLTAGE)
+  #undef VOLTAGE
+#endif
 
   enum {
-    VOLTAGE = 0u,
-    CURRENT = 1u,
+    CURRENT = 0u,
+    VOLTAGE = 1u,
   };
 
 
@@ -150,12 +150,12 @@ struct MD5Sum< ::ur_msgs::Analog_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "f41c08a810adf63713aec88712cd553d";
+    return "6be678008703fe11fbea12281a3d6d23";
   }
 
   static const char* value(const ::ur_msgs::Analog_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xf41c08a810adf637ULL;
-  static const uint64_t static_value2 = 0x13aec88712cd553dULL;
+  static const uint64_t static_value1 = 0x6be678008703fe11ULL;
+  static const uint64_t static_value2 = 0xfbea12281a3d6d23ULL;
 };
 
 template<class ContainerAllocator>
@@ -174,8 +174,8 @@ struct Definition< ::ur_msgs::Analog_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "uint8 VOLTAGE=0\n"
-"uint8 CURRENT=1\n"
+    return "uint8 CURRENT=0\n"
+"uint8 VOLTAGE=1\n"
 "\n"
 "uint8 pin\n"
 "uint8 domain # can be VOLTAGE or CURRENT\n"

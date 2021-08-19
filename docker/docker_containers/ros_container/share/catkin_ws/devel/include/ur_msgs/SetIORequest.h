@@ -49,6 +49,66 @@ struct SetIORequest_
 
 
 // reducing the odds to have name collisions with Windows.h 
+#if defined(_WIN32) && defined(PIN_AOUT0)
+  #undef PIN_AOUT0
+#endif
+#if defined(_WIN32) && defined(PIN_AOUT1)
+  #undef PIN_AOUT1
+#endif
+#if defined(_WIN32) && defined(PIN_DOUT0)
+  #undef PIN_DOUT0
+#endif
+#if defined(_WIN32) && defined(PIN_DOUT1)
+  #undef PIN_DOUT1
+#endif
+#if defined(_WIN32) && defined(PIN_DOUT2)
+  #undef PIN_DOUT2
+#endif
+#if defined(_WIN32) && defined(PIN_DOUT3)
+  #undef PIN_DOUT3
+#endif
+#if defined(_WIN32) && defined(PIN_DOUT4)
+  #undef PIN_DOUT4
+#endif
+#if defined(_WIN32) && defined(PIN_DOUT5)
+  #undef PIN_DOUT5
+#endif
+#if defined(_WIN32) && defined(PIN_DOUT6)
+  #undef PIN_DOUT6
+#endif
+#if defined(_WIN32) && defined(PIN_DOUT7)
+  #undef PIN_DOUT7
+#endif
+#if defined(_WIN32) && defined(PIN_CONF_OUT0)
+  #undef PIN_CONF_OUT0
+#endif
+#if defined(_WIN32) && defined(PIN_CONF_OUT1)
+  #undef PIN_CONF_OUT1
+#endif
+#if defined(_WIN32) && defined(PIN_CONF_OUT2)
+  #undef PIN_CONF_OUT2
+#endif
+#if defined(_WIN32) && defined(PIN_CONF_OUT3)
+  #undef PIN_CONF_OUT3
+#endif
+#if defined(_WIN32) && defined(PIN_CONF_OUT4)
+  #undef PIN_CONF_OUT4
+#endif
+#if defined(_WIN32) && defined(PIN_CONF_OUT5)
+  #undef PIN_CONF_OUT5
+#endif
+#if defined(_WIN32) && defined(PIN_CONF_OUT6)
+  #undef PIN_CONF_OUT6
+#endif
+#if defined(_WIN32) && defined(PIN_CONF_OUT7)
+  #undef PIN_CONF_OUT7
+#endif
+#if defined(_WIN32) && defined(PIN_TOOL_DOUT0)
+  #undef PIN_TOOL_DOUT0
+#endif
+#if defined(_WIN32) && defined(PIN_TOOL_DOUT1)
+  #undef PIN_TOOL_DOUT1
+#endif
 #if defined(_WIN32) && defined(FUN_SET_DIGITAL_OUT)
   #undef FUN_SET_DIGITAL_OUT
 #endif
@@ -78,6 +138,26 @@ struct SetIORequest_
 #endif
 
   enum {
+    PIN_AOUT0 = 0,
+    PIN_AOUT1 = 1,
+    PIN_DOUT0 = 0,
+    PIN_DOUT1 = 1,
+    PIN_DOUT2 = 2,
+    PIN_DOUT3 = 3,
+    PIN_DOUT4 = 4,
+    PIN_DOUT5 = 5,
+    PIN_DOUT6 = 6,
+    PIN_DOUT7 = 7,
+    PIN_CONF_OUT0 = 8,
+    PIN_CONF_OUT1 = 9,
+    PIN_CONF_OUT2 = 10,
+    PIN_CONF_OUT3 = 11,
+    PIN_CONF_OUT4 = 12,
+    PIN_CONF_OUT5 = 13,
+    PIN_CONF_OUT6 = 14,
+    PIN_CONF_OUT7 = 15,
+    PIN_TOOL_DOUT0 = 16,
+    PIN_TOOL_DOUT1 = 17,
     FUN_SET_DIGITAL_OUT = 1,
     FUN_SET_FLAG = 2,
     FUN_SET_ANALOG_OUT = 3,
@@ -101,6 +181,46 @@ typedef boost::shared_ptr< ::ur_msgs::SetIORequest > SetIORequestPtr;
 typedef boost::shared_ptr< ::ur_msgs::SetIORequest const> SetIORequestConstPtr;
 
 // constants requiring out of line definition
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
 
    
 
@@ -192,12 +312,12 @@ struct MD5Sum< ::ur_msgs::SetIORequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "85200c86fbe60ea3e047bae3d6574bfd";
+    return "8e9d2a7211150d4126b8813c554cb6ed";
   }
 
   static const char* value(const ::ur_msgs::SetIORequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x85200c86fbe60ea3ULL;
-  static const uint64_t static_value2 = 0xe047bae3d6574bfdULL;
+  static const uint64_t static_value1 = 0x8e9d2a7211150d41ULL;
+  static const uint64_t static_value2 = 0x26b8813c554cb6edULL;
 };
 
 template<class ContainerAllocator>
@@ -224,7 +344,7 @@ struct Definition< ::ur_msgs::SetIORequest_<ContainerAllocator> >
 "# When setting DIO or AIO pins to new values:\n"
 "#\n"
 "#  fun    The function to perform\n"
-"#  pin    Numeric ID of the pin to set\n"
+"#  pin    Numeric ID of the pin to set, see constants definition below\n"
 "#  state  Desired pin state (signal level for analog or STATE_(ON|OFF) for DIO and flags)\n"
 "#\n"
 "# When configuring tool voltage:\n"
@@ -234,6 +354,34 @@ struct Definition< ::ur_msgs::SetIORequest_<ContainerAllocator> >
 "#  state  Desired tool voltage (use STATE_TOOL_VOLTAGE constants)\n"
 "\n"
 "# constants\n"
+"# pin mapping\n"
+"# analog out\n"
+"int8 PIN_AOUT0 = 0\n"
+"int8 PIN_AOUT1 = 1\n"
+"\n"
+"# digital out\n"
+"int8 PIN_DOUT0 = 0\n"
+"int8 PIN_DOUT1 = 1\n"
+"int8 PIN_DOUT2 = 2\n"
+"int8 PIN_DOUT3 = 3\n"
+"int8 PIN_DOUT4 = 4\n"
+"int8 PIN_DOUT5 = 5\n"
+"int8 PIN_DOUT6 = 6\n"
+"int8 PIN_DOUT7 = 7\n"
+"\n"
+"# configurable out\n"
+"int8 PIN_CONF_OUT0 = 8\n"
+"int8 PIN_CONF_OUT1 = 9\n"
+"int8 PIN_CONF_OUT2 = 10\n"
+"int8 PIN_CONF_OUT3 = 11\n"
+"int8 PIN_CONF_OUT4 = 12\n"
+"int8 PIN_CONF_OUT5 = 13\n"
+"int8 PIN_CONF_OUT6 = 14\n"
+"int8 PIN_CONF_OUT7 = 15\n"
+"\n"
+"# digital tool output\n"
+"int8 PIN_TOOL_DOUT0 = 16\n"
+"int8 PIN_TOOL_DOUT1 = 17\n"
 "\n"
 "# valid function values\n"
 "#\n"

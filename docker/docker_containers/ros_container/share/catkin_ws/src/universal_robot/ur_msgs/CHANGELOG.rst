@@ -2,6 +2,34 @@
 Changelog for package ur_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.4 (2021-05-25)
+------------------
+* Bump CMake version to ignore warning
+* Contributors: gavanderhoorn
+
+1.3.3 (2021-05-25)
+------------------
+* Migrate to Github Actions
+* Fix SetPayload srv separater invalid (`#10 <https://github.com/ros-industrial/ur_msgs/issues/10>`_)
+* Contributors: Chen Bainian, gavanderhoorn
+
+1.3.2 (2020-10-12)
+------------------
+* Fix domain constants in ``Analog.msg`` (`#8 <https://github.com/ros-industrial/ur_msgs/issues/8>`_)
+* Contributors: Gaël Écorchard
+
+1.3.1 (2020-06-24)
+------------------
+* Change ``payload`` field name to ``mass`` (`#5 <https://github.com/ros-industrial/ur_msgs/issues/5>`_)
+* Added ``center_of_gravity`` field to ``SetPayload`` service (`#2 <https://github.com/ros-industrial/ur_msgs/issues/2>`_)
+* Mark package as architecture independent (`#1 <https://github.com/ros-industrial/ur_msgs/issues/1>`_)
+* Contributors: Felix Exner, gavanderhoorn
+
+1.3.0 (2020-06-22)
+------------------
+* First release of this package from its new repository.
+* Contributors: gavanderhoorn
+
 1.2.7 (2019-11-23)
 ------------------
 

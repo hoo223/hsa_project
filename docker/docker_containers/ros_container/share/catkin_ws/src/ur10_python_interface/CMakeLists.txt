@@ -23,9 +23,11 @@ find_package(catkin REQUIRED
     pcl_ros
     pcl_conversions
     rosbag
+    tf2
     tf2_ros
     tf2_eigen
     tf2_geometry_msgs
+    omni_msgs
     message_generation
     eigen_conversions
 )
@@ -57,10 +59,12 @@ catkin_package(
     moveit_visual_tools
     moveit_ros_planning_interface
     interactive_markers
+    tf2
     tf2_geometry_msgs
     std_msgs
     geometry_msgs
     trajectory_msgs
+    omni_msgs
     message_runtime
     eigen_conversions
   DEPENDS

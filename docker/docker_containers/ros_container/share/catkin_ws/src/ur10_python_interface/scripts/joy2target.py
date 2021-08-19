@@ -15,24 +15,31 @@ import copy
 ## ros library
 import rospy
 import ros
+import tf
 from tf.transformations import quaternion_from_euler
 from std_msgs.msg import Float64MultiArray, String
 from std_srvs.srv import Trigger, TriggerResponse
 from sensor_msgs.msg import JointState
 from geometry_msgs.msg import PoseStamped, Quaternion, Pose
+from omni_msgs.msg import OmniButtonEvent
 #from cv_bridge import CvBridge
 
 ## custom library
 from move_group_python_interface import MoveGroupPythonInteface
 
 class Joy2Target(object):
-  def __init__(self, verbose=True):
+  def __init__(self, verbose=False):
     
     self.verbose = verbose
     self.pre_button = None
     self.teleop_state = "stop"
     self.joy_command = np.zeros(5)
     self.random_action = np.zeros(6)
+    self.grey_button_state = 0
+    self.white_button_state = 0
+    self.haptic_move_state = False
+    self.haptic_error = [0, 0, 0]
+    self.target_robot_pos = [0, 0, 0]
 
     # teleop parameters
     self.speed_gain = 0.00024 # for input scale
@@ -43,8 +50,15 @@ class Joy2Target(object):
     self.joy_sub = rospy.Subscriber('joy_command', Float64MultiArray, self.joy_command_callback)
     self.teleop_state_sub = rospy.Subscriber('/teleop_state', String, self.teleop_state_callback)
     self.current_joint_sub = rospy.Subscriber('/joint_states', JointState, self.current_joint_callback)
+    self.haptic_pose_sub = rospy.Subscriber('/phantom/pose', PoseStamped, self.haptic_pose_callback)
+    self.haptic_button_sub = rospy.Subscriber('/phantom/button', OmniButtonEvent, self.haptic_button_callback)
+
     # publisher
     self.target_pose_pub = rospy.Publisher("target_pose", Pose, queue_size= 10)
+    self.haptic_error_pub = rospy.Publisher("haptic_error", Float64MultiArray, queue_size=10)
+
+    # tf listener
+    self.listener = tf.TransformListener()
     
     #self.init_pose = [0.17488465, 0.53148766, 0.49063472, 1.63007136, 1.52047576, 3.0807627]
     self.init_pose = [0.17480582, 0.50746106, 0.69538257, 0.09267109, 0.00379392, 1.59158403]
@@ -92,16 +106,15 @@ class Joy2Target(object):
       self.pre_button = button
 
     input_scale = self.speed_gain * self.speed_level
+    
 
-    self.target_pose[0] += input_scale*x_input
+    self.target_pose[0] += input_scale*x_input 
     self.target_pose[1] += input_scale*y_input
     self.target_pose[2] += input_scale*z_input
     self.target_pose[3] += input_scale*roll_input
     self.target_pose[4] += input_scale*pitch_input
     self.target_pose[5] += input_scale*yaw_input # + self.current_joints[0] + 1.6014290296237252
     
-    
-
     # print
     if self.verbose:
       print("speed: {:d}, x: {:.3f}, y: {:.3f}, z: {:.3f}, roll: {:.3f}, pitch: {:.3f}, yaw: {:.3f} \
@@ -134,9 +147,6 @@ class Joy2Target(object):
     return ps
 
   def reset_target(self, req):
-    self.target_pose = copy.deepcopy(self.init_pose)
-    result = TriggerResponse()
-    result.success = True
     result.message = "target pose reset"
     return result
 
@@ -154,15 +164,45 @@ class Joy2Target(object):
     self.current_joints[2] = temp
     #print(self.current_joints)
 
+  def haptic_pose_callback(self, data):
+    self.haptic_pose = data.pose
+    if self.haptic_move_state == True:
+      x_error = self.haptic_pose.position.x - self.start_haptic_pose.position.x
+      y_error = self.haptic_pose.position.y - self.start_haptic_pose.position.y
+      z_error = self.haptic_pose.position.z - self.start_haptic_pose.position.z
+      self.haptic_error = [x_error, y_error, z_error]
+      temp = Float64MultiArray()
+      temp.data = [x_error, y_error, z_error]
+      #self.haptic_error_pub.publish(temp)
+
+      haptic_scale = 2
+      self.target_robot_pos = [self.start_robot_pos[0] + haptic_scale*x_error, self.start_robot_pos[1] + haptic_scale*y_error, self.start_robot_pos[2] + haptic_scale*z_error]
+      self.target_pose[0] = self.target_robot_pos[0]
+      self.target_pose[1] = self.target_robot_pos[1]
+      self.target_pose[2] = self.target_robot_pos[2]
+
+  def haptic_button_callback(self, data):
+    if (self.haptic_move_state == False) and (self.grey_button_state == 0 or self.white_button_state == 0) and (data.white_button == 1 and data.grey_button == 1):
+      self.start_haptic_pose = self.haptic_pose
+      self.start_robot_pos = [self.target_pose[0], self.target_pose[1], self.target_pose[2]]
+      self.haptic_move_state = True 
+    elif (self.haptic_move_state == True) and (data.white_button == 0 or data.grey_button == 0):
+      self.haptic_move_state = False
+    #print(self.haptic_move_state)
     
 def main():
-  j2t = Joy2Target()
   rospy.init_node("joy2target_converter", anonymous=True)
+  j2t = Joy2Target()
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
     if rospy.get_param('teleop_state') == "start":
       target_pose = j2t.input_conversion(random_agent=False)
     else:
+      # try:
+      #   (trans,rot) = j2t.listener.lookupTransform('/base_link', '/ee_link', rospy.Time(0))
+      #   j2t.trans = trans
+      # except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
+      #   continue
       j2t.target_pose = copy.deepcopy(j2t.init_pose)
       target_pose = j2t.input_conversion()
     j2t.target_pose_pub.publish(target_pose)

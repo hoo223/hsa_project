@@ -48,13 +48,13 @@
   (state m))
 (cl:defmethod roslisp-msg-protocol:symbol-codes ((msg-type (cl:eql '<Analog>)))
     "Constants for message type '<Analog>"
-  '((:VOLTAGE . 0)
-    (:CURRENT . 1))
+  '((:CURRENT . 0)
+    (:VOLTAGE . 1))
 )
 (cl:defmethod roslisp-msg-protocol:symbol-codes ((msg-type (cl:eql 'Analog)))
     "Constants for message type 'Analog"
-  '((:VOLTAGE . 0)
-    (:CURRENT . 1))
+  '((:CURRENT . 0)
+    (:VOLTAGE . 1))
 )
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <Analog>) ostream)
   "Serializes a message object of type '<Analog>"
@@ -86,16 +86,16 @@
   "ur_msgs/Analog")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<Analog>)))
   "Returns md5sum for a message object of type '<Analog>"
-  "f41c08a810adf63713aec88712cd553d")
+  "6be678008703fe11fbea12281a3d6d23")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'Analog)))
   "Returns md5sum for a message object of type 'Analog"
-  "f41c08a810adf63713aec88712cd553d")
+  "6be678008703fe11fbea12281a3d6d23")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<Analog>)))
   "Returns full string definition for message of type '<Analog>"
-  (cl:format cl:nil "uint8 VOLTAGE=0~%uint8 CURRENT=1~%~%uint8 pin~%uint8 domain # can be VOLTAGE or CURRENT~%float32 state~%~%~%"))
+  (cl:format cl:nil "uint8 CURRENT=0~%uint8 VOLTAGE=1~%~%uint8 pin~%uint8 domain # can be VOLTAGE or CURRENT~%float32 state~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'Analog)))
   "Returns full string definition for message of type 'Analog"
-  (cl:format cl:nil "uint8 VOLTAGE=0~%uint8 CURRENT=1~%~%uint8 pin~%uint8 domain # can be VOLTAGE or CURRENT~%float32 state~%~%~%"))
+  (cl:format cl:nil "uint8 CURRENT=0~%uint8 VOLTAGE=1~%~%uint8 pin~%uint8 domain # can be VOLTAGE or CURRENT~%float32 state~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <Analog>))
   (cl:+ 0
      1

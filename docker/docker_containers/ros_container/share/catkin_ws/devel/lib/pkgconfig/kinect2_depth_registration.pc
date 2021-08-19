@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/devel
+
+Name: kinect2_depth_registration
+Description: Description of kinect2_depth_registration
+Version: 0.0.1
+Cflags: -I/root/share/catkin_ws/src/kinect2-ros/kinect2_depth_registration/include
+Libs: -L${prefix}/lib -ldepth_registration
+Requires: 
