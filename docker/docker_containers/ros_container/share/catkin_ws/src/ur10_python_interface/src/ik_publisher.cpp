@@ -270,9 +270,9 @@ int main(int argc, char** argv)
 
 void IK_solver::jointStateCallback(const sensor_msgs::JointStateConstPtr& joint_state)
 {
-	current_joint_values[0] = joint_state->position[2]; // shoulder_pan_joint
+	current_joint_values[0] = joint_state->position[0]; // shoulder_pan_joint
 	current_joint_values[1] = joint_state->position[1]; // shoulder_lift_joint
-	current_joint_values[2] = joint_state->position[0]; // elbow joint
+	current_joint_values[2] = joint_state->position[2]; // elbow joint
 	current_joint_values[3] = joint_state->position[3]; // wrist_1_joint
 	current_joint_values[4] = joint_state->position[4]; // wrist_2_joint
 	current_joint_values[5] = joint_state->position[5]; // wrist_3_joint
