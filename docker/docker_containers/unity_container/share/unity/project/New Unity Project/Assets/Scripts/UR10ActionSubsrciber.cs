@@ -49,13 +49,13 @@ public class UR10ActionSubsrciber : MonoBehaviour
         string elbow_link = arm_link + "/forearm_link";
         jointArticulationBodies[2] = UR10.transform.Find(elbow_link).GetComponent<ArticulationBody>();
 
-        string forearm_link = elbow_link + "/wrist_1_link";
-        jointArticulationBodies[3] = UR10.transform.Find(forearm_link).GetComponent<ArticulationBody>();
+        string wrist_1_link = elbow_link + "/wrist_1_link";
+        jointArticulationBodies[3] = UR10.transform.Find(wrist_1_link).GetComponent<ArticulationBody>();
 
-        string wrist_link = forearm_link + "/wrist_2_link";
-        jointArticulationBodies[4] = UR10.transform.Find(wrist_link).GetComponent<ArticulationBody>();
+        string wrist_2_link = wrist_1_link + "/wrist_2_link";
+        jointArticulationBodies[4] = UR10.transform.Find(wrist_2_link).GetComponent<ArticulationBody>();
 
-        string hand_link = wrist_link + "/wrist_3_link";
+        string hand_link = wrist_2_link + "/wrist_3_link";
         jointArticulationBodies[5] = UR10.transform.Find(hand_link).GetComponent<ArticulationBody>();
 
         // Subscriber

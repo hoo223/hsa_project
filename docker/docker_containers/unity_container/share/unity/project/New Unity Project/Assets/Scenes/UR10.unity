@@ -4900,7 +4900,7 @@ ArticulationBody:
     lowerLimit: -360
     upperLimit: 360
     stiffness: 0
-    damping: 0
+    damping: 100
     forceLimit: 330
     target: 0
     targetVelocity: 0
