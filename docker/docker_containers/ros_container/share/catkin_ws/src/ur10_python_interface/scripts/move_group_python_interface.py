@@ -456,15 +456,15 @@ class MoveGroupPythonInteface(object):
 
 
   # https://answers.ros.org/question/259022/switching-between-controllers-with-ros_control-controller_manager/
-  def controller_change(self, current_controller, target_controller, mode=""):
-    rospy.wait_for_service(mode + '/controller_manager/switch_controller')
+  def controller_change(self, current_controller, target_controller):
+    rospy.wait_for_service('/controller_manager/switch_controller')
     try:
         #create a handle for calling the service
         switch_controller = rospy.ServiceProxy('/controller_manager/switch_controller', SwitchController)
         # http://docs.ros.org/en/api/controller_manager_msgs/html/srv/SwitchController.html
         req = SwitchControllerRequest()
-        req.start_controllers = [mode + "/" + target_controller]
-        req.stop_controllers = [mode + "/" + current_controller]
+        req.start_controllers = [target_controller]
+        req.stop_controllers = [current_controller]
         req.strictness = 1
         req.start_asap = False
         req.timeout = 0.0
@@ -473,7 +473,7 @@ class MoveGroupPythonInteface(object):
         res = switch_controller(req)
         if res:
             print(res)
-            print("controller changed from {} to {}".format(mode + "/" + current_controller, mode + "/" + target_controller))
+            print("controller changed from {} to {}".format(current_controller, target_controller))
         else:
             print("failed to change controller")
     except rospy.ServiceException as e:

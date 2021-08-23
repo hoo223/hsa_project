@@ -8,8 +8,8 @@ import time
 import os
 import sys
 import matplotlib.pyplot as plt
-import gym
-import torch
+#import gym
+#import torch
 
 ## ros library
 import rospy

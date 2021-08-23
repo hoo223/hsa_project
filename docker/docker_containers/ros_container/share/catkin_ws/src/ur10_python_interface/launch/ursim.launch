@@ -8,8 +8,6 @@
   
   <include file="$(find ur10_python_interface)/launch/controller.launch"/>
   <include file="$(find ur10_python_interface)/launch/gazebo.launch"/>
-  <!--include file="$(find ur10_python_interface)/launch/interface.launch"/-->
-  <!--include file="$(find ur10_python_interface)/launch/teleop.launch"/-->
-  
+  <include file="$(find ur10_python_interface)/launch/interface.launch"/>  
 
 </launch>
