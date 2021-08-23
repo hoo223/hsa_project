@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_script_server
+Description: Description of cob_script_server
+Version: 0.6.16
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: actionlib_msgs message_runtime trajectory_msgs

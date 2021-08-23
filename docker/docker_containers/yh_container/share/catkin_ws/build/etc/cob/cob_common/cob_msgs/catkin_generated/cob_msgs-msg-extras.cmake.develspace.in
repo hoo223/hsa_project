@@ -1,0 +1,2 @@
+set(cob_msgs_MESSAGE_FILES "/root/share/catkin_ws/src/etc/cob/cob_common/cob_msgs/msg/AccessPoint.msg;/root/share/catkin_ws/src/etc/cob/cob_common/cob_msgs/msg/DashboardState.msg;/root/share/catkin_ws/src/etc/cob/cob_common/cob_msgs/msg/EmergencyStopState.msg;/root/share/catkin_ws/src/etc/cob/cob_common/cob_msgs/msg/Network.msg;/root/share/catkin_ws/src/etc/cob/cob_common/cob_msgs/msg/PowerState.msg;/root/share/catkin_ws/src/etc/cob/cob_common/cob_msgs/msg/SiteSurvey.msg")
+set(cob_msgs_SERVICE_FILES "")

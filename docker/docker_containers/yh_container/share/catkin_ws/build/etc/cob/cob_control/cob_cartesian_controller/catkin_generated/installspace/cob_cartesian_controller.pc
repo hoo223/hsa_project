@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_cartesian_controller
+Description: Description of cob_cartesian_controller
+Version: 0.7.11
+Cflags: -I${prefix}/include -I/usr/include
+Libs: -L${prefix}/lib -lprofile_generator -ltrajectory_interpolator -lcartesian_controller -lcartesian_controller_utils
+Requires: actionlib actionlib_msgs cob_srvs geometry_msgs message_runtime roscpp std_msgs std_srvs tf visualization_msgs

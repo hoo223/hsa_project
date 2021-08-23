@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_obstacle_distance
+Description: Description of cob_obstacle_distance
+Version: 0.7.11
+Cflags: -I${prefix}/include -I/usr/include
+Libs: -L${prefix}/lib -lparsers -lmarker_shapes_management /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0
+Requires: cob_control_msgs cob_srvs dynamic_reconfigure eigen_conversions geometry_msgs kdl_conversions kdl_parser moveit_msgs roscpp roslib sensor_msgs shape_msgs std_msgs tf tf_conversions urdf visualization_msgs

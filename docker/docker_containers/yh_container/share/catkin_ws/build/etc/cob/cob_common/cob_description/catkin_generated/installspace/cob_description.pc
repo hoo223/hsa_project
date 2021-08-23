@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_description
+Description: Description of cob_description
+Version: 0.6.9
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

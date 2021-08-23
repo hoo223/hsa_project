@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_helper_tools
+Description: Description of cob_helper_tools
+Version: 0.6.16
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

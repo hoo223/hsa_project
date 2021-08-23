@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_monitoring
+Description: Description of cob_monitoring
+Version: 0.6.16
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_msgs
+Description: Description of cob_msgs
+Version: 0.6.9
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: diagnostic_msgs message_runtime std_msgs

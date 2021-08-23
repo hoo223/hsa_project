@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_base_velocity_smoother
+Description: Description of cob_base_velocity_smoother
+Version: 0.7.11
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: geometry_msgs nav_msgs std_msgs

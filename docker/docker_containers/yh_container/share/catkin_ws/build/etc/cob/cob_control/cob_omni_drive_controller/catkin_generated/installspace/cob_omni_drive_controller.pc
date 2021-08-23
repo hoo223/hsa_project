@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_omni_drive_controller
+Description: Description of cob_omni_drive_controller
+Version: 0.7.11
+Cflags: -I${prefix}/include -I/usr/include
+Libs: -L${prefix}/lib -lcob_omni_drive_controller -lcob_omni_drive_geom /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
+Requires: angles cob_base_controller_utils controller_interface dynamic_reconfigure geometry_msgs hardware_interface nav_msgs sensor_msgs std_msgs std_srvs tf tf2 urdf

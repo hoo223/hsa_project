@@ -1,0 +1,7 @@
+set(cob_command_gui_SETUP_PY_SETUP_MODULE "distutils.core")
+set(cob_command_gui_SETUP_PY_VERSION "0.6.16")
+set(cob_command_gui_SETUP_PY_SCRIPTS "")
+set(cob_command_gui_SETUP_PY_PACKAGES "command_gui_buttons")
+set(cob_command_gui_SETUP_PY_PACKAGE_DIRS "src/command_gui_buttons")
+set(cob_command_gui_SETUP_PY_MODULES "")
+set(cob_command_gui_SETUP_PY_MODULE_DIRS "")

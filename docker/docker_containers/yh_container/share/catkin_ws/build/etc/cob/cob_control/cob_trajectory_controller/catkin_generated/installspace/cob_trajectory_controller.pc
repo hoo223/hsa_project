@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_trajectory_controller
+Description: Description of cob_trajectory_controller
+Version: 0.7.11
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: control_msgs sensor_msgs std_msgs trajectory_msgs

@@ -1,0 +1,8 @@
+# CMake generated Testfile for 
+# Source directory: /root/share/catkin_ws/src/etc/ros_controllers/joint_state_controller
+# Build directory: /root/share/catkin_ws/build/etc/ros_controllers/joint_state_controller
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+add_test(_ctest_joint_state_controller_rostest_test_joint_state_controller.test "/root/share/catkin_ws/build/catkin_generated/env_cached.sh" "/usr/bin/python3" "/opt/ros/noetic/share/catkin/cmake/test/run_tests.py" "/root/share/catkin_ws/build/test_results/joint_state_controller/rostest-test_joint_state_controller.xml" "--return-code" "/usr/bin/python3 /opt/ros/noetic/share/rostest/cmake/../../../bin/rostest --pkgdir=/root/share/catkin_ws/src/etc/ros_controllers/joint_state_controller --package=joint_state_controller --results-filename test_joint_state_controller.xml --results-base-dir \"/root/share/catkin_ws/build/test_results\" /root/share/catkin_ws/src/etc/ros_controllers/joint_state_controller/test/joint_state_controller.test ")
+set_tests_properties(_ctest_joint_state_controller_rostest_test_joint_state_controller.test PROPERTIES  _BACKTRACE_TRIPLES "/opt/ros/noetic/share/catkin/cmake/test/tests.cmake;160;add_test;/opt/ros/noetic/share/rostest/cmake/rostest-extras.cmake;52;catkin_run_tests_target;/opt/ros/noetic/share/rostest/cmake/rostest-extras.cmake;80;add_rostest;/opt/ros/noetic/share/rostest/cmake/rostest-extras.cmake;100;_add_rostest_google_test;/root/share/catkin_ws/src/etc/ros_controllers/joint_state_controller/CMakeLists.txt;26;add_rostest_gtest;/root/share/catkin_ws/src/etc/ros_controllers/joint_state_controller/CMakeLists.txt;0;")

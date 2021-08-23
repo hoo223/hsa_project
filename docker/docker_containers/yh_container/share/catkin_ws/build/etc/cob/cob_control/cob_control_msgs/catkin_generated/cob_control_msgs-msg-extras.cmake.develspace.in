@@ -1,0 +1,2 @@
+set(cob_control_msgs_MESSAGE_FILES "/root/share/catkin_ws/src/etc/cob/cob_control/cob_control_msgs/msg/ObstacleDistance.msg;/root/share/catkin_ws/src/etc/cob/cob_control/cob_control_msgs/msg/ObstacleDistances.msg")
+set(cob_control_msgs_SERVICE_FILES "/root/share/catkin_ws/src/etc/cob/cob_control/cob_control_msgs/srv/GetObstacleDistance.srv")

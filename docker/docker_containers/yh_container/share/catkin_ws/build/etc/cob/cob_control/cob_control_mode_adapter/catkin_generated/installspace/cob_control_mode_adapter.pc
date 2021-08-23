@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_control_mode_adapter
+Description: Description of cob_control_mode_adapter
+Version: 0.7.11
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: controller_manager_msgs std_msgs

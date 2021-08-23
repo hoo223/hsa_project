@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_model_identifier
+Description: Description of cob_model_identifier
+Version: 0.7.11
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: geometry_msgs sensor_msgs

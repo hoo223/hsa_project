@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_hardware_emulation
+Description: Description of cob_hardware_emulation
+Version: 0.7.11
+Cflags: -I/usr/include
+Libs: -L${prefix}/lib /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
+Requires: rosgraph_msgs

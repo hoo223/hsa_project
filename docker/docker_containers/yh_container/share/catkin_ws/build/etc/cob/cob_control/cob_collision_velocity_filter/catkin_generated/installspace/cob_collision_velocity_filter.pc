@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_collision_velocity_filter
+Description: Description of cob_collision_velocity_filter
+Version: 0.7.11
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: geometry_msgs nav_msgs visualization_msgs

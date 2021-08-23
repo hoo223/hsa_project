@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_dashboard
+Description: Description of cob_dashboard
+Version: 0.6.16
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,2 @@
+set(cob_srvs_MESSAGE_FILES "")
+set(cob_srvs_SERVICE_FILES "/root/share/catkin_ws/src/etc/cob/cob_common/cob_srvs/srv/SetFloat.srv;/root/share/catkin_ws/src/etc/cob/cob_common/cob_srvs/srv/SetInt.srv;/root/share/catkin_ws/src/etc/cob/cob_common/cob_srvs/srv/SetString.srv")

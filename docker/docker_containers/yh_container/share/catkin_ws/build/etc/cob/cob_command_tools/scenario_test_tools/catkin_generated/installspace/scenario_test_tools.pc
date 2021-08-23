@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: scenario_test_tools
+Description: Description of scenario_test_tools
+Version: 0.6.16
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

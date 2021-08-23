@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: generic_throttle
+Description: Description of generic_throttle
+Version: 0.6.16
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

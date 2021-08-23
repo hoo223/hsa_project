@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cob_tricycle_controller
+Description: Description of cob_tricycle_controller
+Version: 0.7.11
+Cflags: -I${prefix}/include -I/usr/include
+Libs: -L${prefix}/lib -lcob_tricycle_controller /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
+Requires: angles cob_base_controller_utils controller_interface geometry_msgs hardware_interface nav_msgs pluginlib realtime_tools roscpp std_srvs tf
