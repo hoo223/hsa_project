@@ -55,15 +55,12 @@ class ModeManager(object):
 
 
 def main():
-  rospy.init_node("robot_interface", anonymous=True)
+  rospy.init_node("mode_manager", anonymous=True)
   rate = rospy.Rate(1100)
-  base_controller = "arm_controller"
-  velocity_controller = "joint_group_velocity_controller"
   mm = ModeManager() 
 
   ## set init pose
-  
-  while not mm.start_teleop().success:
+  while not mm.reset_pose().success:
     print("Failed to go to init state")
   print("Success to get init state!")
 

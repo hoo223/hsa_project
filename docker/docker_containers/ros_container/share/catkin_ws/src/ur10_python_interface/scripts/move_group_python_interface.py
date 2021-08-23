@@ -71,7 +71,7 @@ class MoveGroupPythonInteface(object):
     ## First initialize `moveit_commander`_ and a `rospy`_ node:
     moveit_commander.roscpp_initialize(sys.argv)
     if gym == False:
-      rospy.init_node('move_group_python_interface_tutorial', anonymous=True)
+      rospy.init_node("robot_interface", anonymous=True)
 
     ## Instantiate a `RobotCommander`_ object. Provides information such as the robot's
     ## kinematic model and the robot's current joint states
@@ -170,6 +170,8 @@ class MoveGroupPythonInteface(object):
     # Copy class variables to local variables to make the web tutorials more clear.
     # In practice, you should use the class variables directly unless you have a good
     # reason not to.
+
+    print("test")
     move_group = self.move_group
 
     ## BEGIN_SUB_TUTORIAL plan_to_joint_state
@@ -479,7 +481,7 @@ class MoveGroupPythonInteface(object):
 
   def change_to_velocity_controller(self, req):
     self.controller_change(self.base_controller, self.velocity_controller)
-    self.controller_change(self.base_controller, self.velocity_controller, mode="/unity")
+    #self.controller_change(self.base_controller, self.velocity_controller, mode="/unity")
     res = TriggerResponse()
     res.success = True
     res.message = "changed to velocity controller"
@@ -487,13 +489,14 @@ class MoveGroupPythonInteface(object):
 
   def change_to_base_controller(self, req):
     self.controller_change(self.velocity_controller, self.base_controller)
-    self.controller_change(self.velocity_controller, self.base_controller, mode="/unity")
+    #self.controller_change(self.velocity_controller, self.base_controller, mode="/unity")
     res = TriggerResponse()
     res.success = True
     res.message = "changed to base controller"
     return res
 
   def reset_pose(self, req):
+    print("reset pose service")
     self.change_to_base_controller("")
     rospy.set_param('teleop_state', 'stop')
     self.teleop_state = rospy.get_param('teleop_state')
@@ -534,13 +537,11 @@ class MoveGroupPythonInteface(object):
 
 
 def main():
-  rospy.init_node("robot_interface", anonymous=True)
-  rate = rospy.Rate(1100)
   base_controller = "arm_controller"
   velocity_controller = "joint_group_velocity_controller"
   robot_interface = MoveGroupPythonInteface(base_controller=base_controller, 
                                             velocity_controller=velocity_controller, 
-                                            gym=True, # unpause 일때만 가능, gym 환경에서 사용할 경우 gym=True
+                                            gym=False, # unpause 일때만 가능, gym 환경에서 사용할 경우 gym=True
                                             verbose=False) 
   rospy.spin()
 
