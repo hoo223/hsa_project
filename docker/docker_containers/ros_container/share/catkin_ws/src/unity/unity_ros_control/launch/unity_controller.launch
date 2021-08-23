@@ -3,7 +3,7 @@
     <arg name="transmission_hw_interface" default="hardware_interface/VelocityJointInterface" />
 
     <!--include file="$(find ros_tcp_endpoint)/launch/endpoint.launch"/-->
-    <group ns="/unity">
+    <!--group ns="/unity"-->
         <param name="controller_type" type="string" value="vel"/>
 
         <!-- send robot urdf to param server -->
@@ -19,9 +19,9 @@
         <!--rosparam file="$(find unity_ros_control)/config/ur10_controllers.yaml" command="load"/-->
 
         <!-- spawn controller manager -->
-        <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn /unity/arm_controller" respawn="false" output="screen"/>
+        <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn /arm_controller" respawn="false" output="screen"/>
 
         <!-- load other controllers -->
-        <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" args="load /unity/joint_group_velocity_controller" respawn="false" output="screen"/>
-    </group>
+        <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" args="load /joint_group_velocity_controller" respawn="false" output="screen"/>
+    <!--/group-->
  </launch>

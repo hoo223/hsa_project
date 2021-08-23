@@ -21,6 +21,7 @@ from std_srvs.srv import Trigger, TriggerResponse
 from geometry_msgs.msg import PoseStamped, Quaternion, Pose
 from geometry_msgs.msg import Quaternion
 from controller_manager_msgs.srv import SwitchControllerRequest, SwitchController
+import geometry_msgs
 
 ## moveit library
 import moveit_commander
@@ -453,15 +454,15 @@ class MoveGroupPythonInteface(object):
 
 
   # https://answers.ros.org/question/259022/switching-between-controllers-with-ros_control-controller_manager/
-  def controller_change(self, current_controller, target_controller):
-    rospy.wait_for_service('/controller_manager/switch_controller')
+  def controller_change(self, current_controller, target_controller, mode=""):
+    rospy.wait_for_service(mode + '/controller_manager/switch_controller')
     try:
         #create a handle for calling the service
         switch_controller = rospy.ServiceProxy('/controller_manager/switch_controller', SwitchController)
         # http://docs.ros.org/en/api/controller_manager_msgs/html/srv/SwitchController.html
         req = SwitchControllerRequest()
-        req.start_controllers = [target_controller]
-        req.stop_controllers = [current_controller]
+        req.start_controllers = [mode + "/" + target_controller]
+        req.stop_controllers = [mode + "/" + current_controller]
         req.strictness = 1
         req.start_asap = False
         req.timeout = 0.0
@@ -470,7 +471,7 @@ class MoveGroupPythonInteface(object):
         res = switch_controller(req)
         if res:
             print(res)
-            print("controller changed from {} to {}".format(current_controller, target_controller))
+            print("controller changed from {} to {}".format(mode + "/" + current_controller, mode + "/" + target_controller))
         else:
             print("failed to change controller")
     except rospy.ServiceException as e:
@@ -478,6 +479,7 @@ class MoveGroupPythonInteface(object):
 
   def change_to_velocity_controller(self, req):
     self.controller_change(self.base_controller, self.velocity_controller)
+    self.controller_change(self.base_controller, self.velocity_controller, mode="/unity")
     res = TriggerResponse()
     res.success = True
     res.message = "changed to velocity controller"
@@ -485,6 +487,7 @@ class MoveGroupPythonInteface(object):
 
   def change_to_base_controller(self, req):
     self.controller_change(self.velocity_controller, self.base_controller)
+    self.controller_change(self.velocity_controller, self.base_controller, mode="/unity")
     res = TriggerResponse()
     res.success = True
     res.message = "changed to base controller"
@@ -539,28 +542,7 @@ def main():
                                             velocity_controller=velocity_controller, 
                                             gym=True, # unpause 일때만 가능, gym 환경에서 사용할 경우 gym=True
                                             verbose=False) 
-
-  ## set init pose
-  while not robot_interface.go_to_init_state():
-    print("Failed to go to init state")
-  print("Success to get init state!")
-
-  ## wait for start signal
-  #print("============ Press `Enter` to start main loop ...")
-  #input()
-  print("System On")
-  while not rospy.is_shutdown(): 
-    # Button loop
-    # start button -> teleop start
-    if robot_interface.button == 7.0 and robot_interface.teleop_state == 'stop': 
-      robot_interface.start_teleop("")
-      print("teleop start")
-    # back button -> teleop stop and reset pose
-    elif robot_interface.button == 6.0  and robot_interface.teleop_state == 'start':
-      robot_interface.reset_pose("")
-      print("teleop stop")
-    rate.sleep()
-  print("Finished")
+  rospy.spin()
 
 
 if __name__ == '__main__':
