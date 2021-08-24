@@ -5668,7 +5668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   publishMessageFrequency: 0.001
-  topicName: /unity/unity_ur10_joint_states
+  topicName: unity_ur10_joint_states
   UR10: {fileID: 439176237}
 --- !u!4 &2074043432
 Transform:

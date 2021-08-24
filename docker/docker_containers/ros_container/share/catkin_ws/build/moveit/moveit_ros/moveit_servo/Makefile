@@ -68,18 +68,6 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -102,16 +90,16 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target test
-test/fast: test
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
 
-.PHONY : test/fast
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -124,16 +112,28 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
+# Special rule for the target test
+test/fast: test
 
-.PHONY : rebuild_cache/fast
+.PHONY : test/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,49 +168,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-moveit/moveit_ros/moveit_servo/CMakeFiles/servo_server.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/servo_server.dir/rule
-.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/servo_server.dir/rule
+moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_pose_tracking_test.test.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_pose_tracking_test.test.dir/rule
+.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_pose_tracking_test.test.dir/rule
 
 # Convenience name for target.
-servo_server: moveit/moveit_ros/moveit_servo/CMakeFiles/servo_server.dir/rule
+_run_tests_moveit_servo_rostest_test_pose_tracking_test.test: moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_pose_tracking_test.test.dir/rule
 
-.PHONY : servo_server
+.PHONY : _run_tests_moveit_servo_rostest_test_pose_tracking_test.test
 
 # fast build rule for target.
-servo_server/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/servo_server.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/servo_server.dir/build
-.PHONY : servo_server/fast
-
-# Convenience name for target.
-moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_test.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_test.dir/rule
-.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_test.dir/rule
-
-# Convenience name for target.
-pose_tracking_test: moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_test.dir/rule
-
-.PHONY : pose_tracking_test
-
-# fast build rule for target.
-pose_tracking_test/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_test.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_test.dir/build
-.PHONY : pose_tracking_test/fast
-
-# Convenience name for target.
-moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_example.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_example.dir/rule
-.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_example.dir/rule
-
-# Convenience name for target.
-pose_tracking_example: moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_example.dir/rule
-
-.PHONY : pose_tracking_example
-
-# fast build rule for target.
-pose_tracking_example/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_example.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_example.dir/build
-.PHONY : pose_tracking_example/fast
+_run_tests_moveit_servo_rostest_test_pose_tracking_test.test/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_pose_tracking_test.test.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_pose_tracking_test.test.dir/build
+.PHONY : _run_tests_moveit_servo_rostest_test_pose_tracking_test.test/fast
 
 # Convenience name for target.
 moveit/moveit_ros/moveit_servo/CMakeFiles/run_tests_moveit_servo_rostest_test_pose_tracking_test.test.dir/rule:
@@ -228,19 +198,19 @@ run_tests_moveit_servo_rostest_test_pose_tracking_test.test/fast:
 .PHONY : run_tests_moveit_servo_rostest_test_pose_tracking_test.test/fast
 
 # Convenience name for target.
-moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_nodejs.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_nodejs.dir/rule
-.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_nodejs.dir/rule
+moveit/moveit_ros/moveit_servo/CMakeFiles/moveit_servo_cpp_api.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/moveit_servo_cpp_api.dir/rule
+.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/moveit_servo_cpp_api.dir/rule
 
 # Convenience name for target.
-control_toolbox_generate_messages_nodejs: moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_nodejs.dir/rule
+moveit_servo_cpp_api: moveit/moveit_ros/moveit_servo/CMakeFiles/moveit_servo_cpp_api.dir/rule
 
-.PHONY : control_toolbox_generate_messages_nodejs
+.PHONY : moveit_servo_cpp_api
 
 # fast build rule for target.
-control_toolbox_generate_messages_nodejs/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_nodejs.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_nodejs.dir/build
-.PHONY : control_toolbox_generate_messages_nodejs/fast
+moveit_servo_cpp_api/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/moveit_servo_cpp_api.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/moveit_servo_cpp_api.dir/build
+.PHONY : moveit_servo_cpp_api/fast
 
 # Convenience name for target.
 moveit/moveit_ros/moveit_servo/CMakeFiles/run_tests_moveit_servo_rostest.dir/rule:
@@ -258,21 +228,6 @@ run_tests_moveit_servo_rostest/fast:
 .PHONY : run_tests_moveit_servo_rostest/fast
 
 # Convenience name for target.
-moveit/moveit_ros/moveit_servo/CMakeFiles/moveit_servo_cpp_api.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/moveit_servo_cpp_api.dir/rule
-.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/moveit_servo_cpp_api.dir/rule
-
-# Convenience name for target.
-moveit_servo_cpp_api: moveit/moveit_ros/moveit_servo/CMakeFiles/moveit_servo_cpp_api.dir/rule
-
-.PHONY : moveit_servo_cpp_api
-
-# fast build rule for target.
-moveit_servo_cpp_api/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/moveit_servo_cpp_api.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/moveit_servo_cpp_api.dir/build
-.PHONY : moveit_servo_cpp_api/fast
-
-# Convenience name for target.
 moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_cpp.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_cpp.dir/rule
 .PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_cpp.dir/rule
@@ -288,6 +243,51 @@ control_toolbox_generate_messages_cpp/fast:
 .PHONY : control_toolbox_generate_messages_cpp/fast
 
 # Convenience name for target.
+moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule
+.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+control_msgs_generate_messages_nodejs: moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : control_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+control_msgs_generate_messages_nodejs/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_nodejs.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_nodejs.dir/build
+.PHONY : control_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_example.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_example.dir/rule
+.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_example.dir/rule
+
+# Convenience name for target.
+pose_tracking_example: moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_example.dir/rule
+
+.PHONY : pose_tracking_example
+
+# fast build rule for target.
+pose_tracking_example/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_example.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_example.dir/build
+.PHONY : pose_tracking_example/fast
+
+# Convenience name for target.
+moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule
+.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+control_msgs_generate_messages_lisp: moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : control_msgs_generate_messages_lisp
+
+# fast build rule for target.
+control_msgs_generate_messages_lisp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_lisp.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_lisp.dir/build
+.PHONY : control_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
 moveit/moveit_ros/moveit_servo/CMakeFiles/cpp_interface_example.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/cpp_interface_example.dir/rule
 .PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/cpp_interface_example.dir/rule
@@ -301,6 +301,36 @@ cpp_interface_example: moveit/moveit_ros/moveit_servo/CMakeFiles/cpp_interface_e
 cpp_interface_example/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/cpp_interface_example.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/cpp_interface_example.dir/build
 .PHONY : cpp_interface_example/fast
+
+# Convenience name for target.
+moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_nodejs.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_nodejs.dir/rule
+.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+control_toolbox_generate_messages_nodejs: moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_nodejs.dir/rule
+
+.PHONY : control_toolbox_generate_messages_nodejs
+
+# fast build rule for target.
+control_toolbox_generate_messages_nodejs/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_nodejs.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_nodejs.dir/build
+.PHONY : control_toolbox_generate_messages_nodejs/fast
+
+# Convenience name for target.
+moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
+.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+control_msgs_generate_messages_cpp: moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : control_msgs_generate_messages_cpp
+
+# fast build rule for target.
+control_msgs_generate_messages_cpp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_cpp.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_cpp.dir/build
+.PHONY : control_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking.dir/rule:
@@ -363,21 +393,6 @@ control_toolbox_generate_messages_py/fast:
 .PHONY : control_toolbox_generate_messages_py/fast
 
 # Convenience name for target.
-moveit/moveit_ros/moveit_servo/CMakeFiles/spacenav_to_twist.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/spacenav_to_twist.dir/rule
-.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/spacenav_to_twist.dir/rule
-
-# Convenience name for target.
-spacenav_to_twist: moveit/moveit_ros/moveit_servo/CMakeFiles/spacenav_to_twist.dir/rule
-
-.PHONY : spacenav_to_twist
-
-# fast build rule for target.
-spacenav_to_twist/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/spacenav_to_twist.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/spacenav_to_twist.dir/build
-.PHONY : spacenav_to_twist/fast
-
-# Convenience name for target.
 moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_servo_cpp_interface_test.test.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_servo_cpp_interface_test.test.dir/rule
 .PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_servo_cpp_interface_test.test.dir/rule
@@ -393,19 +408,64 @@ _run_tests_moveit_servo_rostest_test_servo_cpp_interface_test.test/fast:
 .PHONY : _run_tests_moveit_servo_rostest_test_servo_cpp_interface_test.test/fast
 
 # Convenience name for target.
-moveit/moveit_ros/moveit_servo/CMakeFiles/basic_servo_tests.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/basic_servo_tests.dir/rule
-.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/basic_servo_tests.dir/rule
+moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_eus.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_eus.dir/rule
+.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-basic_servo_tests: moveit/moveit_ros/moveit_servo/CMakeFiles/basic_servo_tests.dir/rule
+control_msgs_generate_messages_eus: moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_eus.dir/rule
 
-.PHONY : basic_servo_tests
+.PHONY : control_msgs_generate_messages_eus
 
 # fast build rule for target.
-basic_servo_tests/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/basic_servo_tests.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/basic_servo_tests.dir/build
-.PHONY : basic_servo_tests/fast
+control_msgs_generate_messages_eus/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_eus.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_eus.dir/build
+.PHONY : control_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+moveit/moveit_ros/moveit_servo/CMakeFiles/spacenav_to_twist.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/spacenav_to_twist.dir/rule
+.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/spacenav_to_twist.dir/rule
+
+# Convenience name for target.
+spacenav_to_twist: moveit/moveit_ros/moveit_servo/CMakeFiles/spacenav_to_twist.dir/rule
+
+.PHONY : spacenav_to_twist
+
+# fast build rule for target.
+spacenav_to_twist/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/spacenav_to_twist.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/spacenav_to_twist.dir/build
+.PHONY : spacenav_to_twist/fast
+
+# Convenience name for target.
+moveit/moveit_ros/moveit_servo/CMakeFiles/servo_server.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/servo_server.dir/rule
+.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/servo_server.dir/rule
+
+# Convenience name for target.
+servo_server: moveit/moveit_ros/moveit_servo/CMakeFiles/servo_server.dir/rule
+
+.PHONY : servo_server
+
+# fast build rule for target.
+servo_server/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/servo_server.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/servo_server.dir/build
+.PHONY : servo_server/fast
+
+# Convenience name for target.
+moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_test.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_test.dir/rule
+.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_test.dir/rule
+
+# Convenience name for target.
+pose_tracking_test: moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_test.dir/rule
+
+.PHONY : pose_tracking_test
+
+# fast build rule for target.
+pose_tracking_test/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_test.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/pose_tracking_test.dir/build
+.PHONY : pose_tracking_test/fast
 
 # Convenience name for target.
 moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_eus.dir/rule:
@@ -421,6 +481,21 @@ control_toolbox_generate_messages_eus: moveit/moveit_ros/moveit_servo/CMakeFiles
 control_toolbox_generate_messages_eus/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_eus.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/control_toolbox_generate_messages_eus.dir/build
 .PHONY : control_toolbox_generate_messages_eus/fast
+
+# Convenience name for target.
+moveit/moveit_ros/moveit_servo/CMakeFiles/basic_servo_tests.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/basic_servo_tests.dir/rule
+.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/basic_servo_tests.dir/rule
+
+# Convenience name for target.
+basic_servo_tests: moveit/moveit_ros/moveit_servo/CMakeFiles/basic_servo_tests.dir/rule
+
+.PHONY : basic_servo_tests
+
+# fast build rule for target.
+basic_servo_tests/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/basic_servo_tests.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/basic_servo_tests.dir/build
+.PHONY : basic_servo_tests/fast
 
 # Convenience name for target.
 moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo.dir/rule:
@@ -498,6 +573,21 @@ _run_tests_moveit_servo_rostest_test_basic_servo_tests.test/fast:
 .PHONY : _run_tests_moveit_servo_rostest_test_basic_servo_tests.test/fast
 
 # Convenience name for target.
+moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_py.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_py.dir/rule
+.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+control_msgs_generate_messages_py: moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_py.dir/rule
+
+.PHONY : control_msgs_generate_messages_py
+
+# fast build rule for target.
+control_msgs_generate_messages_py/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_py.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/control_msgs_generate_messages_py.dir/build
+.PHONY : control_msgs_generate_messages_py/fast
+
+# Convenience name for target.
 moveit/moveit_ros/moveit_servo/CMakeFiles/run_tests_moveit_servo.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/run_tests_moveit_servo.dir/rule
 .PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/run_tests_moveit_servo.dir/rule
@@ -526,21 +616,6 @@ clean_test_results_moveit_servo: moveit/moveit_ros/moveit_servo/CMakeFiles/clean
 clean_test_results_moveit_servo/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/clean_test_results_moveit_servo.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/clean_test_results_moveit_servo.dir/build
 .PHONY : clean_test_results_moveit_servo/fast
-
-# Convenience name for target.
-moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_pose_tracking_test.test.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_pose_tracking_test.test.dir/rule
-.PHONY : moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_pose_tracking_test.test.dir/rule
-
-# Convenience name for target.
-_run_tests_moveit_servo_rostest_test_pose_tracking_test.test: moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_pose_tracking_test.test.dir/rule
-
-.PHONY : _run_tests_moveit_servo_rostest_test_pose_tracking_test.test
-
-# fast build rule for target.
-_run_tests_moveit_servo_rostest_test_pose_tracking_test.test/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_pose_tracking_test.test.dir/build.make moveit/moveit_ros/moveit_servo/CMakeFiles/_run_tests_moveit_servo_rostest_test_pose_tracking_test.test.dir/build
-.PHONY : _run_tests_moveit_servo_rostest_test_pose_tracking_test.test/fast
 
 # Convenience name for target.
 moveit/moveit_ros/moveit_servo/CMakeFiles/servo_cpp_interface_test.dir/rule:
@@ -888,38 +963,43 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install/local"
 	@echo "... install"
 	@echo "... list_install_components"
-	@echo "... servo_server"
-	@echo "... pose_tracking_test"
-	@echo "... pose_tracking_example"
+	@echo "... rebuild_cache"
+	@echo "... edit_cache"
+	@echo "... test"
+	@echo "... _run_tests_moveit_servo_rostest_test_pose_tracking_test.test"
 	@echo "... run_tests_moveit_servo_rostest_test_pose_tracking_test.test"
-	@echo "... control_toolbox_generate_messages_nodejs"
-	@echo "... run_tests_moveit_servo_rostest"
 	@echo "... moveit_servo_cpp_api"
+	@echo "... run_tests_moveit_servo_rostest"
 	@echo "... control_toolbox_generate_messages_cpp"
+	@echo "... control_msgs_generate_messages_nodejs"
+	@echo "... pose_tracking_example"
+	@echo "... install/local"
+	@echo "... control_msgs_generate_messages_lisp"
 	@echo "... cpp_interface_example"
+	@echo "... control_toolbox_generate_messages_nodejs"
+	@echo "... control_msgs_generate_messages_cpp"
 	@echo "... pose_tracking"
 	@echo "... control_toolbox_gencfg"
 	@echo "... run_tests_moveit_servo_rostest_test_servo_cpp_interface_test.test"
 	@echo "... control_toolbox_generate_messages_py"
-	@echo "... spacenav_to_twist"
 	@echo "... _run_tests_moveit_servo_rostest_test_servo_cpp_interface_test.test"
-	@echo "... basic_servo_tests"
+	@echo "... control_msgs_generate_messages_eus"
+	@echo "... spacenav_to_twist"
+	@echo "... servo_server"
+	@echo "... pose_tracking_test"
 	@echo "... control_toolbox_generate_messages_eus"
+	@echo "... basic_servo_tests"
 	@echo "... _run_tests_moveit_servo"
 	@echo "... _run_tests_moveit_servo_rostest"
 	@echo "... control_toolbox_generate_messages_lisp"
 	@echo "... run_tests_moveit_servo_rostest_test_basic_servo_tests.test"
 	@echo "... _run_tests_moveit_servo_rostest_test_basic_servo_tests.test"
+	@echo "... control_msgs_generate_messages_py"
 	@echo "... run_tests_moveit_servo"
 	@echo "... clean_test_results_moveit_servo"
-	@echo "... _run_tests_moveit_servo_rostest_test_pose_tracking_test.test"
 	@echo "... servo_cpp_interface_test"
-	@echo "... test"
-	@echo "... edit_cache"
-	@echo "... rebuild_cache"
 	@echo "... src/collision_check.o"
 	@echo "... src/collision_check.i"
 	@echo "... src/collision_check.s"

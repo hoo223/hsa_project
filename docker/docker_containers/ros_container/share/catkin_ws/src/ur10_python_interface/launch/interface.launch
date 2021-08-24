@@ -9,7 +9,7 @@
  
     <!-- Remap follow_joint_trajectory -->
     <remap if="$(arg sim)" from="/follow_joint_trajectory" to="/arm_controller/follow_joint_trajectory"/>
-    <!--remap if="$(arg real)" from="/arm_controller/follow_joint_trajectory" to="/scaled_pos_joint_traj_controller/follow_joint_trajectory"/-->
+    <remap if="$(arg real)" from="/arm_controller/follow_joint_trajectory" to="/scaled_pos_joint_traj_controller/follow_joint_trajectory"/>
 
     <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
     <include file="$(find ur10_moveit_config)/launch/move_group.launch">
@@ -22,8 +22,10 @@
     <!-- joystick node -->
     <node name="joy_command" pkg="ur10_python_interface" type="joystick.py" output="log"/>
 
+    <param name="interface" type="str" value="not ready"/>
+
     <!-- ur10 python interface node -->
-    <node name="robot_interface" pkg="ur10_python_interface" type="move_group_python_interface.py" output="screen"/>
+    <node name="robot_interface" pkg="ur10_python_interface" type="move_group_python_interface.py" output="screen"/>    
 
     <!-- mode manager node -->
     <node name="mode_manager" pkg="ur10_python_interface" type="mode_manager.py" output="log"/>

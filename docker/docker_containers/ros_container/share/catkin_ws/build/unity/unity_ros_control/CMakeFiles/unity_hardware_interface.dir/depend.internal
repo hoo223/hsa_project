@@ -110,6 +110,9 @@ unity/unity_ros_control/CMakeFiles/unity_hardware_interface.dir/src/unity_hardwa
  /opt/ros/noetic/include/std_msgs/Header.h
  /opt/ros/noetic/include/std_msgs/MultiArrayDimension.h
  /opt/ros/noetic/include/std_msgs/MultiArrayLayout.h
+ /opt/ros/noetic/include/std_srvs/Trigger.h
+ /opt/ros/noetic/include/std_srvs/TriggerRequest.h
+ /opt/ros/noetic/include/std_srvs/TriggerResponse.h
  /opt/ros/noetic/include/xmlrpcpp/XmlRpcDecl.h
  /opt/ros/noetic/include/xmlrpcpp/XmlRpcValue.h
  /root/share/catkin_ws/src/unity/unity_ros_control/include/unity_ros_control/unity_hardware_interface.h

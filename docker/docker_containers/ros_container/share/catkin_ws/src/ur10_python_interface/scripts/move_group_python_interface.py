@@ -94,21 +94,17 @@ class MoveGroupPythonInteface(object):
     move_group.set_max_acceleration_scaling_factor(1.0)
 
     # ik solver
-    ik_solver = GetIK(group="manipulator")
+    #ik_solver = GetIK(group="manipulator")
 
     # publisher
     vel_pub = rospy.Publisher('/'+velocity_controller+'/command', Float64MultiArray, queue_size=10)
-    target_pose_pub = rospy.Publisher("target_pose", Pose, queue_size= 1000)
+
     ## Create a `DisplayTrajectory`_ ROS publisher which is used to display
     ## trajectories in Rviz:
     display_trajectory_publisher = rospy.Publisher('/move_group/display_planned_path',
                                                    moveit_msgs.msg.DisplayTrajectory,
                                                    queue_size=20)
     self.teleop_state_pub = rospy.Publisher('teleop_state', String, queue_size=10)
-
-
-    # subscriber
-    joy_sub = rospy.Subscriber('joy_command', Float64MultiArray, self.joy_command_callback)
 
     # service
     self.change_to_vel_controller_service = rospy.Service('change_to_vel_controller', Trigger, self.change_to_velocity_controller)
@@ -150,7 +146,7 @@ class MoveGroupPythonInteface(object):
     self.planning_frame = planning_frame
     self.eef_link = eef_link
     self.group_names = group_names
-    self.ik_solver = ik_solver
+    #self.ik_solver = ik_solver
     self.vel_pub = vel_pub
     self.base_controller = base_controller
     self.velocity_controller = velocity_controller
@@ -517,10 +513,6 @@ class MoveGroupPythonInteface(object):
     res.message = "start teleop"
     return res
 
-  def joy_command_callback(self, data):
-    self.joy_command = data.data
-    self.button = self.joy_command[4]
-
   def joint_velocity_command(self, target_vel): 
     joint_vel_msg = Float64MultiArray() 
     joint_vel_msg.data = target_vel 
@@ -537,12 +529,31 @@ class MoveGroupPythonInteface(object):
 
 
 def main():
-  base_controller = "arm_controller"
-  velocity_controller = "joint_group_velocity_controller"
+  args = rospy.myargv()
+  if len(args) < 2:
+      print("You need to type the mode argument: 'sim' or 'real'")
+      print("ex: ~/ur10_python_interface.py sim")
+      print("ex: ~/ur10_python_interface.py real")
+      exit()
+  else:
+      mode = args[1]
+      print(mode)
+  if mode == "real":
+      base_controller = "scaled_pos_joint_traj_controller"
+      velocity_controller = "joint_group_vel_controller"
+  else:
+      base_controller = "arm_controller"
+      velocity_controller = "joint_group_vel_controller"
+
+  #base_controller = "arm_controller" # virtual
+  #base_controller = "scaled_pos_joint_traj_controller" # real
+  #velocity_controller = "joint_group_vel_controller"
   robot_interface = MoveGroupPythonInteface(base_controller=base_controller, 
                                             velocity_controller=velocity_controller, 
                                             gym=False, # unpause 일때만 가능, gym 환경에서 사용할 경우 gym=True
                                             verbose=False) 
+
+  rospy.set_param('interface', 'ready')
   rospy.spin()
 
 

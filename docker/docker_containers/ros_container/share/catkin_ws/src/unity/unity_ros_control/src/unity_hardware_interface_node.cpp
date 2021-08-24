@@ -13,7 +13,10 @@ int main(int argc, char** argv)
   UnityUR10 ur10;
 
   // Subscriber
-  ros::Subscriber unity_ur10_state_sub = nh.subscribe<sensor_msgs::JointState>("unity_ur10_joint_states", 100, boost::bind(&UnityUR10::stateCallback, &ur10, _1));
+  // ros::Subscriber unity_ur10_state_sub = nh.subscribe<sensor_msgs::JointState>("unity_ur10_joint_states", 100, boost::bind(&UnityUR10::stateCallback, &ur10, _1));
+
+  // Service
+  //ros::ServiceServer service = nh.advertiseService("/unity/change_to_vel_controller", changeToVelController);
 
   // Set up timers
   ros::Time timestamp, pre_timestamp;
@@ -63,3 +66,15 @@ int main(int argc, char** argv)
   ROS_INFO_STREAM_NAMED("hardware_interface", "Shutting down.");
   return 0;
 }
+
+// bool changeToVelController(std_srvs::Trigger::Request &req,
+//                            std_srvs::Trigger::Response &res)
+// {
+//   std::vector< std::string > start_controllers;
+//   std::vector< std::string > stop_controllers;
+//   start_controllers.push_back("joint_group_velocity_controller");
+//   stop_controllers.push_back("arm_controller");
+//   cm.switchController(start_controllers, stop_controllers, 1);
+//   res.success = true;
+//   return true;
+// }

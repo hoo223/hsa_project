@@ -5,9 +5,9 @@
   <arg name="gui" default="true" doc="Starts gazebo gui" />
   <arg name="sim" default="true" />
   <arg name="debug" default="false"/>
-  
+
   <include file="$(find ur10_python_interface)/launch/controller.launch"/>
   <include file="$(find ur10_python_interface)/launch/gazebo.launch"/>
-  <include file="$(find ur10_python_interface)/launch/interface.launch"/>  
+  <!--include file="$(find ur10_python_interface)/launch/interface.launch"/-->  
 
 </launch>

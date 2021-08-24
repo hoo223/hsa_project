@@ -70,7 +70,7 @@ joint_group_position_controller:
   type: position_controllers/JointGroupPositionController
   joints: *robot_joints
 
-joint_group_velocity_controller:
+joint_group_vel_controller:
   type: velocity_controllers/JointGroupVelocityController
   joints: *robot_joints
   gains: # Required because we're controlling an effort interface

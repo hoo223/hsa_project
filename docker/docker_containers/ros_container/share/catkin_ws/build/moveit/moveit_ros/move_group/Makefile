@@ -90,17 +90,6 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -122,6 +111,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -168,124 +168,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_capabilities_base.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_capabilities_base.dir/rule
-.PHONY : moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_capabilities_base.dir/rule
+moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test.dir/rule
 
 # Convenience name for target.
-moveit_move_group_capabilities_base: moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_capabilities_base.dir/rule
+_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test: moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test.dir/rule
 
-.PHONY : moveit_move_group_capabilities_base
+.PHONY : _run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test
 
 # fast build rule for target.
-moveit_move_group_capabilities_base/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_capabilities_base.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_capabilities_base.dir/build
-.PHONY : moveit_move_group_capabilities_base/fast
-
-# Convenience name for target.
-moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest.dir/rule
-.PHONY : moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest.dir/rule
-
-# Convenience name for target.
-_run_tests_moveit_ros_move_group_rostest: moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest.dir/rule
-
-.PHONY : _run_tests_moveit_ros_move_group_rostest
-
-# fast build rule for target.
-_run_tests_moveit_ros_move_group_rostest/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest.dir/build
-.PHONY : _run_tests_moveit_ros_move_group_rostest/fast
-
-# Convenience name for target.
-moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_default_capabilities.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_default_capabilities.dir/rule
-.PHONY : moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_default_capabilities.dir/rule
-
-# Convenience name for target.
-moveit_move_group_default_capabilities: moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_default_capabilities.dir/rule
-
-.PHONY : moveit_move_group_default_capabilities
-
-# fast build rule for target.
-moveit_move_group_default_capabilities/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_default_capabilities.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_default_capabilities.dir/build
-.PHONY : moveit_move_group_default_capabilities/fast
-
-# Convenience name for target.
-moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group.dir/rule
-.PHONY : moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group.dir/rule
-
-# Convenience name for target.
-run_tests_moveit_ros_move_group: moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group.dir/rule
-
-.PHONY : run_tests_moveit_ros_move_group
-
-# fast build rule for target.
-run_tests_moveit_ros_move_group/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group.dir/build
-.PHONY : run_tests_moveit_ros_move_group/fast
-
-# Convenience name for target.
-moveit/moveit_ros/move_group/CMakeFiles/move_group.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/move_group.dir/rule
-.PHONY : moveit/moveit_ros/move_group/CMakeFiles/move_group.dir/rule
-
-# Convenience name for target.
-move_group: moveit/moveit_ros/move_group/CMakeFiles/move_group.dir/rule
-
-.PHONY : move_group
-
-# fast build rule for target.
-move_group/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/move_group.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/move_group.dir/build
-.PHONY : move_group/fast
-
-# Convenience name for target.
-moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group.dir/rule
-.PHONY : moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group.dir/rule
-
-# Convenience name for target.
-_run_tests_moveit_ros_move_group: moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group.dir/rule
-
-.PHONY : _run_tests_moveit_ros_move_group
-
-# fast build rule for target.
-_run_tests_moveit_ros_move_group/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group.dir/build
-.PHONY : _run_tests_moveit_ros_move_group/fast
-
-# Convenience name for target.
-moveit/moveit_ros/move_group/CMakeFiles/list_move_group_capabilities.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/list_move_group_capabilities.dir/rule
-.PHONY : moveit/moveit_ros/move_group/CMakeFiles/list_move_group_capabilities.dir/rule
-
-# Convenience name for target.
-list_move_group_capabilities: moveit/moveit_ros/move_group/CMakeFiles/list_move_group_capabilities.dir/rule
-
-.PHONY : list_move_group_capabilities
-
-# fast build rule for target.
-list_move_group_capabilities/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/list_move_group_capabilities.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/list_move_group_capabilities.dir/build
-.PHONY : list_move_group_capabilities/fast
-
-# Convenience name for target.
-moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group_rostest.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group_rostest.dir/rule
-.PHONY : moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group_rostest.dir/rule
-
-# Convenience name for target.
-run_tests_moveit_ros_move_group_rostest: moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group_rostest.dir/rule
-
-.PHONY : run_tests_moveit_ros_move_group_rostest
-
-# fast build rule for target.
-run_tests_moveit_ros_move_group_rostest/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group_rostest.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group_rostest.dir/build
-.PHONY : run_tests_moveit_ros_move_group_rostest/fast
+_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test.dir/build
+.PHONY : _run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test/fast
 
 # Convenience name for target.
 moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test.dir/rule:
@@ -303,6 +198,36 @@ run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_
 .PHONY : run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test/fast
 
 # Convenience name for target.
+moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_cpp: moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
+
+.PHONY : std_srvs_generate_messages_cpp
+
+# fast build rule for target.
+std_srvs_generate_messages_cpp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
+.PHONY : std_srvs_generate_messages_cpp/fast
+
+# Convenience name for target.
+moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_eus.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_eus: moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
+
+.PHONY : std_srvs_generate_messages_eus
+
+# fast build rule for target.
+std_srvs_generate_messages_eus/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_eus.dir/build
+.PHONY : std_srvs_generate_messages_eus/fast
+
+# Convenience name for target.
 moveit/moveit_ros/move_group/CMakeFiles/clean_test_results_moveit_ros_move_group.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/clean_test_results_moveit_ros_move_group.dir/rule
 .PHONY : moveit/moveit_ros/move_group/CMakeFiles/clean_test_results_moveit_ros_move_group.dir/rule
@@ -318,19 +243,169 @@ clean_test_results_moveit_ros_move_group/fast:
 .PHONY : clean_test_results_moveit_ros_move_group/fast
 
 # Convenience name for target.
-moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test.dir/rule
-.PHONY : moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test.dir/rule
+moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test: moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test.dir/rule
+std_srvs_generate_messages_lisp: moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
 
-.PHONY : _run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test
+.PHONY : std_srvs_generate_messages_lisp
 
 # fast build rule for target.
-_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test.dir/build
-.PHONY : _run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test/fast
+std_srvs_generate_messages_lisp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
+.PHONY : std_srvs_generate_messages_lisp/fast
+
+# Convenience name for target.
+moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_default_capabilities.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_default_capabilities.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_default_capabilities.dir/rule
+
+# Convenience name for target.
+moveit_move_group_default_capabilities: moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_default_capabilities.dir/rule
+
+.PHONY : moveit_move_group_default_capabilities
+
+# fast build rule for target.
+moveit_move_group_default_capabilities/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_default_capabilities.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_default_capabilities.dir/build
+.PHONY : moveit_move_group_default_capabilities/fast
+
+# Convenience name for target.
+moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_nodejs: moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+
+.PHONY : std_srvs_generate_messages_nodejs
+
+# fast build rule for target.
+std_srvs_generate_messages_nodejs/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
+.PHONY : std_srvs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_capabilities_base.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_capabilities_base.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_capabilities_base.dir/rule
+
+# Convenience name for target.
+moveit_move_group_capabilities_base: moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_capabilities_base.dir/rule
+
+.PHONY : moveit_move_group_capabilities_base
+
+# fast build rule for target.
+moveit_move_group_capabilities_base/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_capabilities_base.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/moveit_move_group_capabilities_base.dir/build
+.PHONY : moveit_move_group_capabilities_base/fast
+
+# Convenience name for target.
+moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_py.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_py.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_py: moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_py.dir/rule
+
+.PHONY : std_srvs_generate_messages_py
+
+# fast build rule for target.
+std_srvs_generate_messages_py/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_py.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/std_srvs_generate_messages_py.dir/build
+.PHONY : std_srvs_generate_messages_py/fast
+
+# Convenience name for target.
+moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest.dir/rule
+
+# Convenience name for target.
+_run_tests_moveit_ros_move_group_rostest: moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest.dir/rule
+
+.PHONY : _run_tests_moveit_ros_move_group_rostest
+
+# fast build rule for target.
+_run_tests_moveit_ros_move_group_rostest/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group_rostest.dir/build
+.PHONY : _run_tests_moveit_ros_move_group_rostest/fast
+
+# Convenience name for target.
+moveit/moveit_ros/move_group/CMakeFiles/move_group.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/move_group.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/move_group.dir/rule
+
+# Convenience name for target.
+move_group: moveit/moveit_ros/move_group/CMakeFiles/move_group.dir/rule
+
+.PHONY : move_group
+
+# fast build rule for target.
+move_group/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/move_group.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/move_group.dir/build
+.PHONY : move_group/fast
+
+# Convenience name for target.
+moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group_rostest.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group_rostest.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group_rostest.dir/rule
+
+# Convenience name for target.
+run_tests_moveit_ros_move_group_rostest: moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group_rostest.dir/rule
+
+.PHONY : run_tests_moveit_ros_move_group_rostest
+
+# fast build rule for target.
+run_tests_moveit_ros_move_group_rostest/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group_rostest.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group_rostest.dir/build
+.PHONY : run_tests_moveit_ros_move_group_rostest/fast
+
+# Convenience name for target.
+moveit/moveit_ros/move_group/CMakeFiles/list_move_group_capabilities.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/list_move_group_capabilities.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/list_move_group_capabilities.dir/rule
+
+# Convenience name for target.
+list_move_group_capabilities: moveit/moveit_ros/move_group/CMakeFiles/list_move_group_capabilities.dir/rule
+
+.PHONY : list_move_group_capabilities
+
+# fast build rule for target.
+list_move_group_capabilities/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/list_move_group_capabilities.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/list_move_group_capabilities.dir/build
+.PHONY : list_move_group_capabilities/fast
+
+# Convenience name for target.
+moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group.dir/rule
+
+# Convenience name for target.
+run_tests_moveit_ros_move_group: moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group.dir/rule
+
+.PHONY : run_tests_moveit_ros_move_group
+
+# fast build rule for target.
+run_tests_moveit_ros_move_group/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/run_tests_moveit_ros_move_group.dir/build
+.PHONY : run_tests_moveit_ros_move_group/fast
+
+# Convenience name for target.
+moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group.dir/rule
+.PHONY : moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group.dir/rule
+
+# Convenience name for target.
+_run_tests_moveit_ros_move_group: moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group.dir/rule
+
+.PHONY : _run_tests_moveit_ros_move_group
+
+# fast build rule for target.
+_run_tests_moveit_ros_move_group/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group.dir/build.make moveit/moveit_ros/move_group/CMakeFiles/_run_tests_moveit_ros_move_group.dir/build
+.PHONY : _run_tests_moveit_ros_move_group/fast
 
 src/default_capabilities/apply_planning_scene_service_capability.o: src/default_capabilities/apply_planning_scene_service_capability.cpp.o
 
@@ -746,21 +821,26 @@ help:
 	@echo "... install/local"
 	@echo "... install"
 	@echo "... list_install_components"
-	@echo "... moveit_move_group_capabilities_base"
-	@echo "... _run_tests_moveit_ros_move_group_rostest"
-	@echo "... moveit_move_group_default_capabilities"
-	@echo "... run_tests_moveit_ros_move_group"
-	@echo "... move_group"
-	@echo "... test"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... _run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test"
+	@echo "... run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test"
+	@echo "... std_srvs_generate_messages_cpp"
+	@echo "... std_srvs_generate_messages_eus"
+	@echo "... clean_test_results_moveit_ros_move_group"
+	@echo "... std_srvs_generate_messages_lisp"
+	@echo "... moveit_move_group_default_capabilities"
+	@echo "... std_srvs_generate_messages_nodejs"
+	@echo "... moveit_move_group_capabilities_base"
+	@echo "... std_srvs_generate_messages_py"
+	@echo "... _run_tests_moveit_ros_move_group_rostest"
+	@echo "... test"
+	@echo "... move_group"
+	@echo "... run_tests_moveit_ros_move_group_rostest"
+	@echo "... list_move_group_capabilities"
+	@echo "... run_tests_moveit_ros_move_group"
 	@echo "... install/strip"
 	@echo "... _run_tests_moveit_ros_move_group"
-	@echo "... list_move_group_capabilities"
-	@echo "... run_tests_moveit_ros_move_group_rostest"
-	@echo "... run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test"
-	@echo "... clean_test_results_moveit_ros_move_group"
-	@echo "... _run_tests_moveit_ros_move_group_rostest_test_test_check_state_validity_in_empty_scene.test"
 	@echo "... src/default_capabilities/apply_planning_scene_service_capability.o"
 	@echo "... src/default_capabilities/apply_planning_scene_service_capability.i"
 	@echo "... src/default_capabilities/apply_planning_scene_service_capability.s"

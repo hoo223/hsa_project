@@ -31,6 +31,8 @@ class ModeManager(object):
   def __init__(self):
     super(ModeManager, self).__init__()
 
+    self.button = 0.0
+
     # subscriber
     joy_sub = rospy.Subscriber('joy_command', Float64MultiArray, self.joy_command_callback)
 
@@ -58,6 +60,10 @@ def main():
   rospy.init_node("mode_manager", anonymous=True)
   rate = rospy.Rate(1100)
   mm = ModeManager() 
+
+  # wait for initializing the interface
+  while rospy.get_param('/interface') != 'ready':
+    print("interface not ready")
 
   ## set init pose
   while not mm.reset_pose().success:

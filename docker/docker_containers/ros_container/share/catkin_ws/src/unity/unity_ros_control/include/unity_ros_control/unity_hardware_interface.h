@@ -2,6 +2,7 @@
 #include <controller_manager/controller_manager.h>
 #include <sensor_msgs/JointState.h>
 #include <std_msgs/Float64MultiArray.h>
+#include <std_srvs/Trigger.h>
 
 #include <hardware_interface/joint_command_interface.h>
 #include <hardware_interface/joint_state_interface.h>
@@ -38,6 +39,7 @@ private:
   ros::NodeHandle nh;
   ros::Publisher position_command_pub;
   ros::Publisher velocity_command_pub;
+  ros::Subscriber unity_ur10_state_sub;
   std_msgs::Float64MultiArray command;
   std::string con_type;
 };
@@ -93,6 +95,7 @@ UnityUR10::UnityUR10()
 
   position_command_pub = nh.advertise<std_msgs::Float64MultiArray>("position_command", 100);
   velocity_command_pub = nh.advertise<std_msgs::Float64MultiArray>("velocity_command", 100);
+  unity_ur10_state_sub = nh.subscribe<sensor_msgs::JointState>("unity_ur10_joint_states", 100, boost::bind(&UnityUR10::stateCallback, this, _1));
 }
 
 void UnityUR10::read(const ros::Time& time, const ros::Duration& period)

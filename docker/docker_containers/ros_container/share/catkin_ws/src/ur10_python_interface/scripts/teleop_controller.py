@@ -60,7 +60,7 @@ class TeleopController(object):
     if env:
       velocity_name = '/human_action'
     else:
-      velocity_name = '/joint_group_velocity_controller/command'
+      velocity_name = '/joint_group_vel_controller/command'
     self.vel_pub = rospy.Publisher(velocity_name, Float64MultiArray, queue_size=10)
 
   def control_loop(self):
