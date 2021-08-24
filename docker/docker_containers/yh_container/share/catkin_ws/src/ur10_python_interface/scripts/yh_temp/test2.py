@@ -115,7 +115,7 @@ class UR10_STM:
         saver = tf.train.Saver()
         writer = tf.summary.FileWriter('./graphs',self.sess.graph)
 
-        saver.restore(self.sess,'/root/bb_model.ckpt')
+        #saver.restore(self.sess,'/root/bb_model.ckpt')
         print('successfully model loaded')
 
 def sub_callback(data):

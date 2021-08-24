@@ -5,15 +5,25 @@ $ docker attach ur10
 $ roslaunch ur_robot_driver ur10_bringup.launch robot_ip:=192.168.0.2
 
 terminal 2
+$ docker exec -it yh bash
+$ roslaunch ur10_moveit_config move_group.launch
+
+
+terminal 3
 $docker start yh
 $docker attach yh
+$python3 /share/catkin_ws/src/ur10_python_interface/scripts/test4.py
 
-pakage copy and paste except ur10 
+
+
+
+
+
 
 install all the dependency of package
 
 $rosdep install --from-paths src --ignore-src -r -y
-
+ ==> rosdep 
 cw && cm
 catkin_make (cm)
 

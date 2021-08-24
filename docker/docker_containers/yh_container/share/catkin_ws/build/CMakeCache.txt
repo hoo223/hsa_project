@@ -1847,10 +1847,10 @@ rqt_controller_manager_BINARY_DIR:STATIC=/root/share/catkin_ws/build/etc/rqt_con
 rqt_controller_manager_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/etc/rqt_controller_manager
 
 //Value Computed by CMake
-rqt_joint_trajectory_controller_BINARY_DIR:STATIC=/root/share/catkin_ws/build/etc/ros_controllers/rqt_joint_trajectory_controller
+rqt_joint_trajectory_controller_BINARY_DIR:STATIC=/root/share/catkin_ws/build/rqt_joint_trajectory_controller
 
 //Value Computed by CMake
-rqt_joint_trajectory_controller_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/etc/ros_controllers/rqt_joint_trajectory_controller
+rqt_joint_trajectory_controller_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/rqt_joint_trajectory_controller
 
 //The directory containing a CMake configuration file for rviz.
 rviz_DIR:PATH=/opt/ros/noetic/share/rviz/cmake
@@ -2290,7 +2290,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=116
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=117
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

@@ -1,41 +1,28 @@
 #!/usr/bin/python3
 # -*- coding: utf8 -*- 
 
-
-## standard library
 import sys
-#print(sys.executable) # python version
+print(sys.executable) # python version
 import copy
 from math import *
 import pygame
 import time
 import numpy as np
-from numpy.linalg import inv, det, svd, eig
+from numpy.linalg import inv, det
 
-## ros library
 import rospy
-from tf.transformations import *
-from std_msgs.msg import String
-from std_msgs.msg import Float64MultiArray
-from std_srvs.srv import Trigger, TriggerResponse
-from geometry_msgs.msg import PoseStamped, Quaternion, Pose
-from geometry_msgs.msg import Quaternion
-from controller_manager_msgs.srv import SwitchControllerRequest, SwitchController
-import geometry_msgs
-
-## moveit library
 import moveit_commander
 from moveit_commander.conversions import pose_to_list
 import moveit_msgs.msg
+from tf.transformations import *
+from std_msgs.msg import String
+from std_msgs.msg import Float64MultiArray
+from geometry_msgs.msg import PoseStamped, Quaternion
+from geometry_msgs.msg import Quaternion
+from controller_manager_msgs.srv import SwitchControllerRequest, SwitchController
 
-## custom library
 from get_ik import GetIK
 
-## pygame init
-pygame.init()
-
-
-## function definition
 
 def all_close(goal, actual, tolerance):
   """
@@ -59,19 +46,16 @@ def all_close(goal, actual, tolerance):
 
   return True
 
-
-## class definition
-class MoveGroupPythonInteface(object):
+class MoveGroupPythonInterface(object):
   """MoveGroupPythonInteface"""
-  def __init__(self, base_controller, velocity_controller, arg_group_name="manipulator", gym=False, verbose=False):
-    super(MoveGroupPythonInteface, self).__init__()
+  def __init__(self, base_controller, velocity_controller, arg_group_name="manipulator"):
+    super(MoveGroupPythonInterface, self).__init__()
     
     ## BEGIN_SUB_TUTORIAL setup
     ##
     ## First initialize `moveit_commander`_ and a `rospy`_ node:
     moveit_commander.roscpp_initialize(sys.argv)
-    if gym == False:
-      rospy.init_node('move_group_python_interface_tutorial', anonymous=True)
+    rospy.init_node('move_group_python_interface_tutorial', anonymous=True)
 
     ## Instantiate a `RobotCommander`_ object. Provides information such as the robot's
     ## kinematic model and the robot's current joint states
@@ -90,31 +74,19 @@ class MoveGroupPythonInteface(object):
     ## This interface can be used to plan and execute motions:
     group_name = arg_group_name
     move_group = moveit_commander.MoveGroupCommander(group_name)
-    move_group.set_max_velocity_scaling_factor(1.0)
-    move_group.set_max_acceleration_scaling_factor(1.0)
 
     # ik solver
     ik_solver = GetIK(group="manipulator")
 
-    # publisher
+    # velocity command publisher
+    #vel_pub = rospy.Publisher('/joint_group_effort_controller/command', Float64MultiArray, queue_size=10)
     vel_pub = rospy.Publisher('/'+velocity_controller+'/command', Float64MultiArray, queue_size=10)
-    target_pose_pub = rospy.Publisher("target_pose", Pose, queue_size= 1000)
+
     ## Create a `DisplayTrajectory`_ ROS publisher which is used to display
     ## trajectories in Rviz:
     display_trajectory_publisher = rospy.Publisher('/move_group/display_planned_path',
                                                    moveit_msgs.msg.DisplayTrajectory,
                                                    queue_size=20)
-    self.teleop_state_pub = rospy.Publisher('teleop_state', String, queue_size=10)
-
-
-    # subscriber
-    joy_sub = rospy.Subscriber('joy_command', Float64MultiArray, self.joy_command_callback)
-
-    # service
-    self.change_to_vel_controller_service = rospy.Service('change_to_vel_controller', Trigger, self.change_to_velocity_controller)
-    self.change_to_base_controller_service = rospy.Service('change_to_base_controller', Trigger, self.change_to_base_controller)
-    self.reset_pose_service = rospy.Service('reset_pose', Trigger, self.reset_pose)
-    self.start_teleop_service = rospy.Service('start_teleop', Trigger, self.start_teleop)
 
     ## END_SUB_TUTORIAL
 
@@ -155,18 +127,8 @@ class MoveGroupPythonInteface(object):
     self.base_controller = base_controller
     self.velocity_controller = velocity_controller
     self.xyzw_array = lambda o: numpy.array([o.x, o.y, o.z, o.w])
-    self.fpsClock = pygame.time.Clock()
-    self.verbose = verbose
 
-    # teleop parameters
-    self.button = 0.0
-    self.speed_gain = 0.001 # for input scale
-    self.p_gain = 3         # for target tracking
-    self.speed_level = 7    
-    rospy.set_param('teleop_state', 'stop')
-    self.teleop_state = rospy.get_param('teleop_state')
-
-  def go_to_init_state(self):
+  def go_to_init_state(self,joint_goal=[-1.601372543965475, -1.3494799772845667, -2.0361130873309534, 0.2808833122253418, 1.6211304664611816, 0.09116100519895554]):
     # Copy class variables to local variables to make the web tutorials more clear.
     # In practice, you should use the class variables directly unless you have a good
     # reason not to.
@@ -179,8 +141,6 @@ class MoveGroupPythonInteface(object):
     ## The Panda's zero configuration is at a `singularity <https://www.quora.com/Robotics-What-is-meant-by-kinematic-singularity>`_ so the first
     ## thing we want to do is move it to a slightly better configuration.
     # We can get the joint values from the group and adjust some of the values:
-    joint_goal = [-1.601372543965475, -1.3494799772845667, -2.0361130873309534, 0.25178295286581065, 1.6211304664611816, 0.09116100519895554]
-    #joint_goal = [-1.5999897112701706, -1.3500032022166835, -2.040067726204013, -1.3188300763644802, 1.6184002310830374, 0.09156995930090517]
 
     # The go command can be called with joint values, poses, or without any
     # parameters if you have already set the pose or joint target for the group
@@ -193,15 +153,7 @@ class MoveGroupPythonInteface(object):
 
     # For testing:
     current_joints = move_group.get_current_joint_values()
-
-    time.sleep(0.1)
-    # get target pose
-    current_pose = self.get_current_pose(rpy=True)
-    print(current_pose)
-    self.target_pose = current_pose
-    #q_orig = self.xyzw_array(self.get_current_pose().orientation)
-    
-    return all_close(joint_goal, current_joints, 0.05)  
+    return all_close(joint_goal, current_joints, 0.01)
 
   def go_to_joint_state(self, j1=0, j2=-pi/2, j3=0, j4=-pi/2, j5=0, j6=0):
     # Copy class variables to local variables to make the web tutorials more clear.
@@ -374,53 +326,166 @@ class MoveGroupPythonInteface(object):
     ## END_SUB_TUTORIAL
 
 
+  def wait_for_state_update(self, box_is_known=False, box_is_attached=False, timeout=4):
+    # Copy class variables to local variables to make the web tutorials more clear.
+    # In practice, you should use the class variables directly unless you have a good
+    # reason not to.
+    box_name = self.box_name
+    scene = self.scene
+
+    ## BEGIN_SUB_TUTORIAL wait_for_scene_update
+    ##
+    ## Ensuring Collision Updates Are Receieved
+    ## ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ## If the Python node dies before publishing a collision object update message, the message
+    ## could get lost and the box will not appear. To ensure that the updates are
+    ## made, we wait until we see the changes reflected in the
+    ## ``get_attached_objects()`` and ``get_known_object_names()`` lists.
+    ## For the purpose of this tutorial, we call this function after adding,
+    ## removing, attaching or detaching an object in the planning scene. We then wait
+    ## until the updates have been made or ``timeout`` seconds have passed
+    start = rospy.get_time()
+    seconds = rospy.get_time()
+    while (seconds - start < timeout) and not rospy.is_shutdown():
+      # Test if the box is in attached objects
+      attached_objects = scene.get_attached_objects([box_name])
+      is_attached = len(attached_objects.keys()) > 0
+
+      # Test if the box is in the scene.
+      # Note that attaching the box will remove it from known_objects
+      is_known = box_name in scene.get_known_object_names()
+
+      # Test if we are in the expected state
+      if (box_is_attached == is_attached) and (box_is_known == is_known):
+        return True
+
+      # Sleep so that we give other threads time on the processor
+      rospy.sleep(0.1)
+      seconds = rospy.get_time()
+
+    # If we exited the while loop without returning then we timed out
+    return False
+    ## END_SUB_TUTORIAL
+
+
+  def add_box(self, timeout=4):
+    # Copy class variables to local variables to make the web tutorials more clear.
+    # In practice, you should use the class variables directly unless you have a good
+    # reason not to.
+    box_name = self.box_name
+    scene = self.scene
+
+    ## BEGIN_SUB_TUTORIAL add_box
+    ##
+    ## Adding Objects to the Planning Scene
+    ## ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ## First, we will create a box in the planning scene at the location of the left finger:
+    box_pose = geometry_msgs.msg.PoseStamped()
+    box_pose.header.frame_id = "panda_leftfinger"
+    box_pose.pose.orientation.w = 1.0
+    box_pose.pose.position.z = 0.07 # slightly above the end effector
+    box_name = "box"
+    scene.add_box(box_name, box_pose, size=(0.1, 0.1, 0.1))
+
+    ## END_SUB_TUTORIAL
+    # Copy local variables back to class variables. In practice, you should use the class
+    # variables directly unless you have a good reason not to.
+    self.box_name=box_name
+    return self.wait_for_state_update(box_is_known=True, timeout=timeout)
+
+
+  def attach_box(self, timeout=4):
+    # Copy class variables to local variables to make the web tutorials more clear.
+    # In practice, you should use the class variables directly unless you have a good
+    # reason not to.
+    box_name = self.box_name
+    robot = self.robot
+    scene = self.scene
+    eef_link = self.eef_link
+    group_names = self.group_names
+
+    ## BEGIN_SUB_TUTORIAL attach_object
+    ##
+    ## Attaching Objects to the Robot
+    ## ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ## Next, we will attach the box to the Panda wrist. Manipulating objects requires the
+    ## robot be able to touch them without the planning scene reporting the contact as a
+    ## collision. By adding link names to the ``touch_links`` array, we are telling the
+    ## planning scene to ignore collisions between those links and the box. For the Panda
+    ## robot, we set ``grasping_group = 'hand'``. If you are using a different robot,
+    ## you should change this value to the name of your end effector group name.
+    grasping_group = 'hand'
+    touch_links = robot.get_link_names(group=grasping_group)
+    scene.attach_box(eef_link, box_name, touch_links=touch_links)
+    ## END_SUB_TUTORIAL
+
+    # We wait for the planning scene to update.
+    return self.wait_for_state_update(box_is_attached=True, box_is_known=False, timeout=timeout)
+
+
+  def detach_box(self, timeout=4):
+    # Copy class variables to local variables to make the web tutorials more clear.
+    # In practice, you should use the class variables directly unless you have a good
+    # reason not to.
+    box_name = self.box_name
+    scene = self.scene
+    eef_link = self.eef_link
+
+    ## BEGIN_SUB_TUTORIAL detach_object
+    ##
+    ## Detaching Objects from the Robot
+    ## ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ## We can also detach and remove the object from the planning scene:
+    scene.remove_attached_object(eef_link, name=box_name)
+    ## END_SUB_TUTORIAL
+
+    # We wait for the planning scene to update.
+    return self.wait_for_state_update(box_is_known=True, box_is_attached=False, timeout=timeout)
+
+
+  def remove_box(self, timeout=4):
+    # Copy class variables to local variables to make the web tutorials more clear.
+    # In practice, you should use the class variables directly unless you have a good
+    # reason not to.
+    box_name = self.box_name
+    scene = self.scene
+
+    ## BEGIN_SUB_TUTORIAL remove_object
+    ##
+    ## Removing Objects from the Planning Scene
+    ## ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ## We can remove the box from the world.
+    scene.remove_world_object(box_name)
+
+    ## **Note:** The object must be detached before we can remove it from the world
+    ## END_SUB_TUTORIAL
+
+    # We wait for the planning scene to update.
+    return self.wait_for_state_update(box_is_attached=False, box_is_known=False, timeout=timeout)
+
+
   def get_current_joint_value(self):
     return self.move_group.get_current_joint_values()
 
 
-  def get_current_pose(self, rpy=False):
-    if rpy == True:
-      current_pose = self.move_group.get_current_pose().pose
-      #print("{:.5f}, {:.2f}".format(end - start, 1/(end - start)), end='\r')
-      x_pos = current_pose.position.x
-      y_pos = current_pose.position.y
-      z_pos = current_pose.position.z
-      current_RPY = euler_from_quaternion(self.xyzw_array(current_pose.orientation))
-      roll_pos = current_RPY[0]
-      pitch_pos = current_RPY[1]
-      yaw_pos = current_RPY[2]
-      
-      return np.array([x_pos, y_pos, z_pos, roll_pos, pitch_pos, yaw_pos])
-    else:
-      return self.move_group.get_current_pose().pose
+  def get_current_pose(self):
+    return self.move_group.get_current_pose().pose
 
 
-  def get_jacobian(self, joint_values):
-    return self.move_group.get_jacobian_matrix(joint_values)
-
-
-  def get_current_jacobian(self):
+  def get_jacobian(self):
     current_joints = self.get_current_joint_value()
     return self.move_group.get_jacobian_matrix(current_joints)
 
+  def get_jacobian_yh(self,q):
+    return self.move_group.get_jacobian_matrix(q)
 
-  def get_inv_jacobian(self, joint_values):
-    jacobian = self.get_jacobian(joint_values)
+  def get_inv_jacobian(self):
+    jacobian = self.get_jacobian()
     return inv(jacobian)
 
-
-  def get_singular(self, joint_values):
-    jacobian = self.get_jacobian(joint_values)
-    return abs(det(jacobian))
-
-
-  def get_svd(self, matrix):
-    return svd(matrix, full_matrices=True)
-
-
-  def get_eigen(self, A):
-    return eig(A)
-
+  def get_singular(self):
+    jacobian = self.get_jacobian()
+    return det(jacobian)
 
   def test_print(self):
     current_joint = self.move_group.get_current_joint_values()
@@ -429,7 +494,7 @@ class MoveGroupPythonInteface(object):
     current_pose = self.get_current_pose()
     print("current pose:", current_pose, type(current_pose))
 
-    singular = self.get_singular(current_joint)
+    singular = self.get_singular()
     print("singular: ", singular)
 
     # Quaternion to q_array
@@ -452,99 +517,8 @@ class MoveGroupPythonInteface(object):
     current_RPY = euler_from_quaternion(self.xyzw_array(current_orientation))
     print(current_RPY, type(current_RPY))
 
-
   # https://answers.ros.org/question/259022/switching-between-controllers-with-ros_control-controller_manager/
-  def controller_change(self, current_controller, target_controller, mode=""):
-    rospy.wait_for_service(mode + '/controller_manager/switch_controller')
-    try:
-        #create a handle for calling the service
-        switch_controller = rospy.ServiceProxy('/controller_manager/switch_controller', SwitchController)
-        # http://docs.ros.org/en/api/controller_manager_msgs/html/srv/SwitchController.html
-        req = SwitchControllerRequest()
-        req.start_controllers = [mode + "/" + target_controller]
-        req.stop_controllers = [mode + "/" + current_controller]
-        req.strictness = 1
-        req.start_asap = False
-        req.timeout = 0.0
-        #req = SwitchControllerRequest(start_controllers=target_controller, stop_controllers=current_controller, strictness=1, 
-        #                              start_asap=False, timeout=0.0)
-        res = switch_controller(req)
-        if res:
-            print(res)
-            print("controller changed from {} to {}".format(mode + "/" + current_controller, mode + "/" + target_controller))
-        else:
-            print("failed to change controller")
-    except rospy.ServiceException as e:
-        print("Service call failed: %s"%e) 
-
-  def change_to_velocity_controller(self, req):
-    self.controller_change(self.base_controller, self.velocity_controller)
-    self.controller_change(self.base_controller, self.velocity_controller, mode="/unity")
-    res = TriggerResponse()
-    res.success = True
-    res.message = "changed to velocity controller"
-    return res
-
-  def change_to_base_controller(self, req):
-    self.controller_change(self.velocity_controller, self.base_controller)
-    self.controller_change(self.velocity_controller, self.base_controller, mode="/unity")
-    res = TriggerResponse()
-    res.success = True
-    res.message = "changed to base controller"
-    return res
-
-  def reset_pose(self, req):
-    self.change_to_base_controller("")
-    rospy.set_param('teleop_state', 'stop')
-    self.teleop_state = rospy.get_param('teleop_state')
-    while not self.go_to_init_state():
-      print("Failed to go to init state")
-    print("Success to get init state!")
-    res = TriggerResponse()
-    res.success = True
-    res.message = "reset pose"
-    return res
-
-  def start_teleop(self, req):
-    self.change_to_velocity_controller("")
-    rospy.set_param('teleop_state', 'start')
-    self.teleop_state = rospy.get_param('teleop_state')
-    res = TriggerResponse()
-    res.success = True
-    res.message = "start teleop"
-    return res
-
-  def joy_command_callback(self, data):
-    self.joy_command = data.data
-    self.button = self.joy_command[4]
-
-  def joint_velocity_command(self, target_vel): 
-    joint_vel_msg = Float64MultiArray() 
-    joint_vel_msg.data = target_vel 
-    print(target_vel)
-    self.vel_pub.publish(joint_vel_msg) 
-
-  def stop(self):
-    joint_vel_msg = Float64MultiArray()  
-    joint_vel_msg.data = np.zeros(6)
-    self.vel_pub.publish(joint_vel_msg)
-
-  def timer(self):
-    print("{:.5f}, {:.2f}".format(self.end - self.start, 1/(self.end - self.start)), end='\r')
-
-
-def main():
-  rospy.init_node("robot_interface", anonymous=True)
-  rate = rospy.Rate(1100)
-  base_controller = "arm_controller"
-  velocity_controller = "joint_group_velocity_controller"
-  robot_interface = MoveGroupPythonInteface(base_controller=base_controller, 
-                                            velocity_controller=velocity_controller, 
-                                            gym=True, # unpause 일때만 가능, gym 환경에서 사용할 경우 gym=True
-                                            verbose=False) 
-  rospy.spin()
-
+  
 
 if __name__ == '__main__':
-  main()
-  
+  test = MoveGroupPythonInterface()

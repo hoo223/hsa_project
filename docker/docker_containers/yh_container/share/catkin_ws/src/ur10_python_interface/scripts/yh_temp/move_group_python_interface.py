@@ -1,4 +1,5 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
+# -*- coding: utf8 -*- 
 
 import sys
 print(sys.executable) # python version
@@ -45,10 +46,10 @@ def all_close(goal, actual, tolerance):
 
   return True
 
-class MoveGroupPythonInteface(object):
+class MoveGroupPythonInterface(object):
   """MoveGroupPythonInteface"""
   def __init__(self, base_controller, velocity_controller, arg_group_name="manipulator"):
-    super(MoveGroupPythonInteface, self).__init__()
+    super(MoveGroupPythonInterface, self).__init__()
     
     ## BEGIN_SUB_TUTORIAL setup
     ##
@@ -517,28 +518,7 @@ class MoveGroupPythonInteface(object):
     print(current_RPY, type(current_RPY))
 
   # https://answers.ros.org/question/259022/switching-between-controllers-with-ros_control-controller_manager/
-  def controller_change(self, current_controller, target_controller):
-    rospy.wait_for_service('/controller_manager/switch_controller')
-    try:
-        #create a handle for calling the service
-        switch_controller = rospy.ServiceProxy('/controller_manager/switch_controller', SwitchController)
-        # http://docs.ros.org/en/api/controller_manager_msgs/html/srv/SwitchController.html
-        req = SwitchControllerRequest()
-        req.start_controllers = target_controller
-        req.stop_controllers = current_controller
-        req.strictness = 1
-        req.start_asap = False
-        req.timeout = 0.0
-        #req = SwitchControllerRequest(start_controllers=target_controller, stop_controllers=current_controller, strictness=1, 
-        #                              start_asap=False, timeout=0.0)
-        res = switch_controller(req)
-        if res:
-            print(res)
-            print("controller changed from {} to {}".format(current_controller, target_controller))
-        else:
-            print("failed to change controller")
-    except rospy.ServiceException, e:
-        print ("Service call failed: %s"%e)
+  
 
 if __name__ == '__main__':
-  test = MoveGroupPythonInteface()
+  test = MoveGroupPythonInterface()

@@ -59,6 +59,7 @@ all: moveit/moveit_planners/moveit_planners/all
 all: moveit/moveit_plugins/moveit_plugins/all
 all: moveit/moveit_ros/moveit_ros/all
 all: moveit/moveit_runtime/all
+all: rqt_joint_trajectory_controller/all
 all: fmauch_universal_robot/universal_robots/all
 all: omni_msgs/all
 all: urdf_symbolic_models/all
@@ -107,6 +108,7 @@ preinstall: moveit/moveit_planners/moveit_planners/preinstall
 preinstall: moveit/moveit_plugins/moveit_plugins/preinstall
 preinstall: moveit/moveit_ros/moveit_ros/preinstall
 preinstall: moveit/moveit_runtime/preinstall
+preinstall: rqt_joint_trajectory_controller/preinstall
 preinstall: fmauch_universal_robot/universal_robots/preinstall
 preinstall: omni_msgs/preinstall
 preinstall: urdf_symbolic_models/preinstall
@@ -160,6 +162,7 @@ clean: moveit/moveit_planners/moveit_planners/clean
 clean: moveit/moveit_plugins/moveit_plugins/clean
 clean: moveit/moveit_ros/moveit_ros/clean
 clean: moveit/moveit_runtime/clean
+clean: rqt_joint_trajectory_controller/clean
 clean: fmauch_universal_robot/universal_robots/clean
 clean: omni_msgs/clean
 clean: urdf_symbolic_models/clean
@@ -3072,6 +3075,24 @@ omni_msgs/clean: omni_msgs/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
 omni_msgs/clean: omni_msgs/CMakeFiles/_omni_msgs_generate_messages_check_deps_OmniState.dir/clean
 
 .PHONY : omni_msgs/clean
+
+#=============================================================================
+# Directory level rules for directory rqt_joint_trajectory_controller
+
+# Recursive "all" directory target.
+rqt_joint_trajectory_controller/all:
+
+.PHONY : rqt_joint_trajectory_controller/all
+
+# Recursive "preinstall" directory target.
+rqt_joint_trajectory_controller/preinstall:
+
+.PHONY : rqt_joint_trajectory_controller/preinstall
+
+# Recursive "clean" directory target.
+rqt_joint_trajectory_controller/clean:
+
+.PHONY : rqt_joint_trajectory_controller/clean
 
 #=============================================================================
 # Directory level rules for directory ur10_python_interface
