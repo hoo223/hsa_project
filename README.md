@@ -62,7 +62,7 @@
         1) run program   
         2) load program -> ExternalControl.urp   
         3) play button   
-    * ros container (Terminal 3~7)
+    * ros container (Terminal 3~4)
         ```
         interface_r
         teleop
