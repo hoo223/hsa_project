@@ -6,12 +6,6 @@
     <arg name="sim" default="true" />
     <arg name="debug" default="false"/>
  
-    <!-- send robot urdf to param server -->
-    <include unless="$(arg sim)" file="$(find ur_description)/launch/ur10_upload.launch">
-        <arg name="limited" value="$(arg limited)"/>
-        <arg name="transmission_hw_interface" value="hardware_interface/VelocityJointInterface" />
-    </include>
-
     <!-- Remap follow_joint_trajectory -->
     <remap if="$(arg sim)" from="/follow_joint_trajectory" to="/arm_controller/follow_joint_trajectory"/>
     <remap unless="$(arg sim)" from="/follow_joint_trajectory" to="/scaled_pos_joint_traj_controller/follow_joint_trajectory"/>
@@ -35,5 +29,6 @@
 
     <!-- mode manager node -->
     <node name="mode_manager" pkg="ur10_python_interface" type="mode_manager.py" output="log"/>
+    
 
 </launch>
