@@ -52,13 +52,12 @@ class RLInterface(object):
   def loop(self, ob):
     # get actions from human and agent
     a_h = self.human_action
-    a_r = self.get_agent_action(ob, a_h)
+    #a_r = self.get_agent_action(ob, a_h)
 
     # combine actions
-    action = a_h + a_r
-    #print(action)
+    action = a_h #+ a_r
     ob_next, reward, done = self.env.step(ob, action)
-    self.test_pub.publish("{}".format(np.array(ob_next)-np.array(ob)))
+    #self.test_pub.publish("{}".format(np.array(ob_next)-np.array(ob)))
 
     ## data collection
     if self.save:
@@ -100,7 +99,7 @@ class RLInterface(object):
 
 def main():
   FPS = 20
-  rli = RLInterface(num_epsoide=100, FPS=FPS, save=False)
+  rli = RLInterface(num_epsoide=1000, FPS=FPS, save=True)
   rate = rospy.Rate(FPS)
   FPS_pub = rospy.Publisher('rl_loop_rate', Empty, queue_size=1)
 
@@ -111,6 +110,7 @@ def main():
     rli.env.reset()
     print(rli.env.start_teleop_client())
     ob = rli.env._state
+    print(ob)
 
     #rli.time_check_start()
     total_reward = 0
@@ -118,6 +118,7 @@ def main():
       print("step: {}".format(j), end='\r')
       ob_next, reward, done = rli.loop(ob)
       ob = ob_next
+      print(ob)
       total_reward += reward
       ## exit if X button is pushed or done is True
       if rli.button == 2 or done == True:
@@ -134,7 +135,7 @@ def main():
               'actions': torch.Tensor(actions).squeeze(),
               'rewards': torch.Tensor(rewards).squeeze(),
               'dones': torch.Tensor(dones).squeeze()}
-      torch.save(data, '/root/catkin_ws/src/ur10_python_interface/data/'+'test')
+      torch.save(data, '/root/share/catkin_ws/src/ur10_python_interface/data/'+'test')
       print("\Saved")
   print("\nEpisode Finished")
 

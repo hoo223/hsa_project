@@ -125,7 +125,7 @@ class UR10Env(gym.Env, EzPickle):
 
         ## publisher
         self.ellipsoid_pub = rospy.Publisher("/ellipsoid", Ellipsoid3, queue_size=10)
-        self.vel_pub = rospy.Publisher('/joint_group_velocity_controller/command', Float64MultiArray, queue_size=10)
+        self.vel_pub = rospy.Publisher('/joint_group_vel_controller/command', Float64MultiArray, queue_size=10)
 
         ## subscriber -> ros init 다음에
         state_subscriber = rospy.Subscriber("/joint_states", JointState, callback=self.update_state_callback, queue_size=10)

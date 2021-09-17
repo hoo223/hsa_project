@@ -50,6 +50,7 @@ class Joy2Target(object):
     self.current_joint_sub = rospy.Subscriber('/joint_states', JointState, self.current_joint_callback)
     self.haptic_pose_sub = rospy.Subscriber('/phantom/pose', PoseStamped, self.haptic_pose_callback)
     self.haptic_button_sub = rospy.Subscriber('/phantom/button', OmniButtonEvent, self.haptic_button_callback)
+    self.agent_action_sub = rospy.Subscriber('agent_action', Float64MultiArray, self.agent_action_callback)
 
     # publisher
     self.target_pose_pub = rospy.Publisher("target_pose", Pose, queue_size= 10)
@@ -73,14 +74,12 @@ class Joy2Target(object):
         #print(random_action)
         self.delay_step = 0
       self.delay_step += 1
-
       x_input = -self.random_action[0]
       y_input = self.random_action[1]
       z_input = self.random_action[2]
-      roll_input = 0
-      pitch_input = 0
+      roll_input = self.random_action[3]
+      pitch_input = self.random_action[4]
       yaw_input = -self.random_action[5]
-
     else: # human teleop
       x_input = -self.joy_command[0]
       y_input = self.joy_command[1]
@@ -187,6 +186,10 @@ class Joy2Target(object):
     elif (self.haptic_move_state == True) and (data.white_button == 0 or data.grey_button == 0):
       self.haptic_move_state = False
     #print(self.haptic_move_state)
+
+  def agent_action_callback(self, data):
+    self.agent_action = data.data
+    pass
     
 def main():
   rospy.init_node("joy2target_converter", anonymous=True)
@@ -194,7 +197,7 @@ def main():
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
     if rospy.get_param('teleop_state') == "start":
-      target_pose = j2t.input_conversion(random_agent=False)
+      target_pose = j2t.input_conversion(random_agent=True)
     else:
       # try:
       #   (trans,rot) = j2t.listener.lookupTransform('/base_link', '/ee_link', rospy.Time(0))

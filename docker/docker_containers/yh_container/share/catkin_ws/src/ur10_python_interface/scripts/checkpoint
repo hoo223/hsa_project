@@ -1,0 +1,2 @@
+model_checkpoint_path: "/root/share/catkin_ws/src/ur10_python_interface/scripts/dp_model.ckpt"
+all_model_checkpoint_paths: "/root/share/catkin_ws/src/ur10_python_interface/scripts/dp_model.ckpt"

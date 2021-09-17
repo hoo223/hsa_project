@@ -5,28 +5,52 @@ $ docker attach ur10
 $ roslaunch ur_robot_driver ur10_bringup.launch robot_ip:=192.168.0.2
 
 terminal 2
-$ docker exec -it yh bash
+$ docker start yh
+$ docker attach yh
 $ roslaunch ur10_moveit_config move_group.launch
 
 
 terminal 3
-$docker start yh
-$docker attach yh
-$python3 /share/catkin_ws/src/ur10_python_interface/scripts/test4.py
+$ docker exec -it yh bash
+$ python3 share/catkin_ws/src/ur10_python_interface/scripts/test4.py
 
 
+------- host ------
+1. # start haptic in host terminal
+$ haptic
+
+2. if not connected
+$ hp
 
 
+------- ur10 container -------
+3. # start ur10 container
+$ ur10 (docker start ur10 && docker attach ur10)
+
+4. start ur10 tcp
+$ ur10_tcp
+
+5. turn on script in teach pendant
 
 
+------- ros container -------
+6. interface for real robot
+$ ros
+$ interface_r
 
-install all the dependency of package
 
-$rosdep install --from-paths src --ignore-src -r -y
- ==> rosdep 
-cw && cm
-catkin_make (cm)
+7. another terminal - teleop (check 'env=True') 
+$ re (exec -it bash)
+$ teleop 
 
-source devel (sd)
+8. check the topic list or echo
+$ re
+$ rostopic list  (human_action)
 
-install tensorflow things
+----------------------------------------
+9. start docker yh
+$ docker start yh
+$ docker attach yh
+
+--------------------------------------
+match rostopic subscire / publish 
