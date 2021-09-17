@@ -3,9 +3,84 @@
 : docker image and container generation code
 
 ## [host_install](https://github.com/hoo223/hsa_project/tree/master/host_install)
-: .sh files for host PC setting (Ubuntu 18.04), which include CUDA 11.4, (nvidia) docker, ROS melodic, geomagic Touch driver (USB version) with related ROS package (https://github.com/bharatm11/Geomagic_Touch_ROS_Drivers.git)
+: .sh files for host PC setting (Ubuntu 18.04), which include
+* CUDA 11.4
+* (nvidia) docker    
+* ROS melodic    
+* geomagic Touch driver (USB version) with related ROS package (https://github.com/bharatm11/Geomagic_Touch_ROS_Drivers.git)   
 
+***
 
+## How to Run
+<details>
+<summary>Docker container</summary>
+
+|container name|command(start)|command(attach)|command(start & attach)|command(exec)|
+|--|--|--|--|--|
+|ros|rs|ra|ros|re|
+|unity|us|ua|unity|ue|
+|ur10|urs|ura|ur10|ure|
+
+</details>
+
+<details>
+<summary>Teleoperation</summary>
+  
+1. Gazebo
+    * Host PC (Terminal 1)
+        ```
+        hp
+        haptic
+        ```
+    * ros container (Terminal 2~4)
+        ```
+        ursim
+        interface_v
+        teleop
+        ```
+
+2. Unity
+    * Host PC (Terminal 1)
+        ```
+        hp
+        haptic
+        ```
+    * unity contatiner (Terminal 2)
+        ```
+        unity
+        ```
+        run the project and start 
+    * ros container (Terminal 3~7)
+        ```
+        ut
+        controller
+        uhi
+        interface_v
+        teleop
+        ```
+        
+3. Real UR10
+    * Host PC (Terminal 1)
+        ```
+        hp
+        haptic
+        ```
+    * ur10 contatiner (Terminal 2)
+        ```
+        ur10_tcp
+        ```
+    * Teachpendent   
+        1) run program   
+        2) load program -> ExternalControl.urp   
+        3) play button   
+    * ros container (Terminal 3~4)
+        ```
+        interface_r
+        teleop
+        ```
+</details>
+
+***
 
 ## Related Pages
 ### ros-control
