@@ -27,3 +27,5 @@ sudo docker run --rm --gpus all nvidia/cuda:11.4.0-base nvidia-smi
 docker rm $(docker ps --filter 'status=exited' -a -q)
 docker rmi $(docker images -q)
 
+sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+
