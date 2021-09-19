@@ -10,5 +10,5 @@ sudo systemctl restart docker
 sudo docker run --rm --gpus all nvidia/cuda:11.4.0-base nvidia-smi
 
 # remove test image and container
-docker rmi nvidia/cuda:11.4.0-base nvidia-smi
+docker rmi nvidia/cuda:11.4.0-base
 
