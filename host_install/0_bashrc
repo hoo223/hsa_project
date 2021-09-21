@@ -17,10 +17,12 @@ CONTAINER_NAME1=ros
 alias rs='docker start $CONTAINER_NAME1'
 alias ra='docker attach $CONTAINER_NAME1'
 alias re='docker exec -it $CONTAINER_NAME1 bash'
+alias ros='rs &&ra'
 CONTAINER_NAME2=unity
 alias us='docker start $CONTAINER_NAME2'
 alias ua='docker attach $CONTAINER_NAME2'
 alias ue='docker exec -it $CONTAINER_NAME2 bash'
+alias unity='us && ua'
 
 # CUDA
 export PATH=/usr/local/cuda-11.4/bin:$PATH
