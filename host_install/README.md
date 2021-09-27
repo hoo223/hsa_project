@@ -22,14 +22,15 @@
 7) Install nvidia-docker
    > ./4_nvidia_docker.sh
 8) Install ros
-   > ./5_ros.sh 
-   > source ~/.bashrc
-   > cd ~/catkin_ws && catkin_make
+   > ./5_ros.sh      
+   > source ~/.bashrc      
+   > cd ~/catkin_ws && catkin_make     
 9) Install haptic driver
    > ./6_haptic_driver.sh
-   Reboot after install 
+   
+   Reboot after install    
 10) Install haptic packages
-   > ./7_haptic_package.sh
+      > ./7_haptic_package.sh
 
 ### Haptic Device Connection Check
 1. Check the device connection 
