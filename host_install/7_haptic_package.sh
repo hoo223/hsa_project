@@ -7,4 +7,4 @@ sudo ln -s /usr/lib64/libHL.so.3.0.0 /usr/lib/libHL.so.3.0
 
 git clone https://github.com/bharatm11/Geomagic_Touch_ROS_Drivers.git ~/catkin_ws/src/Geomagic_Touch_ROS_Drivers
 
-cd ~/catkin_ws && catkin_make && source devel/setup.bash
+cd ~/catkin_ws && catkin_make && source ~/catkin_ws/devel/setup.bash

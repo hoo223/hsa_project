@@ -1,4 +1,4 @@
-tar -xzvf TouchDriver2019_2_15_Linux.tar
+tar -xvf TouchDriver2019_2_15_Linux.tar.xz
 tar -xzvf openhaptics_3.4-0-developer-edition-amd64.tar.gz
 sudo cp ./TouchDriver2019_2_14/bin/Touch_* /usr/bin
 sudo cp ./TouchDriver2019_2_14/usr/lib/* /usr/lib
