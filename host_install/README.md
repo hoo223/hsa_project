@@ -5,7 +5,12 @@
 1) Download prerequsites and locate the files in the "host_install" directory
     * **cudnn-11.4-linux-x64-v8.2.2.26.tgz** - cuDNN v8.2.2 for CUDA 11.4 from https://developer.nvidia.com/rdp/cudnn-download
     * **Openhaptics for Linux v3.4** and **Touch Device Driver v2019.2.15** from https://support.3dsystems.com/s/article/OpenHaptics-for-Linux-Developer-Edition-v34?language=en_US
-2) Copy contents in 0_bashrc to ~/.bashrc -> source ~/.bashrc
+2) 
+   * Open ~/.bashrc
+      > gedit ~/.bashrc
+   * Copy contents in '0_bashrc' and paste to the end of the '~/.bashrc' -> Save and close
+   * Source the file
+      > source ~/.bashrc
 3) Execute prerequisite commands
    > sudo apt update    
    > sudo apt install -y git terminator curl    
