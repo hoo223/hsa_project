@@ -34,13 +34,19 @@
 
 ### Haptic Device Connection Check
 1. Check the device connection 
-    * ls /dev/ttyACM0
+    > ls /dev/ttyACM0      
+    
     ![touch_connection_check](https://user-images.githubusercontent.com/17296297/128353021-ab5147e7-5a20-4a8a-a926-2e93a21575d8.png)
 2. Change authority -> should be done whenever the haptic device is reconnected to the PC 
-    * sudo chmod 777 /dev/ttyACM0
+    > sudo chmod 777 /dev/ttyACM0
+    
 3. Make config file from Touch_Setup
-    * sudo Touch_Setup -> check the serial number -> Apply and OK
+    > sudo Touch_Setup 
+    
+    -> check the serial number -> Apply and OK
+    
     ![touch_setup](https://user-images.githubusercontent.com/17296297/128352776-650445cb-b3e9-4c7d-bcb1-d5491d7f15ea.png)
 4. Test config file from Touch_Diagnostic
-    * sudo Touch_Diagnostic 
+    > sudo Touch_Diagnostic 
+
     ![touch_diagnostic](https://user-images.githubusercontent.com/17296297/128353194-a2288eaf-11c2-400e-abf9-20ebeec4bef0.png)
