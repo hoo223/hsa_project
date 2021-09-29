@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/root/share/pkgs/libfreenect2/tools/generate_resources.cpp
+iostream
+-
+iomanip
+-
+fstream
+-
+string
+-
+
