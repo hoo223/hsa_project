@@ -92,7 +92,7 @@ class TeleopController(object):
 
 # main function
 def main():
-  tc = TeleopController(env=True)
+  tc = TeleopController(env=False)
   rospy.init_node("teleop_controller", anonymous=True)
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():

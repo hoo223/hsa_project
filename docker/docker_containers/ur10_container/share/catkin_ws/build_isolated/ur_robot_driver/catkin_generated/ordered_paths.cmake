@@ -1,1 +1,0 @@
-set(ORDERED_PATHS "/root/share/catkin_ws/devel_isolated/ur_controllers/lib;/opt/ros/noetic/lib")

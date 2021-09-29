@@ -14,12 +14,14 @@ import copy
 import rospy
 import ros
 import tf
-from tf.transformations import quaternion_from_euler
+from tf.transformations import euler_from_quaternion, quaternion_from_euler
 from std_msgs.msg import Float64MultiArray, String
 from std_srvs.srv import Trigger, TriggerResponse
 from sensor_msgs.msg import JointState
 from geometry_msgs.msg import PoseStamped, Quaternion, Pose
 from omni_msgs.msg import OmniButtonEvent
+from robotiq_2f_gripper_control.msg import Robotiq2FGripper_robot_input  as inputMsg
+from robotiq_2f_gripper_control.msg import Robotiq2FGripper_robot_output as outputMsg
 #from cv_bridge import CvBridge
 
 ## custom library
@@ -27,22 +29,30 @@ from move_group_python_interface import MoveGroupPythonInteface
 
 class Joy2Target(object):
   def __init__(self, verbose=False):
-    
+
+    # debugging
     self.verbose = verbose
+
+    # teleoperation variable
     self.pre_button = None
     self.teleop_state = "stop"
     self.joy_command = np.zeros(5)
+    self.speed_gain = 0.00024 # for input scale
+    self.speed_level = 3 # 로봇 움직임 속도 - 1~10 단계
+
+    # random agent
     self.random_action = np.zeros(6)
+    self.delay_step = 0
+
+    self.xyzw_array = lambda o: np.array([o.x, o.y, o.z, o.w])
+
+    # haptic variables
     self.grey_button_state = 0
     self.white_button_state = 0
     self.haptic_move_state = False
-    self.haptic_error = [0, 0, 0]
-    self.target_robot_pos = [0, 0, 0]
-
-    # teleop parameters
-    self.speed_gain = 0.00024 # for input scale
-    self.speed_level = 3
-    self.delay_step = 0
+    self.gripper_closed = False
+    self.start_target_pos = [0, 0, 0]
+    self.haptic_scale = 2 # translation scale factor
 
     # subscriber
     self.joy_sub = rospy.Subscriber('joy_command', Float64MultiArray, self.joy_command_callback)
@@ -51,36 +61,52 @@ class Joy2Target(object):
     self.haptic_pose_sub = rospy.Subscriber('/phantom/pose', PoseStamped, self.haptic_pose_callback)
     self.haptic_button_sub = rospy.Subscriber('/phantom/button', OmniButtonEvent, self.haptic_button_callback)
     self.agent_action_sub = rospy.Subscriber('agent_action', Float64MultiArray, self.agent_action_callback)
+    self.gripper_status_sub = rospy.Subscriber("Robotiq2FGripperRobotInput", inputMsg, self.gripper_status_callback)
 
     # publisher
     self.target_pose_pub = rospy.Publisher("target_pose", Pose, queue_size= 10)
     self.haptic_error_pub = rospy.Publisher("haptic_error", Float64MultiArray, queue_size=10)
+    self.haptic_rpy_pub = rospy.Publisher("haptic_rpy", Float64MultiArray, queue_size=10)
+    self.gripper_action_pub = rospy.Publisher('Robotiq2FGripperRobotOutput', outputMsg, queue_size=10)
+    
+    # gripper
+    self.gripper_command = outputMsg()
+    self.gripper_command.rACT = 1
+    self.gripper_command.rGTO = 1
+    self.gripper_command.rSP  = 255
+    self.gripper_command.rFR  = 150
+    self.gripper_action_pub.publish(self.gripper_command)
 
     # tf listener
     self.listener = tf.TransformListener()
     
+    # UR10 initial pose
     #self.init_pose = [0.17488465, 0.53148766, 0.49063472, 1.63007136, 1.52047576, 3.0807627]
     self.init_pose = [0.17480582, 0.50746106, 0.69538257, 0.09267109, 0.00379392, 1.59158403]
+
+    # input device에 의해 조작되는 end-effector target pose
     self.target_pose = copy.deepcopy(self.init_pose)
 
     # reset target service
     self.reset_target_service = rospy.Service('reset_target_pose', Trigger, self.reset_target)
 
   def input_conversion(self, random_agent=False):
-
-    if random_agent: # random human model
+    # get input
+    if random_agent: # random action model
+      # For smoothing noisy action
       if self.delay_step > 200:
         self.random_action = 2*(np.random.rand(6)-0.5)
-        #print(random_action)
         self.delay_step = 0
       self.delay_step += 1
+      # random action to input mapping
       x_input = -self.random_action[0]
       y_input = self.random_action[1]
       z_input = self.random_action[2]
       roll_input = self.random_action[3]
       pitch_input = self.random_action[4]
       yaw_input = -self.random_action[5]
-    else: # human teleop
+    else: # human teleoperation
+      # joystick action to input mapping
       x_input = -self.joy_command[0]
       y_input = self.joy_command[1]
       z_input = self.joy_command[2]
@@ -104,7 +130,6 @@ class Joy2Target(object):
 
     input_scale = self.speed_gain * self.speed_level
     
-
     self.target_pose[0] += input_scale*x_input 
     self.target_pose[1] += input_scale*y_input
     self.target_pose[2] += input_scale*z_input
@@ -161,35 +186,67 @@ class Joy2Target(object):
     self.current_joints[2] = temp
     #print(self.current_joints)
 
+  # '/phantom/pose' topic 수신 시 콜백 - 햅틱 장치의 pose를 end-effector target pose로 변환
   def haptic_pose_callback(self, data):
+    # 햅틱 장치 pose 얻기
     self.haptic_pose = data.pose
+    # Orientation 정보 quaternion -> Euler angle 변환
+    self.haptic_rpy = euler_from_quaternion(self.xyzw_array(self.haptic_pose.orientation))
+    if self.verbose:
+      rpy = Float64MultiArray()
+      rpy.data = self.haptic_rpy
+      self.haptic_rpy_pub.publish(rpy)
+    
+    # target pose의 Euler angle로 mapping 
+    self.target_pose[3] = -self.haptic_rpy[2] - np.pi/2
+    self.target_pose[4] = -self.haptic_rpy[1]
+    self.target_pose[5] = -self.haptic_rpy[0] + np.pi/2
+
+    # haptic move state = 버튼 두 개를 누르고 있는 동안에만 
     if self.haptic_move_state == True:
       x_error = self.haptic_pose.position.x - self.start_haptic_pose.position.x
       y_error = self.haptic_pose.position.y - self.start_haptic_pose.position.y
       z_error = self.haptic_pose.position.z - self.start_haptic_pose.position.z
-      self.haptic_error = [x_error, y_error, z_error]
-      temp = Float64MultiArray()
-      temp.data = [x_error, y_error, z_error]
-      #self.haptic_error_pub.publish(temp)
+      if self.verbose: # 확인용
+        self.haptic_error = [x_error, y_error, z_error]
+        temp = Float64MultiArray()
+        temp.data = self.haptic_error
+        self.haptic_error_pub.publish(temp)
 
-      haptic_scale = 2
-      self.target_robot_pos = [self.start_robot_pos[0] + haptic_scale*x_error, self.start_robot_pos[1] + haptic_scale*y_error, self.start_robot_pos[2] + haptic_scale*z_error]
-      self.target_pose[0] = self.target_robot_pos[0]
-      self.target_pose[1] = self.target_robot_pos[1]
-      self.target_pose[2] = self.target_robot_pos[2]
-
+      self.target_pose[0] = self.start_target_pos[0] + self.haptic_scale*x_error
+      self.target_pose[1] = self.start_target_pos[1] + self.haptic_scale*y_error
+      self.target_pose[2] = self.start_target_pos[2] + self.haptic_scale*z_error
+      
+  # '/phantom/button' topic 수신 시 콜백 - 햅틱 장치 버튼에 관한 동작 수행
   def haptic_button_callback(self, data):
-    if (self.haptic_move_state == False) and (self.grey_button_state == 0 or self.white_button_state == 0) and (data.white_button == 1 and data.grey_button == 1):
+    # white 버튼을 누르면 haptic move state 시작하고, 누르고 있는 동안은 유지 
+    if (self.haptic_move_state == False) and (data.white_button == 1):
+      # 시작시 햅틱 장치의 pose 저장
       self.start_haptic_pose = self.haptic_pose
-      self.start_robot_pos = [self.target_pose[0], self.target_pose[1], self.target_pose[2]]
+      self.start_target_pos = [self.target_pose[0], self.target_pose[1], self.target_pose[2]]
       self.haptic_move_state = True 
-    elif (self.haptic_move_state == True) and (data.white_button == 0 or data.grey_button == 0):
+    elif (self.haptic_move_state == True) and (data.white_button == 0): # white 버튼을 안누르고 있으면 haptic move state 해제
       self.haptic_move_state = False
+
+    # 회색 버튼을 누르면 그리퍼 동작 (잡기 or 놓기)
+    if (self.gripper_closed == False) and (data.grey_button == 1) and (data.white_button == 0): # 그리퍼가 열려있는 상태에서 회색 버튼을 누르면 -> 잡기
+      self.gripper_command.rPR = 255
+      self.gripper_action_pub.publish(self.gripper_command)
+      self.gripper_closed = True
+    elif (self.gripper_closed == True) and (data.grey_button == 1) and (data.white_button == 0): # 그리퍼가 닫혀있는 상태에서 회색 버튼을 누르면 -> 놓기
+      self.gripper_command.rPR = 0
+      self.gripper_action_pub.publish(self.gripper_command)
+      self.gripper_closed = False
+    
     #print(self.haptic_move_state)
 
   def agent_action_callback(self, data):
     self.agent_action = data.data
     pass
+  
+  def gripper_status_callback(self, status):
+    self.gripper_position = status.gPO
+    
     
 def main():
   rospy.init_node("joy2target_converter", anonymous=True)
@@ -197,7 +254,7 @@ def main():
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
     if rospy.get_param('teleop_state') == "start":
-      target_pose = j2t.input_conversion(random_agent=True)
+      target_pose = j2t.input_conversion(random_agent=False)
     else:
       # try:
       #   (trans,rot) = j2t.listener.lookupTransform('/base_link', '/ee_link', rospy.Time(0))

@@ -1,8 +1,0 @@
-prefix=/root/share/catkin_ws/devel_isolated/ur_calibration
-
-Name: ur_calibration
-Description: Description of ur_calibration
-Version: 0.0.2
-Cflags: -I/usr/lib/x86_64-linux-gnu/cmake/yaml-cpp/../../../../../include -I/root/share/catkin_ws/devel_isolated/ur_client_library/include -I/usr/include
-Libs: -L${prefix}/lib /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.6.2 /root/share/catkin_ws/devel_isolated/ur_client_library/lib/liburcl.so
-Requires: roscpp ur_robot_driver

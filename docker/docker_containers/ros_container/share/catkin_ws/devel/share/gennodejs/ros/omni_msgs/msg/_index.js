@@ -2,11 +2,11 @@
 "use strict";
 
 let OmniState = require('./OmniState.js');
-let OmniFeedback = require('./OmniFeedback.js');
 let OmniButtonEvent = require('./OmniButtonEvent.js');
+let OmniFeedback = require('./OmniFeedback.js');
 
 module.exports = {
   OmniState: OmniState,
-  OmniFeedback: OmniFeedback,
   OmniButtonEvent: OmniButtonEvent,
+  OmniFeedback: OmniFeedback,
 };

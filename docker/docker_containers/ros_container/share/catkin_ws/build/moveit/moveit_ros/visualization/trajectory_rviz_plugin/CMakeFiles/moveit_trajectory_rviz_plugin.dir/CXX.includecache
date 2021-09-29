@@ -1556,8 +1556,6 @@ vector
 time.h
 -
 
-/root/share/catkin_ws/build/moveit/moveit_ros/visualization/trajectory_rviz_plugin/moveit_trajectory_rviz_plugin_autogen/mocs_compilation.cpp
-
 /root/share/catkin_ws/devel/include/moveit/moveit_kinematics_base_export.h
 
 /root/share/catkin_ws/src/moveit/moveit_core/exceptions/include/moveit/exceptions/exceptions.h

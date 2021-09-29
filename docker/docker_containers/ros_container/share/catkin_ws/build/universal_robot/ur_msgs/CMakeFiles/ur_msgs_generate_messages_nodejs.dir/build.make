@@ -77,8 +77,8 @@ universal_robot/ur_msgs/CMakeFiles/ur_msgs_generate_messages_nodejs: /root/share
 
 /root/share/catkin_ws/devel/share/gennodejs/ros/ur_msgs/msg/IOStates.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
 /root/share/catkin_ws/devel/share/gennodejs/ros/ur_msgs/msg/IOStates.js: /root/share/catkin_ws/src/universal_robot/ur_msgs/msg/IOStates.msg
-/root/share/catkin_ws/devel/share/gennodejs/ros/ur_msgs/msg/IOStates.js: /root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Digital.msg
 /root/share/catkin_ws/devel/share/gennodejs/ros/ur_msgs/msg/IOStates.js: /root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Analog.msg
+/root/share/catkin_ws/devel/share/gennodejs/ros/ur_msgs/msg/IOStates.js: /root/share/catkin_ws/src/universal_robot/ur_msgs/msg/Digital.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from ur_msgs/IOStates.msg"
 	cd /root/share/catkin_ws/build/universal_robot/ur_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /root/share/catkin_ws/src/universal_robot/ur_msgs/msg/IOStates.msg -Iur_msgs:/root/share/catkin_ws/src/universal_robot/ur_msgs/msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p ur_msgs -o /root/share/catkin_ws/devel/share/gennodejs/ros/ur_msgs/msg
 
