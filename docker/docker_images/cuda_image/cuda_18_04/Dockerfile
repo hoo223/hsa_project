@@ -15,9 +15,10 @@ RUN sed -i 's/kr.archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 # Install basic packages
 RUN apt-get install -y wget git gedit lsb-release nautilus
 
-# Add shortcut
+# Add shortcut and env setting
 RUN /bin/bash -c "echo \"alias eb='gedit ~/.bashrc'\" >> /root/.bashrc"
 RUN /bin/bash -c "echo \"alias sb='source ~/.bashrc'\" >> /root/.bashrc"
+RUN /bin/bash -c "echo \"export DISPLAY=:0\" >> /root/.bashrc"
 RUN /bin/bash -c "source ~/.bashrc"
 
 WORKDIR /root
