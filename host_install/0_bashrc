@@ -17,17 +17,35 @@ CONTAINER_NAME1=ros
 alias rs='docker start $CONTAINER_NAME1'
 alias ra='docker attach $CONTAINER_NAME1'
 alias re='docker exec -it $CONTAINER_NAME1 bash'
-alias ros='rs &&ra'
+alias ros='rs && ra'
 CONTAINER_NAME2=unity
 alias us='docker start $CONTAINER_NAME2'
 alias ua='docker attach $CONTAINER_NAME2'
 alias ue='docker exec -it $CONTAINER_NAME2 bash'
 alias unity='us && ua'
+CONTAINER_NAME3=ur10
+alias urs='docker start $CONTAINER_NAME3'
+alias ura='docker attach $CONTAINER_NAME3'
+alias ure='docker exec -it $CONTAINER_NAME3 bash'
+alias ur10='urs && ura'
+CONTAINER_NAME4=core
+alias cs='docker start $CONTAINER_NAME4'
+alias ca='docker attach $CONTAINER_NAME4'
+alias ce='docker exec -it $CONTAINER_NAME4 bash'
+alias core='cs && ca'
 
 # CUDA
 export PATH=/usr/local/cuda-11.4/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-11.4/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+
+# Haptic
+alias haptic='roslaunch omni_common omni_state.launch'
+
+# Gripper
+alias gripper='rosrun robotiq_2f_gripper_control Robotiq2FGripperRtuNode.py /dev/ttyUSB0'
+alias gripper_controller='rosrun robotiq_2f_gripper_control Robotiq2FGripperSimpleController.py'
+alias gripper_listener='rosrun robotiq_2f_gripper_control Robotiq2FGripperStatusListener.py'
 
 # ROS
 alias cm='catkin_make'
