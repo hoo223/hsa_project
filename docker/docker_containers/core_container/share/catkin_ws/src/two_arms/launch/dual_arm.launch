@@ -1,0 +1,60 @@
+<launch>
+  <param name="/use_sim_time" value="true" />
+  <arg name="robot_name"/>
+  <arg name="init_pose"/>
+  <arg name= "limited" default= "false"/>
+  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+  <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface" />
+  <arg name="gui" default="true" doc="Starts gazebo gui" />
+  <arg name="sim" default="true" />
+  <arg name="debug" default="false"/>
+
+  <param unless="$(arg limited)" name="robot_description" command="$(find xacro)/xacro '$(find ur_description)/urdf/ur10_robot.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+  <param if="$(arg limited)" name="robot_description" command="$(find xacro)/xacro '$(find ur_description)/urdf/ur10_joint_limited_robot.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+  <group ns="robot1">
+    <param name="tf_prefix" value="robot1_tf" />
+      <include file="$(find ur10_python_interface)/launch/controller.launch"></include>
+
+      <arg name="init_pose1" value="-x 1 -y 1 -z 0.2"/>
+      <arg name="robot_name1" value="robot1"/>
+      
+      <!-- push robot_description to factory and spawn robot in gazebo -->
+      <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model $(arg robot_name1) $(arg init_pose1)" respawn="false" output="screen" />
+      
+      <!-- Remap follow_joint_trajectory -->
+      <remap if="$(arg sim)" from="/follow_joint_trajectory" to="/$(arg robot_name1)/arm_controller/follow_joint_trajectory"/>
+      <remap unless="$(arg sim)" from="/follow_joint_trajectory" to="/$(arg robot_name1)/scaled_pos_joint_traj_controller/follow_joint_trajectory"/>
+
+      <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
+      <include file="$(find ur10_moveit_config)/launch/move_group.launch">
+          <arg name="allow_trajectory_execution" value="true"/>
+          <arg name="fake_execution" value="false"/>
+          <arg name="info" value="true"/>
+          <arg name="debug" value="$(arg debug)"/>
+      </include>
+
+      <!-- joystick node -->
+      <node name="joy_command" pkg="ur10_python_interface" type="joystick.py" output="log"/>
+
+      <param name="interface" type="str" value="not ready"/>
+
+      <!-- ur10 python interface node -->
+      <node if="$(arg sim)" name="robot_interface" pkg="ur10_python_interface" type="move_group_python_interface.py" args="sim $(arg robot_name1)" output="screen"/>    
+      <node unless="$(arg sim)" name="robot_interface" pkg="ur10_python_interface" type="move_group_python_interface.py" args="real $(arg robot_name1)" output="screen"/> 
+
+      <!-- mode manager node -->
+      <node name="mode_manager" pkg="ur10_python_interface" type="mode_manager.py" args="$(arg robot_name1)" output="log"/>
+
+    </group>
+
+  
+
+</launch>

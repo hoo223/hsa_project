@@ -54,9 +54,10 @@
 class IK_solver
 {
 public:
-  IK_solver(std::string group_name)
+  IK_solver(std::string group_name, std::string prefix)
   : PLANNING_GROUP(group_name),
-    robot_model_loader(robot_model_loader::RobotModelLoader("robot_description")),
+    prefix(prefix),
+    robot_model_loader(robot_model_loader::RobotModelLoader(prefix+"/robot_description")),
     kinematic_model(robot_model_loader.getModel()),
     planning_scene(kinematic_model),
     model(robot_model_loader.getModel()),
@@ -65,8 +66,6 @@ public:
     metrics(model)
   {
     ROS_INFO("Model frame: %s", kinematic_model->getModelFrame().c_str());
-    //robot_model_loader = robot_model_loader::RobotModelLoader("robot_description");
-    //kinematic_model = robot_model_loader.getModel();
     kinematic_state = moveit::core::RobotStatePtr(new moveit::core::RobotState(kinematic_model));
     kinematic_state->setToDefaultValues();
     joint_model_group = kinematic_model->getJointModelGroup(PLANNING_GROUP);
@@ -103,6 +102,7 @@ public:
   kinematics_metrics::KinematicsMetrics metrics;
 
   std::string PLANNING_GROUP;
+  std::string prefix;
   collision_detection::CollisionRequest collision_request;
   collision_detection::CollisionResult collision_result;
   std::vector<std::string> joint_names;
@@ -127,12 +127,16 @@ private:
 
 int main(int argc, char** argv)
 {
-  ros::init(argc, argv, "robot_model_and_robot_state_tutorial");
-  
+  ros::init(argc, argv, "ik_publisher", ros::init_options::NoRosout);
+
+  std::string prefix = "";
+  if (argc > 1)
+    prefix += argv[1];
+
   ros::AsyncSpinner spinner(1);
   spinner.start();
 
-  IK_solver ik_solver("manipulator");
+  IK_solver ik_solver("manipulator", prefix);
   double timeout = 0.1;
 
   // Get Joint Values
@@ -270,9 +274,9 @@ int main(int argc, char** argv)
 
 void IK_solver::jointStateCallback(const sensor_msgs::JointStateConstPtr& joint_state)
 {
-	current_joint_values[0] = joint_state->position[0]; // shoulder_pan_joint
+	current_joint_values[0] = joint_state->position[2]; // shoulder_pan_joint
 	current_joint_values[1] = joint_state->position[1]; // shoulder_lift_joint
-	current_joint_values[2] = joint_state->position[2]; // elbow joint
+	current_joint_values[2] = joint_state->position[0]; // elbow joint
 	current_joint_values[3] = joint_state->position[3]; // wrist_1_joint
 	current_joint_values[4] = joint_state->position[4]; // wrist_2_joint
 	current_joint_values[5] = joint_state->position[5]; // wrist_3_joint

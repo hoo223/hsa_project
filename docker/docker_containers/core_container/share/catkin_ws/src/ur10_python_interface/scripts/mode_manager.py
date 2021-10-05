@@ -28,24 +28,25 @@ from controller_manager_msgs.srv import SwitchControllerRequest, SwitchControlle
 ## class definition
 class ModeManager(object):
   """MoveGroupPythonInteface"""
-  def __init__(self):
+  def __init__(self, prefix=''):
     super(ModeManager, self).__init__()
 
     self.button = 0.0
+    self.prefix = prefix
 
     # subscriber
     joy_sub = rospy.Subscriber('joy_command', Float64MultiArray, self.joy_command_callback)
 
   def start_teleop(self):
-    rospy.wait_for_service('/start_teleop')
-    start_teleop_service = rospy.ServiceProxy('/start_teleop', Trigger)
+    rospy.wait_for_service(self.prefix+'/start_teleop')
+    start_teleop_service = rospy.ServiceProxy(self.prefix+'/start_teleop', Trigger)
     req = TriggerRequest()
     res = start_teleop_service(req)
     return res 
 
   def reset_pose(self):
-    rospy.wait_for_service('/reset_pose')
-    reset_pose_service = rospy.ServiceProxy('/reset_pose', Trigger)
+    rospy.wait_for_service(self.prefix+'/reset_pose')
+    reset_pose_service = rospy.ServiceProxy(self.prefix+'/reset_pose', Trigger)
     req = TriggerRequest()
     res = reset_pose_service(req)
     return res
@@ -57,13 +58,24 @@ class ModeManager(object):
 
 
 def main():
+  args = rospy.myargv()
+
+  if len(args) > 1: 
+    prefix = '/'+args[1]
+  else:
+    prefix = ''
+  
+  interface_param = '/interface'
+  teleop_state_param = '/teleop_state'
+
   rospy.init_node("mode_manager", anonymous=True)
   rate = rospy.Rate(1100)
-  mm = ModeManager() 
+  mm = ModeManager(prefix=prefix) 
 
   # wait for initializing the interface
-  while rospy.get_param('/interface') != 'ready':
-    print("interface not ready")
+  while rospy.get_param(prefix+interface_param) != 'ready':
+    print(prefix+interface_param + " not ready")
+    print(args)
 
   ## set init pose
   while not mm.reset_pose().success:
@@ -73,7 +85,7 @@ def main():
   while not rospy.is_shutdown(): 
     # Button loop
     # start button -> teleop start
-    teleop_state = rospy.get_param('teleop_state')
+    teleop_state = rospy.get_param(prefix+teleop_state_param)
     if mm.button == 7.0 and teleop_state == 'stop': 
       mm.start_teleop()
       print("teleop start")

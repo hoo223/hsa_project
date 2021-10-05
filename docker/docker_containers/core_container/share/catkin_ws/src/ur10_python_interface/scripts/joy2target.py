@@ -28,10 +28,13 @@ from robotiq_2f_gripper_control.msg import Robotiq2FGripper_robot_output as outp
 from move_group_python_interface import MoveGroupPythonInteface
 
 class Joy2Target(object):
-  def __init__(self, verbose=False):
+  def __init__(self, verbose=False, prefix=""):
 
     # debugging
     self.verbose = verbose
+    
+    # namespace
+    self.prefix = prefix
 
     # teleoperation variable
     self.pre_button = None
@@ -249,11 +252,17 @@ class Joy2Target(object):
     
     
 def main():
+  args = rospy.myargv()
+  if len(args) > 1: 
+    prefix = '/'+args[1]
+  else:
+    prefix = ''
+
   rospy.init_node("joy2target_converter", anonymous=True)
-  j2t = Joy2Target()
+  j2t = Joy2Target(prefix=prefix)
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
-    if rospy.get_param('teleop_state') == "start":
+    if rospy.get_param(prefix+'/teleop_state') == "start":
       target_pose = j2t.input_conversion(random_agent=False)
       j2t.gripper_action_pub.publish(j2t.gripper_command)
     else:

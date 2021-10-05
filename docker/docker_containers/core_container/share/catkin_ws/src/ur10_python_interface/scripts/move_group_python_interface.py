@@ -63,8 +63,10 @@ def all_close(goal, actual, tolerance):
 ## class definition
 class MoveGroupPythonInteface(object):
   """MoveGroupPythonInteface"""
-  def __init__(self, base_controller, velocity_controller, arg_group_name="manipulator", gym=False, verbose=False):
+  def __init__(self, base_controller, velocity_controller, arg_group_name="manipulator", gym=False, verbose=False, prefix=''):
     super(MoveGroupPythonInteface, self).__init__()
+
+    self.prefix = prefix
     
     ## BEGIN_SUB_TUTORIAL setup
     ##
@@ -159,15 +161,14 @@ class MoveGroupPythonInteface(object):
     self.speed_gain = 0.001 # for input scale
     self.p_gain = 3         # for target tracking
     self.speed_level = 7    
-    rospy.set_param('teleop_state', 'stop')
-    self.teleop_state = rospy.get_param('teleop_state')
+    rospy.set_param(self.prefix+'/teleop_state', 'stop')
+    self.teleop_state = rospy.get_param(self.prefix+'/teleop_state')
 
   def go_to_init_state(self):
     # Copy class variables to local variables to make the web tutorials more clear.
     # In practice, you should use the class variables directly unless you have a good
     # reason not to.
 
-    print("test")
     move_group = self.move_group
 
     ## BEGIN_SUB_TUTORIAL plan_to_joint_state
@@ -453,10 +454,12 @@ class MoveGroupPythonInteface(object):
 
   # https://answers.ros.org/question/259022/switching-between-controllers-with-ros_control-controller_manager/
   def controller_change(self, current_controller, target_controller):
-    rospy.wait_for_service('/controller_manager/switch_controller')
+    #print("test1")
+    rospy.wait_for_service(self.prefix+'/controller_manager/switch_controller')
+    #print("test2")
     try:
         #create a handle for calling the service
-        switch_controller = rospy.ServiceProxy('/controller_manager/switch_controller', SwitchController)
+        switch_controller = rospy.ServiceProxy(self.prefix+'/controller_manager/switch_controller', SwitchController)
         # http://docs.ros.org/en/api/controller_manager_msgs/html/srv/SwitchController.html
         req = SwitchControllerRequest()
         req.start_controllers = [target_controller]
@@ -484,6 +487,7 @@ class MoveGroupPythonInteface(object):
     return res
 
   def change_to_base_controller(self, req):
+    print("come in")
     self.controller_change(self.velocity_controller, self.base_controller)
     #self.controller_change(self.velocity_controller, self.base_controller, mode="/unity")
     res = TriggerResponse()
@@ -494,8 +498,8 @@ class MoveGroupPythonInteface(object):
   def reset_pose(self, req):
     print("reset pose service")
     self.change_to_base_controller("")
-    rospy.set_param('teleop_state', 'stop')
-    self.teleop_state = rospy.get_param('teleop_state')
+    rospy.set_param(self.prefix+'/teleop_state', 'stop')
+    self.teleop_state = rospy.get_param(self.prefix+'/teleop_state')
     while not self.go_to_init_state():
       print("Failed to go to init state")
     print("Success to get init state!")
@@ -506,8 +510,8 @@ class MoveGroupPythonInteface(object):
 
   def start_teleop(self, req):
     self.change_to_velocity_controller("")
-    rospy.set_param('teleop_state', 'start')
-    self.teleop_state = rospy.get_param('teleop_state')
+    rospy.set_param(self.prefix+'/teleop_state', 'start')
+    self.teleop_state = rospy.get_param(self.prefix+'/teleop_state')
     res = TriggerResponse()
     res.success = True
     res.message = "start teleop"
@@ -529,15 +533,20 @@ class MoveGroupPythonInteface(object):
 
 
 def main():
+  prefix=''
   args = rospy.myargv()
   if len(args) < 2:
       print("You need to type the mode argument: 'sim' or 'real'")
       print("ex: ~/ur10_python_interface.py sim")
       print("ex: ~/ur10_python_interface.py real")
       exit()
+  elif len(args) > 2:
+      mode = args[1]
+      prefix = '/'+args[2]
+      print(mode, prefix)
   else:
       mode = args[1]
-      print(mode)
+
   if mode == "real":
       base_controller = "scaled_pos_joint_traj_controller"
       velocity_controller = "joint_group_vel_controller"
@@ -551,9 +560,10 @@ def main():
   robot_interface = MoveGroupPythonInteface(base_controller=base_controller, 
                                             velocity_controller=velocity_controller, 
                                             gym=False, # unpause 일때만 가능, gym 환경에서 사용할 경우 gym=True
-                                            verbose=False) 
+                                            verbose=False,
+                                            prefix=prefix) 
 
-  rospy.set_param('interface', 'ready')
+  rospy.set_param(prefix+'/interface', 'ready')
   rospy.spin()
 
 

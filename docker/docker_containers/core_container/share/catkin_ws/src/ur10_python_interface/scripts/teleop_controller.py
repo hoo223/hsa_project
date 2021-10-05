@@ -43,8 +43,9 @@ def teleop_loop(robot_interface, FPS=1000):
 
 
 class TeleopController(object):
-  def __init__(self, env=False, verbose=False):
+  def __init__(self, env=False, verbose=False, prefix=''):
 
+    self.prefix = prefix
     self.target_joints = None
     self.current_joints = None
     self.p_gain = 3
@@ -58,9 +59,9 @@ class TeleopController(object):
 
     # publisher
     if env:
-      velocity_name = '/human_action'
+      velocity_name = prefix+'/human_action'
     else:
-      velocity_name = '/joint_group_vel_controller/command'
+      velocity_name = prefix+'/joint_group_vel_controller/command'
     self.vel_pub = rospy.Publisher(velocity_name, Float64MultiArray, queue_size=10)
 
   def control_loop(self):
@@ -92,12 +93,18 @@ class TeleopController(object):
 
 # main function
 def main():
-  tc = TeleopController(env=False)
+  args = rospy.myargv()
+  if len(args) > 1: 
+    prefix = '/'+args[1]
+  else:
+    prefix = ''
+  
   rospy.init_node("teleop_controller", anonymous=True)
+  tc = TeleopController(env=False, prefix=prefix)
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
     #print(tc.teleop_state)
-    if rospy.get_param('teleop_state') == 'start':
+    if rospy.get_param(prefix+'/teleop_state') == 'start':
       tc.control_loop()
     rate.sleep()
 
