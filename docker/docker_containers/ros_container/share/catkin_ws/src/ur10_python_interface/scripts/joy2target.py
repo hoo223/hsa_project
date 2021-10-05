@@ -231,11 +231,11 @@ class Joy2Target(object):
     # 회색 버튼을 누르면 그리퍼 동작 (잡기 or 놓기)
     if (self.gripper_closed == False) and (data.grey_button == 1) and (data.white_button == 0): # 그리퍼가 열려있는 상태에서 회색 버튼을 누르면 -> 잡기
       self.gripper_command.rPR = 255
-      self.gripper_action_pub.publish(self.gripper_command)
+      #self.gripper_action_pub.publish(self.gripper_command)
       self.gripper_closed = True
     elif (self.gripper_closed == True) and (data.grey_button == 1) and (data.white_button == 0): # 그리퍼가 닫혀있는 상태에서 회색 버튼을 누르면 -> 놓기
       self.gripper_command.rPR = 0
-      self.gripper_action_pub.publish(self.gripper_command)
+      #self.gripper_action_pub.publish(self.gripper_command)
       self.gripper_closed = False
     
     #print(self.haptic_move_state)
@@ -255,6 +255,7 @@ def main():
   while not rospy.is_shutdown():
     if rospy.get_param('teleop_state') == "start":
       target_pose = j2t.input_conversion(random_agent=False)
+      j2t.gripper_action_pub.publish(j2t.gripper_command)
     else:
       # try:
       #   (trans,rot) = j2t.listener.lookupTransform('/base_link', '/ee_link', rospy.Time(0))

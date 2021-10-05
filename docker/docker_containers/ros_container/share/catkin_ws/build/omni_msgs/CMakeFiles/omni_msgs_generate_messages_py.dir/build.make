@@ -74,9 +74,9 @@ omni_msgs/CMakeFiles/omni_msgs_generate_messages_py: /root/share/catkin_ws/devel
 /root/share/catkin_ws/devel/lib/python3/dist-packages/omni_msgs/msg/_OmniState.py: /root/share/catkin_ws/src/omni_msgs/msg/OmniState.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/omni_msgs/msg/_OmniState.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/omni_msgs/msg/_OmniState.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/root/share/catkin_ws/devel/lib/python3/dist-packages/omni_msgs/msg/_OmniState.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/omni_msgs/msg/_OmniState.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /root/share/catkin_ws/devel/lib/python3/dist-packages/omni_msgs/msg/_OmniState.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
-/root/share/catkin_ws/devel/lib/python3/dist-packages/omni_msgs/msg/_OmniState.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/share/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG omni_msgs/OmniState"
 	cd /root/share/catkin_ws/build/omni_msgs && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /root/share/catkin_ws/src/omni_msgs/msg/OmniState.msg -Iomni_msgs:/root/share/catkin_ws/src/omni_msgs/msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p omni_msgs -o /root/share/catkin_ws/devel/lib/python3/dist-packages/omni_msgs/msg
 

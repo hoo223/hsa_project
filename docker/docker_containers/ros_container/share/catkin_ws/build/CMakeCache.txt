@@ -1733,6 +1733,12 @@ trac_ik_kinematics_plugin_DIR:PATH=trac_ik_kinematics_plugin_DIR-NOTFOUND
 trajectory_msgs_DIR:PATH=/opt/ros/noetic/share/trajectory_msgs/cmake
 
 //Value Computed by CMake
+two_arms_BINARY_DIR:STATIC=/root/share/catkin_ws/build/two_arms
+
+//Value Computed by CMake
+two_arms_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/two_arms
+
+//Value Computed by CMake
 unity_robotics_demo_BINARY_DIR:STATIC=/root/share/catkin_ws/build/unity/unity_robotics_demo
 
 //Value Computed by CMake
