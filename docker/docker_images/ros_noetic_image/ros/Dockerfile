@@ -1,4 +1,4 @@
-FROM cuda_20.04:latest
+FROM lhs223/cuda_20.04:latest
 
 # setup timezone
 #RUN echo 'Etc/UTC' > /etc/timezone && \

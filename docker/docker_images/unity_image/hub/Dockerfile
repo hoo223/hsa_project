@@ -1,4 +1,6 @@
-FROM cuda_18.04:latest
+FROM lhs223/cuda_18.04:latest
+
+## from https://github.com/game-ci/docker/blob/main/base/Dockerfile 
 
 # Fixes a Gradle crash while building for Android on Unity 2019 when there are accented characters in environment variables
 ENV LANG C.UTF-8
@@ -43,14 +45,19 @@ RUN apt-get -q update \
  && apt-get clean
 
 # Disable default sound card, which removes ALSA warnings
-#ADD config/asound.conf /etc/
+RUN /bin/echo -e 'pcm.!default {\n\
+    type plug\n\
+    slave.pcm "null"\n\
+}' > /etc/asound.conf
 
 # Support forward compatibility for unity activation
 RUN echo "576562626572264761624c65526f7578" > /etc/machine-id && mkdir -p /var/lib/dbus/ && ln -sf /etc/machine-id /var/lib/dbus/machine-id
 
 # Used by Unity editor in "modules.json" and must not end with a slash.
-#ENV UNITY_PATH="/opt/unity"
-ENV UNITY_PATH="~/unity"
+ENV UNITY_PATH="/opt/unity"
+#ENV UNITY_PATH="~/share/unity"
+
+## from https://github.com/game-ci/docker/blob/main/hub/Dockerfile 
 
 # Hub dependencies
 RUN apt-get -q update \
@@ -80,8 +87,17 @@ RUN mkdir -p "${UNITY_PATH}/editors" \
  && unity-hub install-path --set "${UNITY_PATH}/editors/" \
  && find /tmp -mindepth 1 -delete
 
-RUN unity-hub install --version 2021.1.12f1 --changeset afcadd793de6 --module linux-il2cpp standardassets
+#RUN unity-hub install --version 2021.1.12f1 --changeset afcadd793de6 --module linux-il2cpp standardassets
+
+RUN apt update
+# https://docs.appimage.org/user-guide/troubleshooting/fuse.html - for FUSE error when executing UnityHub
+RUN apt install -y gedit fuse
 
 # Unity shortcut
 RUN /bin/bash -c "echo \"alias unity='~/share/unity/UnityHub.AppImage --no-sandbox'\" >> /root/.bashrc"
+RUN /bin/bash -c "echo \"alias cm='catkin_make'\" >> /root/.bashrc"
+RUN /bin/bash -c "echo \"alias sd='source devel/setup.bash'\" >> /root/.bashrc"
+RUN /bin/bash -c "echo \"alias cw='cd ~/share/catkin_ws'\" >> /root/.bashrc"
+RUN /bin/bash -c "echo \"alias eb='gedit ~/.bashrc'\" >> /root/.bashrc"
+RUN /bin/bash -c "echo \"alias sb='source ~/.bashrc'\" >> /root/.bashrc"
 RUN /bin/bash -c "source ~/.bashrc"

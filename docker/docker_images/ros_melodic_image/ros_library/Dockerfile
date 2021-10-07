@@ -5,7 +5,7 @@ RUN apt install -y ros-melodic-moveit ros-melodic-moveit-visual-tools
 RUN apt install ros-melodic-joint-trajectory-controller ros-melodic-velocity-controllers ros-melodic-soem
 
 # python library
-RUN pip install pygame
+RUN pip install pygame 
 RUN apt install -y python-tk
 
 # Add shortcut
