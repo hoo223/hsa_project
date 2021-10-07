@@ -36,7 +36,7 @@
   * docker image: 
     > docker pull lhs223/ur10:latest
   * image build
-    1. [build ur10 container](ur10-container)
+    1. [build ur10 container](https://github.com/hoo223/hsa_project/blob/master/docker/README.md#:~:text=Click%20%27Continuew%20anyway%27-,ur10%20container,-Go%20to%20./docker_containers)
     2. install dependencies
         ~~~
         # install dependencies
