@@ -136,8 +136,8 @@ class IsProgramSavedResponse {
 
   static getMessageSize(object) {
     let length = 0;
-    length += _getByteLength(object.answer);
-    length += _getByteLength(object.program_name);
+    length += object.answer.length;
+    length += object.program_name.length;
     return length + 10;
   }
 

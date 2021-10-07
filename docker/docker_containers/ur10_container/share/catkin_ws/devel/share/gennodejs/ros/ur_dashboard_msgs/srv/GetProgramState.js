@@ -138,8 +138,8 @@ class GetProgramStateResponse {
   static getMessageSize(object) {
     let length = 0;
     length += ProgramState.getMessageSize(object.state);
-    length += _getByteLength(object.program_name);
-    length += _getByteLength(object.answer);
+    length += object.program_name.length;
+    length += object.answer.length;
     return length + 9;
   }
 

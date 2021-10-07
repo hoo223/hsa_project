@@ -42,21 +42,6 @@
 (intern "*UPDATING_FIRMWARE*" (find-package "UR_DASHBOARD_MSGS::ROBOTMODE"))
 (shadow '*UPDATING_FIRMWARE* (find-package "UR_DASHBOARD_MSGS::ROBOTMODE"))
 (defconstant ur_dashboard_msgs::RobotMode::*UPDATING_FIRMWARE* 8)
-
-(defun ur_dashboard_msgs::RobotMode-to-symbol (const)
-  (cond
-        ((= const -1) 'ur_dashboard_msgs::RobotMode::*NO_CONTROLLER*)
-        ((= const 0) 'ur_dashboard_msgs::RobotMode::*DISCONNECTED*)
-        ((= const 1) 'ur_dashboard_msgs::RobotMode::*CONFIRM_SAFETY*)
-        ((= const 2) 'ur_dashboard_msgs::RobotMode::*BOOTING*)
-        ((= const 3) 'ur_dashboard_msgs::RobotMode::*POWER_OFF*)
-        ((= const 4) 'ur_dashboard_msgs::RobotMode::*POWER_ON*)
-        ((= const 5) 'ur_dashboard_msgs::RobotMode::*IDLE*)
-        ((= const 6) 'ur_dashboard_msgs::RobotMode::*BACKDRIVE*)
-        ((= const 7) 'ur_dashboard_msgs::RobotMode::*RUNNING*)
-        ((= const 8) 'ur_dashboard_msgs::RobotMode::*UPDATING_FIRMWARE*)
-        (t nil)))
-
 (defclass ur_dashboard_msgs::RobotMode
   :super ros::object
   :slots (_mode ))

@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "/root/share/catkin_ws/devel/lib/ur_robot_driver/robot_state_helper"
-  "/root/share/catkin_ws/devel/lib/ur_robot_driver/robot_state_helper.pdb"
   "CMakeFiles/robot_state_helper.dir/src/robot_state_helper.cpp.o"
   "CMakeFiles/robot_state_helper.dir/src/robot_state_helper_node.cpp.o"
+  "/root/share/catkin_ws/devel/lib/ur_robot_driver/robot_state_helper.pdb"
+  "/root/share/catkin_ws/devel/lib/ur_robot_driver/robot_state_helper"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -68,8 +68,8 @@
    (&optional __program_name)
    (if __program_name (setq _program_name __program_name)) _program_name)
   (:success
-   (&optional (__success :null))
-   (if (not (eq __success :null)) (setq _success __success)) _success)
+   (&optional __success)
+   (if __success (setq _success __success)) _success)
   (:serialization-length
    ()
    (+

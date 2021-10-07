@@ -28,15 +28,15 @@
   (state m))
 (cl:defmethod roslisp-msg-protocol:symbol-codes ((msg-type (cl:eql '<ProgramState>)))
     "Constants for message type '<ProgramState>"
-  '((:STOPPED . "STOPPED")
-    (:PLAYING . "PLAYING")
-    (:PAUSED . "PAUSED"))
+  '((:STOPPED . STOPPED)
+    (:PLAYING . PLAYING)
+    (:PAUSED . PAUSED))
 )
 (cl:defmethod roslisp-msg-protocol:symbol-codes ((msg-type (cl:eql 'ProgramState)))
     "Constants for message type 'ProgramState"
-  '((:STOPPED . "STOPPED")
-    (:PLAYING . "PLAYING")
-    (:PAUSED . "PAUSED"))
+  '((:STOPPED . STOPPED)
+    (:PLAYING . PLAYING)
+    (:PAUSED . PAUSED))
 )
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <ProgramState>) ostream)
   "Serializes a message object of type '<ProgramState>"

@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(ur_calibration_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/usr/lib/x86_64-linux-gnu/cmake/yaml-cpp/../../../../../include;/opt/ros/noetic/include;/usr/include " STREQUAL " ")
+if(NOT "/usr/lib/x86_64-linux-gnu/cmake/yaml-cpp/../../../../include;/opt/ros/melodic/include;/usr/include " STREQUAL " ")
   set(ur_calibration_INCLUDE_DIRS "")
-  set(_include_dirs "/usr/lib/x86_64-linux-gnu/cmake/yaml-cpp/../../../../../include;/opt/ros/noetic/include;/usr/include")
+  set(_include_dirs "/usr/lib/x86_64-linux-gnu/cmake/yaml-cpp/../../../../include;/opt/ros/melodic/include;/usr/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -116,7 +116,7 @@ if(NOT "/usr/lib/x86_64-linux-gnu/cmake/yaml-cpp/../../../../../include;/opt/ros
   endforeach()
 endif()
 
-set(libraries "/usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.6.2;/opt/ros/noetic/lib/x86_64-linux-gnu/liburcl.so")
+set(libraries "/usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.5.2;/opt/ros/melodic/lib/liburcl.so")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /root/share/catkin_ws/devel/lib;/root/share/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /root/share/catkin_ws/devel/lib;/root/share/catkin_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -211,7 +211,7 @@ foreach(depend ${depends})
   _unpack_libraries_with_build_configuration(ur_calibration_LIBRARIES ${ur_calibration_LIBRARIES})
 
   _list_append_unique(ur_calibration_LIBRARY_DIRS ${${ur_calibration_dep}_LIBRARY_DIRS})
-  _list_append_deduplicate(ur_calibration_EXPORTED_TARGETS ${${ur_calibration_dep}_EXPORTED_TARGETS})
+  list(APPEND ur_calibration_EXPORTED_TARGETS ${${ur_calibration_dep}_EXPORTED_TARGETS})
 endforeach()
 
 set(pkg_cfg_extras "")

@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ur3_moveit_plugin.dir/src/ur_moveit_plugin.cpp.o"
   "/root/share/catkin_ws/devel/lib/libur3_moveit_plugin.pdb"
   "/root/share/catkin_ws/devel/lib/libur3_moveit_plugin.so"
-  "CMakeFiles/ur3_moveit_plugin.dir/src/ur_moveit_plugin.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,58 +1,55 @@
-Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Determining if the pthread_create exist failed with the following output:
 Change Dir: /root/share/catkin_ws/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_678fd/fast && /usr/bin/make -f CMakeFiles/cmTC_678fd.dir/build.make CMakeFiles/cmTC_678fd.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_2c853/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2c853.dir/build.make CMakeFiles/cmTC_2c853.dir/build
 make[1]: Entering directory '/root/share/catkin_ws/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_678fd.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_678fd.dir/src.c.o   -c /root/share/catkin_ws/build/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_678fd
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_678fd.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_678fd.dir/src.c.o  -o cmTC_678fd 
-/usr/bin/ld: CMakeFiles/cmTC_678fd.dir/src.c.o: in function `main':
-src.c:(.text+0x46): undefined reference to `pthread_create'
-/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
-/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+Building C object CMakeFiles/cmTC_2c853.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_2c853.dir/CheckSymbolExists.c.o   -c /root/share/catkin_ws/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_2c853
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2c853.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_2c853.dir/CheckSymbolExists.c.o  -o cmTC_2c853 
+CMakeFiles/cmTC_2c853.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_678fd.dir/build.make:87: cmTC_678fd] Error 1
+CMakeFiles/cmTC_2c853.dir/build.make:97: recipe for target 'cmTC_2c853' failed
+make[1]: *** [cmTC_2c853] Error 1
 make[1]: Leaving directory '/root/share/catkin_ws/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_678fd/fast] Error 2
+Makefile:126: recipe for target 'cmTC_2c853/fast' failed
+make: *** [cmTC_2c853/fast] Error 2
 
-
-Source file was:
+File /root/share/catkin_ws/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
 #include <pthread.h>
 
-void* test_func(void* data)
+int main(int argc, char** argv)
 {
-  return data;
-}
-
-int main(void)
-{
-  pthread_t thread;
-  pthread_create(&thread, NULL, test_func, NULL);
-  pthread_detach(thread);
-  pthread_join(thread, NULL);
-  pthread_atfork(NULL, NULL, NULL);
-  pthread_exit(NULL);
-
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
   return 0;
+#endif
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /root/share/catkin_ws/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_97d07/fast && /usr/bin/make -f CMakeFiles/cmTC_97d07.dir/build.make CMakeFiles/cmTC_97d07.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_698d5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_698d5.dir/build.make CMakeFiles/cmTC_698d5.dir/build
 make[1]: Entering directory '/root/share/catkin_ws/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_97d07.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_97d07.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
-Linking C executable cmTC_97d07
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_97d07.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_97d07.dir/CheckFunctionExists.c.o  -o cmTC_97d07  -lpthreads 
+Building C object CMakeFiles/cmTC_698d5.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_698d5.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_698d5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_698d5.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_698d5.dir/CheckFunctionExists.c.o  -o cmTC_698d5 -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_97d07.dir/build.make:87: cmTC_97d07] Error 1
+CMakeFiles/cmTC_698d5.dir/build.make:97: recipe for target 'cmTC_698d5' failed
+make[1]: *** [cmTC_698d5] Error 1
 make[1]: Leaving directory '/root/share/catkin_ws/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_97d07/fast] Error 2
-
+Makefile:126: recipe for target 'cmTC_698d5/fast' failed
+make: *** [cmTC_698d5/fast] Error 2
 
 

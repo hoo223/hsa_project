@@ -105,16 +105,6 @@ namespace message_traits
 
 
 template <class ContainerAllocator>
-struct IsMessage< ::ur_dashboard_msgs::IsProgramSavedResponse_<ContainerAllocator> >
-  : TrueType
-  { };
-
-template <class ContainerAllocator>
-struct IsMessage< ::ur_dashboard_msgs::IsProgramSavedResponse_<ContainerAllocator> const>
-  : TrueType
-  { };
-
-template <class ContainerAllocator>
 struct IsFixedSize< ::ur_dashboard_msgs::IsProgramSavedResponse_<ContainerAllocator> >
   : FalseType
   { };
@@ -122,6 +112,16 @@ struct IsFixedSize< ::ur_dashboard_msgs::IsProgramSavedResponse_<ContainerAlloca
 template <class ContainerAllocator>
 struct IsFixedSize< ::ur_dashboard_msgs::IsProgramSavedResponse_<ContainerAllocator> const>
   : FalseType
+  { };
+
+template <class ContainerAllocator>
+struct IsMessage< ::ur_dashboard_msgs::IsProgramSavedResponse_<ContainerAllocator> >
+  : TrueType
+  { };
+
+template <class ContainerAllocator>
+struct IsMessage< ::ur_dashboard_msgs::IsProgramSavedResponse_<ContainerAllocator> const>
+  : TrueType
   { };
 
 template <class ContainerAllocator>

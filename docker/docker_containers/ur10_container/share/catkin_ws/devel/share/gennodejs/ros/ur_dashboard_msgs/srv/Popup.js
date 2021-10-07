@@ -51,7 +51,7 @@ class PopupRequest {
 
   static getMessageSize(object) {
     let length = 0;
-    length += _getByteLength(object.message);
+    length += object.message.length;
     return length + 4;
   }
 
@@ -135,7 +135,7 @@ class PopupResponse {
 
   static getMessageSize(object) {
     let length = 0;
-    length += _getByteLength(object.answer);
+    length += object.answer.length;
     return length + 5;
   }
 

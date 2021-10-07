@@ -77,8 +77,8 @@
    (&optional __answer)
    (if __answer (setq _answer __answer)) _answer)
   (:success
-   (&optional (__success :null))
-   (if (not (eq __success :null)) (setq _success __success)) _success)
+   (&optional __success)
+   (if __success (setq _success __success)) _success)
   (:serialization-length
    ()
    (+

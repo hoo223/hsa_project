@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "/root/share/catkin_ws/devel/lib/ur_robot_driver/dashboard_client"
-  "/root/share/catkin_ws/devel/lib/ur_robot_driver/dashboard_client.pdb"
-  "CMakeFiles/dashboard_client.dir/src/dashboard_client_node.cpp.o"
   "CMakeFiles/dashboard_client.dir/src/dashboard_client_ros.cpp.o"
+  "CMakeFiles/dashboard_client.dir/src/dashboard_client_node.cpp.o"
+  "/root/share/catkin_ws/devel/lib/ur_robot_driver/dashboard_client.pdb"
+  "/root/share/catkin_ws/devel/lib/ur_robot_driver/dashboard_client"
 )
 
 # Per-language clean rules from dependency scanning.

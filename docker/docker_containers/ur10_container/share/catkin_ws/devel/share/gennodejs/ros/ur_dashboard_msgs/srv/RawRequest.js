@@ -51,7 +51,7 @@ class RawRequestRequest {
 
   static getMessageSize(object) {
     let length = 0;
-    length += _getByteLength(object.query);
+    length += object.query.length;
     return length + 4;
   }
 
@@ -125,7 +125,7 @@ class RawRequestResponse {
 
   static getMessageSize(object) {
     let length = 0;
-    length += _getByteLength(object.answer);
+    length += object.answer.length;
     return length + 4;
   }
 

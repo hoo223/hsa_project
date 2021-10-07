@@ -126,7 +126,7 @@ class GetRobotModeResponse {
 
   static getMessageSize(object) {
     let length = 0;
-    length += _getByteLength(object.answer);
+    length += object.answer.length;
     return length + 6;
   }
 

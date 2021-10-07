@@ -99,22 +99,22 @@ namespace message_traits
 
 
 template <class ContainerAllocator>
-struct IsMessage< ::ur_dashboard_msgs::SetModeGoal_<ContainerAllocator> >
-  : TrueType
-  { };
-
-template <class ContainerAllocator>
-struct IsMessage< ::ur_dashboard_msgs::SetModeGoal_<ContainerAllocator> const>
-  : TrueType
-  { };
-
-template <class ContainerAllocator>
 struct IsFixedSize< ::ur_dashboard_msgs::SetModeGoal_<ContainerAllocator> >
   : TrueType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::ur_dashboard_msgs::SetModeGoal_<ContainerAllocator> const>
+  : TrueType
+  { };
+
+template <class ContainerAllocator>
+struct IsMessage< ::ur_dashboard_msgs::SetModeGoal_<ContainerAllocator> >
+  : TrueType
+  { };
+
+template <class ContainerAllocator>
+struct IsMessage< ::ur_dashboard_msgs::SetModeGoal_<ContainerAllocator> const>
   : TrueType
   { };
 

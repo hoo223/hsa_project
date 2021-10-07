@@ -27,8 +27,8 @@
    (setq _message (string __message))
    self)
   (:success
-   (&optional (__success :null))
-   (if (not (eq __success :null)) (setq _success __success)) _success)
+   (&optional __success)
+   (if __success (setq _success __success)) _success)
   (:message
    (&optional __message)
    (if __message (setq _message __message)) _message)

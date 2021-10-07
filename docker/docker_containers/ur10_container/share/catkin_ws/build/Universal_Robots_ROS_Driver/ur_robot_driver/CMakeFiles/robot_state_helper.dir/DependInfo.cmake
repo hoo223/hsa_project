@@ -21,9 +21,10 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/root/share/catkin_ws/src/Universal_Robots_ROS_Driver/ur_robot_driver/include"
   "/root/share/catkin_ws/devel/include"
-  "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+  "/opt/ros/melodic/include"
+  "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+  "/opt/ros/melodic/share/orocos_kdl/cmake/../../../include"
   "/usr/include/eigen3"
-  "/opt/ros/noetic/include"
   )
 
 # Targets to which this target links.

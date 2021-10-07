@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "/root/share/catkin_ws/devel/lib/libur_robot_driver_plugin.pdb"
-  "/root/share/catkin_ws/devel/lib/libur_robot_driver_plugin.so"
   "CMakeFiles/ur_robot_driver_plugin.dir/src/dashboard_client_ros.cpp.o"
   "CMakeFiles/ur_robot_driver_plugin.dir/src/hardware_interface.cpp.o"
+  "/root/share/catkin_ws/devel/lib/libur_robot_driver_plugin.pdb"
+  "/root/share/catkin_ws/devel/lib/libur_robot_driver_plugin.so"
 )
 
 # Per-language clean rules from dependency scanning.

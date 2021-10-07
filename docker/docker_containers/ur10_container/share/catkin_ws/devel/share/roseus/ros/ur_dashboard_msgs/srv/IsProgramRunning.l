@@ -65,11 +65,11 @@
    (&optional __answer)
    (if __answer (setq _answer __answer)) _answer)
   (:program_running
-   (&optional (__program_running :null))
-   (if (not (eq __program_running :null)) (setq _program_running __program_running)) _program_running)
+   (&optional __program_running)
+   (if __program_running (setq _program_running __program_running)) _program_running)
   (:success
-   (&optional (__success :null))
-   (if (not (eq __success :null)) (setq _success __success)) _success)
+   (&optional __success)
+   (if __success (setq _success __success)) _success)
   (:serialization-length
    ()
    (+

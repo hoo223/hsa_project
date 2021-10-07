@@ -32,11 +32,11 @@
    (&optional __target_robot_mode)
    (if __target_robot_mode (setq _target_robot_mode __target_robot_mode)) _target_robot_mode)
   (:stop_program
-   (&optional (__stop_program :null))
-   (if (not (eq __stop_program :null)) (setq _stop_program __stop_program)) _stop_program)
+   (&optional __stop_program)
+   (if __stop_program (setq _stop_program __stop_program)) _stop_program)
   (:play_program
-   (&optional (__play_program :null))
-   (if (not (eq __play_program :null)) (setq _play_program __play_program)) _play_program)
+   (&optional __play_program)
+   (if __play_program (setq _play_program __play_program)) _play_program)
   (:serialization-length
    ()
    (+

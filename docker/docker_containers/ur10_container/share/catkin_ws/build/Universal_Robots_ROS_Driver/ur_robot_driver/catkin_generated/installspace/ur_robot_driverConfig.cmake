@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(ur_robot_driver_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "include;/usr/include;/opt/ros/noetic/include " STREQUAL " ")
+if(NOT "include;/usr/include;/opt/ros/melodic/include " STREQUAL " ")
   set(ur_robot_driver_INCLUDE_DIRS "")
-  set(_include_dirs "include;/usr/include;/opt/ros/noetic/include")
+  set(_include_dirs "include;/usr/include;/opt/ros/melodic/include")
   if(NOT "https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/issues " STREQUAL " ")
     set(_report "Check the issue tracker 'https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/issues' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT "http://wiki.ros.org/ur_robot_driver " STREQUAL " ")
@@ -116,7 +116,7 @@ if(NOT "include;/usr/include;/opt/ros/noetic/include " STREQUAL " ")
   endforeach()
 endif()
 
-set(libraries "ur_robot_driver_plugin;urcl_log_handler;/opt/ros/noetic/lib/x86_64-linux-gnu/liburcl.so")
+set(libraries "ur_robot_driver_plugin;urcl_log_handler;/opt/ros/melodic/lib/liburcl.so")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /root/share/catkin_ws/install/lib;/root/share/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /root/share/catkin_ws/install/lib;/root/share/catkin_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -211,7 +211,7 @@ foreach(depend ${depends})
   _unpack_libraries_with_build_configuration(ur_robot_driver_LIBRARIES ${ur_robot_driver_LIBRARIES})
 
   _list_append_unique(ur_robot_driver_LIBRARY_DIRS ${${ur_robot_driver_dep}_LIBRARY_DIRS})
-  _list_append_deduplicate(ur_robot_driver_EXPORTED_TARGETS ${${ur_robot_driver_dep}_EXPORTED_TARGETS})
+  list(APPEND ur_robot_driver_EXPORTED_TARGETS ${${ur_robot_driver_dep}_EXPORTED_TARGETS})
 endforeach()
 
 set(pkg_cfg_extras "")

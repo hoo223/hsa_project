@@ -21,11 +21,6 @@
 (intern "*PAUSED*" (find-package "UR_DASHBOARD_MSGS::PROGRAMSTATE"))
 (shadow '*PAUSED* (find-package "UR_DASHBOARD_MSGS::PROGRAMSTATE"))
 (defconstant ur_dashboard_msgs::ProgramState::*PAUSED* "PAUSED")
-
-(defun ur_dashboard_msgs::ProgramState-to-symbol (const)
-  (cond
-        (t nil)))
-
 (defclass ur_dashboard_msgs::ProgramState
   :super ros::object
   :slots (_state ))

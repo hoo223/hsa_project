@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "/root/share/catkin_ws/devel/lib/controller_stopper/node"
-  "/root/share/catkin_ws/devel/lib/controller_stopper/node.pdb"
   "CMakeFiles/controller_stopper_node.dir/src/controller_stopper.cpp.o"
   "CMakeFiles/controller_stopper_node.dir/src/controller_stopper_node.cpp.o"
+  "/root/share/catkin_ws/devel/lib/controller_stopper/node.pdb"
+  "/root/share/catkin_ws/devel/lib/controller_stopper/node"
 )
 
 # Per-language clean rules from dependency scanning.

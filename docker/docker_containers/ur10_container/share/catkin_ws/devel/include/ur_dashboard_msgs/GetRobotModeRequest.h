@@ -71,22 +71,22 @@ namespace message_traits
 
 
 template <class ContainerAllocator>
-struct IsMessage< ::ur_dashboard_msgs::GetRobotModeRequest_<ContainerAllocator> >
-  : TrueType
-  { };
-
-template <class ContainerAllocator>
-struct IsMessage< ::ur_dashboard_msgs::GetRobotModeRequest_<ContainerAllocator> const>
-  : TrueType
-  { };
-
-template <class ContainerAllocator>
 struct IsFixedSize< ::ur_dashboard_msgs::GetRobotModeRequest_<ContainerAllocator> >
   : TrueType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::ur_dashboard_msgs::GetRobotModeRequest_<ContainerAllocator> const>
+  : TrueType
+  { };
+
+template <class ContainerAllocator>
+struct IsMessage< ::ur_dashboard_msgs::GetRobotModeRequest_<ContainerAllocator> >
+  : TrueType
+  { };
+
+template <class ContainerAllocator>
+struct IsMessage< ::ur_dashboard_msgs::GetRobotModeRequest_<ContainerAllocator> const>
   : TrueType
   { };
 

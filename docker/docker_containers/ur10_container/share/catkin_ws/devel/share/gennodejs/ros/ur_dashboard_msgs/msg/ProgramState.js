@@ -48,7 +48,7 @@ class ProgramState {
 
   static getMessageSize(object) {
     let length = 0;
-    length += _getByteLength(object.state);
+    length += object.state.length;
     return length + 4;
   }
 

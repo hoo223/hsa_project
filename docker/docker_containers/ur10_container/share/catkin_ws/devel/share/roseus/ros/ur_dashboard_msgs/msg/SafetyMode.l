@@ -51,24 +51,6 @@
 (intern "*SYSTEM_THREE_POSITION_ENABLING_STOP*" (find-package "UR_DASHBOARD_MSGS::SAFETYMODE"))
 (shadow '*SYSTEM_THREE_POSITION_ENABLING_STOP* (find-package "UR_DASHBOARD_MSGS::SAFETYMODE"))
 (defconstant ur_dashboard_msgs::SafetyMode::*SYSTEM_THREE_POSITION_ENABLING_STOP* 13)
-
-(defun ur_dashboard_msgs::SafetyMode-to-symbol (const)
-  (cond
-        ((= const 1) 'ur_dashboard_msgs::SafetyMode::*NORMAL*)
-        ((= const 2) 'ur_dashboard_msgs::SafetyMode::*REDUCED*)
-        ((= const 3) 'ur_dashboard_msgs::SafetyMode::*PROTECTIVE_STOP*)
-        ((= const 4) 'ur_dashboard_msgs::SafetyMode::*RECOVERY*)
-        ((= const 5) 'ur_dashboard_msgs::SafetyMode::*SAFEGUARD_STOP*)
-        ((= const 6) 'ur_dashboard_msgs::SafetyMode::*SYSTEM_EMERGENCY_STOP*)
-        ((= const 7) 'ur_dashboard_msgs::SafetyMode::*ROBOT_EMERGENCY_STOP*)
-        ((= const 8) 'ur_dashboard_msgs::SafetyMode::*VIOLATION*)
-        ((= const 9) 'ur_dashboard_msgs::SafetyMode::*FAULT*)
-        ((= const 10) 'ur_dashboard_msgs::SafetyMode::*VALIDATE_JOINT_ID*)
-        ((= const 11) 'ur_dashboard_msgs::SafetyMode::*UNDEFINED_SAFETY_MODE*)
-        ((= const 12) 'ur_dashboard_msgs::SafetyMode::*AUTOMATIC_MODE_SAFEGUARD_STOP*)
-        ((= const 13) 'ur_dashboard_msgs::SafetyMode::*SYSTEM_THREE_POSITION_ENABLING_STOP*)
-        (t nil)))
-
 (defclass ur_dashboard_msgs::SafetyMode
   :super ros::object
   :slots (_mode ))

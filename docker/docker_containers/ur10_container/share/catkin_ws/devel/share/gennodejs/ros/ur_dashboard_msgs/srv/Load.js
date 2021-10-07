@@ -51,7 +51,7 @@ class LoadRequest {
 
   static getMessageSize(object) {
     let length = 0;
-    length += _getByteLength(object.filename);
+    length += object.filename.length;
     return length + 4;
   }
 
@@ -136,7 +136,7 @@ class LoadResponse {
 
   static getMessageSize(object) {
     let length = 0;
-    length += _getByteLength(object.answer);
+    length += object.answer.length;
     return length + 5;
   }
 

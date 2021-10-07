@@ -70,11 +70,11 @@
    (&optional __program_name)
    (if __program_name (setq _program_name __program_name)) _program_name)
   (:program_saved
-   (&optional (__program_saved :null))
-   (if (not (eq __program_saved :null)) (setq _program_saved __program_saved)) _program_saved)
+   (&optional __program_saved)
+   (if __program_saved (setq _program_saved __program_saved)) _program_saved)
   (:success
-   (&optional (__success :null))
-   (if (not (eq __success :null)) (setq _success __success)) _success)
+   (&optional __success)
+   (if __success (setq _success __success)) _success)
   (:serialization-length
    ()
    (+

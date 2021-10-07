@@ -59,7 +59,7 @@ class SetModeResult {
 
   static getMessageSize(object) {
     let length = 0;
-    length += _getByteLength(object.message);
+    length += object.message.length;
     return length + 5;
   }
 

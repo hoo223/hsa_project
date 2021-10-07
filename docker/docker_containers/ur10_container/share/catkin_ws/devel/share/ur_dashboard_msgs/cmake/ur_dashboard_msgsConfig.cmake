@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /root/share/catkin_ws/devel/lib;/root/share/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /root/share/catkin_ws/devel/lib;/root/share/catkin_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -211,7 +211,7 @@ foreach(depend ${depends})
   _unpack_libraries_with_build_configuration(ur_dashboard_msgs_LIBRARIES ${ur_dashboard_msgs_LIBRARIES})
 
   _list_append_unique(ur_dashboard_msgs_LIBRARY_DIRS ${${ur_dashboard_msgs_dep}_LIBRARY_DIRS})
-  _list_append_deduplicate(ur_dashboard_msgs_EXPORTED_TARGETS ${${ur_dashboard_msgs_dep}_EXPORTED_TARGETS})
+  list(APPEND ur_dashboard_msgs_EXPORTED_TARGETS ${${ur_dashboard_msgs_dep}_EXPORTED_TARGETS})
 endforeach()
 
 set(pkg_cfg_extras "ur_dashboard_msgs-msg-extras.cmake")
