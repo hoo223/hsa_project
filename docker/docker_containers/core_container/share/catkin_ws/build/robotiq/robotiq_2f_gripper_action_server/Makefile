@@ -68,6 +68,16 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -89,16 +99,6 @@ test:
 test/fast: test
 
 .PHONY : test/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -228,66 +228,6 @@ trajectory_msgs_generate_messages_lisp/fast:
 .PHONY : trajectory_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-robotiq/robotiq_2f_gripper_action_server/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robotiq/robotiq_2f_gripper_action_server/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
-.PHONY : robotiq/robotiq_2f_gripper_action_server/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-trajectory_msgs_generate_messages_cpp: robotiq/robotiq_2f_gripper_action_server/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : trajectory_msgs_generate_messages_cpp
-
-# fast build rule for target.
-trajectory_msgs_generate_messages_cpp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f robotiq/robotiq_2f_gripper_action_server/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make robotiq/robotiq_2f_gripper_action_server/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
-.PHONY : trajectory_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-.PHONY : robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_py: robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_py
-
-# fast build rule for target.
-geometry_msgs_generate_messages_py/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
-.PHONY : geometry_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-.PHONY : robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_lisp: robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_lisp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_lisp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
-.PHONY : geometry_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
-.PHONY : robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_eus: robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_eus
-
-# fast build rule for target.
-geometry_msgs_generate_messages_eus/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
-.PHONY : geometry_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
 robotiq/robotiq_2f_gripper_action_server/CMakeFiles/actionlib_generate_messages_py.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robotiq/robotiq_2f_gripper_action_server/CMakeFiles/actionlib_generate_messages_py.dir/rule
 .PHONY : robotiq/robotiq_2f_gripper_action_server/CMakeFiles/actionlib_generate_messages_py.dir/rule
@@ -316,21 +256,6 @@ actionlib_generate_messages_lisp: robotiq/robotiq_2f_gripper_action_server/CMake
 actionlib_generate_messages_lisp/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f robotiq/robotiq_2f_gripper_action_server/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make robotiq/robotiq_2f_gripper_action_server/CMakeFiles/actionlib_generate_messages_lisp.dir/build
 .PHONY : actionlib_generate_messages_lisp/fast
-
-# Convenience name for target.
-robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-.PHONY : robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_nodejs: robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-geometry_msgs_generate_messages_nodejs/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
-.PHONY : geometry_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 robotiq/robotiq_2f_gripper_action_server/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule:
@@ -436,6 +361,21 @@ actionlib_msgs_generate_messages_lisp: robotiq/robotiq_2f_gripper_action_server/
 actionlib_msgs_generate_messages_lisp/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f robotiq/robotiq_2f_gripper_action_server/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make robotiq/robotiq_2f_gripper_action_server/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
 .PHONY : actionlib_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+robotiq/robotiq_2f_gripper_action_server/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robotiq/robotiq_2f_gripper_action_server/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+.PHONY : robotiq/robotiq_2f_gripper_action_server/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_cpp: robotiq/robotiq_2f_gripper_action_server/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_cpp
+
+# fast build rule for target.
+trajectory_msgs_generate_messages_cpp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f robotiq/robotiq_2f_gripper_action_server/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make robotiq/robotiq_2f_gripper_action_server/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
+.PHONY : trajectory_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 robotiq/robotiq_2f_gripper_action_server/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule:
@@ -557,21 +497,6 @@ control_msgs_generate_messages_py/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f robotiq/robotiq_2f_gripper_action_server/CMakeFiles/control_msgs_generate_messages_py.dir/build.make robotiq/robotiq_2f_gripper_action_server/CMakeFiles/control_msgs_generate_messages_py.dir/build
 .PHONY : control_msgs_generate_messages_py/fast
 
-# Convenience name for target.
-robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-.PHONY : robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_cpp: robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_cpp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_cpp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make robotiq/robotiq_2f_gripper_action_server/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
-.PHONY : geometry_msgs_generate_messages_cpp/fast
-
 src/robotiq_2f_gripper_action_server.o: src/robotiq_2f_gripper_action_server.cpp.o
 
 .PHONY : src/robotiq_2f_gripper_action_server.o
@@ -660,21 +585,16 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... robotiq_2f_gripper_action_server_node"
 	@echo "... trajectory_msgs_generate_messages_nodejs"
 	@echo "... robotiq_2f_gripper_action_server_client_test"
 	@echo "... trajectory_msgs_generate_messages_lisp"
-	@echo "... trajectory_msgs_generate_messages_cpp"
-	@echo "... geometry_msgs_generate_messages_py"
-	@echo "... test"
-	@echo "... geometry_msgs_generate_messages_lisp"
-	@echo "... list_install_components"
-	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... actionlib_generate_messages_py"
 	@echo "... actionlib_generate_messages_lisp"
 	@echo "... edit_cache"
-	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... control_msgs_generate_messages_nodejs"
 	@echo "... actionlib_generate_messages_cpp"
 	@echo "... install"
@@ -683,6 +603,7 @@ help:
 	@echo "... actionlib_generate_messages_eus"
 	@echo "... actionlib_msgs_generate_messages_eus"
 	@echo "... actionlib_msgs_generate_messages_lisp"
+	@echo "... trajectory_msgs_generate_messages_cpp"
 	@echo "... actionlib_msgs_generate_messages_py"
 	@echo "... control_msgs_generate_messages_cpp"
 	@echo "... install/local"
@@ -692,7 +613,6 @@ help:
 	@echo "... trajectory_msgs_generate_messages_py"
 	@echo "... actionlib_msgs_generate_messages_nodejs"
 	@echo "... control_msgs_generate_messages_py"
-	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... src/robotiq_2f_gripper_action_server.o"
 	@echo "... src/robotiq_2f_gripper_action_server.i"
 	@echo "... src/robotiq_2f_gripper_action_server.s"

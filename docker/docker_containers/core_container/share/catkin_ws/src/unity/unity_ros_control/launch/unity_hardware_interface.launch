@@ -1,0 +1,3 @@
+ <launch>
+    <node name="unity_hardware_interface" pkg="unity_ros_control" type="unity_hardware_interface" output="screen"/>
+ </launch>
