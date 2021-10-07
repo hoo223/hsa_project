@@ -19,7 +19,7 @@
 
 |container name|command(start)|command(attach)|command(start & attach)|command(exec)|
 |--|--|--|--|--|
-|ros|rs|ra|ros|re|
+|core|cs|ca|core|ce|
 |unity|us|ua|unity|ue|
 |ur10|urs|ura|ur10|ure|
 
@@ -34,12 +34,19 @@
         hp
         haptic
         ```
-    * ros container (Terminal 2~4)
-        ```
+    * core container (Terminal 2~4)
+        terminal 2
+        ~~~
         ursim
+        ~~~
+        terminal 3
+        ~~~
         interface_v
+        ~~~
+        terminal 4
+        ~~~
         teleop
-        ```
+        ~~~
 
 2. Unity
     * Host PC (Terminal 1)
@@ -51,15 +58,17 @@
         ```
         unity
         ```
-        run the project and start 
-    * ros container (Terminal 3~7)
-        ```
-        ut
-        controller
-        uhi
-        interface_v
+        run the project and start     
+    * core container (Terminal 3~4)   
+        terminal 3    
+        ~~~
+        unity_bringup
+        ~~~
+        terminal 4
+        ~~~
         teleop
-        ```
+        ~~~
+  
         
 3. Real UR10
     * Host PC (Terminal 1)
@@ -75,11 +84,15 @@
         1) run program   
         2) load program -> ExternalControl.urp   
         3) play button   
-    * ros container (Terminal 3~4)
-        ```
+    * core container (Terminal 3~4)
+        terminal 3
+        ~~~
         interface_r
+        ~~~
+        terminal 4
+        ~~~
         teleop
-        ```
+        ~~~
 </details>
 
 ***
