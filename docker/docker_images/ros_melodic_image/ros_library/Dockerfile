@@ -1,7 +1,7 @@
 FROM lhs223/ros_melodic:base
 
 # ros library
-RUN apt install -y ros-melodic-moveit ros-melodic-moveit-visual-tools
+RUN apt install -y ros-melodic-moveit ros-melodic-moveit-visual-tools 
 RUN apt install ros-melodic-joint-trajectory-controller ros-melodic-velocity-controllers ros-melodic-soem
 
 # python library
