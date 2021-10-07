@@ -34,22 +34,7 @@
 ### ur10 
   * Ubuntu version: 18.04 
   * docker image: 
-    > docker pull lhs223/ur10:latest
-  * image build
-    1. [build ur10 container](https://github.com/hoo223/hsa_project/blob/master/docker/README.md#:~:text=Click%20%27Continuew%20anyway%27-,ur10%20container,-Go%20to%20./docker_containers)
-    2. install dependencies
-        ~~~
-        # install dependencies
-        $ sudo apt update -qq  
-        $ rosdep update  
-        $ rosdep install --from-paths src --ignore-src -y  
-        
-        # build the workspace
-        $ cd ~/share/catkin_ws && catkin_make
-        
-        # activate the workspace (ie: source it)
-        $ source devel/setup.bash
-        ~~~
+    > docker pull lhs223/ros_melodic:core   
      
 ### ai 
   * Ubuntu version: 20.04 
@@ -98,6 +83,19 @@
   2. Run the 'launch_docker.sh' file
       ~~~
       $ ./launch_docker.sh
+      ~~~
+  3. install dependencies in the container
+      ~~~
+      # install dependencies
+      $ sudo apt update -qq  
+      $ rosdep update  
+      $ rosdep install --from-paths src --ignore-src -y  
+
+      # build the workspace
+      $ cd ~/share/catkin_ws && catkin_make
+
+      # activate the workspace (ie: source it)
+      $ source devel/setup.bash
       ~~~
 
 ### ai container
