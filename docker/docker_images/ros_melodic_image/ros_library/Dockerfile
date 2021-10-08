@@ -19,3 +19,4 @@ RUN /bin/bash -c "echo \"alias interface_v='roslaunch ur10_python_interface inte
 RUN /bin/bash -c "echo \"alias interface_r='roslaunch ur10_python_interface interface_real.launch'\" >> /root/.bashrc"
 RUN /bin/bash -c "echo \"alias teleop='roslaunch ur10_python_interface teleop.launch'\" >> /root/.bashrc"
 RUN /bin/bash -c "echo \"alias ur10_tcp='roslaunch ur_robot_driver ur10_bringup.launch robot_ip:=192.168.0.2'\" >> /root/.bashrc"
+RUN /bin/bash -c "echo \"alias unity_bringup='roslaunch unity_ros_control unity_bringup.launch'\" >> /root/.bashrc"
