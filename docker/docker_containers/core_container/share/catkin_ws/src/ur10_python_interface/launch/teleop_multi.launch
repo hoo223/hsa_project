@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_name" default=""/>
+
+  <remap from="/$(arg robot_name)/joy_command" to="/joy_command"/>
+  
+  <group ns="$(arg robot_name)">
+
+    <!-- joy2target node -->
+    <node name="joy2target_converter" pkg="ur10_python_interface" type="joy2target.py" args="$(arg robot_name)" output="log"/>
+    
+    <!-- ik solver node -->
+    <remap from="/robot_description_semantic" to="/$(arg robot_name)/robot_description_semantic"/>
+    <remap from="/target_pose" to="/$(arg robot_name)/target_pose"/>
+    <remap from="/joint_states" to="/$(arg robot_name)/joint_states"/>
+    <node name="ik_solver" pkg="ur10_python_interface" type="ik_publisher" args="$(arg robot_name)" output="screen"/>
+    
+    <!-- teleop controller node -->
+    <remap from="/ik_result" to="/$(arg robot_name)/ik_result"/>
+    <node name="teleop_controller" pkg="ur10_python_interface" type="teleop_controller.py" args="$(arg robot_name)" output="log"/>
+    <!-- <remap from="/$(arg robot_name)/joint_group_vel_controller/command" to="/joint_group_vel_controller/command"/> -->
+
+  </group>
+
+  
+
+ 
+</launch>
