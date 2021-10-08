@@ -21,8 +21,8 @@
 5) Install CUDA
    > ./2_cuda.sh
 6) Install docker
-   > ./3_docker.sh
-   > sudo usermod -aG docker $USER
+   > ./3_docker.sh      
+   > sudo usermod -aG docker $USER     
    > newgrp docker
 7) Install nvidia-docker
    > ./4_nvidia_docker.sh
