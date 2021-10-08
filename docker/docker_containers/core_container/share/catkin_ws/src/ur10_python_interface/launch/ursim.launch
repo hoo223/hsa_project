@@ -7,7 +7,7 @@
   <arg name="debug" default="false"/>
 
   <include file="$(find ur10_python_interface)/launch/controller.launch"/>
-  <include file="$(find ur10_python_interface)/launch/gazebo.launch"/>
+  <include file="$(find ur10_python_interface)/launch/ur10_gazebo.launch"/>
   <!--include file="$(find ur10_python_interface)/launch/interface.launch"/-->  
 
 </launch>
