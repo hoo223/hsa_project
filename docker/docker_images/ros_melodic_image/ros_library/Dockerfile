@@ -2,7 +2,8 @@ FROM lhs223/ros_melodic:base
 
 # ros library
 RUN apt install -y ros-melodic-moveit ros-melodic-moveit-visual-tools 
-RUN apt install ros-melodic-joint-trajectory-controller ros-melodic-velocity-controllers ros-melodic-soem
+RUN apt install -y ros-melodic-joint-trajectory-controller ros-melodic-velocity-controllers ros-melodic-soem
+RUN apt install -y ros-melodic-joint-state-publisher-gui
 
 # python library
 RUN pip install pygame 
