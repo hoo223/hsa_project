@@ -53,6 +53,26 @@
       $ source devel/setup.bash
       ~~~
 
+### indy7 container
+  1. Go to  ./docker_containers/indy7_container
+  2. Run the 'launch_docker.sh' file
+      ~~~
+      $ ./launch_docker.sh
+      ~~~
+  3. install dependencies in the container
+      ~~~
+      # install dependencies
+      $ sudo apt update -qq  
+      $ rosdep update  
+      $ rosdep install --from-paths src --ignore-src -y  
+
+      # build the workspace
+      $ cd ~/share/catkin_ws && catkin_make
+
+      # activate the workspace (ie: source it)
+      $ source devel/setup.bash
+      ~~~
+
 ### ai container
   1. Go to  ./docker_containers/ai_container
   2. Run the 'launch_docker.sh' file
