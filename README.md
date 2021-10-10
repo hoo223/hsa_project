@@ -14,27 +14,29 @@
 ***
 
 ## How to Run
-<details>
-<summary>Docker container</summary>
+### Docker container
+#### commands
+start contianer -> docker start [CONTAINER_NAME]   
+attach to container -> docker attach [CONTAINER_NAME]    
+additional terminal -> docker exec -it [CONTAINER_NAME] bash   
 
-|container name|command(start)|command(attach)|command(start & attach)|command(exec)|
+#### shortcut
+
+|container name|command(start)|command(attach)|command(exec)|command(start & attach)|
 |--|--|--|--|--|
-|core|cs|ca|core|ce|
-|unity|us|ua|unity|ue|
-|ur10|urs|ura|ur10|ure|
+|core|cs|ca|ce|core|
+|unity|us|ua|ue|unity|
+|ur10|urs|ura|ure|ur10|
+|indy|is|ia|ie|indy|
 
-</details>
-
-<details>
-<summary>Teleoperation</summary>
-  
+### Teleoperation
 1. Gazebo
-    * Host PC (Terminal 1)
+    * Host PC (Terminal 1)    
         ```
         hp
         haptic
         ```
-    * core container (Terminal 2~4)
+    * core container (Terminal 2~4)   
         terminal 2
         ~~~
         ursim
@@ -49,17 +51,17 @@
         ~~~
 
 2. Unity
-    * Host PC (Terminal 1)
+    * Host PC (Terminal 1)    
         ```
         hp
         haptic
         ```
-    * unity contatiner (Terminal 2)
+    * unity contatiner (Terminal 2)   
         ```
         unity
         ```
         run the project and start     
-    * core container (Terminal 3~4)   
+    * core container (Terminal 3~4)    
         terminal 3    
         ~~~
         unity_bringup
@@ -93,7 +95,6 @@
         ~~~
         teleop
         ~~~
-</details>
 
 ***
 
