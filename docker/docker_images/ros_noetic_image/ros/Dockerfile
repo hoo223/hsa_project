@@ -35,6 +35,7 @@ RUN /bin/bash -c "source ~/.bashrc"
 
 RUN apt update
 RUN apt install -y python3-rosdep-modules python3-rosinstall python3-rosinstall-generator python3-wstool build-essential python3-flask python3-pymodbus
+RUN apt install -y python3-pip
 
 # setup entrypoint
 COPY ./ros_entrypoint.sh /
