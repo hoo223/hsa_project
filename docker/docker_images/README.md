@@ -1,8 +1,30 @@
 # docker_images
-### core
+## Image list & hierarchy
+
+### List
+
+|image name|tag|size|
+|--|--|--|
+lhs223/cuda_18.04     | base          | 6.21GB  
+lhs223/cuda_20.04     | base          | 6.21GB  
+lhs223/cuda_20.04     | miniconda     | 6.42GB 
+lhs223/ros_melodic    | base          | 8.04GB 
+lhs223/ros_melodic    | core          | 8.22GB 
+lhs223/ros_noetic     | base          |  
+lhs223/ros_noetic     | miniconda     | 9.25GB   
+lhs223/unity_editor   | 2021.1.12f1   | 12GB  
+lhs223/unity_hub      | latest        | 6.09GB
+lhs223/indy7          | latest        | 8.27GB 
+ 
+### Hierarchy
+
+
+
+
+## Building process
+### lhs223/ros_melodic:core
   * Ubuntu version: 18.04 
-  * docker image: lhs223/ros_melodic:core
-  * image build 
+  * Building process
     1. Go to  ./docker_images/ros_melodic/image
     2. Run '1_ros_build.sh' to build 'lhs223/ros_melodic:base'
         ~~~
@@ -20,7 +42,7 @@
     * module: linux-il2cpp, standardassets
   * docker image: 
     > docker pull lhs223/unity_editor:2021.1.12f1
-  * image build 
+  * Building process
     1. Go to  ./docker_images/unity_image
     2. Run 'hub_build.sh' to build 'lhs223/unity_hub'
         ~~~
@@ -31,14 +53,3 @@
         $ ./2_editor_build.sh
         ~~~
 
-### ur10 
-  * Ubuntu version: 18.04 
-  * docker image: 
-    > docker pull lhs223/ros_melodic:core   
-     
-### ai 
-  * Ubuntu version: 20.04 
-  * docker image: 
-    ~~~
-    $ docker pull lhs223/ros_noetic:core
-    ~~~
