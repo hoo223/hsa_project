@@ -1,0 +1,1 @@
+docker build miniconda -t lhs223/ros_noetic:miniconda

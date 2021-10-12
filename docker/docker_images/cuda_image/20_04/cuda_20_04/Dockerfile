@@ -15,6 +15,13 @@ RUN sed -i 's/kr.archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 # Install basic packages
 RUN apt-get install -y wget git gedit lsb-release nautilus
 
+# Change python version to 3.6 -> tensorflow-gpu 1.14 버전이 3.6에서만 지원
+RUN apt install -y software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt install -y python3.6
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.6 1
+RUN ln -Tfs /usr/bin/python3.6 /usr/bin/python3
+
 # Add shortcut and env setting
 RUN /bin/bash -c "echo \"alias eb='gedit ~/.bashrc'\" >> /root/.bashrc"
 RUN /bin/bash -c "echo \"alias sb='source ~/.bashrc'\" >> /root/.bashrc"

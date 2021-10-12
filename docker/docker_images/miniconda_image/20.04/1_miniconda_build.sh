@@ -1,0 +1,1 @@
+docker build miniconda -t lhs223/cuda_20.04:miniconda

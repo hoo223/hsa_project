@@ -1,1 +1,0 @@
-FROM lhs223/ros_noetic:base

@@ -1,11 +1,4 @@
-FROM lhs223/cuda_20.04:latest
-
-# setup timezone
-#RUN echo 'Etc/UTC' > /etc/timezone && \
-#    ln -s /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
-#    apt-get update && \
-#    apt-get install -q -y --no-install-recommends tzdata && \
-#    rm -rf /var/lib/apt/lists/*
+FROM lhs223/cuda_20.04:miniconda
 
 # install packages
 RUN apt-get update && apt-get install -q -y --no-install-recommends \
@@ -34,8 +27,9 @@ RUN /bin/bash -c "echo \"source /opt/ros/noetic/setup.bash\"" >> ~/.bashrc
 RUN /bin/bash -c "source ~/.bashrc"
 
 RUN apt update
-RUN apt install -y python3-rosdep-modules python3-rosinstall python3-rosinstall-generator python3-wstool build-essential python3-flask python3-pymodbus
+#RUN apt install -y python3-rosdep-modules python3-rosinstall python3-rosinstall-generator python3-wstool build-essential python3-flask python3-pymodbus
 RUN apt install -y python3-pip
+RUN pip install rospkg pyaml empy numpy
 
 # setup entrypoint
 COPY ./ros_entrypoint.sh /
