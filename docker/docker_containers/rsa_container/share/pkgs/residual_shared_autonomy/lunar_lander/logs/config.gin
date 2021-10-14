@@ -1,0 +1,92 @@
+import residual_shared_autonomy.imitation_learning
+import residual_shared_autonomy.lunar_lander
+
+# Parameters for Adam:
+# ==============================================================================
+Adam.amsgrad = False
+Adam.betas = (0.9, 0.999)
+Adam.eps = 1e-08
+Adam.weight_decay = 0
+
+# Parameters for bc_mean:
+# ==============================================================================
+# None.
+
+# Parameters for bc_std:
+# ==============================================================================
+# None.
+
+# Parameters for Checkpointer:
+# ==============================================================================
+Checkpointer.ckpt_period = 100000
+Checkpointer.format = '{:09d}'
+
+# Parameters for lunar_lander_policy_fn:
+# ==============================================================================
+# None.
+
+# Parameters for lunar_lander_qf_fn:
+# ==============================================================================
+# None.
+
+# Parameters for make_env:
+# ==============================================================================
+make_env.env_id = 'LunarLanderRandomContinuous-v2'
+make_env.norm_observations = True
+make_env.seed = 0
+
+# Parameters for Policy:
+# ==============================================================================
+# None.
+
+# Parameters for QFunction:
+# ==============================================================================
+# None.
+
+# Parameters for TD3:
+# ==============================================================================
+TD3.batch_size = 256
+TD3.buffer_size = 100000
+TD3.env_fn = @make_env
+TD3.eval_num_episodes = 20
+TD3.exploration_noise = 0.1
+TD3.frame_stack = 1
+TD3.gamma = 0.99
+TD3.gpu = True
+TD3.learning_starts = 10000
+TD3.log_period = 100
+TD3.lr = 0.0003
+TD3.nenv = 1
+TD3.optimizer = @optim.Adam
+TD3.policy_fn = @lunar_lander_policy_fn
+TD3.policy_noise = 0.2
+TD3.policy_noise_clip = 0.5
+TD3.policy_update_period = 2
+TD3.qf_fn = @lunar_lander_qf_fn
+TD3.record_num_episodes = 5
+TD3.reward_scale = 1
+TD3.target_smoothing_coef = 0.005
+TD3.update_period = 1
+
+# Parameters for train:
+# ==============================================================================
+train.algorithm = @TD3
+train.eval = True
+train.eval_period = 100000
+train.maxseconds = None
+train.maxt = 1000000
+train.save_period = 100000
+train.seed = 0
+
+# Parameters for UnnormActionPolicy:
+# ==============================================================================
+# None.
+
+# Parameters for VecObsNormWrapper:
+# ==============================================================================
+VecObsNormWrapper.eps = 0.01
+VecObsNormWrapper.log = True
+VecObsNormWrapper.log_prob = 0.01
+VecObsNormWrapper.mean = @bc_mean()
+VecObsNormWrapper.std = @bc_std()
+VecObsNormWrapper.steps = 10000

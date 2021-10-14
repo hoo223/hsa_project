@@ -263,7 +263,7 @@ def main():
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
     if rospy.get_param(prefix+'/teleop_state') == "start":
-      target_pose = j2t.input_conversion(random_agent=False)
+      target_pose = j2t.input_conversion(random_agent=True)
       j2t.gripper_action_pub.publish(j2t.gripper_command)
     else:
       # try:
