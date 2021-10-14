@@ -1,1 +1,1 @@
-docker build rsa -t lhs223/ros_noetic:rsa
+docker build rsa -t lhs223/cuda_20.04:rsa
