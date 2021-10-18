@@ -56,7 +56,7 @@ class RLInterface(object):
 
     # combine actions
     action = a_h #+ a_r
-    ob_next, reward, done = self.env.step(ob, action)
+    ob_next, reward, done, _ = self.env.step(action)
     #self.test_pub.publish("{}".format(np.array(ob_next)-np.array(ob)))
 
     ## data collection
