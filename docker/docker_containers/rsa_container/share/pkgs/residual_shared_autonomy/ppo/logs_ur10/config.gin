@@ -17,8 +17,8 @@ Checkpointer.format = '{:09d}'
 
 # Parameters for ConstrainedResidualPPO:
 # ==============================================================================
-ConstrainedResidualPPO.base_actor_cls = @RandomActor
-ConstrainedResidualPPO.batch_size = 256
+ConstrainedResidualPPO.base_actor_cls = @UR10RandomActor
+ConstrainedResidualPPO.batch_size = 64
 ConstrainedResidualPPO.clip_param = 0.2
 ConstrainedResidualPPO.ent_coef = 0.01
 ConstrainedResidualPPO.env_fn = @make_env
@@ -41,7 +41,7 @@ ConstrainedResidualPPO.policy_fn = @ppo_policy_fn
 ConstrainedResidualPPO.policy_training_start = 100000
 ConstrainedResidualPPO.record_num_episodes = 0
 ConstrainedResidualPPO.reward_threshold = -155
-ConstrainedResidualPPO.rollout_length = 500
+ConstrainedResidualPPO.rollout_length = 100
 ConstrainedResidualPPO.vf_coef = 0.5
 ConstrainedResidualPPO.wrapper_fn = None
 
@@ -65,10 +65,6 @@ make_env.seed = 0
 # ==============================================================================
 ppo_policy_fn.nunits = 128
 
-# Parameters for RandomActor:
-# ==============================================================================
-# None.
-
 # Parameters for train:
 # ==============================================================================
 train.algorithm = @ConstrainedResidualPPO
@@ -79,6 +75,10 @@ train.maxt = 100000000
 train.save_period = 1000000
 train.seed = 0
 
+# Parameters for UR10RandomActor:
+# ==============================================================================
+UR10RandomActor.action_period = 10
+
 # Parameters for VecObsNormWrapper:
 # ==============================================================================
 VecObsNormWrapper.eps = 0.01
@@ -86,4 +86,4 @@ VecObsNormWrapper.log = True
 VecObsNormWrapper.log_prob = 0.01
 VecObsNormWrapper.mean = None
 VecObsNormWrapper.std = None
-VecObsNormWrapper.steps = 10
+VecObsNormWrapper.steps = 100
