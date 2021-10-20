@@ -28,17 +28,21 @@ class ResidualPPOActor(object):
 
     def __call__(self, ob, state_in=None, mask=None):
         """Produce decision from model."""
-        if self.t < self.policy_training_start:
+        if self.t < self.policy_training_start: # before training -> deterministic action
             outs = self.pi(ob, state_in, mask, deterministic=True)
             if not torch.allclose(outs.action, torch.zeros_like(outs.action)):
                 raise ValueError("Pi should be initialized to output zero "
                                  "actions so that an acurate value function "
                                  "can be learned for the base policy.")
-        else:
-            outs = self.pi(ob, state_in, mask)
+        else: # before training -> stochastic action
+            outs = self.pi(ob, state_in, mask) 
+            
+        # calculate residual norm
         residual_norm = torch.mean(torch.sum(torch.abs(outs.action), dim=1))
         logger.add_scalar('actor/l1_residual_norm', residual_norm, self.t,
                           time.time())
+        
+        # increase step 
         self.t += outs.action.shape[0]
         data = {'action': outs.action,
                 'value': outs.value,
@@ -56,7 +60,7 @@ class ResidualPPOActor(object):
         self.t = state_dict['t']
 
 
-@gin.configurable(blacklist=['logdir'])
+@gin.configurable(denylist=['logdir'])
 class ConstrainedResidualPPO(Algorithm):
     """Constrained Residual PPO algorithm."""
 
@@ -111,24 +115,48 @@ class ConstrainedResidualPPO(Algorithm):
         self.reward_threshold = reward_threshold
         self.device = torch.device('cuda:0' if gpu and torch.cuda.is_available()
                                    else 'cpu')
-        print(self.device)
-        self.env = VecEpisodeLogger(env_fn(nenv=nenv))
-        self.env = ResidualWrapper(self.env, self.base_actor_cls(self.env))
+        print("Device: ", self.device)
+        
+        # vectorized env
+        self.env = VecEpisodeLogger(env_fn(nenv=nenv)) # env_fn = @make_env (from gin file)
+                                                       # make_env (from dl/envs/env_fns.py)
+                                                       # VecEpisodeLogger (from dl/envs/logging_wrappers.py)
+        
+        # residual env
+        self.env = ResidualWrapper(self.env, self.base_actor_cls(self.env)) # from gin file
+                                                                            # base_actor_cls = @RandomActor (from residual_shared_autonomy/base_actors.py)
+                                                                            # = base policy
+                                                                            # ResidualWrapper (from residual_shared_autonomy/residual_wrapper.py)
+        
         if wrapper_fn:
-            self.env = wrapper_fn(self.env)
+            self.env = wrapper_fn(self.env) # from gin file
 
-        self.pi = policy_fn(self.env).to(self.device)
-        self.opt = optimizer(self.pi.parameters())
-        self.pi_lr = self.opt.param_groups[0]['lr']
-        if lambda_init < 10:
-            lambda_init = np.log(np.exp(lambda_init) - 1)
+        # policy network
+        self.pi = policy_fn(self.env).to(self.device) # from gin file
+                                                      # policy_fn = @ppo_policy_fn (from ppo/actor.py)
+        
+        # optimizer for main loss
+        self.opt = optimizer(self.pi.parameters()) # https://easy-going-programming.tistory.com/11
+        
+        # policy network learning rate
+        self.pi_lr = self.opt.param_groups[0]['lr'] 
+        
+        # lambda parameter
+        if lambda_init < 10: 
+            lambda_init = np.log(np.exp(lambda_init) - 1) 
         self.log_lambda_ = nn.Parameter(
                             torch.Tensor([lambda_init]).to(self.device))
+        
+        # optimizer for lambda loss
         self.opt_l = optimizer([self.log_lambda_], lr=lambda_lr)
+        
+        # residual actor
         self._actor = ResidualPPOActor(self.pi, policy_training_start)
+        
+        # create a RolloutDataManager (from dl/rl/data_collection/rollout_data_collection.py)
         self.data_manager = RolloutDataManager(
             self.env,
-            self._actor,
+            self._actor, # act_fn
             self.device,
             rollout_length=rollout_length,
             batch_size=batch_size,
@@ -136,9 +164,11 @@ class ConstrainedResidualPPO(Algorithm):
             lambda_=lambda_,
             norm_advantages=norm_advantages)
 
+        # MSE & humber loss
         self.mse = nn.MSELoss(reduction='none')
         self.huber = nn.SmoothL1Loss()
 
+        # initialize the step count variable
         self.t = 0
 
     def loss(self, batch):
@@ -214,7 +244,6 @@ class ConstrainedResidualPPO(Algorithm):
     def step(self):
         """Compute rollout, loss, and update model."""
         self.pi.train()
-        print("train")
         # adjust learning rate
         lr_frac = self.lr_decay_rate ** (self.t // self.lr_decay_freq)
         for g in self.opt.param_groups:
@@ -222,35 +251,46 @@ class ConstrainedResidualPPO(Algorithm):
         for g in self.opt_l.param_groups:
             g['lr'] = self.lambda_lr * lr_frac
 
-        self.data_manager.rollout()
+        # compute entire rollout and advantage targets.
         print("rollout")
+        self.data_manager.rollout() 
+
+        # increse step 
+        print("increase step")
         self.t += self.data_manager.rollout_length * self.nenv
-        losses = {}
+        
+        # compute losses
+        print("compute loss")
+        losses = {} # dict
         for _ in range(self.epochs_per_rollout):
             for batch in self.data_manager.sampler():
                 loss = self.loss(batch)
                 if losses == {}:
                     losses = {k: [] for k in loss}
-                for k, v in loss.items():
-                    losses[k].append(v.detach().cpu().numpy())
+                for k, v in loss.items(): # key, value
+                    losses[k].append(v.detach().cpu().numpy()) # .detach(): copy tensor https://subinium.github.io/pytorch-Tensor-Variable/#:~:text=%EB%B0%A9%EB%B2%95%20%EC%A4%91%20%ED%95%98%EB%82%98%EC%9E%85%EB%8B%88%EB%8B%A4.-,detach,-()%20%3A%20%EA%B8%B0%EC%A1%B4%20Tensor%EC%97%90%EC%84%9C
                 if self.t >= max(self.policy_training_start,
                                  self.lambda_training_start):
-                    self.opt_l.zero_grad()
-                    loss['lambda'].backward(retain_graph=True)
-                    self.opt_l.step()
+                    self.opt_l.zero_grad() # gradient 초기화 https://algopoolja.tistory.com/55
+                    loss['lambda'].backward(retain_graph=True) # backpropagation https://tutorials.pytorch.kr/beginner/blitz/autograd_tutorial.html#:~:text=%ED%85%90%EC%84%9C(error%20tensor)%EC%97%90-,.backward(),-%EB%A5%BC%20%ED%98%B8%EC%B6%9C%ED%95%98%EB%A9%B4%20%EC%97%AD%EC%A0%84%ED%8C%8C%EA%B0%80 
+                    self.opt_l.step() # https://pytorch.org/docs/stable/optim.html#:~:text=Taking%20an%20optimization%20step
                 self.opt.zero_grad()
                 loss['total'].backward()
-                if self.max_grad_norm:
+                if self.max_grad_norm: # from gin file
                     nn.utils.clip_grad_norm_(self.pi.parameters(),
                                              self.max_grad_norm)
                 self.opt.step()
+        
+        # save loss to logger
+        print("save to logger")
         for k, v in losses.items():
             logger.add_scalar(f'loss/{k}', np.mean(v), self.t, time.time())
         logger.add_scalar('alg/lr_pi', self.opt.param_groups[0]['lr'], self.t,
                           time.time())
         logger.add_scalar('alg/lr_lambda', self.opt_l.param_groups[0]['lr'],
                           self.t, time.time())
-        return self.t
+        
+        return self.t # step 수 반환
 
     def evaluate(self):
         """Evaluate model."""

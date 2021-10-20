@@ -41,7 +41,7 @@ class StepOnEndOfLifeEnv(gym.Wrapper):
         return obs, reward, done, info
 
 
-@gin.configurable(blacklist=['nenv'])
+@gin.configurable(denylist=['nenv'])
 def make_atari_env(game_name, nenv=1, seed=0, sticky_actions=True,
                    timelimit=True, noop=False, frameskip=4, episode_life=False,
                    clip_rewards=True, frame_stack=1, scale=False):
@@ -78,7 +78,7 @@ def make_atari_env(game_name, nenv=1, seed=0, sticky_actions=True,
     return env
 
 
-@gin.configurable(blacklist=['nenv'])
+@gin.configurable(denylist=['nenv'])
 def make_env(env_id, nenv=1, seed=0, norm_observations=False):
     """Create an environment."""
     def _env(rank):
@@ -94,7 +94,7 @@ def make_env(env_id, nenv=1, seed=0, norm_observations=False):
     else:
         env = DummyVecEnv([_env(0)])
 
-    if norm_observations:
+    if norm_observations: # from gin file
         env = VecObsNormWrapper(env)
     return env
 

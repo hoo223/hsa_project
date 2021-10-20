@@ -6,7 +6,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import gin
 
-
+# ActorCriticBase (from dl/rl/modules/base.py)
 class FeedForwardActorCriticBase(ActorCriticBase):
     """Policy and Value networks."""
 
@@ -48,6 +48,7 @@ class FeedForwardActorCriticBase(ActorCriticBase):
 @gin.configurable
 def ppo_policy_fn(env, nunits=128):
     """Create a policy network."""
+    # Policy (from dl/rl/modules/policy.py)
     return Policy(FeedForwardActorCriticBase(env.observation_space,
                                              env.action_space,
                                              nunits=nunits))

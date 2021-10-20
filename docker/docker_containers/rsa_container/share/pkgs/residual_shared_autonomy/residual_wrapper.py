@@ -7,7 +7,7 @@ import numpy as np
 class ResidualWrapper(VecEnvWrapper):
     """Wrapper for residual policy learning.
 
-    https://arxiv.org/abs/1812.06298
+    https://arxiv.org/abs/1812.06298 : Residual Policy Learning
 
     Requires a callable which returns an action. The chosen action is added to
     the observation.
@@ -44,7 +44,7 @@ class ResidualWrapper(VecEnvWrapper):
             info['action'] = action[i]
             info['assistant_action'] = np.asarray(action)[i]
             info['player_action'] = self._action[i]
-        self._action = self.act_fn(ob)
+        self._action = self.act_fn(ob) # residual action
         return (ob, self._norm_action(self._action)), rs, dones, infos
 
     def _clip_action(self, ac):
