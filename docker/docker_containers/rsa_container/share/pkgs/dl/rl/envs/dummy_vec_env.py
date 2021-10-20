@@ -105,6 +105,7 @@ if __name__ == "__main__":
     import unittest
     import gym
     from gym import Wrapper
+    
 
     class StateWrapper(Wrapper):
         # hack to save random state from lunar lander env.
@@ -120,50 +121,80 @@ if __name__ == "__main__":
         def load_state_dict(self, state_dict):
             self.env.np_random.set_state(state_dict['rng'])
 
+    # def make_env(nenv, seed=0):
+    #     def _env(rank):
+    #         def _thunk():
+    #             env = gym.make('LunarLander-v2')
+    #             env = StateWrapper(env)
+    #             env.seed(seed + rank)
+    #             return env
+    #         return _thunk
+    #     return DummyVecEnv([_env(i) for i in range(nenv)])
+
+    # class TestSubprocVecEnv(unittest.TestCase):
+    #     """Test SubprocVecEnv"""
+
+    #     def test(self):
+    #         nenv = 4
+    #         env = make_env(nenv)
+    #         obs = env.reset()
+    #         env2 = make_env(nenv)
+    #         obs2 = env2.reset()
+    #         env3 = make_env(nenv, seed=1)
+    #         obs3 = env3.reset()
+
+    #         assert np.allclose(obs, obs2)
+    #         assert not np.allclose(obs, obs3)
+
+    #         for _ in range(100):
+    #             actions = [env.action_space.sample() for _ in range(nenv)]
+    #             ob, r, done, _ = env.step(actions)
+    #             ob2, r2, done2, _ = env2.step(actions)
+    #             assert np.allclose(ob, ob2)
+    #             assert np.allclose(r, r2)
+    #             assert np.allclose(done, done2)
+
+    #         env3.load_state_dict(env.state_dict())
+    #         ob = env.reset()
+    #         ob3 = env3.reset()
+    #         assert np.allclose(ob, ob3)
+
+    #         for _ in range(100):
+    #             actions = [env.action_space.sample() for _ in range(nenv)]
+    #             ob, r, done, _ = env.step(actions)
+    #             ob3, r3, done3, _ = env3.step(actions)
+    #             assert np.allclose(ob, ob3)
+    #             assert np.allclose(r, r3)
+    #             assert np.allclose(done, done3)
+    
     def make_env(nenv, seed=0):
         def _env(rank):
             def _thunk():
-                env = gym.make('LunarLander-v2')
+                env = gym.make('ur10_env:ur10-v0')
                 env = StateWrapper(env)
                 env.seed(seed + rank)
                 return env
             return _thunk
         return DummyVecEnv([_env(i) for i in range(nenv)])
-
+    
     class TestSubprocVecEnv(unittest.TestCase):
         """Test SubprocVecEnv"""
 
         def test(self):
-            nenv = 4
+            nenv = 1
             env = make_env(nenv)
             obs = env.reset()
-            env2 = make_env(nenv)
-            obs2 = env2.reset()
-            env3 = make_env(nenv, seed=1)
-            obs3 = env3.reset()
-
-            assert np.allclose(obs, obs2)
-            assert not np.allclose(obs, obs3)
-
-            for _ in range(100):
-                actions = [env.action_space.sample() for _ in range(nenv)]
+            action_cnt = 10
+            print(env)
+            print(env.envs)
+            print(env.envs[0]) # 환경 자체 인터페이스 
+            env.envs[0].start_teleop_client()
+            for i in range(1000):
+                print("step ", i)
+                action_cnt += 1
+                if action_cnt > 5:
+                    actions = [env.action_space.sample() for _ in range(nenv)]
+                    action_cnt = 0
                 ob, r, done, _ = env.step(actions)
-                ob2, r2, done2, _ = env2.step(actions)
-                assert np.allclose(ob, ob2)
-                assert np.allclose(r, r2)
-                assert np.allclose(done, done2)
-
-            env3.load_state_dict(env.state_dict())
-            ob = env.reset()
-            ob3 = env3.reset()
-            assert np.allclose(ob, ob3)
-
-            for _ in range(100):
-                actions = [env.action_space.sample() for _ in range(nenv)]
-                ob, r, done, _ = env.step(actions)
-                ob3, r3, done3, _ = env3.step(actions)
-                assert np.allclose(ob, ob3)
-                assert np.allclose(r, r3)
-                assert np.allclose(done, done3)
 
     unittest.main()
