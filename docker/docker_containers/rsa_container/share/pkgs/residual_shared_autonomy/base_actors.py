@@ -40,6 +40,22 @@ class RandomActor(object):
         """Act."""
         return np.asarray([self.action_space.sample()
                            for _ in range(self.batch_size)])
+        
+@gin.configurable
+class UR10RandomActor(object):
+    def __init__(self, env, action_period=5):
+        self.action_space = env.action_space
+        self.batch_size = env.num_envs
+        self.action_cnt = action_period
+        self.action_period = action_period
+
+    def __call__(self, ob):
+        """Act."""
+        self.action_cnt += 1
+        if self.action_cnt > self.action_period:
+            self.action_samples = [self.action_space.sample() for _ in range(self.batch_size)]
+            self.action_cnt = 0
+        return np.asarray(self.action_samples)
 
 
 @gin.configurable
@@ -184,15 +200,6 @@ class BCMultiActor(object):
             dist = self.current_actor(ob.to(self.device))
             ac = dist.sample().cpu().numpy()
             return np.clip(ac, -1., 1.)
-
-# @gin.configurable
-# class UR10RandomActor(object):
-#     def __init__(self, env, logdir, device, switch_prob=0.001):
-#         pass
-
-#     ef __call__(self, ob):
-#         """Act."""
-#         pass
     
 
 if __name__ == '__main__':
