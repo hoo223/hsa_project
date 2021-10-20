@@ -84,16 +84,17 @@ class UR10Env(gym.Env, EzPickle):
             # Action is two floats [main engine, left-right engines].
             # Main engine: -1..0 off, 0..+1 throttle from 50% to 100% power. Engine can't work with less than 50% power.
             # Left-right:  -1.0..-0.5 fire left engine, +0.5..+1.0 fire right engine, -0.5..0.5 off
-            self.action_space = spaces.Box(-5, +5, (6,), dtype=np.float32)
+            self.action_space = spaces.Box(-0.5, +0.5, (6,), dtype=np.float32)
         else:
             # Nop, fire left engine, main engine, right engine
             self.action_space = spaces.Discrete(64)
 
         ## initialization
         try:
+            print("ur10 env initialized!")
             rospy.init_node('ur10_env', anonymous=True)
         except:
-            print("Already initializaed!")
+            print("Already initialized!")
         #self.initial_angle = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0], dtype=np.float32)*-1*np.pi/2
         self.initial_angle = np.array([-1.601372543965475, -1.3494799772845667, -2.0361130873309534, 0.25178295286581065, 1.6211304664611816, 0.09116100519895554], dtype=np.float32)
         #self.initial_angle = np.array([-1.5999897112701706, -1.3500032022166835, -2.040067726204013, -1.3188300763644802, 1.6184002310830374, 0.09156995930090517], dtype=np.float32)
@@ -227,6 +228,7 @@ class UR10Env(gym.Env, EzPickle):
         # return _state.position
         rospy.wait_for_message("/joint_states", JointState)
         print(self._state)
+        self.start_teleop_client()
         return self._state
         
 
