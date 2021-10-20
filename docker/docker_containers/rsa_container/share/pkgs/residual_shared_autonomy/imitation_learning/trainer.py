@@ -37,7 +37,7 @@ class BCNet(nn.Module):
         return self.dist(net)
 
 
-@gin.configurable(blacklist=['datafile'])
+@gin.configurable(denylist=['datafile'])
 class DemonstrationData(object):
     def __init__(self, datafile, mean=None, std=None):
         data = torch.load(datafile)
@@ -61,7 +61,7 @@ class DemonstrationData(object):
         return self.obs[idx], self.actions[idx]
 
 
-@gin.configurable(blacklist=['logdir'])
+@gin.configurable(denylist=['logdir'])
 class BCTrainer(object):
     """Behavioral cloning."""
 

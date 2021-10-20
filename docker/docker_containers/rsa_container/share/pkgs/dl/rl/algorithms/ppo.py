@@ -33,7 +33,7 @@ class PPOActor(object):
         return data
 
 
-@gin.configurable(blacklist=['logdir'])
+@gin.configurable(denylist=['logdir'])
 class PPO(Algorithm):
     """PPO algorithm."""
 

@@ -7,7 +7,7 @@ import gin
 from dl.util import rng
 
 
-@gin.configurable(blacklist=['ckptdir'])
+@gin.configurable(denylist=['ckptdir'])
 class Checkpointer():
     """Save and load model and training state.
 

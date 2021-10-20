@@ -63,7 +63,7 @@ class TD3Actor(object):
         self.sigma = sigma
 
 
-@gin.configurable(blacklist=['logdir'])
+@gin.configurable(denylist=['logdir'])
 class TD3(Algorithm):
     """TD3 algorithm."""
 

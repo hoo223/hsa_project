@@ -86,7 +86,7 @@ class DDPGActor(object):
             self.noise.sigma = sigma
 
 
-@gin.configurable(blacklist=['logdir'])
+@gin.configurable(denylist=['logdir'])
 class DDPG(Algorithm):
     """DDPG algorithm."""
 

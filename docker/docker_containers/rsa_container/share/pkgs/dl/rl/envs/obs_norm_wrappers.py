@@ -7,9 +7,9 @@ import time
 import gin
 
 
-@gin.configurable(blacklist=['norm'])
+@gin.configurable(denylist=['norm'])
 class VecObsNormWrapper(VecEnvWrapper):
-    """Observation normalization for vecorized environments.
+    """Observation normalization for vectorized environments.
 
     Collects data from a random policy and computes a fixed normalization.
     Computing norm params is done lazily when normalization constants

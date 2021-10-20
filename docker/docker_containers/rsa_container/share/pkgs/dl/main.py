@@ -12,4 +12,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     dl.load_config(args.config, args.bindings)
-    dl.train(args.logdir)
+    dl.train(args.logdir) # dl/trainer.py

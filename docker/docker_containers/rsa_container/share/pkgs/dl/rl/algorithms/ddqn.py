@@ -7,7 +7,7 @@ from dl.rl.algorithms import DQN
 import gin
 
 
-@gin.configurable(blacklist=['logdir'])
+@gin.configurable(denylist=['logdir'])
 class DoubleDQN(DQN):
     """Double DQN."""
 

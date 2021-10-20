@@ -12,7 +12,7 @@ import time
 from dl import logger
 
 
-@gin.configurable(blacklist=['logdir'])
+@gin.configurable(denylist=['logdir'])
 class PrioritizedReplayDQN(DoubleDQN):
     """Prioritized Replay DQN."""
 

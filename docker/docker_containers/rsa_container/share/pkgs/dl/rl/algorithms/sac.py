@@ -33,7 +33,7 @@ class SACActor(object):
         return {'action': self.pi(obs).action}
 
 
-@gin.configurable(blacklist=['logdir'])
+@gin.configurable(denylist=['logdir'])
 class SAC(Algorithm):
     """SAC algorithm."""
 

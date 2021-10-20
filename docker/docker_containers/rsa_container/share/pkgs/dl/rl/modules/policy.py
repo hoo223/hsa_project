@@ -5,7 +5,7 @@ from dl.rl.modules.base import PolicyBase, ActorCriticBase
 from collections import namedtuple
 
 
-@gin.configurable(whitelist=['base'])
+@gin.configurable(allowlist=['base'])
 class Policy(nn.Module):
     """Policy module."""
 

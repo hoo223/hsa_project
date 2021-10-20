@@ -36,7 +36,7 @@ class MNISTNet(nn.Module):
         return F.log_softmax(x, dim=1)
 
 
-@gin.configurable(blacklist=['logdir'])
+@gin.configurable(denylist=['logdir'])
 class MNISTTrainer(object):
     """Trainer for mnist."""
 

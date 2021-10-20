@@ -5,7 +5,7 @@ import gin
 from collections import namedtuple
 
 
-@gin.configurable(whitelist=['base'])
+@gin.configurable(allowlist=['base'])
 class UnnormActionPolicy(Policy):
     """Unnormalize the action based on action space bounds.
 

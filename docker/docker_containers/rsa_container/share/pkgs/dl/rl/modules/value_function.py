@@ -5,7 +5,7 @@ from dl.rl.modules.base import ValueFunctionBase
 from collections import namedtuple
 
 
-@gin.configurable(whitelist=['base'])
+@gin.configurable(allowlist=['base'])
 class ValueFunction(nn.Module):
     """Value function module."""
 

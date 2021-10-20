@@ -49,7 +49,7 @@ class EpisodeInfo(Wrapper):
 
 
 class VecEpisodeLogger(VecEnvWrapper):
-    """EpisodeLogger for vecorized environments."""
+    """EpisodeLogger for vectorized environments."""
 
     def __init__(self, venv, tstart=0):
         """Init."""

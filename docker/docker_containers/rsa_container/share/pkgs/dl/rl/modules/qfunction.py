@@ -5,7 +5,7 @@ from dl.rl.modules.base import DiscreteQFunctionBase, ContinuousQFunctionBase
 from collections import namedtuple
 
 
-@gin.configurable(whitelist=['base'])
+@gin.configurable(allowlist=['base'])
 class QFunction(nn.Module):
     """Qfunction module."""
 

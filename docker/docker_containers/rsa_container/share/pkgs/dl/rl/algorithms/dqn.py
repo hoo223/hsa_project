@@ -44,7 +44,7 @@ class EpsilonGreedyActor(object):
         self.t = state_dict['t']
 
 
-@gin.configurable(blacklist=['logdir'])
+@gin.configurable(denylist=['logdir'])
 class DQN(Algorithm):
     """DQN algorithm."""
 
