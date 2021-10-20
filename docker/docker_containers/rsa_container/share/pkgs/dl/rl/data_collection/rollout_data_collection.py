@@ -46,14 +46,17 @@ class RolloutDataManager(object):
 
     def init_rollout_storage(self):
         """Initialize rollout storage."""
-        print("init_rollout_storage in")
+        # define a function 
         def _to_torch(o):
             return torch.from_numpy(o).to(self.device) # numpy -> tensor, move the tensor to gpu
-        print("func def")
+        
+        # environment reset
         state = self.env.reset()
-        #print(state)
-        self._ob = nest.map_structure(_to_torch, state)
-        print("map structure")
+        
+        # 각 state value에 _to_torch 함수를 mapping
+        self._ob = nest.map_structure(_to_torch, state) # nest.map_structure (from dl/util/nest.py)
+  
+        # act 함수 테스트 - action, value 값을 반환하는지
         data = self.act(self._ob)
         if 'action' not in data:
             raise ValueError('the key "action" must be in the dict returned '
@@ -61,18 +64,25 @@ class RolloutDataManager(object):
         if 'value' not in data:
             raise ValueError('the key "value" must be in the dict returned '
                              'act_fn')
+        
+        # create self.storage - rollout data 저장소
         state = None
         if 'state' in data:
             state = data['state']
 
-        if state is None:
-            self.storage = RolloutStorage(self.rollout_length,
+        if state is None: # data 안에 state 값이 없으면 -> no recurrent
+            self.storage = RolloutStorage(self.rollout_length, 
                                           self.nenv,
                                           device=self.device,
                                           recurrent=False)
+            # from dl/rl/data_collection/rollout.py
+            # This class stores data from rollouts with an environment.
+            # Once all rollout data has been stored, it can be batched and iterated over 
+            # by calling the 'sampler(batch_size)' method.
+            
             self.init_state = None
             self.recurrent = False
-        else:
+        else: # data 안에 state 값이 있으면 -> recurrent
             self.recurrent = True
             self.storage = RolloutStorage(self.rollout_length,
                                           self.nenv,
@@ -86,23 +96,29 @@ class RolloutDataManager(object):
             self.init_state = nest.map_structure(_init_state, state)
 
         self._ob = nest.map_structure(_to_torch, self.env.reset())
-        self._mask = torch.Tensor(
+        # 환경 개수만큼 element를 갖는 mask tensor 생성
+        self._mask = torch.Tensor( 
             [0. for _ in range(self.nenv)]).to(self.device)
         self._state = self.init_state
 
 
     def rollout_step(self):
         """Compute one environment step."""
-        if not self.storage:
-            print("storage in")
+        if not self.storage: # storage가 비어있으면 (즉, rollout data가 없을 경우) init_rollout_storage 실행하여 생성
+            print("no storage - make new storage")
             self.init_rollout_storage()
-            print("storage out")
-        with torch.no_grad():
+            
+        with torch.no_grad(): # gradient 연산을 옵션을 끌 때 사용 https://easy-going-programming.tistory.com/14 
+            # 현재 observation을 이용해 policy로부터 action 생성
             if self.recurrent:
                 outs = self.act(self._ob, state_in=self._state, mask=self._mask)
             else:
                 outs = self.act(self._ob, state_in=None, mask=None)
+                
+        # step 진행
         ob, r, done, _ = self.env.step(outs['action'].cpu().numpy())
+        
+        # 새로 만들어진 data를 storage에 저장
         data = {}
         data['obs'] = self._ob
         data['action'] = outs['action']
@@ -112,12 +128,14 @@ class RolloutDataManager(object):
         for key in outs:
             if key != 'action':
                 data[key] = outs[key]
-        self.storage.insert(data)
+        self.storage.insert(data) 
 
+        # Preparation for next step
         def _to_torch(o):
             return torch.from_numpy(o).to(self.device)
 
         self._ob = nest.map_structure(_to_torch, ob)
+        # 각 환경에 대한 mask 생성 -> episode가 종료되었으면 (done == True) 0.0, 종료되지 않았으면 (done == False) 1.0
         self._mask = torch.Tensor(
                 [0.0 if done_ else 1.0 for done_ in done]).to(self.device)
         if self.recurrent:
@@ -125,11 +143,12 @@ class RolloutDataManager(object):
 
     def rollout(self):
         """Compute entire rollout and advantage targets."""
+        # rollout length만큼 rollout step 진행하여 데이터 생성 
         for i in range(self.rollout_length):
-            print("in")
             self.rollout_step()
-            print("rollout_step ", i)
-        with torch.no_grad():
+            
+        # compute advantage target  from rollout data
+        with torch.no_grad(): # gradient 연산을 옵션을 끌 때 사용 https://easy-going-programming.tistory.com/14 
             if self.recurrent:
                 outs = self.act(self._ob, state_in=self._state, mask=self._mask)
             else:
@@ -140,6 +159,7 @@ class RolloutDataManager(object):
                                          use_gae=True,
                                          lambda_=self.lambda_,
                                          norm_advantages=self.norm_advantages)
+            # output -> self.data['atarg']
 
     def sampler(self):
         """Create sampler to iterate over rollout data."""

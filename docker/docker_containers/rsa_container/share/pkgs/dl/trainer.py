@@ -39,7 +39,7 @@ class Algorithm(object):
         pass
 
 
-@gin.configurable(blacklist=['logdir'])
+@gin.configurable(denylist=['logdir'])
 def train(logdir,
           algorithm,
           seed=0,
@@ -71,14 +71,26 @@ def train(logdir,
     """
 
     logger.configure(os.path.join(logdir, 'tb'))
+    
+    # random seed
     rng.seed(seed)
-    alg = algorithm(logdir=logdir)
+     
+    # initialize the algorithm 
+    alg = algorithm(logdir=logdir) # from gin file
+    
+    # output the configuration
     config = gin.operative_config_str()
     logger.log("=================== CONFIG ===================")
     logger.log(config)
+    
+    # save gin file in logdir
     with open(os.path.join(logdir, 'config.gin'), 'w') as f:
         f.write(config)
+        
+    # get the value of a monotonic clock 
+    # - https://www.ifunfactory.com/engine/documents/reference/ko/time.html 
     time_start = time.monotonic()
+    
     t = alg.load()
     if t == 0:
         cstr = config.replace('\n', '  \n')
@@ -93,16 +105,28 @@ def train(logdir,
 
     try:
         while True:
+            # check finish time
             if maxt and t >= maxt:
                 break
             if maxseconds and time.monotonic() - time_start >= maxseconds:
                 break
-            print("step")
+            
+            # main training step
+            print("------------------")
+            print("train step")
             t = alg.step()
+            
+            # check save period
             if save_period and (t - last_save) >= save_period:
+                print("------------------")
+                print("save")
                 alg.save()
                 last_save = t
+                
+            # check eval period
             if eval and (t - last_eval) >= eval_period:
+                print("------------------")
+                print("eval")
                 alg.evaluate()
                 last_eval = t
     except KeyboardInterrupt:

@@ -1,4 +1,5 @@
 """Util for nested lists, tuple, and dictionaries of python objects."""
+# nest -> 중첩 구조
 
 
 class NestTupleItem(tuple):
@@ -7,15 +8,17 @@ class NestTupleItem(tuple):
     pass
 
 
-def is_item(nest):
+def is_item(nest): # 중첩된 구조가 없는 single item인지 판단
     """Check if a nest consists of a single item with no structure."""
-    if isinstance(nest, NestTupleItem):
+    if isinstance(nest, NestTupleItem): # 첫 번째 인자의 타입 또는 클래스가 두 번째인자와 일치하는지 판단 
         return True
     return not isinstance(nest, (list, tuple, dict))
 
 
 def get_structure(nest):
     """Return a nest with the same structure, but without the data."""
+    # ex) nest = [{1: 3, 2: 2}, 'stuff', [1, 2, 'bob', {'h': 2, 's': 5}]]
+    # get_structure(nest) -> [{1: None, 2: None}, None, [None, None, None, {'h': None, 's': None}]]
     if is_item(nest):
         return None
 
@@ -32,16 +35,18 @@ def get_structure(nest):
         return struct
 
 
-def flatten(nest):
+def flatten(nest): 
     """Flattens a nest to a list."""
-    if is_item(nest):
-        return [nest]
+    if is_item(nest): # 중첩된 구조가 아니면 이미 flatten된 상태이므로
+        return [nest] # 그대로 반환
 
-    elif isinstance(nest, (list, tuple)):
+    elif isinstance(nest, (list, tuple)): # list 또는 tuple일 경우
         out = []
-        for x in nest:
-            out.extend(flatten(x))
-        return out
+        for x in nest: 
+            out.extend(flatten(x)) 
+        return out # 중첩된 list나 tuple을 풀어 하나의 list로 만듦 
+                   # ex) nest: [{1: 3, 2: 2}, 'stuff', [1, 2, 'bob', {'h': 2, 's': 5}]] 
+                   #     flatten(nest) -> [3, 2, 'stuff', 1, 2, 'bob', 2, 5]
 
     else:  # nest is dict.
         out = []
@@ -52,11 +57,14 @@ def flatten(nest):
                              "sortable!")
         for k in sorted_keys:
             out.extend(flatten(nest[k]))
-        return out
+        return out 
 
 
-def pack_sequence_as(seq, nest):
+def pack_sequence_as(seq, nest): # seq의 value들을 nest의 구조로 변환 
     """Packs a list/tuple with the structure of nest."""
+    # ex) seq:  [3, 2, 'stuff', 1, 2, 'bob', 2, 5]
+    #     nest: [{1: None, 2: None}, None, [None, None, None, {'h': None, 's': None}]]
+    #     pack_sequence_as(seq, nest) -> [{1: 3, 2: 2}, 'stuff', [1, 2, 'bob', {'h': 2, 's': 5}]] 
     if is_item(seq) or isinstance(seq, dict):
         raise ValueError("Input must be a list or tuple.")
     new_nest, nused = _pack_sequence_as(seq, nest)
@@ -72,7 +80,7 @@ def _pack_sequence_as(seq, nest):
             raise ValueError("nest does not have the same structure as seq.")
         return seq[0], 1
 
-    elif isinstance(nest, (list, tuple)):
+    elif isinstance(nest, (list, tuple)): # nest is list or tuple
         ind, out = 0, []
         for x in nest:
             new_nest, nused = _pack_sequence_as(seq[ind:], x)
@@ -94,7 +102,7 @@ def _pack_sequence_as(seq, nest):
         return out, ind
 
 
-def has_same_structure(nest1, nest2):
+def has_same_structure(nest1, nest2): # 두 인자의 구조가 같은지 비교
     """Check if two nests have the same structure."""
     if is_item(nest1):
         return is_item(nest2)
@@ -122,14 +130,17 @@ def has_same_structure(nest1, nest2):
         return True
 
 
-def map_structure(map_fn, nest):
+def map_structure(map_fn, nest): # 중첩 구조화된 변수에 함수를 mapping
     """Map for nested structures."""
-    if is_item(nest):
-        print("1")
+    # map_fn = _to_torch 
+    # nest = state
+    if is_item(nest): # 중첩된 구조가 없으면 바로 함수를 mapping (각 element에 적용됨)
         return map_fn(nest)
-    else:
-        print("2")
-        return pack_sequence_as(list(map(map_fn, flatten(nest))), nest)
+    else: # nest가 중첩된 구조인 경우 
+        return pack_sequence_as(list(map(map_fn, flatten(nest))), nest) # flatten(nest) -> 중첩된 구조를 제거 
+                                                                        # map -> map function map_fn to each element https://www.daleseo.com/python-map/
+                                                                        # list -> convert to list
+                                                                        # pack_sequence_as -> nest 형태로 다시 구조화
 
 
 def zip_structure(*nests):

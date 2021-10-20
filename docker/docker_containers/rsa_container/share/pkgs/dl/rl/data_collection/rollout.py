@@ -117,7 +117,10 @@ class RolloutStorage(object):
     def compute_targets(self, next_value, next_mask, gamma, use_gae=True,
                         lambda_=1.0, norm_advantages=False):
         """Compute advantage targets."""
-        if use_gae:
+        if use_gae: 
+            # Generalized Advantage Estimator(GAE)
+            # Paper: https://reinforcement-learning-kr.github.io/2018/06/23/6_gae/
+            # https://towardsdatascience.com/generalized-advantage-estimate-maths-and-code-b5d5bd3ce737
             gae = (self.data['reward'][-1] + gamma * next_mask * next_value
                    - self.data['vpred'][-1])
             self.data['vtarg'][-1] = gae + self.data['vpred'][-1]
