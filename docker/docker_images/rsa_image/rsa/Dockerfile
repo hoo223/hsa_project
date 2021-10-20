@@ -37,6 +37,10 @@ RUN pip install gin-config
 RUN pip install gym[atari]
 RUN pip install gym[box2d]
 RUN pip install pygame
+# https://okky.kr/article/610623
+RUN pip install "numpy<1.17" 
+
+
 # install python library for ros
 RUN pip install rospkg pyaml empy pycryptodomex gnupg 
 RUN pip install 'pyassimp>=3.3.0,<3.4.0' --force-reinstall
