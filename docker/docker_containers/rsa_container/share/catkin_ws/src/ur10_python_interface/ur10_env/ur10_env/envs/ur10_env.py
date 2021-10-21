@@ -115,6 +115,9 @@ class UR10Env(gym.Env, EzPickle):
         self.reset_sim = rospy.ServiceProxy("/gazebo/reset_simulation", Empty)
         self.joints_initializer = rospy.ServiceProxy("/gazebo/set_model_configuration", SetModelConfiguration)
         
+        # pause the gazebo
+        self.pause()
+        
         ## check gazebo 
         try:
             rospy.wait_for_service("/gazebo/pause_physics", timeout=0.01)
@@ -163,7 +166,9 @@ class UR10Env(gym.Env, EzPickle):
         self.self_collision = data.data
 
     def step(self, action):
+        print("step in")
         self.joint_vel_msg.data = action 
+        
         start_ros_time = rospy.Time.now()
         ## publich the joint velocity message
         self.vel_pub.publish(self.joint_vel_msg) 
@@ -219,15 +224,16 @@ class UR10Env(gym.Env, EzPickle):
                 print("Service call failed: %s"%e)
 
     def reset(self):
-        print("test ", self.reset_episode_client())
+        #print("test ", self.reset_episode_client())
 
-        # rospy.wait_for_service("/gazebo/unpause_physics", timeout=2)
-        # self.unpause()
-        # self.joints_initializer("robot", "", self.joint_names, self.initial_angle)
+        rospy.wait_for_service("/gazebo/unpause_physics", timeout=2)
+        self.joints_initializer("robot", "", self.joint_names, self.initial_angle)
+        self.unpause()
         # _state = rospy.wait_for_message("/joint_states", JointState, timeout=1.0)
         # return _state.position
         rospy.wait_for_message("/joint_states", JointState)
-        print(self._state)
+        # self.pause()
+        # print(self._state)
         self.start_teleop_client()
         return self._state
         
