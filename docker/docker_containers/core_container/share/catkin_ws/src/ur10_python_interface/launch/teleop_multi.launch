@@ -14,7 +14,8 @@
     <remap from="/target_pose" to="/$(arg robot_name)/target_pose"/>
     <remap from="/joint_states" to="/$(arg robot_name)/joint_states"/>
     <node name="ik_solver" pkg="ur10_python_interface" type="ik_publisher" args="$(arg robot_name)" output="screen"/>
-    
+    <node name="manipulability_solver" pkg="ur10_python_interface" type="manipulability_publisher" args="$(arg robot_name)" output="screen"/>
+
     <!-- teleop controller node -->
     <remap from="/ik_result" to="/$(arg robot_name)/ik_result"/>
     <node name="teleop_controller" pkg="ur10_python_interface" type="teleop_controller.py" args="$(arg robot_name)" output="log"/>

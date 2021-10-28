@@ -13,6 +13,7 @@ import copy
 ## ros library
 import rospy
 import ros
+from rospy.service import ServiceException
 import tf
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
 from std_msgs.msg import Float64MultiArray, String
@@ -22,6 +23,7 @@ from geometry_msgs.msg import PoseStamped, Quaternion, Pose
 from omni_msgs.msg import OmniButtonEvent
 from robotiq_2f_gripper_control.msg import Robotiq2FGripper_robot_input  as inputMsg
 from robotiq_2f_gripper_control.msg import Robotiq2FGripper_robot_output as outputMsg
+from ur10_python_interface.srv import *
 #from cv_bridge import CvBridge
 
 ## custom library
@@ -71,6 +73,7 @@ class Joy2Target(object):
     self.haptic_error_pub = rospy.Publisher("haptic_error", Float64MultiArray, queue_size=10)
     self.haptic_rpy_pub = rospy.Publisher("haptic_rpy", Float64MultiArray, queue_size=10)
     self.gripper_action_pub = rospy.Publisher('Robotiq2FGripperRobotOutput', outputMsg, queue_size=10)
+    self.ik_result_pub = rospy.Publisher("ik_result", Float64MultiArray, queue_size=10)
     
     # gripper
     self.gripper_command = outputMsg()
@@ -250,6 +253,14 @@ class Joy2Target(object):
   def gripper_status_callback(self, status):
     self.gripper_position = status.gPO
     
+  def ik_solver(self, target_pose):
+    rospy.wait_for_service('solve_ik')
+    try:
+      solve_ik = rospy.ServiceProxy('solve_ik', SolveIk)
+      res = solve_ik(target_pose)
+      return res.ik_result
+    except rospy.ServiceException as e:
+      print("Service call failed: %s"%e)
     
 def main():
   args = rospy.myargv()
@@ -263,7 +274,10 @@ def main():
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
     if rospy.get_param(prefix+'/teleop_state') == "start":
-      target_pose = j2t.input_conversion(random_agent=True)
+      target_pose = j2t.input_conversion(random_agent=False)
+      joint_values = j2t.ik_solver(target_pose)
+      #print(joint_values)
+      j2t.ik_result_pub.publish(joint_values)
       j2t.gripper_action_pub.publish(j2t.gripper_command)
     else:
       # try:
@@ -273,7 +287,7 @@ def main():
       #   continue
       j2t.target_pose = copy.deepcopy(j2t.init_pose)
       target_pose = j2t.input_conversion()
-    j2t.target_pose_pub.publish(target_pose)
+    #j2t.target_pose_pub.publish(target_pose)
     rate.sleep()
 
 
