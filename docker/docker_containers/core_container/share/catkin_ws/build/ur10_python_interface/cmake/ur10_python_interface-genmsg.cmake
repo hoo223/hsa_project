@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "ur10_python_interface: 1 messages, 0 services")
+message(STATUS "ur10_python_interface: 1 messages, 1 services")
 
 set(MSG_I_FLAGS "-Iur10_python_interface:/root/share/catkin_ws/src/ur10_python_interface/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg")
 
@@ -16,6 +16,11 @@ add_custom_target(ur10_python_interface_generate_messages ALL)
 # verify that message/service dependencies have not changed since configure
 
 
+
+get_filename_component(_filename "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv" NAME_WE)
+add_custom_target(_ur10_python_interface_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ur10_python_interface" "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv" "geometry_msgs/Pose:std_msgs/MultiArrayLayout:std_msgs/Float64MultiArray:geometry_msgs/Point:std_msgs/MultiArrayDimension:geometry_msgs/Quaternion"
+)
 
 get_filename_component(_filename "/root/share/catkin_ws/src/ur10_python_interface/msg/Ellipsoid3.msg" NAME_WE)
 add_custom_target(_ur10_python_interface_generate_messages_check_deps_${_filename}
@@ -36,6 +41,12 @@ _generate_msg_cpp(ur10_python_interface
 )
 
 ### Generating Services
+_generate_srv_cpp(ur10_python_interface
+  "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayLayout.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Float64MultiArray.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayDimension.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ur10_python_interface
+)
 
 ### Generating Module File
 _generate_module_cpp(ur10_python_interface
@@ -49,6 +60,8 @@ add_custom_target(ur10_python_interface_generate_messages_cpp
 add_dependencies(ur10_python_interface_generate_messages ur10_python_interface_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv" NAME_WE)
+add_dependencies(ur10_python_interface_generate_messages_cpp _ur10_python_interface_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/root/share/catkin_ws/src/ur10_python_interface/msg/Ellipsoid3.msg" NAME_WE)
 add_dependencies(ur10_python_interface_generate_messages_cpp _ur10_python_interface_generate_messages_check_deps_${_filename})
 
@@ -69,6 +82,12 @@ _generate_msg_eus(ur10_python_interface
 )
 
 ### Generating Services
+_generate_srv_eus(ur10_python_interface
+  "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayLayout.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Float64MultiArray.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayDimension.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ur10_python_interface
+)
 
 ### Generating Module File
 _generate_module_eus(ur10_python_interface
@@ -82,6 +101,8 @@ add_custom_target(ur10_python_interface_generate_messages_eus
 add_dependencies(ur10_python_interface_generate_messages ur10_python_interface_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv" NAME_WE)
+add_dependencies(ur10_python_interface_generate_messages_eus _ur10_python_interface_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/root/share/catkin_ws/src/ur10_python_interface/msg/Ellipsoid3.msg" NAME_WE)
 add_dependencies(ur10_python_interface_generate_messages_eus _ur10_python_interface_generate_messages_check_deps_${_filename})
 
@@ -102,6 +123,12 @@ _generate_msg_lisp(ur10_python_interface
 )
 
 ### Generating Services
+_generate_srv_lisp(ur10_python_interface
+  "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayLayout.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Float64MultiArray.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayDimension.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ur10_python_interface
+)
 
 ### Generating Module File
 _generate_module_lisp(ur10_python_interface
@@ -115,6 +142,8 @@ add_custom_target(ur10_python_interface_generate_messages_lisp
 add_dependencies(ur10_python_interface_generate_messages ur10_python_interface_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv" NAME_WE)
+add_dependencies(ur10_python_interface_generate_messages_lisp _ur10_python_interface_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/root/share/catkin_ws/src/ur10_python_interface/msg/Ellipsoid3.msg" NAME_WE)
 add_dependencies(ur10_python_interface_generate_messages_lisp _ur10_python_interface_generate_messages_check_deps_${_filename})
 
@@ -135,6 +164,12 @@ _generate_msg_nodejs(ur10_python_interface
 )
 
 ### Generating Services
+_generate_srv_nodejs(ur10_python_interface
+  "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayLayout.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Float64MultiArray.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayDimension.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ur10_python_interface
+)
 
 ### Generating Module File
 _generate_module_nodejs(ur10_python_interface
@@ -148,6 +183,8 @@ add_custom_target(ur10_python_interface_generate_messages_nodejs
 add_dependencies(ur10_python_interface_generate_messages ur10_python_interface_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv" NAME_WE)
+add_dependencies(ur10_python_interface_generate_messages_nodejs _ur10_python_interface_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/root/share/catkin_ws/src/ur10_python_interface/msg/Ellipsoid3.msg" NAME_WE)
 add_dependencies(ur10_python_interface_generate_messages_nodejs _ur10_python_interface_generate_messages_check_deps_${_filename})
 
@@ -168,6 +205,12 @@ _generate_msg_py(ur10_python_interface
 )
 
 ### Generating Services
+_generate_srv_py(ur10_python_interface
+  "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayLayout.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Float64MultiArray.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayDimension.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ur10_python_interface
+)
 
 ### Generating Module File
 _generate_module_py(ur10_python_interface
@@ -181,6 +224,8 @@ add_custom_target(ur10_python_interface_generate_messages_py
 add_dependencies(ur10_python_interface_generate_messages ur10_python_interface_generate_messages_py)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv" NAME_WE)
+add_dependencies(ur10_python_interface_generate_messages_py _ur10_python_interface_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/root/share/catkin_ws/src/ur10_python_interface/msg/Ellipsoid3.msg" NAME_WE)
 add_dependencies(ur10_python_interface_generate_messages_py _ur10_python_interface_generate_messages_check_deps_${_filename})
 

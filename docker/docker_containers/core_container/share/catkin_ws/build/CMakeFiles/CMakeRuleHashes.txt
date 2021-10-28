@@ -11,6 +11,7 @@ a9b39ffec2c1ee1a24448f486afb2e00 /root/share/catkin_ws/devel/include/unity_robot
 5b8c4a8bf3ac0e296d3df8d934180a35 /root/share/catkin_ws/devel/include/unity_robotics_demo_msgs/PositionService.h
 d05937e049d3bf68b28b795420047b45 /root/share/catkin_ws/devel/include/unity_robotics_demo_msgs/UnityColor.h
 c1ea7ade85367b3e6da5b42a8863bb4e /root/share/catkin_ws/devel/include/ur10_python_interface/Ellipsoid3.h
+644a50e2fa7ee3441a1fcb837e699a43 /root/share/catkin_ws/devel/include/ur10_python_interface/SolveIk.h
 7e0599873c5cc706d957fead6d5d9912 /root/share/catkin_ws/devel/include/ur_driver/URDriverConfig.h
 fa817cb595ed67fb9ae3cd10ec0fbad9 /root/share/catkin_ws/devel/include/ur_msgs/Analog.h
 f8c6bb931e1a5c03ea0e049091960a56 /root/share/catkin_ws/devel/include/ur_msgs/Digital.h
@@ -41,6 +42,8 @@ e38cdc43efc300fc01fff20dc2e1d3de /root/share/catkin_ws/devel/lib/python2.7/dist-
 ab158e869c07b2defd64b249b746427e /root/share/catkin_ws/devel/lib/python2.7/dist-packages/unity_robotics_demo_msgs/srv/__init__.py
 23d4cc38163ef78d3cd993c5681dc992 /root/share/catkin_ws/devel/lib/python2.7/dist-packages/ur10_python_interface/msg/_Ellipsoid3.py
 4d140c994b9f7f0a25ea92d3f034f4cc /root/share/catkin_ws/devel/lib/python2.7/dist-packages/ur10_python_interface/msg/__init__.py
+a945e498a6d15616ad4d33514fcc56ac /root/share/catkin_ws/devel/lib/python2.7/dist-packages/ur10_python_interface/srv/_SolveIk.py
+60124db7c7b71d6ecb62f6131b5565c1 /root/share/catkin_ws/devel/lib/python2.7/dist-packages/ur10_python_interface/srv/__init__.py
 2b808a2284ca70278fa91c1cd0b42c94 /root/share/catkin_ws/devel/lib/python2.7/dist-packages/ur_msgs/msg/_Analog.py
 fae58e0094bb0502307b030012d37c2d /root/share/catkin_ws/devel/lib/python2.7/dist-packages/ur_msgs/msg/_Digital.py
 a8d164cac88d1fb4e51b6e4a2c2defe1 /root/share/catkin_ws/devel/lib/python2.7/dist-packages/ur_msgs/msg/_IOStates.py
@@ -65,6 +68,7 @@ d8b131683f0deda3129c822961116cb8 /root/share/catkin_ws/devel/share/common-lisp/r
 c41f0b177fe491603c9178223195b78b /root/share/catkin_ws/devel/share/common-lisp/ros/unity_robotics_demo_msgs/srv/ObjectPoseService.lisp
 829741f6bd7687ceaa98f7ea090664c7 /root/share/catkin_ws/devel/share/common-lisp/ros/unity_robotics_demo_msgs/srv/PositionService.lisp
 02534de534c06ffa9ce2b4e23fcb023e /root/share/catkin_ws/devel/share/common-lisp/ros/ur10_python_interface/msg/Ellipsoid3.lisp
+f44a30f9a5607ccaa0a7174392a54976 /root/share/catkin_ws/devel/share/common-lisp/ros/ur10_python_interface/srv/SolveIk.lisp
 f5e74c998d6048e6293cada1ba7a76c7 /root/share/catkin_ws/devel/share/common-lisp/ros/ur_msgs/msg/Analog.lisp
 a5ee2c003a5059403b113b2919cbd42d /root/share/catkin_ws/devel/share/common-lisp/ros/ur_msgs/msg/Digital.lisp
 49b50be1d3214b022d6ef9fb90a43e92 /root/share/catkin_ws/devel/share/common-lisp/ros/ur_msgs/msg/IOStates.lisp
@@ -87,6 +91,7 @@ dfb9c053da07f13136baa492b6cdb4be /root/share/catkin_ws/devel/share/gennodejs/ros
 2ed372106c22dc1836c80db321b145a9 /root/share/catkin_ws/devel/share/gennodejs/ros/unity_robotics_demo_msgs/srv/ObjectPoseService.js
 b10e6405a5db87db68169a1c070e457d /root/share/catkin_ws/devel/share/gennodejs/ros/unity_robotics_demo_msgs/srv/PositionService.js
 2ddb5a5212f68ce159b3f887cc3e3b71 /root/share/catkin_ws/devel/share/gennodejs/ros/ur10_python_interface/msg/Ellipsoid3.js
+f37f119b9f742903e52fd4f6ba633400 /root/share/catkin_ws/devel/share/gennodejs/ros/ur10_python_interface/srv/SolveIk.js
 b8796314b0b2f1cbaadf5edd7bfbe2c7 /root/share/catkin_ws/devel/share/gennodejs/ros/ur_msgs/msg/Analog.js
 c80098781183dd0995bd288df2893119 /root/share/catkin_ws/devel/share/gennodejs/ros/ur_msgs/msg/Digital.js
 f7c50681c112e7579ef45c1f937a5cc4 /root/share/catkin_ws/devel/share/gennodejs/ros/ur_msgs/msg/IOStates.js
@@ -114,6 +119,7 @@ d979cf4cf6b161bbff51853cac7f9988 /root/share/catkin_ws/devel/share/roseus/ros/un
 c13158bffd87ad5b682ec47bbd243b26 /root/share/catkin_ws/devel/share/roseus/ros/unity_robotics_demo_msgs/srv/PositionService.l
 7fb4acd83758fc6b55061a0235708a63 /root/share/catkin_ws/devel/share/roseus/ros/ur10_python_interface/manifest.l
 e920de4a7166648515e50d543ce7c2f5 /root/share/catkin_ws/devel/share/roseus/ros/ur10_python_interface/msg/Ellipsoid3.l
+53a5cda7459df82889e5ea4ee93e34e1 /root/share/catkin_ws/devel/share/roseus/ros/ur10_python_interface/srv/SolveIk.l
 015898cdc3a3ca0f73add45efd11ebcf /root/share/catkin_ws/devel/share/roseus/ros/ur_msgs/manifest.l
 6db54faa60f20dd11ac5edc0f9b87b6f /root/share/catkin_ws/devel/share/roseus/ros/ur_msgs/msg/Analog.l
 b5dae685da0e1bb2fb9a65d7c6a74400 /root/share/catkin_ws/devel/share/roseus/ros/ur_msgs/msg/Digital.l
@@ -183,6 +189,7 @@ d26e878fafb53eb20da512882cf94664 universal_robot/ur_msgs/CMakeFiles/_ur_msgs_gen
 7b39e61b69a4e42ae684f9e2bac1e66d universal_robot/ur_msgs/CMakeFiles/ur_msgs_generate_messages_nodejs
 7b39e61b69a4e42ae684f9e2bac1e66d universal_robot/ur_msgs/CMakeFiles/ur_msgs_generate_messages_py
 3e8bf1d6325e99db4608a326e8334a76 ur10_python_interface/CMakeFiles/_ur10_python_interface_generate_messages_check_deps_Ellipsoid3
+b0910aa2366829642f04740b4dfc3be8 ur10_python_interface/CMakeFiles/_ur10_python_interface_generate_messages_check_deps_SolveIk
 92b4efb64112a5e62c8124d8886ce858 ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp
 92b4efb64112a5e62c8124d8886ce858 ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_eus
 92b4efb64112a5e62c8124d8886ce858 ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp

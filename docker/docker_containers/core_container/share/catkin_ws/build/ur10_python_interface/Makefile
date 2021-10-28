@@ -168,6 +168,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+ur10_python_interface/CMakeFiles/manipulability_publisher.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/manipulability_publisher.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/manipulability_publisher.dir/rule
+
+# Convenience name for target.
+manipulability_publisher: ur10_python_interface/CMakeFiles/manipulability_publisher.dir/rule
+
+.PHONY : manipulability_publisher
+
+# fast build rule for target.
+manipulability_publisher/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build.make ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build
+.PHONY : manipulability_publisher/fast
+
+# Convenience name for target.
 ur10_python_interface/CMakeFiles/ik_publisher.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ik_publisher.dir/rule
 .PHONY : ur10_python_interface/CMakeFiles/ik_publisher.dir/rule
@@ -348,6 +363,36 @@ nodelet_generate_messages_eus/fast:
 .PHONY : nodelet_generate_messages_eus/fast
 
 # Convenience name for target.
+ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+ur10_python_interface_generate_messages_cpp: ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/rule
+
+.PHONY : ur10_python_interface_generate_messages_cpp
+
+# fast build rule for target.
+ur10_python_interface_generate_messages_cpp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/build
+.PHONY : ur10_python_interface_generate_messages_cpp/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+graph_msgs_generate_messages_eus: ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule
+
+.PHONY : graph_msgs_generate_messages_eus
+
+# fast build rule for target.
+graph_msgs_generate_messages_eus/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/build.make ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/build
+.PHONY : graph_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
 ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/rule
 .PHONY : ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/rule
@@ -481,6 +526,21 @@ graph_msgs_generate_messages_py: ur10_python_interface/CMakeFiles/graph_msgs_gen
 graph_msgs_generate_messages_py/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_py.dir/build.make ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_py.dir/build
 .PHONY : graph_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/_ur10_python_interface_generate_messages_check_deps_SolveIk.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/_ur10_python_interface_generate_messages_check_deps_SolveIk.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/_ur10_python_interface_generate_messages_check_deps_SolveIk.dir/rule
+
+# Convenience name for target.
+_ur10_python_interface_generate_messages_check_deps_SolveIk: ur10_python_interface/CMakeFiles/_ur10_python_interface_generate_messages_check_deps_SolveIk.dir/rule
+
+.PHONY : _ur10_python_interface_generate_messages_check_deps_SolveIk
+
+# fast build rule for target.
+_ur10_python_interface_generate_messages_check_deps_SolveIk/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/_ur10_python_interface_generate_messages_check_deps_SolveIk.dir/build.make ur10_python_interface/CMakeFiles/_ur10_python_interface_generate_messages_check_deps_SolveIk.dir/build
+.PHONY : _ur10_python_interface_generate_messages_check_deps_SolveIk/fast
 
 # Convenience name for target.
 ur10_python_interface/CMakeFiles/_ur10_python_interface_generate_messages_check_deps_Ellipsoid3.dir/rule:
@@ -678,36 +738,6 @@ bond_generate_messages_py/fast:
 .PHONY : bond_generate_messages_py/fast
 
 # Convenience name for target.
-ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-graph_msgs_generate_messages_eus: ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule
-
-.PHONY : graph_msgs_generate_messages_eus
-
-# fast build rule for target.
-graph_msgs_generate_messages_eus/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/build.make ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/build
-.PHONY : graph_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-ur10_python_interface_generate_messages_cpp: ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/rule
-
-.PHONY : ur10_python_interface_generate_messages_cpp
-
-# fast build rule for target.
-ur10_python_interface_generate_messages_cpp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/build
-.PHONY : ur10_python_interface_generate_messages_cpp/fast
-
-# Convenience name for target.
 ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/rule
 .PHONY : ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/rule
@@ -884,6 +914,33 @@ src/ik_publisher.cpp.s:
 	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ik_publisher.dir/build.make ur10_python_interface/CMakeFiles/ik_publisher.dir/src/ik_publisher.cpp.s
 .PHONY : src/ik_publisher.cpp.s
 
+src/manipulability_publisher.o: src/manipulability_publisher.cpp.o
+
+.PHONY : src/manipulability_publisher.o
+
+# target to build an object file
+src/manipulability_publisher.cpp.o:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build.make ur10_python_interface/CMakeFiles/manipulability_publisher.dir/src/manipulability_publisher.cpp.o
+.PHONY : src/manipulability_publisher.cpp.o
+
+src/manipulability_publisher.i: src/manipulability_publisher.cpp.i
+
+.PHONY : src/manipulability_publisher.i
+
+# target to preprocess a source file
+src/manipulability_publisher.cpp.i:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build.make ur10_python_interface/CMakeFiles/manipulability_publisher.dir/src/manipulability_publisher.cpp.i
+.PHONY : src/manipulability_publisher.cpp.i
+
+src/manipulability_publisher.s: src/manipulability_publisher.cpp.s
+
+.PHONY : src/manipulability_publisher.s
+
+# target to generate assembly for a file
+src/manipulability_publisher.cpp.s:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build.make ur10_python_interface/CMakeFiles/manipulability_publisher.dir/src/manipulability_publisher.cpp.s
+.PHONY : src/manipulability_publisher.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -894,6 +951,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... manipulability_publisher"
 	@echo "... ik_publisher"
 	@echo "... ur10_python_interface_genpy"
 	@echo "... edit_cache"
@@ -908,6 +966,8 @@ help:
 	@echo "... install"
 	@echo "... graph_msgs_generate_messages_lisp"
 	@echo "... nodelet_generate_messages_eus"
+	@echo "... ur10_python_interface_generate_messages_cpp"
+	@echo "... graph_msgs_generate_messages_eus"
 	@echo "... ur10_python_interface_gencpp"
 	@echo "... topic_tools_generate_messages_cpp"
 	@echo "... std_srvs_generate_messages_py"
@@ -918,6 +978,7 @@ help:
 	@echo "... pcl_msgs_generate_messages_py"
 	@echo "... graph_msgs_generate_messages_cpp"
 	@echo "... graph_msgs_generate_messages_py"
+	@echo "... _ur10_python_interface_generate_messages_check_deps_SolveIk"
 	@echo "... _ur10_python_interface_generate_messages_check_deps_Ellipsoid3"
 	@echo "... nodelet_generate_messages_lisp"
 	@echo "... graph_msgs_generate_messages_nodejs"
@@ -931,8 +992,6 @@ help:
 	@echo "... nodelet_generate_messages_cpp"
 	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... bond_generate_messages_py"
-	@echo "... graph_msgs_generate_messages_eus"
-	@echo "... ur10_python_interface_generate_messages_cpp"
 	@echo "... pcl_msgs_generate_messages_cpp"
 	@echo "... pcl_msgs_generate_messages_eus"
 	@echo "... nodelet_generate_messages_nodejs"
@@ -946,6 +1005,9 @@ help:
 	@echo "... src/ik_publisher.o"
 	@echo "... src/ik_publisher.i"
 	@echo "... src/ik_publisher.s"
+	@echo "... src/manipulability_publisher.o"
+	@echo "... src/manipulability_publisher.i"
+	@echo "... src/manipulability_publisher.s"
 .PHONY : help
 
 

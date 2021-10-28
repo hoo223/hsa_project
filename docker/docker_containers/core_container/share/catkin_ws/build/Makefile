@@ -2846,6 +2846,19 @@ tf_generate_messages_py/fast:
 .PHONY : tf_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named manipulability_publisher
+
+# Build rule for target.
+manipulability_publisher: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 manipulability_publisher
+.PHONY : manipulability_publisher
+
+# fast build rule for target.
+manipulability_publisher/fast:
+	$(MAKE) -f ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build.make ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build
+.PHONY : manipulability_publisher/fast
+
+#=============================================================================
 # Target rules for targets named ik_publisher
 
 # Build rule for target.
@@ -3002,6 +3015,32 @@ nodelet_generate_messages_eus/fast:
 .PHONY : nodelet_generate_messages_eus/fast
 
 #=============================================================================
+# Target rules for targets named ur10_python_interface_generate_messages_cpp
+
+# Build rule for target.
+ur10_python_interface_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface_generate_messages_cpp
+.PHONY : ur10_python_interface_generate_messages_cpp
+
+# fast build rule for target.
+ur10_python_interface_generate_messages_cpp/fast:
+	$(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/build
+.PHONY : ur10_python_interface_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named graph_msgs_generate_messages_eus
+
+# Build rule for target.
+graph_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 graph_msgs_generate_messages_eus
+.PHONY : graph_msgs_generate_messages_eus
+
+# fast build rule for target.
+graph_msgs_generate_messages_eus/fast:
+	$(MAKE) -f ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/build.make ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/build
+.PHONY : graph_msgs_generate_messages_eus/fast
+
+#=============================================================================
 # Target rules for targets named ur10_python_interface_gencpp
 
 # Build rule for target.
@@ -3117,6 +3156,19 @@ graph_msgs_generate_messages_py: cmake_check_build_system
 graph_msgs_generate_messages_py/fast:
 	$(MAKE) -f ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_py.dir/build.make ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_py.dir/build
 .PHONY : graph_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named _ur10_python_interface_generate_messages_check_deps_SolveIk
+
+# Build rule for target.
+_ur10_python_interface_generate_messages_check_deps_SolveIk: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _ur10_python_interface_generate_messages_check_deps_SolveIk
+.PHONY : _ur10_python_interface_generate_messages_check_deps_SolveIk
+
+# fast build rule for target.
+_ur10_python_interface_generate_messages_check_deps_SolveIk/fast:
+	$(MAKE) -f ur10_python_interface/CMakeFiles/_ur10_python_interface_generate_messages_check_deps_SolveIk.dir/build.make ur10_python_interface/CMakeFiles/_ur10_python_interface_generate_messages_check_deps_SolveIk.dir/build
+.PHONY : _ur10_python_interface_generate_messages_check_deps_SolveIk/fast
 
 #=============================================================================
 # Target rules for targets named _ur10_python_interface_generate_messages_check_deps_Ellipsoid3
@@ -3286,32 +3338,6 @@ bond_generate_messages_py: cmake_check_build_system
 bond_generate_messages_py/fast:
 	$(MAKE) -f ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/build.make ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/build
 .PHONY : bond_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named graph_msgs_generate_messages_eus
-
-# Build rule for target.
-graph_msgs_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 graph_msgs_generate_messages_eus
-.PHONY : graph_msgs_generate_messages_eus
-
-# fast build rule for target.
-graph_msgs_generate_messages_eus/fast:
-	$(MAKE) -f ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/build.make ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_eus.dir/build
-.PHONY : graph_msgs_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named ur10_python_interface_generate_messages_cpp
-
-# Build rule for target.
-ur10_python_interface_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface_generate_messages_cpp
-.PHONY : ur10_python_interface_generate_messages_cpp
-
-# fast build rule for target.
-ur10_python_interface_generate_messages_cpp/fast:
-	$(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_cpp.dir/build
-.PHONY : ur10_python_interface_generate_messages_cpp/fast
 
 #=============================================================================
 # Target rules for targets named pcl_msgs_generate_messages_cpp
@@ -3753,6 +3779,7 @@ help:
 	@echo "... tf_generate_messages_cpp"
 	@echo "... ur10_kin"
 	@echo "... tf_generate_messages_py"
+	@echo "... manipulability_publisher"
 	@echo "... ik_publisher"
 	@echo "... ur10_python_interface_genpy"
 	@echo "... ur10_python_interface_generate_messages_py"
@@ -3765,6 +3792,8 @@ help:
 	@echo "... bond_generate_messages_nodejs"
 	@echo "... graph_msgs_generate_messages_lisp"
 	@echo "... nodelet_generate_messages_eus"
+	@echo "... ur10_python_interface_generate_messages_cpp"
+	@echo "... graph_msgs_generate_messages_eus"
 	@echo "... ur10_python_interface_gencpp"
 	@echo "... topic_tools_generate_messages_cpp"
 	@echo "... std_srvs_generate_messages_py"
@@ -3774,6 +3803,7 @@ help:
 	@echo "... pcl_msgs_generate_messages_py"
 	@echo "... graph_msgs_generate_messages_cpp"
 	@echo "... graph_msgs_generate_messages_py"
+	@echo "... _ur10_python_interface_generate_messages_check_deps_SolveIk"
 	@echo "... _ur10_python_interface_generate_messages_check_deps_Ellipsoid3"
 	@echo "... nodelet_generate_messages_lisp"
 	@echo "... graph_msgs_generate_messages_nodejs"
@@ -3787,8 +3817,6 @@ help:
 	@echo "... nodelet_generate_messages_cpp"
 	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... bond_generate_messages_py"
-	@echo "... graph_msgs_generate_messages_eus"
-	@echo "... ur10_python_interface_generate_messages_cpp"
 	@echo "... pcl_msgs_generate_messages_cpp"
 	@echo "... pcl_msgs_generate_messages_eus"
 	@echo "... nodelet_generate_messages_nodejs"

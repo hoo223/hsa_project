@@ -42,6 +42,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ur10_python_interface/srv" TYPE FILE FILES "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ur10_python_interface/cmake" TYPE FILE FILES "/root/share/catkin_ws/build/ur10_python_interface/catkin_generated/installspace/ur10_python_interface-msg-paths.cmake")
 endif()
 
