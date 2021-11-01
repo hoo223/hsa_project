@@ -79,7 +79,7 @@ public:
     self_collision_pub = n.advertise<std_msgs::Bool>("self_collision", 10);
     // subscriber
     arm_state_sub = n.subscribe<sensor_msgs::JointState>("/joint_states", 10, boost::bind(&IK_solver::jointStateCallback, this, _1));
-    target_pose_sub = n.subscribe<geometry_msgs::Pose>("/target_pose", 10, boost::bind(&IK_solver::targetPoseCallback, this, _1));
+    //target_pose_sub = n.subscribe<geometry_msgs::Pose>("/target_pose", 10, boost::bind(&IK_solver::targetPoseCallback, this, _1));
   }
 
   // callback
@@ -148,43 +148,6 @@ int main(int argc, char** argv)
     ROS_INFO("Joint %s: %f", ik_solver.joint_names[i].c_str(), joint_values[i]);
   }
 
-  // Joint Limits
-  // ^^^^^^^^^^^^
-  // setJointGroupPositions() does not enforce joint limits by itself, but a call to enforceBounds() will do it.
-  /* Set one joint in the Panda arm outside its joint limit */
-  joint_values[0] = 5.57;
-  ik_solver.kinematic_state->setJointGroupPositions(ik_solver.joint_model_group, joint_values);
-
-  /* Check whether any joint is outside its joint limits */
-  ROS_INFO_STREAM("Current state is " << (ik_solver.kinematic_state->satisfiesBounds() ? "valid" : "not valid"));
-
-  /* Enforce the joint limits for this state and check again*/
-  ik_solver.kinematic_state->enforceBounds();
-  ROS_INFO_STREAM("Current state is " << (ik_solver.kinematic_state->satisfiesBounds() ? "valid" : "not valid"));
-
-  // Forward Kinematics
-  // ^^^^^^^^^^^^^^^^^^
-  // Now, we can compute forward kinematics for a set of random joint
-  // values. Note that we would like to find the pose of the
-  // "panda_link8" which is the most distal link in the
-  // "panda_arm" group of the robot.
-  ik_solver.kinematic_state->setToRandomPositions(ik_solver.joint_model_group);
-  const Eigen::Isometry3d& end_effector_state = ik_solver.kinematic_state->getGlobalLinkTransform("ee_link");
-
-  /* Print end-effector pose. Remember that this is in the model frame */
-  ROS_INFO_STREAM("Translation: \n" << end_effector_state.translation() << "\n");
-  ROS_INFO_STREAM("Rotation: \n" << end_effector_state.rotation() << "\n");
-
-  // Get the Jacobian
-  // ^^^^^^^^^^^^^^^^
-  // We can also get the Jacobian from the :moveit_core:`RobotState`.
-  Eigen::Vector3d reference_point_position(0.0, 0.0, 0.0);
-  Eigen::MatrixXd jacobian;
-  ik_solver.kinematic_state->getJacobian(ik_solver.joint_model_group,
-                               ik_solver.kinematic_state->getLinkModel(ik_solver.joint_model_group->getLinkModelNames().back()),
-                               reference_point_position, jacobian);
-  ROS_INFO_STREAM("Jacobian: \n" << jacobian << "\n");
-
   // Get the Manipulalbility Index
   // ^^^^^^^^^^^^^^^^
   // We can also get the Manipulalbility Index 
@@ -199,8 +162,6 @@ int main(int argc, char** argv)
   Eigen::MatrixXcd eigen_values;
   Eigen::MatrixXcd eigen_vectors;
   //ik_solver.metrics.getManipulabilityEllipsoid(*ik_solver.kinematic_state, ik_solver.joint_model_group, eigen_values, eigen_vectors);
-
-
   
   // Loop
   clock_t start, end;
@@ -210,6 +171,9 @@ int main(int argc, char** argv)
   start = clock(); // 측정 시작
   while (ros::ok()){
     
+    ik_solver.kinematic_state->setJointGroupPositions(ik_solver.joint_model_group, ik_solver.current_joint_values);
+    ik_solver.kinematic_state->enforceBounds();
+
     // check self collision
     ik_solver.check_self_collision();
 
@@ -258,12 +222,12 @@ void IK_solver::jointStateCallback(const sensor_msgs::JointStateConstPtr& joint_
 	current_joint_values[5] = joint_state->position[5]; // wrist_3_joint
 }
 
-void IK_solver::targetPoseCallback(const geometry_msgs::PoseConstPtr& target_pose)
-{
-  //printf("%.3f, %.3f, %.3f", target_pose->position.x, target_pose->position.y, target_pose->position.z);
-  tf::poseMsgToEigen(*target_pose, pose_in);
-  //this->target_pose = *target_pose;
-}
+// void IK_solver::targetPoseCallback(const geometry_msgs::PoseConstPtr& target_pose)
+// {
+//   //printf("%.3f, %.3f, %.3f", target_pose->position.x, target_pose->position.y, target_pose->position.z);
+//   tf::poseMsgToEigen(*target_pose, pose_in);
+//   //this->target_pose = *target_pose;
+// }
 
 // https://github.com/ros-planning/moveit_tutorials/blob/master/doc/planning_scene/src/planning_scene_tutorial.cpp
 void IK_solver::check_self_collision(void)

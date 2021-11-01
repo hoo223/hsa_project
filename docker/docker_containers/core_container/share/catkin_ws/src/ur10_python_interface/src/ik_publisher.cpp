@@ -74,12 +74,13 @@ public:
     joint_names = joint_model_group->getVariableNames();
     current_joint_values.resize(6);
   
-    // publisher
-    ik_pub = n.advertise<std_msgs::Float64MultiArray>("ik_result", 10); // target pose ik result publisher
     // subscriber
     arm_state_sub = n.subscribe<sensor_msgs::JointState>("/joint_states", 10, boost::bind(&IK_solver::jointStateCallback, this, _1));
     //target_pose_sub = n.subscribe<geometry_msgs::Pose>("/target_pose", 10, boost::bind(&IK_solver::targetPoseCallback, this, _1));
-
+    // publisher
+    m_index_pub = n.advertise<std_msgs::Float64>("m_index", 10); // manipulability index publisher
+    eigen_value_pub = n.advertise<std_msgs::Float64MultiArray>("eigen_value", 10); // target pose ik result publisher
+    self_collision_pub = n.advertise<std_msgs::Bool>("self_collision", 10);
   }
 
   // callback
@@ -114,14 +115,14 @@ public:
 
   // Handler
   ros::NodeHandle n;
-  // Publisher
-  ros::Publisher ik_pub;
-  ros::Publisher m_index_pub;
-  ros::Publisher eigen_value_pub;
-  ros::Publisher self_collision_pub;
+
   // Subscriber
   ros::Subscriber arm_state_sub;
   ros::Subscriber target_pose_sub;  
+  ros::Publisher m_index_pub;
+  ros::Publisher eigen_value_pub;
+  ros::Publisher self_collision_pub;
+  
 
 private:
 
@@ -242,7 +243,48 @@ int main(int argc, char** argv)
   ros::ServiceServer ik_service = n.advertiseService("solve_ik", &IK_solver::solve_ik, &ik_solver);
 
   // Loop
-  while(ros::ok());
+  clock_t start, end;
+  double result, manipulability;
+  std_msgs::Float64MultiArray ik_result_msg, e_values_msg;
+  ros::Rate loop_rate(250);
+  start = clock(); // 측정 시작
+  while (ros::ok()){
+    
+    ik_solver.kinematic_state->setJointGroupPositions(ik_solver.joint_model_group, ik_solver.current_joint_values);
+    ik_solver.kinematic_state->enforceBounds();
+
+    // check self collision
+    ik_solver.check_self_collision();
+
+    // calculate manipulabilty index
+    ik_solver.metrics.getManipulabilityIndex(*ik_solver.kinematic_state, ik_solver.joint_model_group, m_index);
+    std_msgs::Float64 m_index_msg;
+    m_index_msg.data = m_index;
+    ik_solver.m_index_pub.publish(m_index_msg);
+
+    // calculate manipulabilty
+    // ik_solver.metrics.getManipulability(*ik_solver.kinematic_state, ik_solver.joint_model_group, manipulability, true);
+    // std_msgs::Float64 m_index_msg;
+    // m_index_msg.data = manipulability;
+    // ik_solver.m_index_pub.publish(m_index_msg);
+
+    // calculate manipulabilty ellipsoid
+    ik_solver.metrics.getManipulabilityEllipsoid(*ik_solver.kinematic_state, ik_solver.joint_model_group, eigen_values, eigen_vectors);
+    e_values_msg.data.clear();
+    e_values_msg.data.push_back(eigen_values(0).real());
+    e_values_msg.data.push_back(eigen_values(1).real());
+    e_values_msg.data.push_back(eigen_values(2).real());
+    ik_solver.eigen_value_pub.publish(e_values_msg);
+    //ROS_INFO_STREAM("e_value1: \n" << eigen_values(0) << "\n");  
+
+    ik_solver.kinematic_state->copyJointGroupPositions(ik_solver.joint_model_group, joint_values);
+
+    loop_rate.sleep();
+    // end = clock(); // 측정 끝
+    // result = (double)(end - start);
+    // printf("time: %lf\n", result); //결과 출력
+    // start = end;
+  }
 
   ros::shutdown();
   return 0;
