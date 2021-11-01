@@ -54,7 +54,7 @@ class ModeManager(object):
 
   def joy_command_callback(self, data):
     self.joy_command = data.data
-    self.button = self.joy_command[4]
+    self.button = self.joy_command[6]
 
 
 def main():

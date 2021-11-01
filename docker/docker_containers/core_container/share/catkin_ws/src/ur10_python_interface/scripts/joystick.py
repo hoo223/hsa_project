@@ -80,11 +80,13 @@ if __name__ == '__main__':
         # get input from joystick
         input, button = actor()
         command = Float64MultiArray()
-        command.data.append(input[0][0])
-        command.data.append(input[0][1])
-        command.data.append(input[1][0])
-        command.data.append(input[1][1])
-        command.data.append(button)
+        command.data.append(input[0][0]) # x
+        command.data.append(input[0][1]) # y
+        command.data.append(input[1][0]) # z
+        command.data.append(0) # roll
+        command.data.append(0) # pitch
+        command.data.append(input[1][1]) # yaw
+        command.data.append(button) # button
         pub.publish(command)
 
         rate.sleep()

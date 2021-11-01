@@ -30,7 +30,7 @@ from ur10_python_interface.srv import *
 from move_group_python_interface import MoveGroupPythonInteface
 
 class Joy2Target(object):
-  def __init__(self, verbose=False, prefix="", random_agent=False, env=False):
+  def __init__(self, verbose=False, prefix="", random_agent=False, env=False, rsa=False):
 
     # debugging
     self.verbose = verbose
@@ -43,17 +43,19 @@ class Joy2Target(object):
 
     # with RL env
     self.env = env
+    self.rsa = rsa
 
     # teleoperation variable
     self.pre_button = None
     self.teleop_state = "stop"
-    self.joy_command = np.zeros(5)
+    self.joy_command = np.zeros(7)
     self.speed_gain = 0.00024 # for input scale
     self.speed_level = 3 # 로봇 움직임 속도 - 1~10 단계
 
     # random agent
     self.random_action = np.zeros(6)
     self.delay_step = 0
+    self.action_mask = [1,0,0,0,0,0]
 
     self.xyzw_array = lambda o: np.array([o.x, o.y, o.z, o.w])
 
@@ -66,7 +68,8 @@ class Joy2Target(object):
     self.haptic_scale = 2 # translation scale factor
 
     # subscriber
-    self.joy_sub = rospy.Subscriber('joy_command', Float64MultiArray, self.joy_command_callback)
+    self.joy_command_sub = rospy.Subscriber('joy_command', Float64MultiArray, self.joy_command_callback)
+    self.env_command_sub = rospy.Subscriber('env_command', Float64MultiArray, self.env_command_callback)
     self.teleop_state_sub = rospy.Subscriber('/teleop_state', String, self.teleop_state_callback)
     self.current_joint_sub = rospy.Subscriber('/joint_states', JointState, self.current_joint_callback)
     self.haptic_pose_sub = rospy.Subscriber('/phantom/pose', PoseStamped, self.haptic_pose_callback)
@@ -102,35 +105,62 @@ class Joy2Target(object):
     # reset target service
     self.reset_target_service = rospy.Service('reset_target_pose', Trigger, self.reset_target)
 
+    command = Float64MultiArray()
+    command.data.append(0) # x
+    command.data.append(0) # y
+    command.data.append(0) # z
+    command.data.append(0) # roll
+    command.data.append(0) # pitch
+    command.data.append(0) # yaw
+    command.data.append(-1.0) # button
+    self.env_command = command.data
+
   def input_conversion(self):
     # get input
-    if self.random_agent: # random action model
-      # For smoothing noisy action
-      if self.delay_step > 200:
-        self.random_action = 2*(np.random.rand(6)-0.5)
-        self.delay_step = 0
-      self.delay_step += 1
-      # random action to input mapping
-      x_input = 0#-self.random_action[0]
-      y_input = self.random_action[1]
-      z_input = 0#self.random_action[2]
-      roll_input = 0#self.random_action[3]
-      pitch_input = 0#self.random_action[4]
-      yaw_input = 0#-self.random_action[5]
-    else: # human teleoperation
-      # joystick action to input mapping
-      x_input = -self.joy_command[0]
-      y_input = self.joy_command[1]
-      z_input = self.joy_command[2]
-      roll_input = 0
-      pitch_input = 0
-      yaw_input = -self.joy_command[3]
-
     button = int(self.joy_command[4])
+
+    if not self.rsa:
+      command = self.joy_command
+      if self.random_agent: # random action model
+        # For smoothing noisy action
+        if self.delay_step > 200:
+          self.random_action = 2*(np.random.rand(6)-0.5)
+          self.delay_step = 0
+        self.delay_step += 1
+        # random action to input mapping
+        x_input = 0#-self.random_action[0]
+        y_input = self.random_action[1]
+        z_input = 0#self.random_action[2]
+        roll_input = 0#self.random_action[3]
+        pitch_input = 0#self.random_action[4]
+        yaw_input = 0#-self.random_action[5]
+      else: # human teleoperation
+        # joystick action to input mapping
+        x_input = -command[0]
+        y_input = command[1]
+        z_input = command[2]
+        roll_input = pitch_input = 0
+        if button == 1:
+          roll_input = 1
+        elif button == 2:
+          roll_input = -1
+        if button == 0:
+          pitch_input = 1
+        elif button == 3:
+          pitch_input = -1
+        yaw_input = -command[5]   
+    else: # rsa random agent
+      command = self.env_command
+      x_input = -command[0] * self.action_mask[0]
+      y_input = command[1] * self.action_mask[1]
+      z_input = command[2] * self.action_mask[2]
+      roll_input = command[3] * self.action_mask[3]
+      pitch_input = command[4] * self.action_mask[4]
+      yaw_input = -command[5]  * self.action_mask[5]
 
     # change speed
     if button != self.pre_button: # restrict the continuous change
-      if button == 5 and button:
+      if button == 5:
         self.speed_level += 1
         if self.speed_level > 10:
           self.speed_level = 10
@@ -189,6 +219,9 @@ class Joy2Target(object):
 
   def joy_command_callback(self, data):
     self.joy_command = data.data
+
+  def env_command_callback(self, data):
+    self.env_command = data.data
 
   def teleop_state_callback(self, data):
     self.teleop_state = data.data
@@ -286,7 +319,7 @@ def main():
     prefix = ''
 
   rospy.init_node("joy2target_converter", anonymous=True)
-  j2t = Joy2Target(prefix=prefix, random_agent=True, env=True)
+  j2t = Joy2Target(prefix=prefix, random_agent=False, env=True, rsa=True)
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
     if rospy.get_param(prefix+'/teleop_state') == "start":

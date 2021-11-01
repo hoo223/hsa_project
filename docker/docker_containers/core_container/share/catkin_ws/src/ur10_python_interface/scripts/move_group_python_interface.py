@@ -22,6 +22,8 @@ from geometry_msgs.msg import PoseStamped, Quaternion, Pose
 from geometry_msgs.msg import Quaternion
 from controller_manager_msgs.srv import SwitchControllerRequest, SwitchController
 import geometry_msgs
+from ur10_python_interface.srv import SolveIk
+from tf.transformations import euler_from_quaternion, quaternion_from_euler
 
 ## moveit library
 import moveit_commander
@@ -164,7 +166,16 @@ class MoveGroupPythonInteface(object):
     rospy.set_param(self.prefix+'/teleop_state', 'stop')
     self.teleop_state = rospy.get_param(self.prefix+'/teleop_state')
 
-  def go_to_init_state(self):
+  def ik_solver(self, target_pose):
+    rospy.wait_for_service('solve_ik')
+    try:
+        solve_ik = rospy.ServiceProxy('solve_ik', SolveIk)
+        res = solve_ik(target_pose)
+        return res
+    except rospy.ServiceException as e:
+        print("Service call failed: %s"%e)
+
+  def go_to_init_state(self, joint_goal=[-1.601372543965475, -1.3494799772845667, -2.0361130873309534, 0.25178295286581065, 1.6211304664611816, 0.09116100519895554]):
     # Copy class variables to local variables to make the web tutorials more clear.
     # In practice, you should use the class variables directly unless you have a good
     # reason not to.
@@ -178,8 +189,24 @@ class MoveGroupPythonInteface(object):
     ## The Panda's zero configuration is at a `singularity <https://www.quora.com/Robotics-What-is-meant-by-kinematic-singularity>`_ so the first
     ## thing we want to do is move it to a slightly better configuration.
     # We can get the joint values from the group and adjust some of the values:
-    joint_goal = [-1.601372543965475, -1.3494799772845667, -2.0361130873309534, 0.25178295286581065, 1.6211304664611816, 0.09116100519895554]
+    
     #joint_goal = [-1.5999897112701706, -1.3500032022166835, -2.040067726204013, -1.3188300763644802, 1.6184002310830374, 0.09156995930090517]
+    
+    # # random init pose
+    # if np.random.rand(1) >0.5:
+    #   offset = 0.8 
+    # else:
+    #   offset = -0.8
+    # task_init_pose_x = 0.1*(np.random.rand(1)) + offset
+    # target_pose = [task_init_pose_x, 0.50746106, 0.69538257, 0.09267109, 0.00379392, 1.59158403]
+    # q_new = quaternion_from_euler(target_pose[3], target_pose[4], target_pose[5]) # roll, pitch, yaw
+    # target_orientation = Quaternion(q_new[0], q_new[1], q_new[2], q_new[3])
+    # ps = Pose()
+    # ps.position.x = target_pose[0]
+    # ps.position.y = target_pose[1]
+    # ps.position.z = target_pose[2]
+    # ps.orientation = target_orientation
+    # joint_goal = self.ik_solver(ps).ik_result.data
 
     # The go command can be called with joint values, poses, or without any
     # parameters if you have already set the pose or joint target for the group

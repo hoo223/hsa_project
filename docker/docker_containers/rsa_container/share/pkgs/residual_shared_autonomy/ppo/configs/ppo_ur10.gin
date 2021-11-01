@@ -47,7 +47,9 @@ ConstrainedResidualPPO.base_actor_cls = @UR10RandomActor # residual_shared_auton
 #BCMultiActor.device = "cuda:0"
 #BCMultiActor.switch_prob = 0.001
 
-UR10RandomActor.action_period = 10
+UR10RandomActor.action_period = 100
+UR10RandomActor.space_type = "task" # "task", "joint"
+
 
 #BCNet.ob_shape = 9
 #BCNet.action_shape = 2

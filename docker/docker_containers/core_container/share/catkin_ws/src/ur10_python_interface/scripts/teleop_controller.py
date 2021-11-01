@@ -43,7 +43,7 @@ def teleop_loop(robot_interface, FPS=1000):
 
 
 class TeleopController(object):
-  def __init__(self, env=False, verbose=False, prefix=''):
+  def __init__(self, env=False, rsa=False, verbose=False, prefix=''):
 
     self.prefix = prefix
     self.target_joints = None
@@ -58,7 +58,7 @@ class TeleopController(object):
     #self.teleop_state_sub = rospy.Subscriber('/teleop_state', String, self.teleop_state_callback)
 
     # publisher
-    if env:
+    if env and not rsa:
       velocity_name = prefix+'/human_action'
     else:
       velocity_name = prefix+'/joint_group_vel_controller/command'
@@ -100,7 +100,7 @@ def main():
     prefix = ''
   
   rospy.init_node("teleop_controller", anonymous=True)
-  tc = TeleopController(env=True, prefix=prefix)
+  tc = TeleopController(env=True, rsa=True, prefix=prefix)
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
     #print(tc.teleop_state)

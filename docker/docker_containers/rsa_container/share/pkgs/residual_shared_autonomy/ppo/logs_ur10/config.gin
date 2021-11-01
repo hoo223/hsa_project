@@ -77,7 +77,9 @@ train.seed = 0
 
 # Parameters for UR10RandomActor:
 # ==============================================================================
-UR10RandomActor.action_period = 10
+UR10RandomActor.action_mask = [1, 0, 0, 0, 0, 0]
+UR10RandomActor.action_period = 100
+UR10RandomActor.space_type = 'task'
 
 # Parameters for VecObsNormWrapper:
 # ==============================================================================

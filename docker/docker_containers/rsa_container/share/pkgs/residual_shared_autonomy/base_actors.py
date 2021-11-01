@@ -11,6 +11,12 @@ from dl import Checkpointer
 import gin
 import os
 
+# ros library
+import rospy
+from ur10_python_interface.srv import SolveIk
+from tf.transformations import euler_from_quaternion, quaternion_from_euler
+from geometry_msgs.msg import PoseStamped, Quaternion, Pose
+
 
 @gin.configurable
 class ZeroActor(object):
@@ -43,18 +49,45 @@ class RandomActor(object):
         
 @gin.configurable
 class UR10RandomActor(object):
-    def __init__(self, env, action_period=5):
+    def __init__(self, env, action_period=5, space_type="task", action_mask=[1,0,0,0,0,0]):
         self.action_space = env.action_space
         self.batch_size = env.num_envs
         self.action_cnt = action_period
         self.action_period = action_period
+        self.space_type = space_type
+        self.action_mask = action_mask
+        
+    def ik_solver(self, target_pose):
+        rospy.wait_for_service('solve_ik')
+        try:
+            solve_ik = rospy.ServiceProxy('solve_ik', SolveIk)
+            res = solve_ik(target_pose)
+            return res
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
 
     def __call__(self, ob):
         """Act."""
         self.action_cnt += 1
         if self.action_cnt > self.action_period:
-            self.action_samples = [self.action_space.sample() for _ in range(self.batch_size)]
+            if self.space_type == "joint":
+                self.action_samples = [self.action_space.sample() for _ in range(self.batch_size)]
+            else:
+                print("task")
+                self.action_samples = [self.action_space.sample() for _ in range(self.batch_size)]
+                # self.action_samples = []
+                # for _ in range(self.batch_size):
+                #     action_sample = self.action_space.sample()
+                #     action_sample[1] = 0
+                #     action_sample[2] = 0
+                #     action_sample[3] = 0
+                #     action_sample[4] = 0
+                #     action_sample[5] = 0
+                #     self.action_samples.append(action_sample)
+                #     print(self.action_samples)
+                    
             self.action_cnt = 0
+            print("action: ", self.action_samples)
         return np.asarray(self.action_samples)
 
 
