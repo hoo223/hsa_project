@@ -90,6 +90,7 @@ class UR10Env(gym.Env, EzPickle):
             self.action_space = spaces.Discrete(64)
 
         ## initialization
+        rospy.set_param("teleop_state", "stop")
         try:
             print("ur10 env initialized!")
             rospy.init_node('ur10_env', anonymous=True)
@@ -115,8 +116,8 @@ class UR10Env(gym.Env, EzPickle):
         self.reset_sim = rospy.ServiceProxy("/gazebo/reset_simulation", Empty)
         self.joints_initializer = rospy.ServiceProxy("/gazebo/set_model_configuration", SetModelConfiguration)
         
-        # pause the gazebo
-        self.pause()
+        # # pause the gazebo
+        # self.pause()
         
         ## check gazebo 
         try:
@@ -166,7 +167,7 @@ class UR10Env(gym.Env, EzPickle):
         self.self_collision = data.data
 
     def step(self, action):
-        print("step in")
+        #print("step in")
         self.joint_vel_msg.data = action 
         
         start_ros_time = rospy.Time.now()
@@ -206,7 +207,6 @@ class UR10Env(gym.Env, EzPickle):
         try:
             reset_episode = rospy.ServiceProxy('reset_pose', Trigger)
             res = reset_episode()
-            time.sleep(1)
             return res.message
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
@@ -214,29 +214,42 @@ class UR10Env(gym.Env, EzPickle):
 
 
     def start_teleop_client(self):
-        if rospy.get_param('teleop_state') == 'stop':
-            rospy.wait_for_service('start_teleop')
-            try:
-                start_teleop = rospy.ServiceProxy('start_teleop', Trigger)
-                res = start_teleop()
-                return res.message
-            except rospy.ServiceException as e:
-                print("Service call failed: %s"%e)
+        print("ur10_env - start_teleop_client")
+        print(rospy.get_param('teleop_state'))
+        #if rospy.get_param('teleop_state') == 'stop':
+        rospy.wait_for_service('start_teleop')
+        try:
+            start_teleop = rospy.ServiceProxy('start_teleop', Trigger)
+            res = start_teleop()
+            return res.message
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
 
     def reset(self):
-        #print("test ", self.reset_episode_client())
-
-        rospy.wait_for_service("/gazebo/unpause_physics", timeout=2)
-        self.joints_initializer("robot", "", self.joint_names, self.initial_angle)
-        self.unpause()
-        # _state = rospy.wait_for_message("/joint_states", JointState, timeout=1.0)
-        # return _state.position
-        rospy.wait_for_message("/joint_states", JointState)
-        # self.pause()
-        # print(self._state)
-        self.start_teleop_client()
-        return self._state
+        print("test ", self.reset_episode_client())
         
+        # # reset immediately
+        # self.pause_func()
+        # self.joints_initializer("robot", "", self.joint_names, self.initial_angle)
+        # print("initialized")
+        # self.unpause_func()
+        
+        rospy.wait_for_message("/joint_states", JointState)
+        # print("joint_states")
+
+        # rospy.wait_for_message("/ik_result", Float64MultiArray) # waiting the ik_result
+        # print("ik_result")
+        return self._state
+    
+    def pause_func(self):
+        rospy.wait_for_service("/gazebo/pause_physics", timeout=2)
+        self.pause()
+        print("paused")
+        
+    def unpause_func(self):
+        rospy.wait_for_service("/gazebo/unpause_physics", timeout=2)
+        self.unpause()
+        print("unpaused")
 
     def _additional_state_callback(self):
         """This method is an empthy method for additional sensor informations that child
@@ -277,9 +290,7 @@ class UR10Env(gym.Env, EzPickle):
             reward -= 1000
             print("singularity!")
         
-        # penalty for self collision
-        if self_collision == True:
-            reward -= 1000
+        # penunpauseeward -= 1000
             print("self collision")
            
         # reward for time

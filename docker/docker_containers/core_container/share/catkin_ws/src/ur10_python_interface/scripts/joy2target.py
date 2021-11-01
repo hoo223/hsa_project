@@ -17,7 +17,7 @@ from rospy.service import ServiceException
 import tf
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
 from std_msgs.msg import Float64MultiArray, String
-from std_srvs.srv import Trigger, TriggerResponse
+from std_srvs.srv import Trigger, TriggerResponse, TriggerRequest
 from sensor_msgs.msg import JointState
 from geometry_msgs.msg import PoseStamped, Quaternion, Pose
 from omni_msgs.msg import OmniButtonEvent
@@ -30,13 +30,19 @@ from ur10_python_interface.srv import *
 from move_group_python_interface import MoveGroupPythonInteface
 
 class Joy2Target(object):
-  def __init__(self, verbose=False, prefix=""):
+  def __init__(self, verbose=False, prefix="", random_agent=False, env=False):
 
     # debugging
     self.verbose = verbose
     
     # namespace
     self.prefix = prefix
+
+    # agent type
+    self.random_agent = random_agent
+
+    # with RL env
+    self.env = env
 
     # teleoperation variable
     self.pre_button = None
@@ -96,21 +102,21 @@ class Joy2Target(object):
     # reset target service
     self.reset_target_service = rospy.Service('reset_target_pose', Trigger, self.reset_target)
 
-  def input_conversion(self, random_agent=False):
+  def input_conversion(self):
     # get input
-    if random_agent: # random action model
+    if self.random_agent: # random action model
       # For smoothing noisy action
       if self.delay_step > 200:
         self.random_action = 2*(np.random.rand(6)-0.5)
         self.delay_step = 0
       self.delay_step += 1
       # random action to input mapping
-      x_input = -self.random_action[0]
+      x_input = 0#-self.random_action[0]
       y_input = self.random_action[1]
-      z_input = self.random_action[2]
-      roll_input = self.random_action[3]
-      pitch_input = self.random_action[4]
-      yaw_input = -self.random_action[5]
+      z_input = 0#self.random_action[2]
+      roll_input = 0#self.random_action[3]
+      pitch_input = 0#self.random_action[4]
+      yaw_input = 0#-self.random_action[5]
     else: # human teleoperation
       # joystick action to input mapping
       x_input = -self.joy_command[0]
@@ -175,8 +181,11 @@ class Joy2Target(object):
     return ps
 
   def reset_target(self, req):
-    result.message = "target pose reset"
-    return result
+    self.target_pose = self.init_pose
+    res = TriggerResponse()
+    res.message = "target pose reset"
+    res.success = True
+    return res
 
   def joy_command_callback(self, data):
     self.joy_command = data.data
@@ -258,9 +267,16 @@ class Joy2Target(object):
     try:
       solve_ik = rospy.ServiceProxy('solve_ik', SolveIk)
       res = solve_ik(target_pose)
-      return res.ik_result
+      return res
     except rospy.ServiceException as e:
       print("Service call failed: %s"%e)
+
+  def reset_pose(self):
+    rospy.wait_for_service(self.prefix+'/reset_pose')
+    reset_pose_service = rospy.ServiceProxy(self.prefix+'/reset_pose', Trigger)
+    req = TriggerRequest()
+    res = reset_pose_service(req)
+    return res
     
 def main():
   args = rospy.myargv()
@@ -270,23 +286,34 @@ def main():
     prefix = ''
 
   rospy.init_node("joy2target_converter", anonymous=True)
-  j2t = Joy2Target(prefix=prefix)
+  j2t = Joy2Target(prefix=prefix, random_agent=True, env=True)
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
     if rospy.get_param(prefix+'/teleop_state') == "start":
-      target_pose = j2t.input_conversion(random_agent=False)
-      joint_values = j2t.ik_solver(target_pose)
-      #print(joint_values)
-      j2t.ik_result_pub.publish(joint_values)
-      j2t.gripper_action_pub.publish(j2t.gripper_command)
-    else:
+      target_pose = j2t.input_conversion()
+      print("target_pose calculated")
+      #target_pose = copy.deepcopy(j2t.init_pose)
+      result = j2t.ik_solver(target_pose)
+      if result.success:
+        #result.ik_result = [-1.6013145361858756, -1.3495041341764553, -2.0403334153833868, 0.2514010583083106, 1.6197922931754762, 0.08994613736848844]
+        j2t.ik_result_pub.publish(result.ik_result)
+        j2t.gripper_action_pub.publish(j2t.gripper_command)
+      else:
+        print("ik failed")
+        rospy.set_param(prefix+'/teleop_state', "stop")
+        if not j2t.env: # rl 환경과 연동하지 않을 때만
+          j2t.reset_pose()
+    else: # stop
       # try:
       #   (trans,rot) = j2t.listener.lookupTransform('/base_link', '/ee_link', rospy.Time(0))
       #   j2t.trans = trans
       # except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
       #   continue
       j2t.target_pose = copy.deepcopy(j2t.init_pose)
-      target_pose = j2t.input_conversion()
+      print("target_pose initialized")
+      # result = j2t.ik_solver(target_pose)
+      # if result.success:
+      #   j2t.ik_result_pub.publish(result.ik_result)
     #j2t.target_pose_pub.publish(target_pose)
     rate.sleep()
 

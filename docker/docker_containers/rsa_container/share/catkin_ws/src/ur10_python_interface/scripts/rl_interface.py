@@ -99,29 +99,33 @@ class RLInterface(object):
 
 def main():
   FPS = 20
-  rli = RLInterface(num_epsoide=1000, FPS=FPS, save=True)
+  rli = RLInterface(num_epsoide=1000, FPS=FPS, save=False)
   rate = rospy.Rate(FPS)
   FPS_pub = rospy.Publisher('rl_loop_rate', Empty, queue_size=1)
+  
 
   #while not rospy.is_shutdown():
   for i in range(rli.num_epsoide):
 
     print("\nepisode {}".format(i+1))
     rli.env.reset()
-    print(rli.env.start_teleop_client())
+    rli.env.start_teleop_client()
     ob = rli.env._state
-    print(ob)
+    #print(ob)
 
     #rli.time_check_start()
     total_reward = 0
     for j in range(rli.num_step):
       print("step: {}".format(j), end='\r')
+      if rospy.get_param('teleop_state') == 'stop':
+        break
       ob_next, reward, done = rli.loop(ob)
       ob = ob_next
-      print(ob)
+      #print(ob)
       total_reward += reward
       ## exit if X button is pushed or done is True
       if rli.button == 2 or done == True:
+        rospy.set_param('teleop_state', 'stop')
         break
       FPS_pub.publish(Empty())
       rate.sleep()
