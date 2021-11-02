@@ -18,7 +18,7 @@ Checkpointer.format = '{:09d}'
 # Parameters for ConstrainedResidualPPO:
 # ==============================================================================
 ConstrainedResidualPPO.base_actor_cls = @UR10RandomActor
-ConstrainedResidualPPO.batch_size = 64
+ConstrainedResidualPPO.batch_size = 256
 ConstrainedResidualPPO.clip_param = 0.2
 ConstrainedResidualPPO.ent_coef = 0.01
 ConstrainedResidualPPO.env_fn = @make_env
@@ -41,7 +41,7 @@ ConstrainedResidualPPO.policy_fn = @ppo_policy_fn
 ConstrainedResidualPPO.policy_training_start = 100000
 ConstrainedResidualPPO.record_num_episodes = 0
 ConstrainedResidualPPO.reward_threshold = -155
-ConstrainedResidualPPO.rollout_length = 100
+ConstrainedResidualPPO.rollout_length = 1024
 ConstrainedResidualPPO.vf_coef = 0.5
 ConstrainedResidualPPO.wrapper_fn = None
 
@@ -88,4 +88,4 @@ VecObsNormWrapper.log = True
 VecObsNormWrapper.log_prob = 0.01
 VecObsNormWrapper.mean = None
 VecObsNormWrapper.std = None
-VecObsNormWrapper.steps = 100
+VecObsNormWrapper.steps = 10000
