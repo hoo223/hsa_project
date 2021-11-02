@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/root/share/catkin_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/root/share/catkin_ws/src/robotiq/robotiq_2f_gripper_action_server/include/**",
+        "/root/share/catkin_ws/src/robotiq/robotiq_2f_gripper_control/include/**",
+        "/root/share/catkin_ws/src/robotiq/robotiq_ethercat/include/**",
+        "/root/share/catkin_ws/src/robotiq/robotiq_ft_sensor/include/**",
+        "/root/share/catkin_ws/src/two_arms/include/**",
+        "/root/share/catkin_ws/src/unity/unity_ros_control/include/**",
+        "/root/share/catkin_ws/src/universal_robot/ur_kinematics/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}
