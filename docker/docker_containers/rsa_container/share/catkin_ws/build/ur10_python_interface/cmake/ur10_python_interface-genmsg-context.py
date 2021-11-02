@@ -1,7 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
 messages_str = "/root/share/catkin_ws/src/ur10_python_interface/msg/Ellipsoid3.msg"
-services_str = ""
+services_str = "/root/share/catkin_ws/src/ur10_python_interface/srv/SolveIk.srv"
 pkg_name = "ur10_python_interface"
 dependencies_str = "std_msgs;geometry_msgs"
 langs = "gencpp;geneus;genlisp;gennodejs;genpy"

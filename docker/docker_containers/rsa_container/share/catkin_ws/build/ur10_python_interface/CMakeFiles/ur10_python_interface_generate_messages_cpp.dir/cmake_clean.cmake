@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "/root/share/catkin_ws/devel/include/ur10_python_interface/Ellipsoid3.h"
+  "/root/share/catkin_ws/devel/include/ur10_python_interface/SolveIk.h"
   "CMakeFiles/ur10_python_interface_generate_messages_cpp"
 )
 
