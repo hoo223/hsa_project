@@ -45,6 +45,11 @@ add_message_files(
   Ellipsoid3.msg
 )
 
+add_service_files(
+  FILES
+  SolveIk.srv
+)
+
 generate_messages(
   DEPENDENCIES
   std_msgs
@@ -80,3 +85,6 @@ include_directories(${THIS_PACKAGE_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${Boost_
 
 add_executable(ik_publisher src/ik_publisher.cpp)
 target_link_libraries(ik_publisher ${catkin_LIBRARIES})
+
+catkin_install_python(PROGRAMS scripts/joystick.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

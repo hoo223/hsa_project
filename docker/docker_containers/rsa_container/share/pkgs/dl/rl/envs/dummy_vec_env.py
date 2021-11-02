@@ -189,12 +189,13 @@ if __name__ == "__main__":
             print(env.envs)
             print(env.envs[0]) # 환경 자체 인터페이스 
             env.envs[0].start_teleop_client()
-            for i in range(1000):
+            for i in range(100):
                 print("step ", i)
                 action_cnt += 1
                 if action_cnt > 5:
                     actions = [env.action_space.sample() for _ in range(nenv)]
                     action_cnt = 0
                 ob, r, done, _ = env.step(actions)
+            env.envs[0].reset()
 
     unittest.main()

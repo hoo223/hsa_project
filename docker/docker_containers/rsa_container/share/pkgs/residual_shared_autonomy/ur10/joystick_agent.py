@@ -59,13 +59,15 @@ class UR10JoystickActor(object):
 
     def __call__(self):
         """Act."""
+        print("Actor call")
         action, button = self._get_human_action()
         if self.t and (time.time() - self.t) < 1. / self.fps:
             st = 1. / self.fps - (time.time() - self.t)
             if st > 0.:
                 time.sleep(st)
         self.t = time.time()
-        return action, button
+        
+        return action
 
     def reset(self):
         self.human_agent_action[:] = 0.

@@ -55,7 +55,7 @@ class Joy2Target(object):
     # random agent
     self.random_action = np.zeros(6)
     self.delay_step = 0
-    self.action_mask = [1,0,0,0,0,0]
+    self.action_mask = [0,1,0,0,0,0] # x,y,z,roll,pitch,yaw
 
     self.xyzw_array = lambda o: np.array([o.x, o.y, o.z, o.w])
 

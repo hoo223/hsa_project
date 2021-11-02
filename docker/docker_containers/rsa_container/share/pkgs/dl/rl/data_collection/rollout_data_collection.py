@@ -3,6 +3,7 @@ from dl.rl.data_collection import RolloutStorage
 from dl.rl.util import ensure_vec_env
 from dl import nest
 import torch
+from tqdm import tqdm
 
 
 class RolloutDataManager(object):
@@ -144,7 +145,8 @@ class RolloutDataManager(object):
     def rollout(self):
         """Compute entire rollout and advantage targets."""
         # rollout length만큼 rollout step 진행하여 데이터 생성 
-        for i in range(self.rollout_length):
+        print("generate rollout")
+        for i in tqdm(range(self.rollout_length)):
             self.rollout_step()
             
         # compute advantage target  from rollout data

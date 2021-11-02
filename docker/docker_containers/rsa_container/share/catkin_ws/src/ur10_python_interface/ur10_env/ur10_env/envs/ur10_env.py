@@ -45,6 +45,9 @@ from tf2_msgs.msg import TFMessage
 
 ## custom library
 from ur10_python_interface.msg import Ellipsoid3
+from ur10_python_interface.srv import SolveIk
+from tf.transformations import euler_from_quaternion, quaternion_from_euler
+from geometry_msgs.msg import PoseStamped, Quaternion, Pose
 #sys.path.append("/root/catkin_ws/src/ur10_python_interface/scripts") # 필요한 python 파일이 있는 경로 추가
 
 
@@ -84,7 +87,7 @@ class UR10Env(gym.Env, EzPickle):
             # Action is two floats [main engine, left-right engines].
             # Main engine: -1..0 off, 0..+1 throttle from 50% to 100% power. Engine can't work with less than 50% power.
             # Left-right:  -1.0..-0.5 fire left engine, +0.5..+1.0 fire right engine, -0.5..0.5 off
-            self.action_space = spaces.Box(-0.5, +0.5, (6,), dtype=np.float32)
+            self.action_space = spaces.Box(-1, +1, (6,), dtype=np.float32)
         else:
             # Nop, fire left engine, main engine, right engine
             self.action_space = spaces.Discrete(64)
@@ -107,6 +110,7 @@ class UR10Env(gym.Env, EzPickle):
         self.zero_vel_msg = Float64MultiArray()
         self.zero_vel_msg.data = np.array([0, 0, 0, 0, 0, 0])
         self.joint_vel_msg = Float64MultiArray()
+        self.joy_command_msg = Float64MultiArray()
         self.singular_threshold = 0.0
 
         ## get service proxy for Gazebo
@@ -130,6 +134,7 @@ class UR10Env(gym.Env, EzPickle):
         ## publisher
         self.ellipsoid_pub = rospy.Publisher("/ellipsoid", Ellipsoid3, queue_size=10)
         self.vel_pub = rospy.Publisher('/joint_group_vel_controller/command', Float64MultiArray, queue_size=10)
+        self.env_command_pub = rospy.Publisher('/env_command', Float64MultiArray, queue_size=10)
 
         ## subscriber -> ros init 다음에
         state_subscriber = rospy.Subscriber("/joint_states", JointState, callback=self.update_state_callback, queue_size=10)
@@ -147,6 +152,15 @@ class UR10Env(gym.Env, EzPickle):
 
         ## reset env
         #self._reset()
+        
+    def ik_solver(self, target_pose):
+        rospy.wait_for_service('solve_ik')
+        try:
+            solve_ik = rospy.ServiceProxy('solve_ik', SolveIk)
+            res = solve_ik(target_pose)
+            return res
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
 
 
     def update_state_callback(self, data):
@@ -168,11 +182,23 @@ class UR10Env(gym.Env, EzPickle):
 
     def step(self, action):
         #print("step in")
-        self.joint_vel_msg.data = action 
+        #print(action)  
+        #self.joint_vel_msg.data = action
+        
+        command = Float64MultiArray()
+        command.data.append(action[0]) # x
+        command.data.append(action[1]) # y
+        command.data.append(action[2]) # z
+        command.data.append(action[3]) # roll
+        command.data.append(action[4]) # pitch
+        command.data.append(action[5]) # yaw
+        command.data.append(-1.0) # button
+        self.env_command_pub.publish(command)
         
         start_ros_time = rospy.Time.now()
         ## publich the joint velocity message
-        self.vel_pub.publish(self.joint_vel_msg) 
+        
+        # self.vel_pub.publish(self.joint_vel_msg) 
         while True:     
             elapsed_time = rospy.Time.now() - start_ros_time
             if elapsed_time > self.period*(99.0/100):
@@ -204,7 +230,7 @@ class UR10Env(gym.Env, EzPickle):
     def reset_episode_client(self):
         #if rospy.get_param('teleop_state') == 'start':
         rospy.wait_for_service('reset_pose')
-        try:
+        try:            
             reset_episode = rospy.ServiceProxy('reset_pose', Trigger)
             res = reset_episode()
             return res.message
@@ -215,7 +241,6 @@ class UR10Env(gym.Env, EzPickle):
 
     def start_teleop_client(self):
         print("ur10_env - start_teleop_client")
-        print(rospy.get_param('teleop_state'))
         #if rospy.get_param('teleop_state') == 'stop':
         rospy.wait_for_service('start_teleop')
         try:
@@ -239,6 +264,7 @@ class UR10Env(gym.Env, EzPickle):
 
         # rospy.wait_for_message("/ik_result", Float64MultiArray) # waiting the ik_result
         # print("ik_result")
+        self.start_teleop_client()
         return self._state
     
     def pause_func(self):
@@ -290,7 +316,9 @@ class UR10Env(gym.Env, EzPickle):
             reward -= 1000
             print("singularity!")
         
-        # penunpauseeward -= 1000
+        # penalty for self collision
+        if self_collision == True:
+            reward -= 1000
             print("self collision")
            
         # reward for time

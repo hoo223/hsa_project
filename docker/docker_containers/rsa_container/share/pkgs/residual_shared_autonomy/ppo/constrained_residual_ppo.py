@@ -15,6 +15,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import time
+from tqdm import tqdm
 
 
 class ResidualPPOActor(object):
@@ -127,6 +128,7 @@ class ConstrainedResidualPPO(Algorithm):
                                                                             # base_actor_cls = @RandomActor (from residual_shared_autonomy/base_actors.py)
                                                                             # = base policy
                                                                             # ResidualWrapper (from residual_shared_autonomy/residual_wrapper.py)
+        print("Residual Wrapped")
         
         if wrapper_fn:
             self.env = wrapper_fn(self.env) # from gin file
@@ -262,7 +264,7 @@ class ConstrainedResidualPPO(Algorithm):
         # compute losses
         print("compute loss")
         losses = {} # dict
-        for _ in range(self.epochs_per_rollout):
+        for _ in tqdm(range(self.epochs_per_rollout)):
             for batch in self.data_manager.sampler():
                 loss = self.loss(batch)
                 if losses == {}:
@@ -294,6 +296,7 @@ class ConstrainedResidualPPO(Algorithm):
 
     def evaluate(self):
         """Evaluate model."""
+        print("----------------------- eval -----------------------")
         self.pi.eval()
         misc.set_env_to_eval_mode(self.env)
 
@@ -307,7 +310,7 @@ class ConstrainedResidualPPO(Algorithm):
                           self.t, time.time())
         logger.add_scalar('eval/mean_episode_length', stats['mean_length'],
                           self.t, time.time())
-
+        print("----------------------- eval end -----------------------")
         # Record policy
         # os.makedirs(os.path.join(self.logdir, 'video'), exist_ok=True)
         # outfile = os.path.join(self.logdir, 'video',

@@ -16,7 +16,7 @@ class ResidualWrapper(VecEnvWrapper):
     def __init__(self, venv, act_fn):
         """Init."""
         super().__init__(venv)
-        self.act_fn = act_fn
+        self.act_fn = act_fn # Human or surrogate actor
         self._ob = None
         if not isinstance(self.action_space, Box):
             raise ValueError("ResidualWrapper can only be used with continuous "
@@ -38,6 +38,7 @@ class ResidualWrapper(VecEnvWrapper):
 
     def step(self, action):
         """Step."""
+        print("residual step")
         action = self._add_actions(np.asarray(action), self._action)
         ob, rs, dones, infos = self.venv.step(action)
         for i, info in enumerate(infos):

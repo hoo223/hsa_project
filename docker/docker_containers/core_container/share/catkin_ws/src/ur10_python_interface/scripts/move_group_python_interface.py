@@ -17,7 +17,7 @@ import rospy
 from tf.transformations import *
 from std_msgs.msg import String
 from std_msgs.msg import Float64MultiArray
-from std_srvs.srv import Trigger, TriggerResponse
+from std_srvs.srv import Trigger, TriggerResponse, TriggerRequest
 from geometry_msgs.msg import PoseStamped, Quaternion, Pose
 from geometry_msgs.msg import Quaternion
 from controller_manager_msgs.srv import SwitchControllerRequest, SwitchController
@@ -191,23 +191,7 @@ class MoveGroupPythonInteface(object):
     # We can get the joint values from the group and adjust some of the values:
     
     #joint_goal = [-1.5999897112701706, -1.3500032022166835, -2.040067726204013, -1.3188300763644802, 1.6184002310830374, 0.09156995930090517]
-    
-    # # random init pose
-    # if np.random.rand(1) >0.5:
-    #   offset = 0.8 
-    # else:
-    #   offset = -0.8
-    # task_init_pose_x = 0.1*(np.random.rand(1)) + offset
-    # target_pose = [task_init_pose_x, 0.50746106, 0.69538257, 0.09267109, 0.00379392, 1.59158403]
-    # q_new = quaternion_from_euler(target_pose[3], target_pose[4], target_pose[5]) # roll, pitch, yaw
-    # target_orientation = Quaternion(q_new[0], q_new[1], q_new[2], q_new[3])
-    # ps = Pose()
-    # ps.position.x = target_pose[0]
-    # ps.position.y = target_pose[1]
-    # ps.position.z = target_pose[2]
-    # ps.orientation = target_orientation
-    # joint_goal = self.ik_solver(ps).ik_result.data
-
+   
     # The go command can be called with joint values, poses, or without any
     # parameters if you have already set the pose or joint target for the group
     move_group.go(joint_goal, wait=True)
@@ -216,6 +200,31 @@ class MoveGroupPythonInteface(object):
     move_group.stop()
 
     ## END_SUB_TUTORIAL
+
+    # For testing:
+    current_joints = move_group.get_current_joint_values()
+
+    time.sleep(0.1)
+    # get target pose
+    current_pose = self.get_current_pose(rpy=True)
+    print(current_pose)
+    self.target_pose = current_pose
+    #q_orig = self.xyzw_array(self.get_current_pose().orientation)
+    
+    return all_close(joint_goal, current_joints, 0.05)  
+
+  def go_to_random_init_state(self, joint_goal=[-1.601372543965475, -1.3494799772845667, -2.0361130873309534, 0.25178295286581065, 1.6211304664611816, 0.09116100519895554]):
+    move_group = self.move_group
+
+    rospy.wait_for_service('generate_init_pose')
+    s = rospy.ServiceProxy('generate_init_pose',Trigger)
+    res = s(TriggerRequest())
+    while (not res.success):
+      res = s(TriggerRequest())
+    joint_goal = rospy.get_param('init_pose')
+
+    move_group.go(joint_goal, wait=True)
+    move_group.stop()
 
     # For testing:
     current_joints = move_group.get_current_joint_values()

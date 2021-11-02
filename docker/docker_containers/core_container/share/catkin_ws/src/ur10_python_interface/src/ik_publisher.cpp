@@ -136,6 +136,7 @@ bool IK_solver::solve_ik(ur10_python_interface::SolveIk::Request &req,
   kinematic_state->enforceBounds();
   tf::poseMsgToEigen(req.end_pose, pose_in);
   bool found_ik = kinematic_state->setFromIK(joint_model_group, pose_in, 0.1);
+  kinematic_state->update(); // https://github.com/ros-planning/moveit/pull/188
   
   // Now, we can print out the IK solution (if found):
   if (found_ik)
@@ -163,6 +164,10 @@ bool IK_solver::solve_ik(ur10_python_interface::SolveIk::Request &req,
 
 int main(int argc, char** argv)
 {
+  if(ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Fatal))
+  {
+    ros::console::notifyLoggerLevelsChanged();
+  }
   ros::init(argc, argv, "ik_publisher", ros::init_options::NoRosout);
   ros::NodeHandle n;
 
@@ -257,18 +262,21 @@ int main(int argc, char** argv)
     ik_solver.check_self_collision();
 
     // calculate manipulabilty index
+    ik_solver.kinematic_state->update(); // https://github.com/ros-planning/moveit/pull/188
     ik_solver.metrics.getManipulabilityIndex(*ik_solver.kinematic_state, ik_solver.joint_model_group, m_index);
     std_msgs::Float64 m_index_msg;
     m_index_msg.data = m_index;
     ik_solver.m_index_pub.publish(m_index_msg);
 
-    // calculate manipulabilty
+    // // calculate manipulabilty
+    // ik_solver.kinematic_state->update(); // https://github.com/ros-planning/moveit/pull/188
     // ik_solver.metrics.getManipulability(*ik_solver.kinematic_state, ik_solver.joint_model_group, manipulability, true);
     // std_msgs::Float64 m_index_msg;
     // m_index_msg.data = manipulability;
     // ik_solver.m_index_pub.publish(m_index_msg);
 
     // calculate manipulabilty ellipsoid
+    ik_solver.kinematic_state->update(); // https://github.com/ros-planning/moveit/pull/188
     ik_solver.metrics.getManipulabilityEllipsoid(*ik_solver.kinematic_state, ik_solver.joint_model_group, eigen_values, eigen_vectors);
     e_values_msg.data.clear();
     e_values_msg.data.push_back(eigen_values(0).real());
@@ -278,6 +286,7 @@ int main(int argc, char** argv)
     //ROS_INFO_STREAM("e_value1: \n" << eigen_values(0) << "\n");  
 
     ik_solver.kinematic_state->copyJointGroupPositions(ik_solver.joint_model_group, joint_values);
+    
 
     loop_rate.sleep();
     // end = clock(); // 측정 끝

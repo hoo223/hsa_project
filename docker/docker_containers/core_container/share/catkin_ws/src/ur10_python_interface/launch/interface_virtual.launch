@@ -19,7 +19,7 @@
     </include>
 
     <!-- joystick node -->
-    <node name="joy_command" pkg="ur10_python_interface" type="joystick.py" output="log"/>
+    <!-- <node name="joy_command" pkg="ur10_python_interface" type="joystick.py" output="log"/> -->
 
     <param name="interface" type="str" value="not ready"/>
 
