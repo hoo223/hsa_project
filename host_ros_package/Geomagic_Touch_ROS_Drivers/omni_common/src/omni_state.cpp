@@ -365,9 +365,18 @@ int main(int argc, char** argv) {
   ////////////////////////////////////////////////////////////////
   // Init Phantom
   ////////////////////////////////////////////////////////////////
+
   HDErrorInfo error;
   HHD hHD;
-  hHD = hdInitDevice(HD_DEFAULT_DEVICE);
+  HDstring device;
+  if (argc > 1){
+    device = argv[1];
+    ROS_INFO(device);
+    hHD = hdInitDevice(device);
+  }    
+  else
+    hHD = hdInitDevice(HD_DEFAULT_DEVICE);
+
   if (HD_DEVICE_ERROR(error = hdGetError())) {
     //hduPrintError(stderr, &error, "Failed to initialize haptic device");
     ROS_ERROR("Failed to initialize haptic device"); //: %s", &error);
