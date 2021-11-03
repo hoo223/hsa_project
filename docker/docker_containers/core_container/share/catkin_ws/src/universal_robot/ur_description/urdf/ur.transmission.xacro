@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
-
+<!-- https://github.com/ros-simulation/gazebo_ros_pkgs/blob/noetic-devel/gazebo_ros_control/src/gazebo_ros_control_plugin.cpp#:~:text=//%20Get%20Transmissions%20from%20the%20URDF -->
+<!-- gazebo_ros_control 쪽에서 urdf로부터 transmission 정보를 parsing -->
   <xacro:macro name="ur_arm_transmission" params="prefix hw_interface">
 
     <transmission name="${prefix}shoulder_pan_trans">
