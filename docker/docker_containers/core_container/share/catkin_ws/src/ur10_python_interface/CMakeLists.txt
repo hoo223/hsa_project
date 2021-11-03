@@ -85,6 +85,3 @@ include_directories(${THIS_PACKAGE_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${Boost_
 
 add_executable(ik_publisher src/ik_publisher.cpp)
 target_link_libraries(ik_publisher ${catkin_LIBRARIES})
-
-add_executable(manipulability_publisher src/manipulability_publisher.cpp)
-target_link_libraries(manipulability_publisher ${catkin_LIBRARIES})
