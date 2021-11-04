@@ -168,21 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-ur10_python_interface/CMakeFiles/manipulability_publisher.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/manipulability_publisher.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/manipulability_publisher.dir/rule
-
-# Convenience name for target.
-manipulability_publisher: ur10_python_interface/CMakeFiles/manipulability_publisher.dir/rule
-
-.PHONY : manipulability_publisher
-
-# fast build rule for target.
-manipulability_publisher/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build.make ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build
-.PHONY : manipulability_publisher/fast
-
-# Convenience name for target.
 ur10_python_interface/CMakeFiles/ik_publisher.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ik_publisher.dir/rule
 .PHONY : ur10_python_interface/CMakeFiles/ik_publisher.dir/rule
@@ -914,33 +899,6 @@ src/ik_publisher.cpp.s:
 	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ik_publisher.dir/build.make ur10_python_interface/CMakeFiles/ik_publisher.dir/src/ik_publisher.cpp.s
 .PHONY : src/ik_publisher.cpp.s
 
-src/manipulability_publisher.o: src/manipulability_publisher.cpp.o
-
-.PHONY : src/manipulability_publisher.o
-
-# target to build an object file
-src/manipulability_publisher.cpp.o:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build.make ur10_python_interface/CMakeFiles/manipulability_publisher.dir/src/manipulability_publisher.cpp.o
-.PHONY : src/manipulability_publisher.cpp.o
-
-src/manipulability_publisher.i: src/manipulability_publisher.cpp.i
-
-.PHONY : src/manipulability_publisher.i
-
-# target to preprocess a source file
-src/manipulability_publisher.cpp.i:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build.make ur10_python_interface/CMakeFiles/manipulability_publisher.dir/src/manipulability_publisher.cpp.i
-.PHONY : src/manipulability_publisher.cpp.i
-
-src/manipulability_publisher.s: src/manipulability_publisher.cpp.s
-
-.PHONY : src/manipulability_publisher.s
-
-# target to generate assembly for a file
-src/manipulability_publisher.cpp.s:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build.make ur10_python_interface/CMakeFiles/manipulability_publisher.dir/src/manipulability_publisher.cpp.s
-.PHONY : src/manipulability_publisher.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -951,7 +909,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... manipulability_publisher"
 	@echo "... ik_publisher"
 	@echo "... ur10_python_interface_genpy"
 	@echo "... edit_cache"
@@ -1005,9 +962,6 @@ help:
 	@echo "... src/ik_publisher.o"
 	@echo "... src/ik_publisher.i"
 	@echo "... src/ik_publisher.s"
-	@echo "... src/manipulability_publisher.o"
-	@echo "... src/manipulability_publisher.i"
-	@echo "... src/manipulability_publisher.s"
 .PHONY : help
 
 

@@ -390,7 +390,6 @@
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/list_install_components.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/rebuild_cache.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/test.dir
-/root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/manipulability_publisher.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/ik_publisher.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/ur10_python_interface_genpy.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/edit_cache.dir

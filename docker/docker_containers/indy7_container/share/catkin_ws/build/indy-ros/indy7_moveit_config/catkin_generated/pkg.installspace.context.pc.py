@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "indy7_moveit_config"
 PROJECT_SPACE_DIR = "/root/share/catkin_ws/install"
-PROJECT_VERSION = "1.0.3"
+PROJECT_VERSION = "0.3.0"

@@ -2846,19 +2846,6 @@ tf_generate_messages_py/fast:
 .PHONY : tf_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named manipulability_publisher
-
-# Build rule for target.
-manipulability_publisher: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 manipulability_publisher
-.PHONY : manipulability_publisher
-
-# fast build rule for target.
-manipulability_publisher/fast:
-	$(MAKE) -f ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build.make ur10_python_interface/CMakeFiles/manipulability_publisher.dir/build
-.PHONY : manipulability_publisher/fast
-
-#=============================================================================
 # Target rules for targets named ik_publisher
 
 # Build rule for target.
@@ -3779,7 +3766,6 @@ help:
 	@echo "... tf_generate_messages_cpp"
 	@echo "... ur10_kin"
 	@echo "... tf_generate_messages_py"
-	@echo "... manipulability_publisher"
 	@echo "... ik_publisher"
 	@echo "... ur10_python_interface_genpy"
 	@echo "... ur10_python_interface_generate_messages_py"

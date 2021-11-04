@@ -80,16 +80,6 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -100,17 +90,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -134,6 +113,27 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,49 +168,34 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
-.PHONY : indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+indy-ros/indy_driver/CMakeFiles/indy7d_driver.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/indy7d_driver.dir/rule
+.PHONY : indy-ros/indy_driver/CMakeFiles/indy7d_driver.dir/rule
 
 # Convenience name for target.
-trajectory_msgs_generate_messages_cpp: indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+indy7d_driver: indy-ros/indy_driver/CMakeFiles/indy7d_driver.dir/rule
 
-.PHONY : trajectory_msgs_generate_messages_cpp
+.PHONY : indy7d_driver
 
 # fast build rule for target.
-trajectory_msgs_generate_messages_cpp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
-.PHONY : trajectory_msgs_generate_messages_cpp/fast
+indy7d_driver/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/indy7d_driver.dir/build.make indy-ros/indy_driver/CMakeFiles/indy7d_driver.dir/build
+.PHONY : indy7d_driver/fast
 
 # Convenience name for target.
-indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
-.PHONY : indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+indy-ros/indy_driver/CMakeFiles/indy6d_driver.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/indy6d_driver.dir/rule
+.PHONY : indy-ros/indy_driver/CMakeFiles/indy6d_driver.dir/rule
 
 # Convenience name for target.
-trajectory_msgs_generate_messages_eus: indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+indy6d_driver: indy-ros/indy_driver/CMakeFiles/indy6d_driver.dir/rule
 
-.PHONY : trajectory_msgs_generate_messages_eus
+.PHONY : indy6d_driver
 
 # fast build rule for target.
-trajectory_msgs_generate_messages_eus/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build.make indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build
-.PHONY : trajectory_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule
-.PHONY : indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-control_msgs_generate_messages_lisp: indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : control_msgs_generate_messages_lisp
-
-# fast build rule for target.
-control_msgs_generate_messages_lisp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_lisp.dir/build.make indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_lisp.dir/build
-.PHONY : control_msgs_generate_messages_lisp/fast
+indy6d_driver/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/indy6d_driver.dir/build.make indy-ros/indy_driver/CMakeFiles/indy6d_driver.dir/build
+.PHONY : indy6d_driver/fast
 
 # Convenience name for target.
 indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_eus.dir/rule:
@@ -228,21 +213,6 @@ industrial_msgs_generate_messages_eus/fast:
 .PHONY : industrial_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
-.PHONY : indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-control_msgs_generate_messages_cpp: indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : control_msgs_generate_messages_cpp
-
-# fast build rule for target.
-control_msgs_generate_messages_cpp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_cpp.dir/build.make indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_cpp.dir/build
-.PHONY : control_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
 indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_cpp.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_cpp.dir/rule
 .PHONY : indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_cpp.dir/rule
@@ -256,111 +226,6 @@ industrial_msgs_generate_messages_cpp: indy-ros/indy_driver/CMakeFiles/industria
 industrial_msgs_generate_messages_cpp/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_cpp.dir/build.make indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_cpp.dir/build
 .PHONY : industrial_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule
-.PHONY : indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-control_msgs_generate_messages_nodejs: indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : control_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-control_msgs_generate_messages_nodejs/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_nodejs.dir/build.make indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_nodejs.dir/build
-.PHONY : control_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_eus.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_eus.dir/rule
-.PHONY : indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-control_msgs_generate_messages_eus: indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_eus.dir/rule
-
-.PHONY : control_msgs_generate_messages_eus
-
-# fast build rule for target.
-control_msgs_generate_messages_eus/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_eus.dir/build.make indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_eus.dir/build
-.PHONY : control_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
-.PHONY : indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-trajectory_msgs_generate_messages_lisp: indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : trajectory_msgs_generate_messages_lisp
-
-# fast build rule for target.
-trajectory_msgs_generate_messages_lisp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build
-.PHONY : trajectory_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
-.PHONY : indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-trajectory_msgs_generate_messages_nodejs: indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : trajectory_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-trajectory_msgs_generate_messages_nodejs/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build
-.PHONY : trajectory_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_py.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_py.dir/rule
-.PHONY : indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-control_msgs_generate_messages_py: indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_py.dir/rule
-
-.PHONY : control_msgs_generate_messages_py
-
-# fast build rule for target.
-control_msgs_generate_messages_py/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_py.dir/build.make indy-ros/indy_driver/CMakeFiles/control_msgs_generate_messages_py.dir/build
-.PHONY : control_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
-.PHONY : indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-trajectory_msgs_generate_messages_py: indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
-
-.PHONY : trajectory_msgs_generate_messages_py
-
-# fast build rule for target.
-trajectory_msgs_generate_messages_py/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make indy-ros/indy_driver/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build
-.PHONY : trajectory_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-indy-ros/indy_driver/CMakeFiles/indy7d_driver.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/indy7d_driver.dir/rule
-.PHONY : indy-ros/indy_driver/CMakeFiles/indy7d_driver.dir/rule
-
-# Convenience name for target.
-indy7d_driver: indy-ros/indy_driver/CMakeFiles/indy7d_driver.dir/rule
-
-.PHONY : indy7d_driver
-
-# fast build rule for target.
-indy7d_driver/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/indy7d_driver.dir/build.make indy-ros/indy_driver/CMakeFiles/indy7d_driver.dir/build
-.PHONY : indy7d_driver/fast
 
 # Convenience name for target.
 indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_lisp.dir/rule:
@@ -378,21 +243,6 @@ industrial_msgs_generate_messages_lisp/fast:
 .PHONY : industrial_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_nodejs.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_nodejs.dir/rule
-.PHONY : indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-industrial_msgs_generate_messages_nodejs: indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : industrial_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-industrial_msgs_generate_messages_nodejs/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_nodejs.dir/build.make indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_nodejs.dir/build
-.PHONY : industrial_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
 indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_py.dir/rule:
 	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_py.dir/rule
 .PHONY : indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_py.dir/rule
@@ -408,19 +258,19 @@ industrial_msgs_generate_messages_py/fast:
 .PHONY : industrial_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-indy-ros/indy_driver/CMakeFiles/indy6d_driver.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/indy6d_driver.dir/rule
-.PHONY : indy-ros/indy_driver/CMakeFiles/indy6d_driver.dir/rule
+indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_nodejs.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_nodejs.dir/rule
+.PHONY : indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-indy6d_driver: indy-ros/indy_driver/CMakeFiles/indy6d_driver.dir/rule
+industrial_msgs_generate_messages_nodejs: indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : indy6d_driver
+.PHONY : industrial_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-indy6d_driver/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/indy6d_driver.dir/build.make indy-ros/indy_driver/CMakeFiles/indy6d_driver.dir/build
-.PHONY : indy6d_driver/fast
+industrial_msgs_generate_messages_nodejs/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_nodejs.dir/build.make indy-ros/indy_driver/CMakeFiles/industrial_msgs_generate_messages_nodejs.dir/build
+.PHONY : industrial_msgs_generate_messages_nodejs/fast
 
 src/TrajectoryDownloader/JointTrajectoryDownloader.o: src/TrajectoryDownloader/JointTrajectoryDownloader.cpp.o
 
@@ -514,28 +364,18 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... install"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... test"
-	@echo "... trajectory_msgs_generate_messages_cpp"
-	@echo "... trajectory_msgs_generate_messages_eus"
-	@echo "... control_msgs_generate_messages_lisp"
-	@echo "... industrial_msgs_generate_messages_eus"
-	@echo "... control_msgs_generate_messages_cpp"
 	@echo "... edit_cache"
-	@echo "... industrial_msgs_generate_messages_cpp"
-	@echo "... control_msgs_generate_messages_nodejs"
 	@echo "... install/local"
-	@echo "... control_msgs_generate_messages_eus"
-	@echo "... trajectory_msgs_generate_messages_lisp"
-	@echo "... trajectory_msgs_generate_messages_nodejs"
-	@echo "... control_msgs_generate_messages_py"
-	@echo "... trajectory_msgs_generate_messages_py"
+	@echo "... test"
+	@echo "... list_install_components"
 	@echo "... indy7d_driver"
-	@echo "... industrial_msgs_generate_messages_lisp"
-	@echo "... industrial_msgs_generate_messages_nodejs"
-	@echo "... industrial_msgs_generate_messages_py"
 	@echo "... indy6d_driver"
+	@echo "... industrial_msgs_generate_messages_eus"
+	@echo "... industrial_msgs_generate_messages_cpp"
+	@echo "... industrial_msgs_generate_messages_lisp"
+	@echo "... industrial_msgs_generate_messages_py"
+	@echo "... industrial_msgs_generate_messages_nodejs"
 	@echo "... src/TrajectoryDownloader/JointTrajectoryDownloader.o"
 	@echo "... src/TrajectoryDownloader/JointTrajectoryDownloader.i"
 	@echo "... src/TrajectoryDownloader/JointTrajectoryDownloader.s"

@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: indy7_python_interface
+Description: Description of indy7_python_interface
+Version: 0.0.0
+Cflags: -I${prefix}/include -I/usr/include/eigen3
+Libs: -L${prefix}/lib -lindy7_python_interface
+Requires: moveit_core moveit_visual_tools moveit_ros_planning_interface interactive_markers tf2 tf2_geometry_msgs std_msgs geometry_msgs trajectory_msgs omni_msgs message_runtime eigen_conversions

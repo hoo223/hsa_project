@@ -14,6 +14,9 @@
 # EXTERNAL cache entries
 ########################
 
+//The threading library used by boost-thread
+BOOST_THREAD_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libpthread.so
+
 //Builds the googlemock subproject
 BUILD_GMOCK:BOOL=ON
 
@@ -22,6 +25,54 @@ BUILD_GTEST:BOOL=OFF
 
 //Build shared libraries (DLLs).
 BUILD_SHARED_LIBS:BOOL=ON
+
+//Boost atomic library (debug)
+Boost_ATOMIC_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_atomic.so
+
+//Boost atomic library (release)
+Boost_ATOMIC_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_atomic.so
+
+//Boost chrono library (debug)
+Boost_CHRONO_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_chrono.so
+
+//Boost chrono library (release)
+Boost_CHRONO_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_chrono.so
+
+//Boost date_time library (debug)
+Boost_DATE_TIME_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_date_time.so
+
+//Boost date_time library (release)
+Boost_DATE_TIME_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_date_time.so
+
+//The directory containing a CMake configuration file for Boost.
+Boost_DIR:PATH=Boost_DIR-NOTFOUND
+
+//Boost filesystem library (debug)
+Boost_FILESYSTEM_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+
+//Boost filesystem library (release)
+Boost_FILESYSTEM_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+
+//Path to a file.
+Boost_INCLUDE_DIR:PATH=/usr/include
+
+//Boost library directory DEBUG
+Boost_LIBRARY_DIR_DEBUG:PATH=/usr/lib/x86_64-linux-gnu
+
+//Boost library directory RELEASE
+Boost_LIBRARY_DIR_RELEASE:PATH=/usr/lib/x86_64-linux-gnu
+
+//Boost system library (debug)
+Boost_SYSTEM_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_system.so
+
+//Boost system library (release)
+Boost_SYSTEM_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_system.so
+
+//Boost thread library (debug)
+Boost_THREAD_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_thread.so
+
+//Boost thread library (release)
+Boost_THREAD_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_thread.so
 
 //List of ';' separated packages to exclude
 CATKIN_BLACKLIST_PACKAGES:STRING=
@@ -218,6 +269,9 @@ EMPY_EXECUTABLE:FILEPATH=/usr/bin/empy
 //Empy script
 EMPY_SCRIPT:STRING=/usr/bin/empy
 
+//The directory containing a CMake configuration file for Eigen3.
+Eigen3_DIR:PATH=/usr/lib/cmake/eigen3
+
 //The directory containing a CMake configuration file for GMock.
 GMock_DIR:PATH=GMock_DIR-NOTFOUND
 
@@ -293,6 +347,12 @@ actionlib_DIR:PATH=/opt/ros/melodic/share/actionlib/cmake
 //The directory containing a CMake configuration file for actionlib_msgs.
 actionlib_msgs_DIR:PATH=/opt/ros/melodic/share/actionlib_msgs/cmake
 
+//The directory containing a CMake configuration file for bond.
+bond_DIR:PATH=/opt/ros/melodic/share/bond/cmake
+
+//The directory containing a CMake configuration file for bondcpp.
+bondcpp_DIR:PATH=/opt/ros/melodic/share/bondcpp/cmake
+
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/melodic/share/catkin/cmake
 
@@ -304,6 +364,15 @@ control_msgs_DIR:PATH=/opt/ros/melodic/share/control_msgs/cmake
 
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/melodic/share/cpp_common/cmake
+
+//The directory containing a CMake configuration file for dynamic_reconfigure.
+dynamic_reconfigure_DIR:PATH=/opt/ros/melodic/share/dynamic_reconfigure/cmake
+
+//The directory containing a CMake configuration file for eigen_conversions.
+eigen_conversions_DIR:PATH=/opt/ros/melodic/share/eigen_conversions/cmake
+
+//The directory containing a CMake configuration file for eigen_stl_containers.
+eigen_stl_containers_DIR:PATH=/opt/ros/melodic/share/eigen_stl_containers/cmake
 
 //The directory containing a CMake configuration file for gencpp.
 gencpp_DIR:PATH=/opt/ros/melodic/share/gencpp/cmake
@@ -322,6 +391,9 @@ gennodejs_DIR:PATH=/opt/ros/melodic/share/gennodejs/cmake
 
 //The directory containing a CMake configuration file for genpy.
 genpy_DIR:PATH=/opt/ros/melodic/share/genpy/cmake
+
+//The directory containing a CMake configuration file for geometric_shapes.
+geometric_shapes_DIR:PATH=/opt/ros/melodic/share/geometric_shapes/cmake
 
 //The directory containing a CMake configuration file for geometry_msgs.
 geometry_msgs_DIR:PATH=/opt/ros/melodic/share/geometry_msgs/cmake
@@ -346,6 +418,9 @@ googletest-distribution_BINARY_DIR:STATIC=/root/share/catkin_ws/build/gtest
 
 //Value Computed by CMake
 googletest-distribution_SOURCE_DIR:STATIC=/usr/src/googletest
+
+//The directory containing a CMake configuration file for graph_msgs.
+graph_msgs_DIR:PATH=/opt/ros/melodic/share/graph_msgs/cmake
 
 //Value Computed by CMake
 gtest_BINARY_DIR:STATIC=/root/share/catkin_ws/build/gtest/googlemock/gtest
@@ -418,6 +493,12 @@ indy7_moveit_config_BINARY_DIR:STATIC=/root/share/catkin_ws/build/indy-ros/indy7
 indy7_moveit_config_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/indy-ros/indy7_moveit_config
 
 //Value Computed by CMake
+indy7_python_interface_BINARY_DIR:STATIC=/root/share/catkin_ws/build/indy7_python_interface
+
+//Value Computed by CMake
+indy7_python_interface_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/indy7_python_interface
+
+//Value Computed by CMake
 indy7_robotiq_description_BINARY_DIR:STATIC=/root/share/catkin_ws/build/indy-ros-examples/indy7_robotiq_description
 
 //Value Computed by CMake
@@ -462,6 +543,12 @@ indyrp2_moveit_config_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/indy-ros/indyr
 //The directory containing a CMake configuration file for interactive_markers.
 interactive_markers_DIR:PATH=/opt/ros/melodic/share/interactive_markers/cmake
 
+//The directory containing a CMake configuration file for kdl_conversions.
+kdl_conversions_DIR:PATH=/opt/ros/melodic/share/kdl_conversions/cmake
+
+//The directory containing a CMake configuration file for kdl_parser.
+kdl_parser_DIR:PATH=/opt/ros/melodic/share/kdl_parser/cmake
+
 //The directory containing a CMake configuration file for laser_geometry.
 laser_geometry_DIR:PATH=/opt/ros/melodic/share/laser_geometry/cmake
 
@@ -480,14 +567,140 @@ message_generation_DIR:PATH=/opt/ros/melodic/share/message_generation/cmake
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/melodic/share/message_runtime/cmake
 
+//The directory containing a CMake configuration file for moveit_core.
+moveit_core_DIR:PATH=/opt/ros/melodic/share/moveit_core/cmake
+
+//The directory containing a CMake configuration file for moveit_msgs.
+moveit_msgs_DIR:PATH=/opt/ros/melodic/share/moveit_msgs/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_manipulation.
+moveit_ros_manipulation_DIR:PATH=/opt/ros/melodic/share/moveit_ros_manipulation/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_move_group.
+moveit_ros_move_group_DIR:PATH=/opt/ros/melodic/share/moveit_ros_move_group/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_occupancy_map_monitor.
+moveit_ros_occupancy_map_monitor_DIR:PATH=/opt/ros/melodic/share/moveit_ros_occupancy_map_monitor/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_perception.
+moveit_ros_perception_DIR:PATH=/opt/ros/melodic/share/moveit_ros_perception/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_planning.
+moveit_ros_planning_DIR:PATH=/opt/ros/melodic/share/moveit_ros_planning/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_planning_interface.
+moveit_ros_planning_interface_DIR:PATH=/opt/ros/melodic/share/moveit_ros_planning_interface/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_warehouse.
+moveit_ros_warehouse_DIR:PATH=/opt/ros/melodic/share/moveit_ros_warehouse/cmake
+
+//The directory containing a CMake configuration file for moveit_visual_tools.
+moveit_visual_tools_DIR:PATH=/opt/ros/melodic/share/moveit_visual_tools/cmake
+
 //The directory containing a CMake configuration file for nav_msgs.
 nav_msgs_DIR:PATH=/opt/ros/melodic/share/nav_msgs/cmake
+
+//The directory containing a CMake configuration file for nodelet.
+nodelet_DIR:PATH=/opt/ros/melodic/share/nodelet/cmake
+
+//The directory containing a CMake configuration file for nodelet_topic_tools.
+nodelet_topic_tools_DIR:PATH=/opt/ros/melodic/share/nodelet_topic_tools/cmake
+
+//The directory containing a CMake configuration file for object_recognition_msgs.
+object_recognition_msgs_DIR:PATH=/opt/ros/melodic/share/object_recognition_msgs/cmake
+
+//The directory containing a CMake configuration file for octomap_msgs.
+octomap_msgs_DIR:PATH=/opt/ros/melodic/share/octomap_msgs/cmake
+
+//Value Computed by CMake
+omni_msgs_BINARY_DIR:STATIC=/root/share/catkin_ws/build/omni_msgs
+
+//The directory containing a CMake configuration file for omni_msgs.
+omni_msgs_DIR:PATH=/root/share/catkin_ws/devel/share/omni_msgs/cmake
+
+//Value Computed by CMake
+omni_msgs_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/omni_msgs
+
+//The directory containing a CMake configuration file for pcl_conversions.
+pcl_conversions_DIR:PATH=/opt/ros/melodic/share/pcl_conversions/cmake
+
+//The directory containing a CMake configuration file for pcl_msgs.
+pcl_msgs_DIR:PATH=/opt/ros/melodic/share/pcl_msgs/cmake
+
+//The directory containing a CMake configuration file for pcl_ros.
+pcl_ros_DIR:PATH=/opt/ros/melodic/share/pcl_ros/cmake
 
 //The directory containing a CMake configuration file for pluginlib.
 pluginlib_DIR:PATH=/opt/ros/melodic/share/pluginlib/cmake
 
+//The directory containing a CMake configuration file for random_numbers.
+random_numbers_DIR:PATH=/opt/ros/melodic/share/random_numbers/cmake
+
 //The directory containing a CMake configuration file for resource_retriever.
 resource_retriever_DIR:PATH=/opt/ros/melodic/share/resource_retriever/cmake
+
+//Value Computed by CMake
+robotiq_2f_85_gripper_visualization_BINARY_DIR:STATIC=/root/share/catkin_ws/build/robotiq/robotiq_2f_85_gripper_visualization
+
+//Value Computed by CMake
+robotiq_2f_85_gripper_visualization_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/robotiq/robotiq_2f_85_gripper_visualization
+
+//Value Computed by CMake
+robotiq_2f_gripper_action_server_BINARY_DIR:STATIC=/root/share/catkin_ws/build/robotiq/robotiq_2f_gripper_action_server
+
+//Value Computed by CMake
+robotiq_2f_gripper_action_server_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/robotiq/robotiq_2f_gripper_action_server
+
+//Value Computed by CMake
+robotiq_2f_gripper_control_BINARY_DIR:STATIC=/root/share/catkin_ws/build/robotiq/robotiq_2f_gripper_control
+
+//The directory containing a CMake configuration file for robotiq_2f_gripper_control.
+robotiq_2f_gripper_control_DIR:PATH=/root/share/catkin_ws/devel/share/robotiq_2f_gripper_control/cmake
+
+//Value Computed by CMake
+robotiq_2f_gripper_control_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/robotiq/robotiq_2f_gripper_control
+
+//Value Computed by CMake
+robotiq_BINARY_DIR:STATIC=/root/share/catkin_ws/build/robotiq/robotiq
+
+//Value Computed by CMake
+robotiq_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/robotiq/robotiq
+
+//Value Computed by CMake
+robotiq_ethercat_BINARY_DIR:STATIC=/root/share/catkin_ws/build/robotiq/robotiq_ethercat
+
+//The directory containing a CMake configuration file for robotiq_ethercat.
+robotiq_ethercat_DIR:PATH=/root/share/catkin_ws/devel/share/robotiq_ethercat/cmake
+
+//Dependencies for target
+robotiq_ethercat_LIB_DEPENDS:STATIC=
+
+//Value Computed by CMake
+robotiq_ethercat_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/robotiq/robotiq_ethercat
+
+//Value Computed by CMake
+robotiq_ft_sensor_BINARY_DIR:STATIC=/root/share/catkin_ws/build/robotiq/robotiq_ft_sensor
+
+//Value Computed by CMake
+robotiq_ft_sensor_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/robotiq/robotiq_ft_sensor
+
+//Value Computed by CMake
+robotiq_modbus_rtu_BINARY_DIR:STATIC=/root/share/catkin_ws/build/robotiq/robotiq_modbus_rtu
+
+//Value Computed by CMake
+robotiq_modbus_rtu_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/robotiq/robotiq_modbus_rtu
+
+//Value Computed by CMake
+robotiq_modbus_tcp_BINARY_DIR:STATIC=/root/share/catkin_ws/build/robotiq/robotiq_modbus_tcp
+
+//Value Computed by CMake
+robotiq_modbus_tcp_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/robotiq/robotiq_modbus_tcp
+
+//The directory containing a CMake configuration file for rosbag.
+rosbag_DIR:PATH=/opt/ros/melodic/share/rosbag/cmake
+
+//The directory containing a CMake configuration file for rosbag_storage.
+rosbag_storage_DIR:PATH=/opt/ros/melodic/share/rosbag_storage/cmake
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/melodic/share/rosconsole/cmake
@@ -513,6 +726,9 @@ rosgraph_msgs_DIR:PATH=/opt/ros/melodic/share/rosgraph_msgs/cmake
 //The directory containing a CMake configuration file for roslib.
 roslib_DIR:PATH=/opt/ros/melodic/share/roslib/cmake
 
+//The directory containing a CMake configuration file for roslz4.
+roslz4_DIR:PATH=/opt/ros/melodic/share/roslz4/cmake
+
 //The directory containing a CMake configuration file for rospack.
 rospack_DIR:PATH=/opt/ros/melodic/share/rospack/cmake
 
@@ -522,20 +738,29 @@ rospy_DIR:PATH=/opt/ros/melodic/share/rospy/cmake
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/melodic/share/rostime/cmake
 
-//Value Computed by CMake
-rqt_joint_trajectory_controller_BINARY_DIR:STATIC=/root/share/catkin_ws/build/rqt_joint_trajectory_controller
-
-//Value Computed by CMake
-rqt_joint_trajectory_controller_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/rqt_joint_trajectory_controller
-
 //The directory containing a CMake configuration file for rviz.
 rviz_DIR:PATH=/opt/ros/melodic/share/rviz/cmake
+
+//The directory containing a CMake configuration file for rviz_visual_tools.
+rviz_visual_tools_DIR:PATH=/opt/ros/melodic/share/rviz_visual_tools/cmake
 
 //The directory containing a CMake configuration file for sensor_msgs.
 sensor_msgs_DIR:PATH=/opt/ros/melodic/share/sensor_msgs/cmake
 
+//The directory containing a CMake configuration file for shape_msgs.
+shape_msgs_DIR:PATH=/opt/ros/melodic/share/shape_msgs/cmake
+
 //The directory containing a CMake configuration file for simple_message.
 simple_message_DIR:PATH=/opt/ros/melodic/share/simple_message/cmake
+
+//The directory containing a CMake configuration file for smclib.
+smclib_DIR:PATH=/opt/ros/melodic/share/smclib/cmake
+
+//The directory containing a CMake configuration file for soem.
+soem_DIR:PATH=/opt/ros/melodic/share/soem/cmake
+
+//The directory containing a CMake configuration file for srdfdom.
+srdfdom_DIR:PATH=/opt/ros/melodic/share/srdfdom/cmake
 
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/melodic/share/std_msgs/cmake
@@ -545,6 +770,12 @@ std_srvs_DIR:PATH=/opt/ros/melodic/share/std_srvs/cmake
 
 //The directory containing a CMake configuration file for tf2.
 tf2_DIR:PATH=/opt/ros/melodic/share/tf2/cmake
+
+//The directory containing a CMake configuration file for tf2_eigen.
+tf2_eigen_DIR:PATH=/opt/ros/melodic/share/tf2_eigen/cmake
+
+//The directory containing a CMake configuration file for tf2_geometry_msgs.
+tf2_geometry_msgs_DIR:PATH=/opt/ros/melodic/share/tf2_geometry_msgs/cmake
 
 //The directory containing a CMake configuration file for tf2_msgs.
 tf2_msgs_DIR:PATH=/opt/ros/melodic/share/tf2_msgs/cmake
@@ -558,6 +789,12 @@ tf2_ros_DIR:PATH=/opt/ros/melodic/share/tf2_ros/cmake
 //The directory containing a CMake configuration file for tf.
 tf_DIR:PATH=/opt/ros/melodic/share/tf/cmake
 
+//The directory containing a CMake configuration file for tf_conversions.
+tf_conversions_DIR:PATH=/opt/ros/melodic/share/tf_conversions/cmake
+
+//The directory containing a CMake configuration file for topic_tools.
+topic_tools_DIR:PATH=/opt/ros/melodic/share/topic_tools/cmake
+
 //The directory containing a CMake configuration file for trajectory_msgs.
 trajectory_msgs_DIR:PATH=/opt/ros/melodic/share/trajectory_msgs/cmake
 
@@ -566,6 +803,9 @@ urdf_DIR:PATH=/opt/ros/melodic/share/urdf/cmake
 
 //The directory containing a CMake configuration file for visualization_msgs.
 visualization_msgs_DIR:PATH=/opt/ros/melodic/share/visualization_msgs/cmake
+
+//The directory containing a CMake configuration file for warehouse_ros.
+warehouse_ros_DIR:PATH=/opt/ros/melodic/share/warehouse_ros/cmake
 
 //The directory containing a CMake configuration file for xacro.
 xacro_DIR:PATH=/opt/ros/melodic/share/xacro/cmake
@@ -578,6 +818,38 @@ xmlrpcpp_DIR:PATH=/opt/ros/melodic/share/xmlrpcpp/cmake
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: Boost_ATOMIC_LIBRARY_DEBUG
+Boost_ATOMIC_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_ATOMIC_LIBRARY_RELEASE
+Boost_ATOMIC_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_CHRONO_LIBRARY_DEBUG
+Boost_CHRONO_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_CHRONO_LIBRARY_RELEASE
+Boost_CHRONO_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_DATE_TIME_LIBRARY_DEBUG
+Boost_DATE_TIME_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_DATE_TIME_LIBRARY_RELEASE
+Boost_DATE_TIME_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_DIR
+Boost_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY_DEBUG
+Boost_FILESYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY_RELEASE
+Boost_FILESYSTEM_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_INCLUDE_DIR
+Boost_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_LIBRARY_DIR_DEBUG
+Boost_LIBRARY_DIR_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_LIBRARY_DIR_RELEASE
+Boost_LIBRARY_DIR_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SYSTEM_LIBRARY_DEBUG
+Boost_SYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SYSTEM_LIBRARY_RELEASE
+Boost_SYSTEM_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_THREAD_LIBRARY_DEBUG
+Boost_THREAD_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_THREAD_LIBRARY_RELEASE
+Boost_THREAD_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //catkin environment
 CATKIN_ENV:INTERNAL=/root/share/catkin_ws/build/catkin_generated/env_cached.sh
 CATKIN_TEST_RESULTS_DIR:INTERNAL=/root/share/catkin_ws/build/test_results
@@ -683,7 +955,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=18
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=27
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -754,4 +1026,16 @@ PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //  And it needs to match.  But setuptools won't tell us where
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python2.7/dist-packages
+//Components requested for this build tree.
+_Boost_COMPONENTS_SEARCHED:INTERNAL=atomic;chrono;date_time;filesystem;system;thread
+//Last used Boost_INCLUDE_DIR value.
+_Boost_INCLUDE_DIR_LAST:INTERNAL=/usr/include
+//Last used Boost_LIBRARY_DIR_DEBUG value.
+_Boost_LIBRARY_DIR_DEBUG_LAST:INTERNAL=/usr/lib/x86_64-linux-gnu
+//Last used Boost_LIBRARY_DIR_RELEASE value.
+_Boost_LIBRARY_DIR_RELEASE_LAST:INTERNAL=/usr/lib/x86_64-linux-gnu
+//Last used Boost_NAMESPACE value.
+_Boost_NAMESPACE_LAST:INTERNAL=boost
+//Last used Boost_USE_MULTITHREADED value.
+_Boost_USE_MULTITHREADED_LAST:INTERNAL=TRUE
 
