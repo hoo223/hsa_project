@@ -51,3 +51,4 @@ alias gripper_listener='rosrun robotiq_2f_gripper_control Robotiq2FGripperStatus
 alias cm='catkin_make'
 alias sd='source devel/setup.bash'
 alias cw='cd ~/catkin_ws'
+alias tree='rosrun rqt_tf_tree rqt_tf_tree'
