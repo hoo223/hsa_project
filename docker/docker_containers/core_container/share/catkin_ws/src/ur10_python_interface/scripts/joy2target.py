@@ -117,9 +117,17 @@ class Joy2Target(object):
 
   def input_conversion(self):
     # get input
-    button = int(self.joy_command[4])
+    button = int(self.joy_command[6])
 
-    if not self.rsa:
+    if self.rsa: # rsa random agent
+      command = self.env_command
+      x_input = -command[0] * self.action_mask[0]
+      y_input = command[1] * self.action_mask[1]
+      z_input = command[2] * self.action_mask[2]
+      roll_input = command[3] * self.action_mask[3]
+      pitch_input = command[4] * self.action_mask[4]
+      yaw_input = -command[5]  * self.action_mask[5]
+    else:
       command = self.joy_command
       if self.random_agent: # random action model
         # For smoothing noisy action
@@ -148,15 +156,7 @@ class Joy2Target(object):
           pitch_input = 1
         elif button == 3:
           pitch_input = -1
-        yaw_input = -command[5]   
-    else: # rsa random agent
-      command = self.env_command
-      x_input = -command[0] * self.action_mask[0]
-      y_input = command[1] * self.action_mask[1]
-      z_input = command[2] * self.action_mask[2]
-      roll_input = command[3] * self.action_mask[3]
-      pitch_input = command[4] * self.action_mask[4]
-      yaw_input = -command[5]  * self.action_mask[5]
+        yaw_input = -command[5]         
 
     # change speed
     if button != self.pre_button: # restrict the continuous change
@@ -319,7 +319,7 @@ def main():
     prefix = ''
 
   rospy.init_node("joy2target_converter", anonymous=True)
-  j2t = Joy2Target(prefix=prefix, random_agent=False, env=True, rsa=True)
+  j2t = Joy2Target(prefix=prefix, random_agent=False, env=False, rsa=False)
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
     if rospy.get_param(prefix+'/teleop_state') == "start":

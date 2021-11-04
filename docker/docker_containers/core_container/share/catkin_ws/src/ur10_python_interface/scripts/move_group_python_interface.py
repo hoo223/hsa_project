@@ -158,11 +158,7 @@ class MoveGroupPythonInteface(object):
     self.fpsClock = pygame.time.Clock()
     self.verbose = verbose
 
-    # teleop parameters
-    self.button = 0.0
-    self.speed_gain = 0.001 # for input scale
-    self.p_gain = 3         # for target tracking
-    self.speed_level = 7    
+    # teleop parameters  
     rospy.set_param(self.prefix+'/teleop_state', 'stop')
     self.teleop_state = rospy.get_param(self.prefix+'/teleop_state')
 
@@ -573,8 +569,8 @@ def main():
   args = rospy.myargv()
   if len(args) < 2:
       print("You need to type the mode argument: 'sim' or 'real'")
-      print("ex: ~/ur10_python_interface.py sim")
-      print("ex: ~/ur10_python_interface.py real")
+      print("ex: ~/move_group_python_interface.py sim")
+      print("ex: ~/move_group_python_interface.py real")
       exit()
   elif len(args) > 2:
       mode = args[1]

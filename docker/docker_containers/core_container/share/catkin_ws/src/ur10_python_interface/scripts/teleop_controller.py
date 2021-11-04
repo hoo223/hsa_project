@@ -100,7 +100,7 @@ def main():
     prefix = ''
   
   rospy.init_node("teleop_controller", anonymous=True)
-  tc = TeleopController(env=True, rsa=True, prefix=prefix)
+  tc = TeleopController(env=False, rsa=False, prefix=prefix)
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
     #print(tc.teleop_state)
