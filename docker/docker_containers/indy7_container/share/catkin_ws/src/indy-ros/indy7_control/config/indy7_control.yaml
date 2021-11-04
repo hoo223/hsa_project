@@ -1,10 +1,7 @@
 joint_state_controller:
-    type:   "joint_state_controller/JointStateController"
-    publish_rate:   50
-
-indy7_controller:
-  type: position_controllers/JointTrajectoryController
-  joints:
+    type: joint_state_controller/JointStateController
+    publish_rate: 125 
+    joints:
     - joint0
     - joint1
     - joint2
@@ -12,43 +9,85 @@ indy7_controller:
     - joint4
     - joint5
 
-  gains:
+indy7_controller:
+  type: position_controllers/JointTrajectoryController
+  joints: &robot_joints
+    - joint0
+    - joint1
+    - joint2
+    - joint3
+    - joint4
+    - joint5
+  gains: &gains
     joint0:
-      {p: 100.0, i: 0.01, d:  10.0, i_clamp: 0}
+      {p: 5.0, i: 1, d:  1.0, i_clamp: 1}
     joint1:
-      {p: 100.0, i: 0.01, d:  10.0, i_clamp: 0}
+      {p: 5.0, i: 1, d:  1.0, i_clamp: 1}
     joint2:
-      {p: 100.0, i: 0.01, d:  10.0, i_clamp: 0}
+      {p: 5.0, i: 1, d:  1.0, i_clamp: 1}
     joint3:
-      {p: 100.0, i: 0.01, d:  10.0, i_clamp: 0}
+      {p: 5.0, i: 1, d:  1.0, i_clamp: 1}
     joint4:
-      {p: 100.0, i: 0.01, d:  10.0, i_clamp: 0}
+      {p: 5.0, i: 1, d:  1.0, i_clamp: 1}
     joint5:
-      {p: 100.0, i: 0.01, d:  10.0, i_clamp: 0}
+      {p: 5.0, i: 1, d:  1.0, i_clamp: 1}
 
-gazebo_ros_control: 
-  pid_gains:
-    joint0:
-      p: 100.0
-      i: 0.01 
-      d: 10.0
-    joint1:
-      p: 100.0
-      i: 0.01 
-      d: 10.0
-    joint2:
-      p: 100.0
-      i: 0.01 
-      d: 10.0
-    joint3:
-      p: 100.0
-      i: 0.01 
-      d: 10.0
-    joint4:
-      p: 100.0
-      i: 0.01 
-      d: 10.0            
-    joint5:
-      p: 100.0
-      i: 0.01 
-      d: 10.0      
+arm_controller:
+  type: velocity_controllers/JointTrajectoryController
+  joints: *robot_joints
+  constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      joint0: {trajectory: 0.1, goal: 0.1}
+      joint1: {trajectory: 0.1, goal: 0.1}
+      joint2: {trajectory: 0.1, goal: 0.1}
+      joint3: {trajectory: 0.1, goal: 0.1}
+      joint4: {trajectory: 0.1, goal: 0.1}
+      joint5: {trajectory: 0.1, goal: 0.1}
+  gains: *gains
+  velocity_ff:
+      joint0: 1.0
+      joint1: 1.0
+      joint2: 1.0
+      joint3: 1.0
+      joint4: 1.0
+      joint5: 1.0
+
+# gazebo_ros_control: 
+#   pid_gains:
+#     joint0:
+#       p: 100.0
+#       i: 0.01 
+#       d: 10.0
+#     joint1:
+#       p: 100.0
+#       i: 0.01 
+#       d: 10.0
+#     joint2:
+#       p: 100.0
+#       i: 0.01 
+#       d: 10.0
+#     joint3:
+#       p: 100.0
+#       i: 0.01 
+#       d: 10.0
+#     joint4:
+#       p: 100.0
+#       i: 0.01 
+#       d: 10.0            
+#     joint5:
+#       p: 100.0
+#       i: 0.01 
+#       d: 10.0      
+
+joint_group_vel_controller:
+  type: velocity_controllers/JointGroupVelocityController
+  joints: *robot_joints
+  gains: *gains
+  velocity_ff:
+      joint0: 1.0
+      joint1: 1.0
+      joint2: 1.0
+      joint3: 1.0
+      joint4: 1.0
+      joint5: 1.0

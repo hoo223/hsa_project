@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
+  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+  <arg name="gui" default="true" doc="Starts gazebo gui" />
+  <arg name="sim" default="true" />
+  <arg name="debug" default="false"/>
+
+  <include file="$(find indy7_python_interface)/launch/controller.launch"/>
+  <include file="$(find indy7_python_interface)/launch/indy7_gazebo.launch"/>
+
+</launch>

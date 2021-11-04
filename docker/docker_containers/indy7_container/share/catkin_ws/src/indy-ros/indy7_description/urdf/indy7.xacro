@@ -4,7 +4,7 @@
 	<xacro:include filename="$(find indy7_description)/urdf/indy7.gazebo"/>
 
 	<xacro:property name="PI" value="3.1415926535897931"/>
-	<xacro:property name="indy_material" value="metal_grey"/>
+	<xacro:property name="indy_material" value="white"/>
 	<!-- <material name="grey"> <color rgba="0.5 0.5 0.5 1"/> </material> -->
 
 	<link name="link0">
@@ -204,7 +204,8 @@
 		<child link="link1"/>
 		<origin xyz="0 0 0.0775" rpy="0 0 0"/>
 		<axis xyz="0 0 1"/>
-		<limit effort="10" velocity="1" lower="-${175*PI/180}" upper="${175*PI/180}"/>
+		<limit effort="300" velocity="5" lower="-${175*PI/180}" upper="${175*PI/180}"/>
+		<dynamics damping="0.0" friction="0.0"/>
 	</joint>
 
 	<joint name="joint1" type="revolute">
@@ -212,7 +213,8 @@
 		<child link="link2"/>
 		<origin xyz="0 -0.10900000 0.22200000" rpy="${PI/2} ${PI/2} 0"/>
 		<axis xyz="0 0 1"/>
-		<limit effort="10" velocity="1" lower="-${175*PI/180}" upper="${175*PI/180}"/>
+		<limit effort="100" velocity="3" lower="-${175*PI/180}" upper="${175*PI/180}"/>
+		<dynamics damping="0.0" friction="0.0"/>
 	</joint>
 
 	<joint name="joint2" type="revolute">
@@ -220,7 +222,8 @@
 		<child link="link3"/>
 		<origin xyz="-0.45000000 +0.00000000 -0.03050000" rpy="0 0 0"/>
 		<axis xyz="0 0 1"/>
-		<limit effort="10" velocity="1" lower="-${175*PI/180}" upper="${175*PI/180}"/>
+		<limit effort="100" velocity="3" lower="-${175*PI/180}" upper="${175*PI/180}"/>
+		<dynamics damping="0.0" friction="0.0"/>
 	</joint>
 
 	<joint name="joint3" type="revolute">
@@ -228,7 +231,8 @@
 		<child link="link4"/>
 		<origin xyz="-0.26700000 +0.00000000 -0.07500000" rpy="-${PI/2} 0 ${PI/2}"/>
 		<axis xyz="0 0 1"/>
-		<limit effort="10" velocity="1" lower="-${175*PI/180}" upper="${175*PI/180}"/>
+		<limit effort="100" velocity="3" lower="-${175*PI/180}" upper="${175*PI/180}"/>
+		<dynamics damping="0.0" friction="0.0"/>
 	</joint>
 
 	<joint name="joint4" type="revolute">
@@ -236,7 +240,8 @@
 		<child link="link5"/>
 		<origin xyz="+0.00000000 -0.11400000 +0.08300000" rpy="${PI/2} ${PI/2} 0"/>
 		<axis xyz="0 0 1"/>
-		<limit effort="10" velocity="1" lower="-${175*PI/180}" upper="${175*PI/180}"/>
+		<limit effort="100" velocity="3" lower="-${175*PI/180}" upper="${175*PI/180}"/>
+		<dynamics damping="0.0" friction="0.0"/>
 	</joint>
 
 	<joint name="joint5" type="revolute">
@@ -244,7 +249,8 @@
 		<child link="link6"/>
 		<origin xyz="-0.16800000 +0.00000000 +0.06900000" rpy="-${PI/2} 0 ${PI/2}"/>
 		<axis xyz="0 0 1"/>
-		<limit effort="10" velocity="1" lower="-${215*PI/180}" upper="${215*PI/180}"/>
+		<limit effort="100" velocity="3" lower="-${215*PI/180}" upper="${215*PI/180}"/>
+		<dynamics damping="0.0" friction="0.0"/>
 	</joint>
 
 	<joint name="tcp" type="fixed">
@@ -253,70 +259,72 @@
 		<origin xyz="0 0 0.06" rpy="0 0 0"/>
 	</joint>
 
-	<transmission name="tran0">
-		<type>transmission_interface/SimpleTransmission</type>
-		<joint name="joint0">
-			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-		</joint>
-		<actuator name="motor0">
-			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-			<mechanicalReduction>1</mechanicalReduction>
-		</actuator>
-	</transmission>
+	<xacro:macro name="indy7_transmission" params="hw_interface">
+		<transmission name="tran0">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="joint0">
+				<hardwareInterface>${hw_interface}</hardwareInterface>
+			</joint>
+			<actuator name="motor0">
+				<hardwareInterface>${hw_interface}</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+		</transmission>
 
-	<transmission name="tran1">
-		<type>transmission_interface/SimpleTransmission</type>
-		<joint name="joint1">
-			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-		</joint>
-		<actuator name="motor1">
-			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-			<mechanicalReduction>1</mechanicalReduction>
-		</actuator>
-	</transmission>
+		<transmission name="tran1">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="joint1">
+				<hardwareInterface>${hw_interface}</hardwareInterface>
+			</joint>
+			<actuator name="motor1">
+				<hardwareInterface>${hw_interface}</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+		</transmission>
 
-	<transmission name="tran2">
-		<type>transmission_interface/SimpleTransmission</type>
-		<joint name="joint2">
-			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-		</joint>
-		<actuator name="motor2">
-			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-			<mechanicalReduction>1</mechanicalReduction>
-		</actuator>
-	</transmission>
+		<transmission name="tran2">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="joint2">
+				<hardwareInterface>${hw_interface}</hardwareInterface>
+			</joint>
+			<actuator name="motor2">
+				<hardwareInterface>${hw_interface}</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+		</transmission>
 
-	<transmission name="tran3">
-		<type>transmission_interface/SimpleTransmission</type>
-		<joint name="joint3">
-			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-		</joint>
-		<actuator name="motor3">
-			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-			<mechanicalReduction>1</mechanicalReduction>
-		</actuator>
-	</transmission>
+		<transmission name="tran3">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="joint3">
+				<hardwareInterface>${hw_interface}</hardwareInterface>
+			</joint>
+			<actuator name="motor3">
+				<hardwareInterface>${hw_interface}</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+		</transmission>
 
-	<transmission name="tran4">
-		<type>transmission_interface/SimpleTransmission</type>
-		<joint name="joint4">
-			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-		</joint>
-		<actuator name="motor4">
-			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-			<mechanicalReduction>1</mechanicalReduction>
-		</actuator>
-	</transmission>
+		<transmission name="tran4">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="joint4">
+				<hardwareInterface>${hw_interface}</hardwareInterface>
+			</joint>
+			<actuator name="motor4">
+				<hardwareInterface>${hw_interface}</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+		</transmission>
 
-	<transmission name="tran5">
-		<type>transmission_interface/SimpleTransmission</type>
-		<joint name="joint5">
-			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-		</joint>
-		<actuator name="motor5">
-			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-			<mechanicalReduction>1</mechanicalReduction>
-		</actuator>
-	</transmission>
+		<transmission name="tran5">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="joint5">
+				<hardwareInterface>${hw_interface}</hardwareInterface>
+			</joint>
+			<actuator name="motor5">
+				<hardwareInterface>${hw_interface}</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+		</transmission>
+	</xacro:macro>
 
 </robot>

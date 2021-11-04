@@ -11,6 +11,7 @@
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <!-- Link0 -->
@@ -18,6 +19,7 @@
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <!-- Link2 -->
@@ -25,24 +27,28 @@
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="link3">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="link4">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="link5">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="link6">

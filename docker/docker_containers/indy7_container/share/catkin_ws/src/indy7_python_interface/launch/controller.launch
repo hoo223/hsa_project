@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
+  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+  <arg name="gui" default="true" doc="Starts gazebo gui" />
+  <arg name="sim" default="true" />
+  <arg name="debug" default="false"/>
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find indy7_description)/urdf/indy7_fixed.xacro'" />
+
+  <include file="$(find indy7_gazebo)/launch/controller_utils.launch"/>
+  <rosparam file="$(find indy7_control)/config/indy7_control.yaml" command="load"/>
+
+  <!-- start this controller -->
+  <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller" respawn="false" output="screen"/>
+
+  <!-- load other controllers -->
+  <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" args="load joint_group_vel_controller" respawn="false" output="screen"/>
+
+</launch>

@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <robot name="indy7" xmlns:xacro="http://ros.org/wiki/xacro">
   	<xacro:include filename="$(find indy7_description)/urdf/indy7.xacro"/>
+	<xacro:indy7_transmission hw_interface="hardware_interface/VelocityJointInterface" />
 
 	<link name="world"/>
     <joint name="global" type="fixed">
