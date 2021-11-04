@@ -12,7 +12,8 @@
   <xacro:macro name="cylinder_inertial" params="radius length mass *origin">
     <inertial>
       <mass value="${mass}" />
-      <xacro:insert_block name="origin" />
+      <xacro:insert_block name="origin" /> 
+      <!-- insert_block - http://wiki.ros.org/xacro#:~:text=features%20of%20xacro.-,Property%20and%20Property%20Blocks,-Properties%20are%20named -->
       <inertia ixx="${0.0833333 * mass * (3 * radius * radius + length * length)}" ixy="0.0" ixz="0.0"
         iyy="${0.0833333 * mass * (3 * radius * radius + length * length)}" iyz="0.0"
         izz="${0.5 * mass * radius * radius}" />
@@ -39,7 +40,8 @@
     <xacro:property name="wrist_2_mass" value="1.96" />
     <xacro:property name="wrist_3_mass" value="0.202" />
 
-    <!-- These parameters are borrowed from the urcontrol.conf file
+    <!--Center of Gravity 
+        These parameters are borrowed from the urcontrol.conf file
         but are not verified for the correct permutation.
         The permutation was guessed by looking at the UR5 parameters.
         Serious use of these parameters needs further inspection. -->
@@ -226,6 +228,8 @@
         </xacro:if>
       </xacro:if>
       <dynamics damping="0.0" friction="0.0"/>
+      <!-- dynamics - http://wiki.ros.org/urdf/XML/joint#:~:text=%3Cdynamics%3E%20(optional) -->
+      <!-- https://answers.ros.org/question/12394/difference-between-dynamics-damping07-friction1000-and-mu11mu1/ -->
     </joint>
 
     <link name="${prefix}wrist_1_link">
@@ -340,6 +344,7 @@
       </collision>
     </link>
 
+    <!-- 위에서 inclcude한 ur.transmission.xacro와 ur.gazebo.xacro에 대한 argument 설정 -->
     <xacro:ur_arm_transmission prefix="${prefix}" hw_interface="${transmission_hw_interface}" />
     <xacro:ur_arm_gazebo prefix="${prefix}" />
 
@@ -356,6 +361,7 @@
     </joint>
 
     <!-- Frame coincident with all-zeros TCP on UR controller -->
+    <!-- http://wiki.ros.org/Industrial/Tutorials/Create%20a%20URDF%20for%20an%20Industrial%20Robot#:~:text=the%20end-effector).-,tool0,-The%20tool0%20frame -->
     <link name="${prefix}tool0"/>
     <joint name="${prefix}wrist_3_link-tool0_fixed_joint" type="fixed">
       <origin xyz="0 ${wrist_3_length} 0" rpy="${pi/-2.0} 0 0"/>
