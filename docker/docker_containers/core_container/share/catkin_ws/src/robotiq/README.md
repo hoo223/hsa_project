@@ -1,45 +1,73 @@
-# Robotiq
+# robotiq
 
-## Status
+ROS metapackage developed by the [Control Robotics Intelligence Group](http://www.ntu.edu.sg/home/cuong/) from the [Nanyang Technological University, Singapore](http://www.ntu.edu.sg).
 
-As of 2021-05-28, it would appear this repository is ***unmaintained***.
+## Setup
 
-Robotiq is not maintaining the packages in this repository and the last active maintainer ([jproberge](https://github.com/jproberge)) does not appear to be active any more.
-
-The ROS-Industrial consortia are not involved: for historical reasons, the `robotiq` repository is hosted on the `ros-industrial` Github organisation, but there is no direct link with any of the other repositories there.
-
-Please direct support requests to [dof.robotiq.com](https://dof.robotiq.com/). The tracker here is not monitored by Robotiq employees.
+  * Robotiq 85 Gripper with K-1363 Controller. (Modbus TCP/IP)
 
 
-## ROS Distro Support
+## Maintainer
 
-|         | Indigo | Jade | Kinetic | Melodic |
-|:-------:|:------:|:----:|:-------:|:-------:|
-| Branch  | [`indigo-devel`](https://github.com/ros-industrial/robotiq/tree/indigo-devel) | [`jade-devel`](https://github.com/ros-industrial/robotiq/tree/jade-devel) | [`kinetic-devel`](https://github.com/ros-industrial/robotiq/tree/kinetic-devel) | [`kinetic-devel`](https://github.com/ros-industrial/robotiq/tree/kinetic-devel) |)
-| Status  |  supported | not supported |  supported |  supported |
-| Version | [version](http://repositories.ros.org/status_page/ros_indigo_default.html?q=robotiq) | [version](http://repositories.ros.org/status_page/ros_jade_default.html?q=robotiq) | [version](http://repositories.ros.org/status_page/ros_kinetic_default.html?q=robotiq) | [version](http://repositories.ros.org/status_page/ros_melodic_default.html?q=robotiq) |
+[Francisco Suárez Ruiz](fsuarez6.github.io)
 
-## Travis - Continuous Integration
+## Documentation
 
-Status: [![Build Status](https://travis-ci.com/ros-industrial/robotiq.svg?branch=kinetic-devel)](https://travis-ci.com/ros-industrial/robotiq)
+  * See the installation instructions below.
+  * Throughout the various files in this repository.
 
-## ROS Buildfarm
+## Installation
 
-There are no up-to-date releases of these packages available from the ROS buildfarm.
+Go to your ROS working directory. e.g.
+```{bash}
+cd ~/catkin_ws/src
+```
 
-[![support level: community](https://img.shields.io/badge/support%20level-community-lightgray.svg)](http://rosindustrial.org/news/2016/10/7/better-supporting-a-growing-ros-industrial-software-platform)
+Clone these repository:
+```{bash}
+git clone https://github.com/crigroup/robotiq.git
+git clone https://github.com/crigroup/openrave_catkin.git
+```
 
-Robotiq meta-package.  See the [ROS wiki][] page for more information. 
+Install any missing dependencies using rosdep:
+```{bash}
+rosdep update
+rosdep install --from-paths . --ignore-src -y
+```
 
-## License
+Now compile your ROS workspace. e.g.
+```{bash}
+cd ~/catkin_ws && catkin_make
+```
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+### Testing the Installation
 
-## Contents
+Be sure to always source the appropriate ROS setup file, e.g:
+```{bash}
+source ~/catkin_ws/devel/setup.bash
+```
+You might want to add that line to your `~/.bashrc`
 
-This repo holds source code for all versions > groovy. For those versions <= groovy see: [SVN repo][]
+Try the `cmodel_simple_controller`:
+```{bash}
+roslaunch robotiq_control cmodel_simple_controller.launch ip:=ROBOTIQ_IP_ADDRESS
+```
+Expected output:
+```
+Simple C-Model Controller
+-----
+Current command:  rACT = 0, rGTO = 0, rATR = 0, rPR = 0, rSP = 0, rFR = 0
+-----
+Available commands
 
-[ROS wiki]: http://ros.org/wiki/robotiq
-[SVN repo]: https://code.google.com/p/swri-ros-pkg/source/browse
-
+r: Reset
+a: Activate
+c: Close
+o: Open
+(0-255): Go to that position
+f: Faster
+l: Slower
+i: Increase force
+d: Decrease force
+-->
+```

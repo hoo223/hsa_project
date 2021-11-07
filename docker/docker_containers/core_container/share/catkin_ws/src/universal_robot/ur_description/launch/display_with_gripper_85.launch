@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="gui" default="true" />
+  <arg name="display" default="true" />
+  <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
+  
+  <arg name="robot_description_file" default="$(find ur_gazebo)/launch/inc/load_ur_gripper_85.launch.xml" 
+                                     doc="Launch file which populates the 'robot_description' parameter."/>
+  <arg name="ur_robot" default="ur10"/>
+
+  <!-- Load urdf on the parameter server -->
+  <include file="$(arg robot_description_file)">
+    <arg name="ur_robot" value="$(arg ur_robot)"/>
+    <arg name="transmission_hw_interface" default="$(arg transmission_hw_interface)"/>
+  </include>
+
+  <param name="use_gui" value="$(arg gui)"/>
+  <group if="$(arg display)">
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+  </group>
+    
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ur_description)/config/config.rviz" required="true" />
+
+</launch>

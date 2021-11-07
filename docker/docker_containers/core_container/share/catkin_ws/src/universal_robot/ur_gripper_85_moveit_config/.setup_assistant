@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: ur_description
+    relative_path: urdf/ur_gripper_85.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/ur_robot_gazebo.srdf
+  CONFIG:
+    author_name: Hoosang Lee
+    author_email: lhs223@gmail.com
+    generated_timestamp: 1636172810
