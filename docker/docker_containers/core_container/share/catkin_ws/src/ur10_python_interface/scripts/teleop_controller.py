@@ -46,22 +46,28 @@ class TeleopController(object):
   def __init__(self, env=False, rsa=False, verbose=False, prefix=''):
 
     self.prefix = prefix
-    self.target_joints = None
-    self.current_joints = None
+    self.target_joints = np.zeros(6)
+    self.current_joints = np.zeros(6)
     self.p_gain = 3
     self.joint_vel_msg = Float64MultiArray()  
     self.teleop_state = 'stop'
+    
+    # gripper
+    self.with_gripper = rospy.get_param('with_gripper')
 
     # subscriber
     self.target_joint_sub = rospy.Subscriber('/ik_result', Float64MultiArray, self.target_joint_callback)
-    self.current_joint_sub = rospy.Subscriber('/joint_states', JointState, self.current_joint_callback)
-    #self.teleop_state_sub = rospy.Subscriber('/teleop_state', String, self.teleop_state_callback)
+    if self.with_gripper:
+      self.current_joint_sub = rospy.Subscriber('/joint_states', JointState, self.current_joint_with_gripper_callback)
+    else:
+      self.current_joint_sub = rospy.Subscriber('/joint_states', JointState, self.current_joint_callback)
 
     # publisher
     if env and not rsa:
       velocity_name = prefix+'/human_action'
     else:
       velocity_name = prefix+'/joint_group_vel_controller/command'
+      
     self.vel_pub = rospy.Publisher(velocity_name, Float64MultiArray, queue_size=10)
 
   def control_loop(self):
@@ -69,10 +75,9 @@ class TeleopController(object):
       # compute control input
       joint_errors = np.array(self.target_joints) - np.array(self.current_joints)
       self.joint_vel_msg.data = self.p_gain*joint_errors
-      #self.joint_vel_msg.data[3] = 0
-      #self.joint_vel_msg.data[4] = 0
-      #elf.joint_vel_msg.data[5] = 0
-      #print(self.joint_vel_msg.data)
+      # self.joint_vel_msg.data[3] = 0
+      # self.joint_vel_msg.data[4] = 0
+      # self.joint_vel_msg.data[5] = 0
     except:
       self.joint_vel_msg.data = np.zeros(6)
     self.vel_pub.publish(self.joint_vel_msg)
@@ -81,12 +86,26 @@ class TeleopController(object):
     self.target_joints = data.data
 
   def current_joint_callback(self, data):
-    self.current_joints = list(data.position)
+    current_joints = list(data.position)
     # gazebo에서 나온 joint states 순서가 바뀌어 있음
-    temp = self.current_joints[0]
-    self.current_joints[0] = self.current_joints[2]
-    self.current_joints[2] = temp
-    #print(self.current_joints)
+    # [elbow_joint, shoulder_lift_joint, shoulder_pan_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint] - 2 1 0 3 4 5 
+    self.current_joints[0] = current_joints[2]
+    self.current_joints[1] = current_joints[1]
+    self.current_joints[2] = current_joints[0]
+    self.current_joints[3] = current_joints[3]
+    self.current_joints[4] = current_joints[4]
+    self.current_joints[5] = current_joints[5]
+    
+  def current_joint_with_gripper_callback(self, data):  
+    current_joints = list(data.position)
+    # gazebo에서 나온 joint states 순서가 바뀌어 있음
+    # [elbow_joint, robotiq_85_left_knuckle_joint, shoulder_lift_joint, shoulder_pan_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint] - 3 2 0 4 5 6 
+    self.current_joints[0] = current_joints[3]
+    self.current_joints[1] = current_joints[2]
+    self.current_joints[2] = current_joints[0]
+    self.current_joints[3] = current_joints[4]
+    self.current_joints[4] = current_joints[5]
+    self.current_joints[5] = current_joints[6]
 
   def teleop_state_callback(self, data):
     self.teleop_state = data.data

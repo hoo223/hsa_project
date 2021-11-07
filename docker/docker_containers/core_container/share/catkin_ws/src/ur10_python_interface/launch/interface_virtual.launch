@@ -5,18 +5,31 @@
     <arg name="gui" default="true" doc="Starts gazebo gui" />
     <arg name="sim" default="true" />
     <arg name="debug" default="false"/>
- 
+    <arg name="gripper" default="true"/>
+
     <!-- Remap follow_joint_trajectory -->
     <remap if="$(arg sim)" from="/follow_joint_trajectory" to="/arm_controller/follow_joint_trajectory"/>
     <remap unless="$(arg sim)" from="/follow_joint_trajectory" to="/scaled_pos_joint_traj_controller/follow_joint_trajectory"/>
 
-    <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
-    <include file="$(find ur10_moveit_config)/launch/move_group.launch">
-        <arg name="allow_trajectory_execution" value="true"/>
-        <arg name="fake_execution" value="false"/>
-        <arg name="info" value="true"/>
-        <arg name="debug" value="$(arg debug)"/>
-    </include>
+    <group unless="$(arg gripper)">
+        <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
+        <include file="$(find ur10_moveit_config)/launch/move_group.launch">
+            <arg name="allow_trajectory_execution" value="true"/>
+            <arg name="fake_execution" value="false"/>
+            <arg name="info" value="true"/>
+            <arg name="debug" value="$(arg debug)"/>
+        </include>
+    </group>
+
+    <group if="$(arg gripper)">
+        <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
+        <include file="$(find ur_gripper_85_moveit_config)/launch/move_group.launch">
+            <arg name="allow_trajectory_execution" value="true"/>
+            <arg name="fake_execution" value="false"/>
+            <arg name="info" value="true"/>
+            <arg name="debug" value="$(arg debug)"/>
+        </include>
+    </group>
 
     <!-- joystick node -->
     <node name="joy_command" pkg="ur10_python_interface" type="joystick.py" output="log"/>

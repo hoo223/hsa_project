@@ -23,7 +23,7 @@ from geometry_msgs.msg import PoseStamped, Quaternion, Pose
 from omni_msgs.msg import OmniButtonEvent
 from robotiq_2f_gripper_control.msg import Robotiq2FGripper_robot_input  as inputMsg
 from robotiq_2f_gripper_control.msg import Robotiq2FGripper_robot_output as outputMsg
-from ur10_python_interface.srv import *
+from ur10_python_interface.srv import SolveIk
 #from cv_bridge import CvBridge
 
 ## custom library
@@ -44,6 +44,9 @@ class Joy2Target(object):
     # with RL env
     self.env = env
     self.rsa = rsa
+    
+    # gripper
+    self.with_gripper = rospy.get_param('with_gripper')
 
     # teleoperation variable
     self.pre_button = None
@@ -65,15 +68,20 @@ class Joy2Target(object):
     self.haptic_move_state = False
     self.gripper_closed = False
     self.start_target_pos = [0, 0, 0]
-    self.haptic_scale = 2 # translation scale factor
+    self.haptic_scale_pos = 2 # translation scale factor
+    self.haptic_scale_ori = 1 # translation scale factor
 
     # subscriber
     self.joy_command_sub = rospy.Subscriber('joy_command', Float64MultiArray, self.joy_command_callback)
     self.env_command_sub = rospy.Subscriber('env_command', Float64MultiArray, self.env_command_callback)
     self.teleop_state_sub = rospy.Subscriber('/teleop_state', String, self.teleop_state_callback)
-    self.current_joint_sub = rospy.Subscriber('/joint_states', JointState, self.current_joint_callback)
-    self.haptic_pose_sub = rospy.Subscriber('/phantom/pose', PoseStamped, self.haptic_pose_callback)
-    self.haptic_button_sub = rospy.Subscriber('/phantom/button', OmniButtonEvent, self.haptic_button_callback)
+    if self.with_gripper:
+      self.current_joint_sub = rospy.Subscriber('/joint_states', JointState, self.current_joint_with_gripper_callback)
+    else:
+      self.current_joint_sub = rospy.Subscriber('/joint_states', JointState, self.current_joint_callback)
+    self.haptic_pose_sub = rospy.Subscriber('/device1/pose', PoseStamped, self.haptic_pose_callback)
+    self.haptic_joint_states_sub = rospy.Subscriber('/device1/joint_states', JointState, self.haptic_joint_states_callback)
+    self.haptic_button_sub = rospy.Subscriber('/device1/button', OmniButtonEvent, self.haptic_button_callback)
     self.agent_action_sub = rospy.Subscriber('agent_action', Float64MultiArray, self.agent_action_callback)
     self.gripper_status_sub = rospy.Subscriber("Robotiq2FGripperRobotInput", inputMsg, self.gripper_status_callback)
 
@@ -96,11 +104,19 @@ class Joy2Target(object):
     self.listener = tf.TransformListener()
     
     # UR10 initial pose
-    #self.init_pose = [0.17488465, 0.53148766, 0.49063472, 1.63007136, 1.52047576, 3.0807627]
-    self.init_pose = [0.17480582, 0.50746106, 0.69538257, 0.09267109, 0.00379392, 1.59158403]
+    #self.init_pose = [0.17480582, 0.50746106, 0.69538257, 0.09267109, 0.00379392, 1.59158403]
+    self.init_pose = [1.80319956e-01, 5.34257144e-01, 4.97614467e-01, -3.11453126e+00,  2.68726833e-03, -1.19986748e-01]
+    self.init_joint_states = [-1.601372543965475, -1.3494799772845667, -2.0361130873309534, -1.3006231672108264, 1.5698880420405317, 0.09116100519895554]
+    self.current_joints = copy.deepcopy(self.init_joint_states)
 
     # input device에 의해 조작되는 end-effector target pose
     self.target_pose = copy.deepcopy(self.init_pose)
+    
+    self.ik_result = Float64MultiArray()
+    self.ik_result.data = copy.deepcopy(self.init_joint_states)
+    self.wrist_1_joint = self.init_joint_states[3]
+    self.wrist_2_joint = self.init_joint_states[4]
+    self.wrist_3_joint = self.init_joint_states[5]
 
     # reset target service
     self.reset_target_service = rospy.Service('reset_target_pose', Trigger, self.reset_target)
@@ -177,7 +193,7 @@ class Joy2Target(object):
     self.target_pose[2] += input_scale*z_input
     self.target_pose[3] += input_scale*roll_input
     self.target_pose[4] += input_scale*pitch_input
-    self.target_pose[5] += input_scale*yaw_input # + self.current_joints[0] + 1.6014290296237252
+    self.target_pose[5] += input_scale*yaw_input
     
     # print
     if self.verbose:
@@ -227,44 +243,52 @@ class Joy2Target(object):
     self.teleop_state = data.data
 
   def current_joint_callback(self, data):
-    self.current_joints = list(data.position)
+    current_joints = list(data.position)
     # gazebo에서 나온 joint states 순서가 바뀌어 있음
-    temp = self.current_joints[0]
-    self.current_joints[0] = self.current_joints[2]
-    self.current_joints[2] = temp
-    #print(self.current_joints)
+    # [elbow_joint, shoulder_lift_joint, shoulder_pan_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint] - 2 1 0 3 4 5 
+    self.current_joints[0] = current_joints[2]
+    self.current_joints[1] = current_joints[1]
+    self.current_joints[2] = current_joints[0]
+    self.current_joints[3] = current_joints[3]
+    self.current_joints[4] = current_joints[4]
+    self.current_joints[5] = current_joints[5]
+    
+  def current_joint_with_gripper_callback(self, data):  
+    current_joints = list(data.position)
+    # gazebo에서 나온 joint states 순서가 바뀌어 있음
+    # [elbow_joint, robotiq_85_left_knuckle_joint, shoulder_lift_joint, shoulder_pan_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint] - 3 2 0 4 5 6 
+    self.current_joints[0] = current_joints[3]
+    self.current_joints[1] = current_joints[2]
+    self.current_joints[2] = current_joints[0]
+    self.current_joints[3] = current_joints[4]
+    self.current_joints[4] = current_joints[5]
+    self.current_joints[5] = current_joints[6]
 
   # '/phantom/pose' topic 수신 시 콜백 - 햅틱 장치의 pose를 end-effector target pose로 변환
   def haptic_pose_callback(self, data):
     # 햅틱 장치 pose 얻기
     self.haptic_pose = data.pose
-    # Orientation 정보 quaternion -> Euler angle 변환
-    self.haptic_rpy = euler_from_quaternion(self.xyzw_array(self.haptic_pose.orientation))
-    if self.verbose:
-      rpy = Float64MultiArray()
-      rpy.data = self.haptic_rpy
-      self.haptic_rpy_pub.publish(rpy)
     
-    # target pose의 Euler angle로 mapping 
-    self.target_pose[3] = -self.haptic_rpy[2] - np.pi/2
-    self.target_pose[4] = -self.haptic_rpy[1]
-    self.target_pose[5] = -self.haptic_rpy[0] + np.pi/2
-
     # haptic move state = 버튼 두 개를 누르고 있는 동안에만 
     if self.haptic_move_state == True:
       x_error = self.haptic_pose.position.x - self.start_haptic_pose.position.x
       y_error = self.haptic_pose.position.y - self.start_haptic_pose.position.y
       z_error = self.haptic_pose.position.z - self.start_haptic_pose.position.z
-      if self.verbose: # 확인용
-        self.haptic_error = [x_error, y_error, z_error]
-        temp = Float64MultiArray()
-        temp.data = self.haptic_error
-        self.haptic_error_pub.publish(temp)
-
-      self.target_pose[0] = self.start_target_pos[0] + self.haptic_scale*x_error
-      self.target_pose[1] = self.start_target_pos[1] + self.haptic_scale*y_error
-      self.target_pose[2] = self.start_target_pos[2] + self.haptic_scale*z_error
+      # if self.verbose: # 확인용
+      #   self.haptic_error = [x_error, y_error, z_error]
+      #   temp = Float64MultiArray()
+      #   temp.data = self.haptic_error
+      #   self.haptic_error_pub.publish(temp)
+      self.target_pose[0] = self.start_target_pos[0] + self.haptic_scale_pos*x_error
+      self.target_pose[1] = self.start_target_pos[1] + self.haptic_scale_pos*y_error
+      self.target_pose[2] = self.start_target_pos[2] + self.haptic_scale_pos*z_error
       
+  def haptic_joint_states_callback(self, data):
+    self.haptic_joint_states = data.position
+    self.wrist_1_joint = -1.3006231672108264 + self.haptic_joint_states[4] - (-2.418408261237553) + 1
+    self.wrist_2_joint = 1.5698880420405317 - (self.haptic_joint_states[3] - (3.1312592896916946))
+    self.wrist_3_joint = 0.09116100519895554 - (self.haptic_joint_states[5] - (-3.061161795752593))     
+  
   # '/phantom/button' topic 수신 시 콜백 - 햅틱 장치 버튼에 관한 동작 수행
   def haptic_button_callback(self, data):
     # white 버튼을 누르면 haptic move state 시작하고, 누르고 있는 동안은 유지 
@@ -285,8 +309,6 @@ class Joy2Target(object):
       self.gripper_command.rPR = 0
       #self.gripper_action_pub.publish(self.gripper_command)
       self.gripper_closed = False
-    
-    #print(self.haptic_move_state)
 
   def agent_action_callback(self, data):
     self.agent_action = data.data
@@ -322,32 +344,31 @@ def main():
   j2t = Joy2Target(prefix=prefix, random_agent=False, env=False, rsa=False)
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
-    if rospy.get_param(prefix+'/teleop_state') == "start":
+    if rospy.get_param(prefix+'/teleop_state') == "start": # teleop is running
+      # calculate target pose 
       target_pose = j2t.input_conversion()
+      j2t.target_pose_pub.publish(target_pose)
       print("target_pose calculated")
-      #target_pose = copy.deepcopy(j2t.init_pose)
+      # solve ik
       result = j2t.ik_solver(target_pose)
       if result.success:
-        #result.ik_result = [-1.6013145361858756, -1.3495041341764553, -2.0403334153833868, 0.2514010583083106, 1.6197922931754762, 0.08994613736848844]
-        j2t.ik_result_pub.publish(result.ik_result)
+        # first 3 joints 
+        j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.wrist_1_joint, j2t.wrist_2_joint, j2t.wrist_3_joint]
+        j2t.ik_result_pub.publish(j2t.ik_result)
         j2t.gripper_action_pub.publish(j2t.gripper_command)
       else:
         print("ik failed")
         rospy.set_param(prefix+'/teleop_state', "stop")
         if not j2t.env: # rl 환경과 연동하지 않을 때만
           j2t.reset_pose()
-    else: # stop
-      # try:
-      #   (trans,rot) = j2t.listener.lookupTransform('/base_link', '/ee_link', rospy.Time(0))
-      #   j2t.trans = trans
-      # except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
-      #   continue
+    else: # teleop is stopped
       j2t.target_pose = copy.deepcopy(j2t.init_pose)
+      j2t.ik_result.data = copy.deepcopy(j2t.init_joint_states)
+      j2t.wrist_1_joint = j2t.init_joint_states[3]
+      j2t.wrist_2_joint = j2t.init_joint_states[4]
+      j2t.wrist_3_joint = j2t.init_joint_states[5]
       print("target_pose initialized")
-      # result = j2t.ik_solver(target_pose)
-      # if result.success:
-      #   j2t.ik_result_pub.publish(result.ik_result)
-    #j2t.target_pose_pub.publish(target_pose)
+      
     rate.sleep()
 
 

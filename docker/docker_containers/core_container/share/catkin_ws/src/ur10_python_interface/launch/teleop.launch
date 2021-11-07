@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="robot_name" default=""/>
+  <arg name="gripper" default="true"/>
   <node name="ik_solver" pkg="ur10_python_interface" type="ik_publisher" args="$(arg robot_name)" output="screen"/>
   <node name="joy2target_converter" pkg="ur10_python_interface" type="joy2target.py" args="$(arg robot_name)" output="screen"/>
   <node name="teleop_controller" pkg="ur10_python_interface" type="teleop_controller.py" args="$(arg robot_name)" output="screen"/> 

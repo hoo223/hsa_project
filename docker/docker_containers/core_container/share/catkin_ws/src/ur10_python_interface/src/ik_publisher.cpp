@@ -73,9 +73,19 @@ public:
     
     joint_names = joint_model_group->getVariableNames();
     current_joint_values.resize(6);
+
+    if (n.getParam("/with_gripper", with_gripper)){
+      ROS_INFO("With gripper");
+    }
+    else{
+      ROS_INFO("Without gripper");
+    }
   
     // subscriber
-    arm_state_sub = n.subscribe<sensor_msgs::JointState>("/joint_states", 10, boost::bind(&IK_solver::jointStateCallback, this, _1));
+    if(with_gripper)
+      arm_state_sub = n.subscribe<sensor_msgs::JointState>("/joint_states", 10, boost::bind(&IK_solver::jointStateWithGripperCallback, this, _1));
+    else
+      arm_state_sub = n.subscribe<sensor_msgs::JointState>("/joint_states", 10, boost::bind(&IK_solver::jointStateCallback, this, _1));
     //target_pose_sub = n.subscribe<geometry_msgs::Pose>("/target_pose", 10, boost::bind(&IK_solver::targetPoseCallback, this, _1));
     // publisher
     m_index_pub = n.advertise<std_msgs::Float64>("m_index", 10); // manipulability index publisher
@@ -85,6 +95,7 @@ public:
 
   // callback
   void jointStateCallback(const sensor_msgs::JointStateConstPtr& joint_state);
+  void jointStateWithGripperCallback(const sensor_msgs::JointStateConstPtr& joint_state);
   void targetPoseCallback(const geometry_msgs::PoseConstPtr& target_pose);
   bool solve_ik(ur10_python_interface::SolveIk::Request &req, ur10_python_interface::SolveIk::Response &res);
 
@@ -112,6 +123,7 @@ public:
   Eigen::Isometry3d pose_in;
   std_msgs::Float64MultiArray ik_result_msg, e_values_msg;
   std::vector<double> joint_values;
+  bool with_gripper;
 
   // Handler
   ros::NodeHandle n;
@@ -164,7 +176,7 @@ bool IK_solver::solve_ik(ur10_python_interface::SolveIk::Request &req,
 
 int main(int argc, char** argv)
 {
-  if(ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Fatal))
+  if(ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Debug))
   {
     ros::console::notifyLoggerLevelsChanged();
   }
@@ -212,7 +224,7 @@ int main(int argc, char** argv)
   // "panda_link8" which is the most distal link in the
   // "panda_arm" group of the robot.
   ik_solver.kinematic_state->setToRandomPositions(ik_solver.joint_model_group);
-  const Eigen::Isometry3d& end_effector_state = ik_solver.kinematic_state->getGlobalLinkTransform("ee_link");
+  const Eigen::Isometry3d& end_effector_state = ik_solver.kinematic_state->getGlobalLinkTransform("tool0");
 
   /* Print end-effector pose. Remember that this is in the model frame */
   ROS_INFO_STREAM("Translation: \n" << end_effector_state.translation() << "\n");
@@ -283,7 +295,7 @@ int main(int argc, char** argv)
     e_values_msg.data.push_back(eigen_values(1).real());
     e_values_msg.data.push_back(eigen_values(2).real());
     ik_solver.eigen_value_pub.publish(e_values_msg);
-    //ROS_INFO_STREAM("e_value1: \n" << eigen_values(0) << "\n");  
+    // ROS_INFO_STREAM("e_value1: \n" << eigen_values(0) << "\n");  
 
     ik_solver.kinematic_state->copyJointGroupPositions(ik_solver.joint_model_group, joint_values);
     
@@ -309,6 +321,16 @@ void IK_solver::jointStateCallback(const sensor_msgs::JointStateConstPtr& joint_
 	current_joint_values[3] = joint_state->position[3]; // wrist_1_joint
 	current_joint_values[4] = joint_state->position[4]; // wrist_2_joint
 	current_joint_values[5] = joint_state->position[5]; // wrist_3_joint
+}
+
+void IK_solver::jointStateWithGripperCallback(const sensor_msgs::JointStateConstPtr& joint_state)
+{
+  current_joint_values[0] = joint_state->position[3]; // shoulder_pan_joint
+	current_joint_values[1] = joint_state->position[2]; // shoulder_lift_joint
+	current_joint_values[2] = joint_state->position[0]; // elbow joint
+	current_joint_values[3] = joint_state->position[4]; // wrist_1_joint
+	current_joint_values[4] = joint_state->position[5]; // wrist_2_joint
+	current_joint_values[5] = joint_state->position[6]; // wrist_3_joint
 }
 
 void IK_solver::targetPoseCallback(const geometry_msgs::PoseConstPtr& target_pose)

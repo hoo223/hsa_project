@@ -3,10 +3,19 @@
   <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
   <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
   <arg name="gui" default="true" doc="Starts gazebo gui" />
-  <arg name="sim" default="true" />
-  <arg name="debug" default="false"/>
+  <arg name="gripper" default="true"/>
+  <arg name="display" default="false"/>
 
-  <include file="$(find ur10_python_interface)/launch/controller.launch"/>
-  <include file="$(find ur10_python_interface)/launch/ur10_gazebo.launch"/>
+  <param name="with_gripper" value="$(arg gripper)" type="bool"/>
+
+  <include file="$(find ur10_python_interface)/launch/controller.launch">
+    <arg name="limited" value="$(arg limited)"/>
+    <arg name="gripper" value="$(arg gripper)"/>
+    <arg name="display" value="$(arg display)"/>
+  </include>
+  <include file="$(find ur10_python_interface)/launch/ur10_gazebo.launch">
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
 
 </launch>

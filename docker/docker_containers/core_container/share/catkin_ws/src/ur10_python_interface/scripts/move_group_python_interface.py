@@ -171,7 +171,9 @@ class MoveGroupPythonInteface(object):
     except rospy.ServiceException as e:
         print("Service call failed: %s"%e)
 
-  def go_to_init_state(self, joint_goal=[-1.601372543965475, -1.3494799772845667, -2.0361130873309534, 0.25178295286581065, 1.6211304664611816, 0.09116100519895554]):
+  def go_to_init_state(self, joint_goal=[-1.601372543965475, -1.3494799772845667, -2.0361130873309534, -1.3006231672108264, 1.5698880420405317, 0.09116100519895554]):
+    # -1.601372543965475, -1.3494799772845667, -2.0361130873309534, 0.25178295286581065, 1.6211304664611816, 0.09116100519895554
+    # -1.601372543965475, -1.3494799772845667, -2.0361130873309534, -1.3006231672108264, 1.5698880420405317, 0.09116100519895554
     # Copy class variables to local variables to make the web tutorials more clear.
     # In practice, you should use the class variables directly unless you have a good
     # reason not to.
@@ -187,7 +189,7 @@ class MoveGroupPythonInteface(object):
     # We can get the joint values from the group and adjust some of the values:
     
     #joint_goal = [-1.5999897112701706, -1.3500032022166835, -2.040067726204013, -1.3188300763644802, 1.6184002310830374, 0.09156995930090517]
-   
+    
     # The go command can be called with joint values, poses, or without any
     # parameters if you have already set the pose or joint target for the group
     move_group.go(joint_goal, wait=True)
