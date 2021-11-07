@@ -20,6 +20,7 @@ from std_msgs.msg import Float64MultiArray, String
 from std_srvs.srv import Trigger, TriggerResponse, TriggerRequest
 from sensor_msgs.msg import JointState
 from geometry_msgs.msg import PoseStamped, Quaternion, Pose
+from control_msgs.msg import GripperCommandActionGoal
 from omni_msgs.msg import OmniButtonEvent
 from robotiq_2f_gripper_control.msg import Robotiq2FGripper_robot_input  as inputMsg
 from robotiq_2f_gripper_control.msg import Robotiq2FGripper_robot_output as outputMsg
@@ -90,6 +91,7 @@ class Joy2Target(object):
     self.haptic_error_pub = rospy.Publisher("haptic_error", Float64MultiArray, queue_size=10)
     self.haptic_rpy_pub = rospy.Publisher("haptic_rpy", Float64MultiArray, queue_size=10)
     self.gripper_action_pub = rospy.Publisher('Robotiq2FGripperRobotOutput', outputMsg, queue_size=10)
+    self.gripper_action_sim_pub = rospy.Publisher('/gripper_controller/gripper_cmd/goal', GripperCommandActionGoal, queue_size=10)
     self.ik_result_pub = rospy.Publisher("ik_result", Float64MultiArray, queue_size=10)
     
     # gripper
@@ -285,7 +287,7 @@ class Joy2Target(object):
       
   def haptic_joint_states_callback(self, data):
     self.haptic_joint_states = data.position
-    self.wrist_1_joint = -1.3006231672108264 + self.haptic_joint_states[4] - (-2.418408261237553) + 1
+    self.wrist_1_joint = -1.3006231672108264 + self.haptic_joint_states[4] - (-2.418408261237553) + 0.3
     self.wrist_2_joint = 1.5698880420405317 - (self.haptic_joint_states[3] - (3.1312592896916946))
     self.wrist_3_joint = 0.09116100519895554 - (self.haptic_joint_states[5] - (-3.061161795752593))     
   
@@ -302,12 +304,28 @@ class Joy2Target(object):
 
     # 회색 버튼을 누르면 그리퍼 동작 (잡기 or 놓기)
     if (self.gripper_closed == False) and (data.grey_button == 1) and (data.white_button == 0): # 그리퍼가 열려있는 상태에서 회색 버튼을 누르면 -> 잡기
+      # real
       self.gripper_command.rPR = 255
       #self.gripper_action_pub.publish(self.gripper_command)
+      
+      # sim
+      gripper_action = GripperCommandActionGoal()
+      gripper_action.goal.command.position = 0.38
+      gripper_action.goal.command.max_effort = -1.0
+      self.gripper_action_sim_pub.publish(gripper_action)
+      
       self.gripper_closed = True
     elif (self.gripper_closed == True) and (data.grey_button == 1) and (data.white_button == 0): # 그리퍼가 닫혀있는 상태에서 회색 버튼을 누르면 -> 놓기
+      # real
       self.gripper_command.rPR = 0
       #self.gripper_action_pub.publish(self.gripper_command)
+      
+      # sim
+      gripper_action = GripperCommandActionGoal()
+      gripper_action.goal.command.position = 0.0
+      gripper_action.goal.command.max_effort = -1.0
+      self.gripper_action_sim_pub.publish(gripper_action)
+      
       self.gripper_closed = False
 
   def agent_action_callback(self, data):
