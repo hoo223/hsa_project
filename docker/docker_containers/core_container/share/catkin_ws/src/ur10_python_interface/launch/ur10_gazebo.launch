@@ -4,8 +4,8 @@
   <arg name="gui" default="true" doc="Starts gazebo gui" />
   
   <!-- startup simulated world -->
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" default="worlds/empty.world"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch"> 
+    <arg name="world_name" default="$(find ur_gazebo)/worlds/cubes_task.world"/> <!-- $(find ur_gazebo)/worlds/cubes_task.world / worlds/empty.world --> 
     <arg name="paused" value="$(arg paused)"/>
     <arg name="gui" value="$(arg gui)"/>
   </include>
