@@ -68,6 +68,18 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -122,18 +134,6 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -258,34 +258,19 @@ ur10_python_interface_genlisp/fast:
 .PHONY : ur10_python_interface_genlisp/fast
 
 # Convenience name for target.
-ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/rule
+ur10_python_interface/CMakeFiles/bond_generate_messages_nodejs.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/bond_generate_messages_nodejs.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/bond_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-ur10_python_interface_geneus: ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/rule
+bond_generate_messages_nodejs: ur10_python_interface/CMakeFiles/bond_generate_messages_nodejs.dir/rule
 
-.PHONY : ur10_python_interface_geneus
+.PHONY : bond_generate_messages_nodejs
 
 # fast build rule for target.
-ur10_python_interface_geneus/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/build
-.PHONY : ur10_python_interface_geneus/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_eus.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_eus.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-ur10_python_interface_generate_messages_eus: ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_eus.dir/rule
-
-.PHONY : ur10_python_interface_generate_messages_eus
-
-# fast build rule for target.
-ur10_python_interface_generate_messages_eus/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_eus.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_eus.dir/build
-.PHONY : ur10_python_interface_generate_messages_eus/fast
+bond_generate_messages_nodejs/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/bond_generate_messages_nodejs.dir/build.make ur10_python_interface/CMakeFiles/bond_generate_messages_nodejs.dir/build
+.PHONY : bond_generate_messages_nodejs/fast
 
 # Convenience name for target.
 ur10_python_interface/CMakeFiles/nodelet_generate_messages_py.dir/rule:
@@ -303,19 +288,49 @@ nodelet_generate_messages_py/fast:
 .PHONY : nodelet_generate_messages_py/fast
 
 # Convenience name for target.
-ur10_python_interface/CMakeFiles/bond_generate_messages_nodejs.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/bond_generate_messages_nodejs.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/bond_generate_messages_nodejs.dir/rule
+ur10_python_interface/CMakeFiles/bond_generate_messages_eus.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/bond_generate_messages_eus.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/bond_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-bond_generate_messages_nodejs: ur10_python_interface/CMakeFiles/bond_generate_messages_nodejs.dir/rule
+bond_generate_messages_eus: ur10_python_interface/CMakeFiles/bond_generate_messages_eus.dir/rule
 
-.PHONY : bond_generate_messages_nodejs
+.PHONY : bond_generate_messages_eus
 
 # fast build rule for target.
-bond_generate_messages_nodejs/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/bond_generate_messages_nodejs.dir/build.make ur10_python_interface/CMakeFiles/bond_generate_messages_nodejs.dir/build
-.PHONY : bond_generate_messages_nodejs/fast
+bond_generate_messages_eus/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/bond_generate_messages_eus.dir/build.make ur10_python_interface/CMakeFiles/bond_generate_messages_eus.dir/build
+.PHONY : bond_generate_messages_eus/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+graph_msgs_generate_messages_nodejs: ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : graph_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+graph_msgs_generate_messages_nodejs/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build.make ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build
+.PHONY : graph_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/nodelet_generate_messages_lisp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/nodelet_generate_messages_lisp.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/nodelet_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+nodelet_generate_messages_lisp: ur10_python_interface/CMakeFiles/nodelet_generate_messages_lisp.dir/rule
+
+.PHONY : nodelet_generate_messages_lisp
+
+# fast build rule for target.
+nodelet_generate_messages_lisp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/nodelet_generate_messages_lisp.dir/build.make ur10_python_interface/CMakeFiles/nodelet_generate_messages_lisp.dir/build
+.PHONY : nodelet_generate_messages_lisp/fast
 
 # Convenience name for target.
 ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_lisp.dir/rule:
@@ -331,6 +346,21 @@ graph_msgs_generate_messages_lisp: ur10_python_interface/CMakeFiles/graph_msgs_g
 graph_msgs_generate_messages_lisp/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build.make ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build
 .PHONY : graph_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
+
+# Convenience name for target.
+moveit_ros_manipulation_gencfg: ur10_python_interface/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
+
+.PHONY : moveit_ros_manipulation_gencfg
+
+# fast build rule for target.
+moveit_ros_manipulation_gencfg/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build.make ur10_python_interface/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build
+.PHONY : moveit_ros_manipulation_gencfg/fast
 
 # Convenience name for target.
 ur10_python_interface/CMakeFiles/nodelet_generate_messages_eus.dir/rule:
@@ -378,109 +408,34 @@ graph_msgs_generate_messages_eus/fast:
 .PHONY : graph_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/rule
+ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/rule
 
 # Convenience name for target.
-ur10_python_interface_gencpp: ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/rule
+bond_generate_messages_py: ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/rule
 
-.PHONY : ur10_python_interface_gencpp
+.PHONY : bond_generate_messages_py
 
 # fast build rule for target.
-ur10_python_interface_gencpp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/build
-.PHONY : ur10_python_interface_gencpp/fast
+bond_generate_messages_py/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/build.make ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/build
+.PHONY : bond_generate_messages_py/fast
 
 # Convenience name for target.
-ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
+ur10_python_interface/CMakeFiles/nodelet_generate_messages_cpp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-topic_tools_generate_messages_cpp: ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
+nodelet_generate_messages_cpp: ur10_python_interface/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
 
-.PHONY : topic_tools_generate_messages_cpp
+.PHONY : nodelet_generate_messages_cpp
 
 # fast build rule for target.
-topic_tools_generate_messages_cpp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/build.make ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/build
-.PHONY : topic_tools_generate_messages_cpp/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/std_srvs_generate_messages_py.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_py: ur10_python_interface/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-
-.PHONY : std_srvs_generate_messages_py
-
-# fast build rule for target.
-std_srvs_generate_messages_py/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/std_srvs_generate_messages_py.dir/build.make ur10_python_interface/CMakeFiles/std_srvs_generate_messages_py.dir/build
-.PHONY : std_srvs_generate_messages_py/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-ur10_python_interface_generate_messages_lisp: ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp.dir/rule
-
-.PHONY : ur10_python_interface_generate_messages_lisp
-
-# fast build rule for target.
-ur10_python_interface_generate_messages_lisp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp.dir/build
-.PHONY : ur10_python_interface_generate_messages_lisp/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/bond_generate_messages_cpp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/bond_generate_messages_cpp.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/bond_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_cpp: ur10_python_interface/CMakeFiles/bond_generate_messages_cpp.dir/rule
-
-.PHONY : bond_generate_messages_cpp
-
-# fast build rule for target.
-bond_generate_messages_cpp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/bond_generate_messages_cpp.dir/build.make ur10_python_interface/CMakeFiles/bond_generate_messages_cpp.dir/build
-.PHONY : bond_generate_messages_cpp/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/std_srvs_generate_messages_eus.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_eus: ur10_python_interface/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-
-.PHONY : std_srvs_generate_messages_eus
-
-# fast build rule for target.
-std_srvs_generate_messages_eus/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make ur10_python_interface/CMakeFiles/std_srvs_generate_messages_eus.dir/build
-.PHONY : std_srvs_generate_messages_eus/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-pcl_msgs_generate_messages_py: ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule
-
-.PHONY : pcl_msgs_generate_messages_py
-
-# fast build rule for target.
-pcl_msgs_generate_messages_py/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_py.dir/build.make ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_py.dir/build
-.PHONY : pcl_msgs_generate_messages_py/fast
+nodelet_generate_messages_cpp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/nodelet_generate_messages_cpp.dir/build.make ur10_python_interface/CMakeFiles/nodelet_generate_messages_cpp.dir/build
+.PHONY : nodelet_generate_messages_cpp/fast
 
 # Convenience name for target.
 ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_cpp.dir/rule:
@@ -496,6 +451,66 @@ graph_msgs_generate_messages_cpp: ur10_python_interface/CMakeFiles/graph_msgs_ge
 graph_msgs_generate_messages_cpp/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_cpp.dir/build.make ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_cpp.dir/build
 .PHONY : graph_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/bond_generate_messages_lisp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/bond_generate_messages_lisp.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/bond_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+bond_generate_messages_lisp: ur10_python_interface/CMakeFiles/bond_generate_messages_lisp.dir/rule
+
+.PHONY : bond_generate_messages_lisp
+
+# fast build rule for target.
+bond_generate_messages_lisp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/bond_generate_messages_lisp.dir/build.make ur10_python_interface/CMakeFiles/bond_generate_messages_lisp.dir/build
+.PHONY : bond_generate_messages_lisp/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+topic_tools_generate_messages_lisp: ur10_python_interface/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
+
+.PHONY : topic_tools_generate_messages_lisp
+
+# fast build rule for target.
+topic_tools_generate_messages_lisp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/topic_tools_generate_messages_lisp.dir/build.make ur10_python_interface/CMakeFiles/topic_tools_generate_messages_lisp.dir/build
+.PHONY : topic_tools_generate_messages_lisp/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/nodelet_topic_tools_gencfg.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/nodelet_topic_tools_gencfg.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/nodelet_topic_tools_gencfg.dir/rule
+
+# Convenience name for target.
+nodelet_topic_tools_gencfg: ur10_python_interface/CMakeFiles/nodelet_topic_tools_gencfg.dir/rule
+
+.PHONY : nodelet_topic_tools_gencfg
+
+# fast build rule for target.
+nodelet_topic_tools_gencfg/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/nodelet_topic_tools_gencfg.dir/build.make ur10_python_interface/CMakeFiles/nodelet_topic_tools_gencfg.dir/build
+.PHONY : nodelet_topic_tools_gencfg/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_eus.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_eus.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+ur10_python_interface_generate_messages_eus: ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_eus.dir/rule
+
+.PHONY : ur10_python_interface_generate_messages_eus
+
+# fast build rule for target.
+ur10_python_interface_generate_messages_eus/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_eus.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_eus.dir/build
+.PHONY : ur10_python_interface_generate_messages_eus/fast
 
 # Convenience name for target.
 ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_py.dir/rule:
@@ -541,186 +556,6 @@ _ur10_python_interface_generate_messages_check_deps_Ellipsoid3: ur10_python_inte
 _ur10_python_interface_generate_messages_check_deps_Ellipsoid3/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/_ur10_python_interface_generate_messages_check_deps_Ellipsoid3.dir/build.make ur10_python_interface/CMakeFiles/_ur10_python_interface_generate_messages_check_deps_Ellipsoid3.dir/build
 .PHONY : _ur10_python_interface_generate_messages_check_deps_Ellipsoid3/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/nodelet_generate_messages_lisp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/nodelet_generate_messages_lisp.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/nodelet_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-nodelet_generate_messages_lisp: ur10_python_interface/CMakeFiles/nodelet_generate_messages_lisp.dir/rule
-
-.PHONY : nodelet_generate_messages_lisp
-
-# fast build rule for target.
-nodelet_generate_messages_lisp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/nodelet_generate_messages_lisp.dir/build.make ur10_python_interface/CMakeFiles/nodelet_generate_messages_lisp.dir/build
-.PHONY : nodelet_generate_messages_lisp/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-graph_msgs_generate_messages_nodejs: ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : graph_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-graph_msgs_generate_messages_nodejs/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build.make ur10_python_interface/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build
-.PHONY : graph_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/bond_generate_messages_eus.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/bond_generate_messages_eus.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/bond_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_eus: ur10_python_interface/CMakeFiles/bond_generate_messages_eus.dir/rule
-
-.PHONY : bond_generate_messages_eus
-
-# fast build rule for target.
-bond_generate_messages_eus/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/bond_generate_messages_eus.dir/build.make ur10_python_interface/CMakeFiles/bond_generate_messages_eus.dir/build
-.PHONY : bond_generate_messages_eus/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
-
-# Convenience name for target.
-moveit_ros_manipulation_gencfg: ur10_python_interface/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
-
-.PHONY : moveit_ros_manipulation_gencfg
-
-# fast build rule for target.
-moveit_ros_manipulation_gencfg/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build.make ur10_python_interface/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build
-.PHONY : moveit_ros_manipulation_gencfg/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_cpp: ur10_python_interface/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
-
-.PHONY : std_srvs_generate_messages_cpp
-
-# fast build rule for target.
-std_srvs_generate_messages_cpp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make ur10_python_interface/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
-.PHONY : std_srvs_generate_messages_cpp/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/bond_generate_messages_lisp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/bond_generate_messages_lisp.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/bond_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_lisp: ur10_python_interface/CMakeFiles/bond_generate_messages_lisp.dir/rule
-
-.PHONY : bond_generate_messages_lisp
-
-# fast build rule for target.
-bond_generate_messages_lisp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/bond_generate_messages_lisp.dir/build.make ur10_python_interface/CMakeFiles/bond_generate_messages_lisp.dir/build
-.PHONY : bond_generate_messages_lisp/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-topic_tools_generate_messages_lisp: ur10_python_interface/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
-
-.PHONY : topic_tools_generate_messages_lisp
-
-# fast build rule for target.
-topic_tools_generate_messages_lisp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/topic_tools_generate_messages_lisp.dir/build.make ur10_python_interface/CMakeFiles/topic_tools_generate_messages_lisp.dir/build
-.PHONY : topic_tools_generate_messages_lisp/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_lisp: ur10_python_interface/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-
-.PHONY : std_srvs_generate_messages_lisp
-
-# fast build rule for target.
-std_srvs_generate_messages_lisp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make ur10_python_interface/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
-.PHONY : std_srvs_generate_messages_lisp/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/nodelet_topic_tools_gencfg.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/nodelet_topic_tools_gencfg.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/nodelet_topic_tools_gencfg.dir/rule
-
-# Convenience name for target.
-nodelet_topic_tools_gencfg: ur10_python_interface/CMakeFiles/nodelet_topic_tools_gencfg.dir/rule
-
-.PHONY : nodelet_topic_tools_gencfg
-
-# fast build rule for target.
-nodelet_topic_tools_gencfg/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/nodelet_topic_tools_gencfg.dir/build.make ur10_python_interface/CMakeFiles/nodelet_topic_tools_gencfg.dir/build
-.PHONY : nodelet_topic_tools_gencfg/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/nodelet_generate_messages_cpp.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-nodelet_generate_messages_cpp: ur10_python_interface/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
-
-.PHONY : nodelet_generate_messages_cpp
-
-# fast build rule for target.
-nodelet_generate_messages_cpp/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/nodelet_generate_messages_cpp.dir/build.make ur10_python_interface/CMakeFiles/nodelet_generate_messages_cpp.dir/build
-.PHONY : nodelet_generate_messages_cpp/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_nodejs: ur10_python_interface/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_srvs_generate_messages_nodejs
-
-# fast build rule for target.
-std_srvs_generate_messages_nodejs/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make ur10_python_interface/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
-.PHONY : std_srvs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/rule:
-	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/rule
-.PHONY : ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_py: ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/rule
-
-.PHONY : bond_generate_messages_py
-
-# fast build rule for target.
-bond_generate_messages_py/fast:
-	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/build.make ur10_python_interface/CMakeFiles/bond_generate_messages_py.dir/build
-.PHONY : bond_generate_messages_py/fast
 
 # Convenience name for target.
 ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/rule:
@@ -781,6 +616,21 @@ pcl_msgs_generate_messages_nodejs: ur10_python_interface/CMakeFiles/pcl_msgs_gen
 pcl_msgs_generate_messages_nodejs/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/build.make ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/build
 .PHONY : pcl_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+pcl_msgs_generate_messages_py: ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule
+
+.PHONY : pcl_msgs_generate_messages_py
+
+# fast build rule for target.
+pcl_msgs_generate_messages_py/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_py.dir/build.make ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_py.dir/build
+.PHONY : pcl_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 ur10_python_interface/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/rule:
@@ -872,6 +722,81 @@ ur10_python_interface_generate_messages/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages.dir/build
 .PHONY : ur10_python_interface_generate_messages/fast
 
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+topic_tools_generate_messages_cpp: ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
+
+.PHONY : topic_tools_generate_messages_cpp
+
+# fast build rule for target.
+topic_tools_generate_messages_cpp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/build.make ur10_python_interface/CMakeFiles/topic_tools_generate_messages_cpp.dir/build
+.PHONY : topic_tools_generate_messages_cpp/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/rule
+
+# Convenience name for target.
+ur10_python_interface_gencpp: ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/rule
+
+.PHONY : ur10_python_interface_gencpp
+
+# fast build rule for target.
+ur10_python_interface_gencpp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_gencpp.dir/build
+.PHONY : ur10_python_interface_gencpp/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/bond_generate_messages_cpp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/bond_generate_messages_cpp.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/bond_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+bond_generate_messages_cpp: ur10_python_interface/CMakeFiles/bond_generate_messages_cpp.dir/rule
+
+.PHONY : bond_generate_messages_cpp
+
+# fast build rule for target.
+bond_generate_messages_cpp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/bond_generate_messages_cpp.dir/build.make ur10_python_interface/CMakeFiles/bond_generate_messages_cpp.dir/build
+.PHONY : bond_generate_messages_cpp/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+ur10_python_interface_generate_messages_lisp: ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp.dir/rule
+
+.PHONY : ur10_python_interface_generate_messages_lisp
+
+# fast build rule for target.
+ur10_python_interface_generate_messages_lisp/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp.dir/build
+.PHONY : ur10_python_interface_generate_messages_lisp/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/rule
+
+# Convenience name for target.
+ur10_python_interface_geneus: ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/rule
+
+.PHONY : ur10_python_interface_geneus
+
+# fast build rule for target.
+ur10_python_interface_geneus/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/build
+.PHONY : ur10_python_interface_geneus/fast
+
 src/ik_publisher.o: src/ik_publisher.cpp.o
 
 .PHONY : src/ik_publisher.o
@@ -906,6 +831,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
+	@echo "... install/local"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
@@ -916,49 +842,43 @@ help:
 	@echo "... ur10_python_interface_gennodejs"
 	@echo "... ur10_python_interface_generate_messages_nodejs"
 	@echo "... ur10_python_interface_genlisp"
-	@echo "... ur10_python_interface_geneus"
-	@echo "... ur10_python_interface_generate_messages_eus"
-	@echo "... nodelet_generate_messages_py"
 	@echo "... bond_generate_messages_nodejs"
+	@echo "... nodelet_generate_messages_py"
+	@echo "... bond_generate_messages_eus"
+	@echo "... graph_msgs_generate_messages_nodejs"
+	@echo "... nodelet_generate_messages_lisp"
 	@echo "... install"
 	@echo "... graph_msgs_generate_messages_lisp"
+	@echo "... moveit_ros_manipulation_gencfg"
 	@echo "... nodelet_generate_messages_eus"
 	@echo "... ur10_python_interface_generate_messages_cpp"
 	@echo "... graph_msgs_generate_messages_eus"
-	@echo "... ur10_python_interface_gencpp"
-	@echo "... topic_tools_generate_messages_cpp"
-	@echo "... std_srvs_generate_messages_py"
-	@echo "... ur10_python_interface_generate_messages_lisp"
-	@echo "... bond_generate_messages_cpp"
-	@echo "... install/local"
-	@echo "... std_srvs_generate_messages_eus"
-	@echo "... pcl_msgs_generate_messages_py"
+	@echo "... bond_generate_messages_py"
+	@echo "... nodelet_generate_messages_cpp"
 	@echo "... graph_msgs_generate_messages_cpp"
+	@echo "... bond_generate_messages_lisp"
+	@echo "... topic_tools_generate_messages_lisp"
+	@echo "... nodelet_topic_tools_gencfg"
+	@echo "... ur10_python_interface_generate_messages_eus"
 	@echo "... graph_msgs_generate_messages_py"
 	@echo "... _ur10_python_interface_generate_messages_check_deps_SolveIk"
 	@echo "... _ur10_python_interface_generate_messages_check_deps_Ellipsoid3"
-	@echo "... nodelet_generate_messages_lisp"
-	@echo "... graph_msgs_generate_messages_nodejs"
-	@echo "... bond_generate_messages_eus"
-	@echo "... moveit_ros_manipulation_gencfg"
-	@echo "... std_srvs_generate_messages_cpp"
-	@echo "... bond_generate_messages_lisp"
-	@echo "... topic_tools_generate_messages_lisp"
-	@echo "... std_srvs_generate_messages_lisp"
-	@echo "... nodelet_topic_tools_gencfg"
-	@echo "... nodelet_generate_messages_cpp"
-	@echo "... std_srvs_generate_messages_nodejs"
-	@echo "... bond_generate_messages_py"
 	@echo "... pcl_msgs_generate_messages_cpp"
 	@echo "... pcl_msgs_generate_messages_eus"
 	@echo "... nodelet_generate_messages_nodejs"
 	@echo "... pcl_msgs_generate_messages_nodejs"
+	@echo "... pcl_msgs_generate_messages_py"
 	@echo "... pcl_msgs_generate_messages_lisp"
 	@echo "... topic_tools_generate_messages_eus"
 	@echo "... pcl_ros_gencfg"
 	@echo "... topic_tools_generate_messages_nodejs"
 	@echo "... topic_tools_generate_messages_py"
 	@echo "... ur10_python_interface_generate_messages"
+	@echo "... topic_tools_generate_messages_cpp"
+	@echo "... ur10_python_interface_gencpp"
+	@echo "... bond_generate_messages_cpp"
+	@echo "... ur10_python_interface_generate_messages_lisp"
+	@echo "... ur10_python_interface_geneus"
 	@echo "... src/ik_publisher.o"
 	@echo "... src/ik_publisher.i"
 	@echo "... src/ik_publisher.s"

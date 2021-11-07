@@ -116,7 +116,7 @@ if(NOT "include;/usr/include " STREQUAL " ")
   endforeach()
 endif()
 
-set(libraries "ur3_kin;ur5_kin;ur10_kin;ur3_moveit_plugin;ur5_moveit_plugin;ur10_moveit_plugin;/usr/lib/x86_64-linux-gnu/libboost_system.so")
+set(libraries "ur10_kin;ur10_moveit_plugin;/usr/lib/x86_64-linux-gnu/libboost_system.so")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")
