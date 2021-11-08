@@ -438,6 +438,8 @@
 "Assets/Scripts/UR10ActionSubsrciber.cs"
 "Assets/Scripts/UR10StatePrinter.cs"
 "Assets/Scripts/UR10StatePublisher.cs"
+"Assets/Scripts/UR10_Gripper/UR10GripperActionSubsrciber.cs"
+"Assets/Scripts/UR10_Gripper/UR10GripperStatePublisher.cs"
 -langversion:8.0
 
 /deterministic
