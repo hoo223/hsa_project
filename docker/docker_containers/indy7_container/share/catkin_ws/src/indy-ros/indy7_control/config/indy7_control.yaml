@@ -20,17 +20,17 @@ indy7_controller:
     - joint5
   gains: &gains
     joint0:
-      {p: 5.0, i: 1, d:  1.0, i_clamp: 1}
+      {p: 10.0, i: 1, d:  1.0, i_clamp: 1}
     joint1:
-      {p: 5.0, i: 1, d:  1.0, i_clamp: 1}
+      {p: 10.0, i: 1, d:  1.0, i_clamp: 1}
     joint2:
-      {p: 5.0, i: 1, d:  1.0, i_clamp: 1}
+      {p: 10.0, i: 1, d:  1.0, i_clamp: 1}
     joint3:
-      {p: 5.0, i: 1, d:  1.0, i_clamp: 1}
+      {p: 10.0, i: 1, d:  1.0, i_clamp: 1}
     joint4:
-      {p: 5.0, i: 1, d:  1.0, i_clamp: 1}
+      {p: 10.0, i: 1, d:  1.0, i_clamp: 1}
     joint5:
-      {p: 5.0, i: 1, d:  1.0, i_clamp: 1}
+      {p: 10.0, i: 1, d:  1.0, i_clamp: 1}
 
 arm_controller:
   type: velocity_controllers/JointTrajectoryController

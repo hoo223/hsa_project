@@ -75,8 +75,8 @@ public:
     current_joint_values.resize(6);
   
     // subscriber
-    arm_state_sub = n.subscribe<sensor_msgs::JointState>("/joint_states", 10, boost::bind(&IK_solver::jointStateCallback, this, _1));
-    //target_pose_sub = n.subscribe<geometry_msgs::Pose>("/target_pose", 10, boost::bind(&IK_solver::targetPoseCallback, this, _1));
+    arm_state_sub = n.subscribe<sensor_msgs::JointState>(prefix+"/joint_states", 10, boost::bind(&IK_solver::jointStateCallback, this, _1));
+    //target_pose_sub = n.subscribe<geometry_msgs::Pose>(prefix+"/target_pose", 10, boost::bind(&IK_solver::targetPoseCallback, this, _1));
     // publisher
     m_index_pub = n.advertise<std_msgs::Float64>("m_index", 10); // manipulability index publisher
     eigen_value_pub = n.advertise<std_msgs::Float64MultiArray>("eigen_value", 10); // target pose ik result publisher
@@ -171,9 +171,11 @@ int main(int argc, char** argv)
   ros::init(argc, argv, "ik_publisher", ros::init_options::NoRosout);
   ros::NodeHandle n;
 
-  std::string prefix = "";
-  if (argc > 1)
+  std::string prefix = "/"; // / 꼭 넣기 
+  if (argc > 1){
     prefix += argv[1];
+  }
+    
 
   ros::AsyncSpinner spinner(1);
   spinner.start();

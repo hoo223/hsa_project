@@ -53,15 +53,15 @@ class TeleopController(object):
     self.teleop_state = 'stop'
 
     # subscriber
-    self.target_joint_sub = rospy.Subscriber('/ik_result', Float64MultiArray, self.target_joint_callback)
-    self.current_joint_sub = rospy.Subscriber('/joint_states', JointState, self.current_joint_callback)
+    self.target_joint_sub = rospy.Subscriber(self.prefix+'/ik_result', Float64MultiArray, self.target_joint_callback)
+    self.current_joint_sub = rospy.Subscriber(self.prefix+'/joint_states', JointState, self.current_joint_callback)
     #self.teleop_state_sub = rospy.Subscriber('/teleop_state', String, self.teleop_state_callback)
 
     # publisher
     if env and not rsa:
-      velocity_name = prefix+'/human_action'
+      velocity_name = self.prefix+'/human_action'
     else:
-      velocity_name = prefix+'/joint_group_vel_controller/command'
+      velocity_name = self.prefix+'/joint_group_vel_controller/command'
     self.vel_pub = rospy.Publisher(velocity_name, Float64MultiArray, queue_size=10)
 
   def control_loop(self):

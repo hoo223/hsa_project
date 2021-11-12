@@ -172,7 +172,7 @@ class MoveGroupPythonInteface(object):
     except rospy.ServiceException as e:
         print("Service call failed: %s"%e)
 
-  def go_to_init_state(self, joint_goal=[-0.001196477083202474, -0.5423942919774785, -1.9986567049190835, -0.0015937265089354113, 1.007880437164732, 0.003021437168558627]):
+  def go_to_init_state(self, joint_goal=[0.06107664080837072, 0.48862247359385425, 1.7704238181349403, 0.001150280775228829, -0.6577872681809982, -0.0014432440693443738]):
     # Copy class variables to local variables to make the web tutorials more clear.
     # In practice, you should use the class variables directly unless you have a good
     # reason not to.
