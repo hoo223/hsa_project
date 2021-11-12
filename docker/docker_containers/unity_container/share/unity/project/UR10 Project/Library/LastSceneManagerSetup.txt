@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/UR10_Gripper.unity
+- path: Assets/Scenes/Indy7.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
