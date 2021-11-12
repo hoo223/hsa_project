@@ -1,8 +1,0 @@
-prefix=/root/share/catkin_ws/devel
-
-Name: moveit_simple_controller_manager
-Description: Description of moveit_simple_controller_manager
-Version: 1.1.5
-Cflags: -I/root/share/catkin_ws/src/moveit/moveit_plugins/moveit_simple_controller_manager/include
-Libs: -L${prefix}/lib -lmoveit_simple_controller_manager
-Requires: actionlib control_msgs moveit_core roscpp

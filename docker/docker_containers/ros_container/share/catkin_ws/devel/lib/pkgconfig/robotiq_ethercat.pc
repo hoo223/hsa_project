@@ -1,8 +1,0 @@
-prefix=/root/share/catkin_ws/devel
-
-Name: robotiq_ethercat
-Description: Description of robotiq_ethercat
-Version: 1.0.0
-Cflags: -I/root/share/catkin_ws/src/robotiq/robotiq_ethercat/include
-Libs: -L${prefix}/lib -lrobotiq_ethercat
-Requires: soem roscpp

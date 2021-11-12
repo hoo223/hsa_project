@@ -1,8 +1,0 @@
-prefix=/root/share/catkin_ws/devel
-
-Name: ur_driver
-Description: Description of ur_driver
-Version: 1.2.7
-Cflags: -I/root/share/catkin_ws/devel/include
-Libs: -L${prefix}/lib 
-Requires: dynamic_reconfigure

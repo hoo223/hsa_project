@@ -1,8 +1,0 @@
-prefix=/root/share/catkin_ws/devel
-
-Name: unity_ros_control
-Description: Description of unity_ros_control
-Version: 0.0.0
-Cflags: -I/root/share/catkin_ws/src/unity/unity_ros_control/include
-Libs: -L${prefix}/lib -lunity_ros_control
-Requires: controller_manager hardware_interface roscpp rospy std_msgs

@@ -1,2 +1,0 @@
-from residual_shared_autonomy.residual_wrapper import ResidualWrapper
-from residual_shared_autonomy.base_actors import *
