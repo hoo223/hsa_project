@@ -5,7 +5,7 @@
     <arg name="gui" default="true" doc="Starts gazebo gui" />
     <arg name="sim" default="true" />
     <arg name="debug" default="false"/>
-    <arg name="gripper" default="true"/>
+    <arg name="gripper" default="false"/>
 
     <!-- Remap follow_joint_trajectory -->
     <remap if="$(arg sim)" from="/follow_joint_trajectory" to="/arm_controller/follow_joint_trajectory"/>

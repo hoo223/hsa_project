@@ -15,8 +15,7 @@ from numpy.linalg import inv, det, svd, eig
 ## ros library
 import rospy
 from tf.transformations import *
-from std_msgs.msg import String
-from std_msgs.msg import Float64MultiArray
+from std_msgs.msg import String, Float64MultiArray, Float64, Bool
 from std_srvs.srv import Trigger, TriggerResponse, TriggerRequest
 from geometry_msgs.msg import PoseStamped, Quaternion, Pose
 from geometry_msgs.msg import Quaternion
@@ -36,6 +35,9 @@ class ModeManager(object):
 
     # subscriber
     joy_sub = rospy.Subscriber('joy_command', Float64MultiArray, self.joy_command_callback)
+    m_index_subscriber = rospy.Subscriber("/m_index", Float64, callback=self.m_index_callback, queue_size=10)
+    eigen_value_subscriber = rospy.Subscriber("/eigen_value", Float64MultiArray, callback=self.eigen_value_callback, queue_size=10)
+    self_collision_subscriber = rospy.Subscriber("self_collision", Bool, callback=self.self_collision_callback, queue_size=10)
 
   def start_teleop(self):
     rospy.wait_for_service(self.prefix+'/start_teleop')
@@ -55,6 +57,36 @@ class ModeManager(object):
   def joy_command_callback(self, data):
     self.joy_command = data.data
     self.button = self.joy_command[6]
+    
+  def m_index_callback(self, data):
+    self.m_index = data.data
+  
+  def eigen_value_callback(self, data):
+    self.eigen_value = data.data
+
+  def self_collision_callback(self, data):
+    self.self_collision = data.data
+    
+  def check_singularity(self):
+    singularity = False
+    
+    m_index = self.m_index
+    e_value = list(self.eigen_value)
+    self_collision = self.self_collision
+
+    e_value.append(m_index)
+    e_value.sort()
+    #print(e_value)
+
+    # penalty for reaching singularity
+    if e_value[0] < 0.03:
+      singularity = True
+    
+    # penalty for self collision
+    if self_collision == True:
+      singularity = True
+      
+    return singularity
 
 
 def main():
@@ -93,6 +125,13 @@ def main():
     elif mm.button == 6.0  and teleop_state == 'start':
       mm.reset_pose()
       print("teleop stop")
+      
+    # # singularity reset
+    # if teleop_state == 'start' and mm.check_singularity:
+    #   mm.reset_pose()
+    #   print("teleop stop")
+    
+      
     rate.sleep()
   print("Finished")
 

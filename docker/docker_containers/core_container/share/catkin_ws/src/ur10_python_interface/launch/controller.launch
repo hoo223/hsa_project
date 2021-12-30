@@ -3,44 +3,49 @@
   <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
   <arg name="gripper" default="false"/>
   <arg name="display" default="false"/>
+  <arg name="robot_name" default="unity"/>
 
+  <param name="/$(arg robot_name)/with_gripper" value="$(arg gripper)" type="bool"/>
   
-  <group unless="$(arg gripper)">
-    <!-- send robot urdf to param server -->
-    <include file="$(find ur_description)/launch/ur10_upload.launch">
-      <arg name="limited" value="$(arg limited)"/>
-      <arg name="transmission_hw_interface" value="hardware_interface/VelocityJointInterface"/>
-    </include>
+  <group ns="$(arg robot_name)">
+    <group unless="$(arg gripper)">
+      <!-- send robot urdf to param server -->
+      <include file="$(find ur_description)/launch/ur10_upload.launch">
+        <arg name="limited" value="$(arg limited)"/>
+        <arg name="transmission_hw_interface" value="hardware_interface/VelocityJointInterface"/>
+      </include>
 
-    <include file="$(find ur_gazebo)/launch/controller_utils.launch"/>
-    <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur10.yaml" command="load"/>
+      <include file="$(find ur_gazebo)/launch/controller_utils.launch"/>
+      <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur10.yaml" command="load"/>
 
-    <!-- start this controller -->
-    <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller" respawn="false" output="screen"/>
+      <!-- start this controller -->
+      <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller" respawn="false" output="screen"/>
 
-    <!-- load other controllers -->
-    <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" args="load joint_group_vel_controller" respawn="false" output="screen"/>
-  </group>
+      <!-- load other controllers -->
+      <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" args="load joint_group_vel_controller" respawn="false" output="screen"/>
+    </group>
 
-  <group if="$(arg gripper)">
-    <!-- send robot urdf to param server -->
-    <include file="$(find ur_description)/launch/display_with_gripper_85.launch">
-      <arg name="display" value="$(arg display)"/>
-      <arg name="transmission_hw_interface" value="hardware_interface/VelocityJointInterface"/>
-    </include>
+    <group if="$(arg gripper)">
+      <!-- send robot urdf to param server -->
+      <include file="$(find ur_description)/launch/display_with_gripper_85.launch">
+        <arg name="display" value="$(arg display)"/>
+        <arg name="transmission_hw_interface" value="hardware_interface/VelocityJointInterface"/>
+        <arg name="robot_name" value="$(arg robot_name)"/>
+      </include>
 
-    <include file="$(find ur_gazebo)/launch/controller_utils.launch">
-      <arg name="gripper" value="$(arg gripper)"/>
-    </include>
-    <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur10.yaml" command="load"/>
-    <rosparam file="$(find robotiq_control)/config/gripper_85_controller.yaml" command="load"/>
+      <include file="$(find ur_gazebo)/launch/controller_utils.launch">
+        <arg name="gripper" value="$(arg gripper)"/>
+      </include>
+      <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur10.yaml" command="load"/>
+      <rosparam file="$(find robotiq_control)/config/gripper_85_controller.yaml" command="load"/>
 
-    <!-- start this controller -->
-    <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller" respawn="false" output="screen"/>
-    <node name="gripper_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn gripper_controller" respawn="false" output="screen"/>
+      <!-- start this controller -->
+      <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller" respawn="false" output="screen"/>
+      <node name="gripper_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn gripper_controller" respawn="false" output="screen"/>
 
-    <!-- load other controllers -->
-    <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" args="load joint_group_vel_controller" respawn="false" output="screen"/>
+      <!-- load other controllers -->
+      <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" args="load joint_group_vel_controller" respawn="false" output="screen"/>
 
+    </group>
   </group>
 </launch>

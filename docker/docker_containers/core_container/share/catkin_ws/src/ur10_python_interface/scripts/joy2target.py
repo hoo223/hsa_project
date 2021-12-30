@@ -15,7 +15,7 @@ import rospy
 import ros
 from rospy.service import ServiceException
 import tf
-from tf.transformations import euler_from_quaternion, quaternion_from_euler
+from tf.transformations import euler_from_quaternion, quaternion_from_euler, quaternion_multiply
 from std_msgs.msg import Float64MultiArray, String
 from std_srvs.srv import Trigger, TriggerResponse, TriggerRequest
 from sensor_msgs.msg import JointState
@@ -25,6 +25,7 @@ from omni_msgs.msg import OmniButtonEvent
 from robotiq_2f_gripper_control.msg import Robotiq2FGripper_robot_input  as inputMsg
 from robotiq_2f_gripper_control.msg import Robotiq2FGripper_robot_output as outputMsg
 from ur10_python_interface.srv import SolveIk
+
 #from cv_bridge import CvBridge
 
 ## custom library
@@ -46,13 +47,15 @@ class Joy2Target(object):
     self.env = env
     self.rsa = rsa
     
-    # gripper
+    # param
     self.with_gripper = rospy.get_param('with_gripper')
+    self.unity = rospy.get_param('unity')
 
     # teleoperation variable
     self.pre_button = None
     self.teleop_state = "stop"
     self.joy_command = np.zeros(7)
+    self.joy_command[6] = -0.1
     self.speed_gain = 0.00024 # for input scale
     self.speed_level = 3 # 로봇 움직임 속도 - 1~10 단계
 
@@ -106,8 +109,13 @@ class Joy2Target(object):
     self.listener = tf.TransformListener()
     
     # UR10 initial pose
-    #self.init_pose = [0.17480582, 0.50746106, 0.69538257, 0.09267109, 0.00379392, 1.59158403]
-    self.init_pose = [1.80319956e-01, 5.34257144e-01, 4.97614467e-01, -3.11453126e+00,  2.68726833e-03, -1.19986748e-01]
+    
+    if self.unity:
+      self.init_pose = [0.1804118,   0.53400565 , 0.4968567 ,  0.05515337 , 1.54491309 , 1.50427668] # for unity
+    else:
+      #self.init_pose = [0.17480582, 0.50746106, 0.69538257, 0.09267109, 0.00379392, 1.59158403]
+      self.init_pose = [0.18030333 , 0.53379531 , 0.49639836 , 0.11906708 , 1.54552132 , 1.56969254] # for gazebo
+    
     self.init_joint_states = [-1.601372543965475, -1.3494799772845667, -2.0361130873309534, -1.3006231672108264, 1.5698880420405317, 0.09116100519895554]
     self.current_joints = copy.deepcopy(self.init_joint_states)
 
@@ -162,9 +170,16 @@ class Joy2Target(object):
         yaw_input = 0#-self.random_action[5]
       else: # human teleoperation
         # joystick action to input mapping
-        x_input = -command[0]
-        y_input = command[1]
-        z_input = command[2]
+        if self.unity:
+          x_input = command[1]
+          y_input = command[0]
+          z_input = command[2]
+          yaw_input = command[5]
+        else:
+          x_input = -command[0]
+          y_input = command[1]
+          z_input = command[2]
+          yaw_input = -command[5]
         roll_input = pitch_input = 0
         if button == 1:
           roll_input = 1
@@ -174,7 +189,7 @@ class Joy2Target(object):
           pitch_input = 1
         elif button == 3:
           pitch_input = -1
-        yaw_input = -command[5]         
+                 
 
     # change speed
     if button != self.pre_button: # restrict the continuous change
@@ -204,7 +219,7 @@ class Joy2Target(object):
                                       self.target_pose[3], self.target_pose[4], self.target_pose[5]))
 
     q_new = quaternion_from_euler(self.target_pose[3], self.target_pose[4], self.target_pose[5]) # roll, pitch, yaw
-    target_orientation = Quaternion(q_new[0], q_new[1], q_new[2], q_new[3])
+    self.target_orientation = Quaternion(q_new[0], q_new[1], q_new[2], q_new[3])
 
     #Workspace limit
     # # if self.target_pose[0] < X_LOWER:
@@ -225,7 +240,7 @@ class Joy2Target(object):
     ps.position.x = self.target_pose[0]
     ps.position.y = self.target_pose[1]
     ps.position.z = self.target_pose[2]
-    ps.orientation = target_orientation
+    ps.orientation = self.target_orientation
     return ps
 
   def reset_target(self, req):
@@ -271,7 +286,32 @@ class Joy2Target(object):
     # 햅틱 장치 pose 얻기
     self.haptic_pose = data.pose
     
-    # haptic move state = 버튼 두 개를 누르고 있는 동안에만 
+    # q_orig = quaternion_from_euler(0, 0, 0)
+    # q_orig[0] = self.haptic_pose.orientation.x
+    # q_orig[1] = self.haptic_pose.orientation.y
+    # q_orig[2] = self.haptic_pose.orientation.z
+    # q_orig[3] = self.haptic_pose.orientation.w
+    # q_rot = quaternion_from_euler(0, 0, np.pi)
+    # q_new = quaternion_multiply(q_rot, q_orig)
+    # #self.target_orientation =  Quaternion(q_new[0], q_new[1], q_new[2], q_new[3]) # xyz
+    # #self.target_orientation =  Quaternion(q_new[0], q_new[2], q_new[1], q_new[3]) # xzy
+    # #self.target_orientation =  Quaternion(q_new[1], q_new[0], q_new[2], q_new[3]) # yxz
+    # #self.target_orientation =  Quaternion(q_new[2], q_new[1], q_new[0], q_new[3]) # zyx
+    
+    
+    # # Orientation 정보 quaternion -> Euler angle 변환
+    # self.haptic_rpy = euler_from_quaternion(self.xyzw_array(self.haptic_pose.orientation))
+    # if self.verbose:
+    #   rpy = Float64MultiArray()
+    #   rpy.data = self.haptic_rpy
+    #   self.haptic_rpy_pub.publish(rpy)
+    
+    # # target pose의 Euler angle로 mapping 
+    # self.target_pose[3] = -self.haptic_rpy[2] + np.pi + np.pi/2
+    # self.target_pose[4] = -self.haptic_rpy[1] + np.pi/4
+    # #self.target_pose[5] = -self.haptic_rpy[0]
+    
+    # haptic move state = 버튼을 누르고 있는 동안에만 
     if self.haptic_move_state == True:
       x_error = self.haptic_pose.position.x - self.start_haptic_pose.position.x
       y_error = self.haptic_pose.position.y - self.start_haptic_pose.position.y
@@ -357,21 +397,26 @@ def main():
     prefix = '/'+args[1]
   else:
     prefix = ''
+  
+  env_flag = rospy.get_param('gym_env')
+  rsa_flag = rospy.get_param('rsa')
+  rand_agent = rospy.get_param('rand_agent')
 
   rospy.init_node("joy2target_converter", anonymous=True)
-  j2t = Joy2Target(prefix=prefix, random_agent=False, env=False, rsa=False)
+  j2t = Joy2Target(prefix=prefix, random_agent=rand_agent, env=env_flag, rsa=rsa_flag)
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
     if rospy.get_param(prefix+'/teleop_state') == "start": # teleop is running
       # calculate target pose 
       target_pose = j2t.input_conversion()
       j2t.target_pose_pub.publish(target_pose)
-      print("target_pose calculated")
+      #print("target_pose calculated")
       # solve ik
       result = j2t.ik_solver(target_pose)
       if result.success:
         # first 3 joints 
         j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.wrist_1_joint, j2t.wrist_2_joint, j2t.wrist_3_joint]
+                              #result.ik_result.data[3], result.ik_result.data[4], result.ik_result.data[5]] 
         j2t.ik_result_pub.publish(j2t.ik_result)
         j2t.gripper_action_pub.publish(j2t.gripper_command)
       else:

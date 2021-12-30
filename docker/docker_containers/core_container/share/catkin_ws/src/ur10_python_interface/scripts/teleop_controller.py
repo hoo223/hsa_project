@@ -53,14 +53,14 @@ class TeleopController(object):
     self.teleop_state = 'stop'
     
     # gripper
-    self.with_gripper = rospy.get_param('with_gripper')
+    self.with_gripper = False #rospy.get_param('/with_gripper')
 
     # subscriber
-    self.target_joint_sub = rospy.Subscriber('/ik_result', Float64MultiArray, self.target_joint_callback)
+    self.target_joint_sub = rospy.Subscriber(self.prefix+'/ik_result', Float64MultiArray, self.target_joint_callback)
     if self.with_gripper:
-      self.current_joint_sub = rospy.Subscriber('/joint_states', JointState, self.current_joint_with_gripper_callback)
+      self.current_joint_sub = rospy.Subscriber(self.prefix+'/joint_states', JointState, self.current_joint_with_gripper_callback)
     else:
-      self.current_joint_sub = rospy.Subscriber('/joint_states', JointState, self.current_joint_callback)
+      self.current_joint_sub = rospy.Subscriber(self.prefix+'/joint_states', JointState, self.current_joint_callback)
 
     # publisher
     if env and not rsa:

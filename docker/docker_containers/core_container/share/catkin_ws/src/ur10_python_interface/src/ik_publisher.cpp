@@ -81,11 +81,11 @@ public:
       ROS_INFO("Without gripper");
     }
   
-    // subscriber
+    // // subscriber
     if(with_gripper)
-      arm_state_sub = n.subscribe<sensor_msgs::JointState>("/joint_states", 10, boost::bind(&IK_solver::jointStateWithGripperCallback, this, _1));
+      arm_state_sub = n.subscribe<sensor_msgs::JointState>(prefix+"/joint_states", 10, boost::bind(&IK_solver::jointStateWithGripperCallback, this, _1));
     else
-      arm_state_sub = n.subscribe<sensor_msgs::JointState>("/joint_states", 10, boost::bind(&IK_solver::jointStateCallback, this, _1));
+      arm_state_sub = n.subscribe<sensor_msgs::JointState>(prefix+"/joint_states", 10, boost::bind(&IK_solver::jointStateCallback, this, _1));
     //target_pose_sub = n.subscribe<geometry_msgs::Pose>("/target_pose", 10, boost::bind(&IK_solver::targetPoseCallback, this, _1));
     // publisher
     m_index_pub = n.advertise<std_msgs::Float64>("m_index", 10); // manipulability index publisher
@@ -183,7 +183,7 @@ int main(int argc, char** argv)
   ros::init(argc, argv, "ik_publisher", ros::init_options::NoRosout);
   ros::NodeHandle n;
 
-  std::string prefix = "";
+  std::string prefix = "/"; // / 꼭 넣기 
   if (argc > 1)
     prefix += argv[1];
 
@@ -321,6 +321,7 @@ void IK_solver::jointStateCallback(const sensor_msgs::JointStateConstPtr& joint_
 	current_joint_values[3] = joint_state->position[3]; // wrist_1_joint
 	current_joint_values[4] = joint_state->position[4]; // wrist_2_joint
 	current_joint_values[5] = joint_state->position[5]; // wrist_3_joint
+  // ROS_INFO_STREAM("joint1: \n" << current_joint_values[0] << "\n");  
 }
 
 void IK_solver::jointStateWithGripperCallback(const sensor_msgs::JointStateConstPtr& joint_state)

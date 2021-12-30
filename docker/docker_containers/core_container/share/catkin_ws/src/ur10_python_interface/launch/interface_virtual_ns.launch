@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
+    <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+    <arg name="gui" default="true" doc="Starts gazebo gui" />
+    <arg name="sim" default="true" />
+    <arg name="debug" default="false"/>
+    <arg name="gripper" default="false"/>
+    <arg name="robot_name" default="unity"/>
+
+    <!-- Remap follow_joint_trajectory -->
+    <remap if="$(arg sim)" from="/follow_joint_trajectory" to="/$(arg robot_name)/arm_controller/follow_joint_trajectory"/>
+    <remap unless="$(arg sim)" from="/follow_joint_trajectory" to="/$(arg robot_name)/scaled_pos_joint_traj_controller/follow_joint_trajectory"/>
+
+    <group ns="$(arg robot_name)">
+        <group unless="$(arg gripper)">
+            <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
+            <include file="$(find ur10_moveit_config)/launch/move_group.launch">
+                <arg name="allow_trajectory_execution" value="true"/>
+                <arg name="fake_execution" value="false"/>
+                <arg name="info" value="true"/>
+                <arg name="debug" value="$(arg debug)"/>
+            </include>
+        </group>
+
+        <group if="$(arg gripper)">
+            <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
+            <include file="$(find ur_gripper_85_moveit_config)/launch/move_group.launch">
+                <arg name="allow_trajectory_execution" value="true"/>
+                <arg name="fake_execution" value="false"/>
+                <arg name="info" value="true"/>
+                <arg name="debug" value="$(arg debug)"/>
+            </include>
+        </group>
+
+        <!-- joystick node -->
+        <node name="joy_command" pkg="ur10_python_interface" type="joystick.py" output="log"/>
+
+        <param name="interface" type="str" value="not ready"/>
+        <param name="teleop_state" type="str" value="stop"/>
+
+        <!-- ur10 python interface node -->
+        <node if="$(arg sim)" name="robot_interface" pkg="ur10_python_interface" type="move_group_python_interface.py" args="sim $(arg robot_name)" output="screen"/>    
+        <node unless="$(arg sim)" name="robot_interface" pkg="ur10_python_interface" type="move_group_python_interface.py" args="real $(arg robot_name)" output="screen"/>    
+
+        <!-- mode manager node -->
+        <node name="mode_manager" pkg="ur10_python_interface" type="mode_manager.py" args="$(arg robot_name)" output="log"/>
+    </group>
+
+</launch>

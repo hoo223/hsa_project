@@ -2,15 +2,25 @@
 <launch>
   <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
   <arg name="gui" default="true" doc="Starts gazebo gui" />
-  
-  <!-- startup simulated world -->
-  <include file="$(find gazebo_ros)/launch/empty_world.launch"> 
-    <arg name="world_name" default="$(find ur_gazebo)/worlds/cubes_task.world"/> <!-- $(find ur_gazebo)/worlds/cubes_task.world / worlds/empty.world --> 
-    <arg name="paused" value="$(arg paused)"/>
-    <arg name="gui" value="$(arg gui)"/>
-  </include>
+  <arg name="gripper" default="false"/>
 
-  <!-- push robot_description to factory and spawn robot in gazebo -->
-  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -z 0.6" respawn="false" output="screen" />
+  <!-- startup simulated world -->
+  <group if="$(arg gripper)">
+    <include file="$(find gazebo_ros)/launch/empty_world.launch"> 
+      <arg name="world_name" default="$(find ur_gazebo)/worlds/cubes_task.world"/> 
+      <arg name="paused" value="$(arg paused)"/>
+      <arg name="gui" value="$(arg gui)"/>
+    </include>
+  </group>
+  <group unless="$(arg gripper)">
+    <include file="$(find gazebo_ros)/launch/empty_world.launch"> 
+      <arg name="world_name" default="worlds/empty.world"/> 
+      <arg name="paused" value="$(arg paused)"/>
+      <arg name="gui" value="$(arg gui)"/>
+    </include>
+
+    <!-- push robot_description to factory and spawn robot in gazebo -->
+    <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -z 0.6" respawn="false" output="screen" />
+  </group>
 
 </launch>
