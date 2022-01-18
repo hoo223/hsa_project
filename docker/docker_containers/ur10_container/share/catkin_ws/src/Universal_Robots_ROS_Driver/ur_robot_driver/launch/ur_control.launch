@@ -86,6 +86,8 @@
        - "speed_scaling_state_controller"
        - "force_torque_sensor_controller"
        - "robot_status_controller"
+       - "pos_joint_traj_controller"
+       - "scaled_pos_joint_traj_controller"
     </rosparam>
   </node>
 
