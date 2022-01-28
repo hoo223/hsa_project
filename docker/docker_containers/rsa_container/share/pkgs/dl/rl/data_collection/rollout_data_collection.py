@@ -35,7 +35,7 @@ class RolloutDataManager(object):
         """Init."""
         self.env = ensure_vec_env(env)
         self.nenv = self.env.num_envs
-        self.act = act_fn
+        self.act = act_fn # ResidualPPOActor
         self.device = device
         self.rollout_length = rollout_length
         self.batch_size = batch_size
@@ -47,6 +47,7 @@ class RolloutDataManager(object):
 
     def init_rollout_storage(self):
         """Initialize rollout storage."""
+        print("Initialize rollout storage")
         # define a function 
         def _to_torch(o):
             return torch.from_numpy(o).to(self.device) # numpy -> tensor, move the tensor to gpu
@@ -72,6 +73,7 @@ class RolloutDataManager(object):
             state = data['state']
 
         if state is None: # data 안에 state 값이 없으면 -> no recurrent
+            print("no recurrent")
             self.storage = RolloutStorage(self.rollout_length, 
                                           self.nenv,
                                           device=self.device,
@@ -84,6 +86,7 @@ class RolloutDataManager(object):
             self.init_state = None
             self.recurrent = False
         else: # data 안에 state 값이 있으면 -> recurrent
+            print("recurrent")
             self.recurrent = True
             self.storage = RolloutStorage(self.rollout_length,
                                           self.nenv,
@@ -105,17 +108,19 @@ class RolloutDataManager(object):
 
     def rollout_step(self):
         """Compute one environment step."""
+        print("rollout_step")
         if not self.storage: # storage가 비어있으면 (즉, rollout data가 없을 경우) init_rollout_storage 실행하여 생성
             print("no storage - make new storage")
             self.init_rollout_storage()
             
         with torch.no_grad(): # gradient 연산을 옵션을 끌 때 사용 https://easy-going-programming.tistory.com/14 
-            # 현재 observation을 이용해 policy로부터 action 생성
+            # 현재 observation을 이용해 policy로부터 residual action 생성
             if self.recurrent:
                 outs = self.act(self._ob, state_in=self._state, mask=self._mask)
             else:
                 outs = self.act(self._ob, state_in=None, mask=None)
-                
+        # print("residual:", outs['action'])
+        
         # step 진행
         ob, r, done, _ = self.env.step(outs['action'].cpu().numpy())
         
@@ -144,7 +149,7 @@ class RolloutDataManager(object):
 
     def rollout(self):
         """Compute entire rollout and advantage targets."""
-        # rollout length만큼 rollout step 진행하여 데이터 생성 
+        # rollout length = 1024만큼 rollout step 진행하여 데이터 생성 
         print("generate rollout")
         for i in tqdm(range(self.rollout_length)):
             self.rollout_step()

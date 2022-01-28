@@ -224,7 +224,7 @@ int main(int argc, char** argv)
   // "panda_link8" which is the most distal link in the
   // "panda_arm" group of the robot.
   ik_solver.kinematic_state->setToRandomPositions(ik_solver.joint_model_group);
-  const Eigen::Isometry3d& end_effector_state = ik_solver.kinematic_state->getGlobalLinkTransform("tool0");
+  const Eigen::Isometry3d& end_effector_state = ik_solver.kinematic_state->getGlobalLinkTransform("ee_link");
 
   /* Print end-effector pose. Remember that this is in the model frame */
   ROS_INFO_STREAM("Translation: \n" << end_effector_state.translation() << "\n");
@@ -299,6 +299,14 @@ int main(int argc, char** argv)
 
     ik_solver.kinematic_state->copyJointGroupPositions(ik_solver.joint_model_group, joint_values);
     
+    // // fk
+    // joint_values = [0.12474545459433958, -1.460215300405508, -1.8536275224230336, -3.000958267842428, -1.60651141801943, 3.1105711460113525]
+    // ik_solver.kinematic_state->setJointGroupPositions(ik_solver.joint_model_group, joint_values);
+    // const Eigen::Isometry3d& end_effector_state = ik_solver.kinematic_state->getGlobalLinkTransform("tool0");
+
+    // /* Print end-effector pose. Remember that this is in the model frame */
+    // ROS_INFO_STREAM("Translation: \n" << end_effector_state.translation() << "\n");
+    // ROS_INFO_STREAM("Rotation: \n" << end_effector_state.rotation() << "\n");
 
     loop_rate.sleep();
     // end = clock(); // 측정 끝

@@ -181,10 +181,8 @@ class UR10Env(gym.Env, EzPickle):
         self.self_collision = data.data
 
     def step(self, action):
-        #print("step in")
-        #print(action)  
+        #print("ur10 step")
         #self.joint_vel_msg.data = action
-        
         command = Float64MultiArray()
         command.data.append(action[0]) # x
         command.data.append(action[1]) # y
@@ -240,7 +238,7 @@ class UR10Env(gym.Env, EzPickle):
 
 
     def start_teleop_client(self):
-        print("ur10_env - start_teleop_client")
+        #print("ur10_env - start_teleop_client")
         #if rospy.get_param('teleop_state') == 'stop':
         rospy.wait_for_service('start_teleop')
         try:
@@ -251,7 +249,7 @@ class UR10Env(gym.Env, EzPickle):
             print("Service call failed: %s"%e)
 
     def reset(self):
-        print("test ", self.reset_episode_client())
+        self.reset_episode_client()
         
         # # reset immediately
         # self.pause_func()
@@ -260,11 +258,12 @@ class UR10Env(gym.Env, EzPickle):
         # self.unpause_func()
         
         rospy.wait_for_message("/joint_states", JointState)
-        # print("joint_states")
 
         # rospy.wait_for_message("/ik_result", Float64MultiArray) # waiting the ik_result
         # print("ik_result")
+        
         self.start_teleop_client()
+        
         return self._state
     
     def pause_func(self):

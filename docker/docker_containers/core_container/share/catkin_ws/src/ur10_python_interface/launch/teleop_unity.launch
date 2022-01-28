@@ -1,16 +1,12 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="robot_name" default="unity"/>
-  <arg name="unity" default="false"/>
-  <arg name="gym_env" default="false"/>
+  <arg name="unity" default="true"/>
   <arg name="rsa" default="false"/>
   <arg name="rand_agent" default="false"/>
 
-  
-
   <group ns="$(arg robot_name)">
     <param name="unity" value="$(arg unity)" type="bool"/>
-    <param name="gym_env" value="$(arg gym_env)" type="bool"/>
     <param name="rsa" value="$(arg rsa)" type="bool"/>
     <param name="rand_agent" value="$(arg rand_agent)" type="bool"/>
 
@@ -18,7 +14,4 @@
     <node name="joy2target_converter" pkg="ur10_python_interface" type="joy2target.py" args="$(arg robot_name)" output="screen"/>
     <node name="teleop_controller" pkg="ur10_python_interface" type="teleop_controller.py" args="$(arg robot_name)" output="screen"/> 
   </group>
-  <!-- <group if="$(arg gym_env)">
-    <node name="rl_interface" pkg="ur10_python_interface" type="rl_interface.py" args="$(arg robot_name)" output="screen"/> 
-  </group> -->
 </launch>

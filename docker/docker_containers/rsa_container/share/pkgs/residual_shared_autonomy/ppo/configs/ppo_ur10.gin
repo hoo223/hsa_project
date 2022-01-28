@@ -23,11 +23,11 @@ ConstrainedResidualPPO.lr_decay_rate = 0.31622776601
 ConstrainedResidualPPO.lr_decay_freq = 20000000
 ConstrainedResidualPPO.l2_reg = False
 ConstrainedResidualPPO.reward_threshold = -155
-ConstrainedResidualPPO.env_fn = @make_env               # dl/envs/env_fns.py
+ConstrainedResidualPPO.env_fn = @make_env               # dl/rl/envs/env_fns.py
 ConstrainedResidualPPO.policy_fn = @ppo_policy_fn       # ppo/actor.py
 ConstrainedResidualPPO.nenv = 1
-ConstrainedResidualPPO.eval_num_episodes = 100
-ConstrainedResidualPPO.record_num_episodes = 0
+ConstrainedResidualPPO.eval_num_episodes = 1
+ConstrainedResidualPPO.record_num_episodes = 100
 ConstrainedResidualPPO.rollout_length = 1024 # must be larger thane batch size 
 ConstrainedResidualPPO.batch_size = 256
 ConstrainedResidualPPO.gamma = 0.99
@@ -47,7 +47,7 @@ ConstrainedResidualPPO.base_actor_cls = @UR10RandomActor # residual_shared_auton
 #BCMultiActor.device = "cuda:0"
 #BCMultiActor.switch_prob = 0.001
 
-UR10RandomActor.action_period = 100
+UR10RandomActor.action_period = 200
 UR10RandomActor.space_type = "task" # "task", "joint"
 
 

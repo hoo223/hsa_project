@@ -116,6 +116,7 @@ class VecObsNormWrapper(VecEnvWrapper):
 
     def step(self, action):
         """Step."""
+        print("obs_norm step")
         obs, rews, dones, infos = self.venv.step(action)
         if not self._eval:
             self.t += self.num_envs

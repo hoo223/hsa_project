@@ -48,7 +48,7 @@ class TeleopController(object):
     self.prefix = prefix
     self.target_joints = np.zeros(6)
     self.current_joints = np.zeros(6)
-    self.p_gain = 3
+    self.p_gain = 5
     self.joint_vel_msg = Float64MultiArray()  
     self.teleop_state = 'stop'
     

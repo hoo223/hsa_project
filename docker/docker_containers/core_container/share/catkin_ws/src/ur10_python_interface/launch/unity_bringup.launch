@@ -1,0 +1,22 @@
+ <launch>
+    <arg name="gripper" default="false"/>
+    <arg name="robot_name" default="unity"/>
+  
+    <include file="$(find ros_tcp_endpoint)/launch/endpoint.launch"/>
+
+    <include file="$(find ur10_python_interface)/launch/controller_ns.launch">
+        <arg name="gripper" value="$(arg gripper)"/>
+        <arg name="robot_name" value="$(arg robot_name)"/>
+    </include>
+
+    <include file="$(find unity_ros_control)/launch/unity_hardware_interface.launch">
+        <arg name="gripper" value="$(arg gripper)"/>
+        <arg name="robot_name" value="$(arg robot_name)"/>
+    </include>
+
+    <include file="$(find ur10_python_interface)/launch/interface_virtual_ns.launch">
+        <arg name="gripper" value="$(arg gripper)"/>
+        <arg name="robot_name" value="$(arg robot_name)"/>
+    </include>
+ 
+ </launch>    

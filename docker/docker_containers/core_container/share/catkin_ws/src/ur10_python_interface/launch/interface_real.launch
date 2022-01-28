@@ -5,6 +5,7 @@
     <arg name="gui" default="true" doc="Starts gazebo gui" />
     <arg name="sim" default="false" />
     <arg name="debug" default="false"/>
+    
     <arg name="gripper" default="false"/>
 
     <param name="with_gripper" value="$(arg gripper)" type="bool"/>

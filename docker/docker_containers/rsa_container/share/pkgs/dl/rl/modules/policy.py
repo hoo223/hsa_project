@@ -13,9 +13,9 @@ class Policy(nn.Module):
         """init."""
         super().__init__()
         self.base = base
-        assert isinstance(self.base, (PolicyBase, ActorCriticBase))
+        assert isinstance(self.base, (PolicyBase, ActorCriticBase)) # argument로 들어온 base가 둘 중 하나에 해당하는지 체크
         self.outputs = namedtuple('Outputs',
-                                  ['action', 'value', 'dist', 'state_out'])
+                                  ['action', 'value', 'dist', 'state_out']) # 이름으로 접근 가능한 tuple
 
     def _run_policy_base(self, ob, state_in, mask):
         outs = self.base(ob) if state_in is None else self.base(ob, state_in,
@@ -45,7 +45,7 @@ class Policy(nn.Module):
                 out.action: The sampled action, or the mode if
                             deterministic=True
                 out.value:  The value of the current observation
-                out.dist:   The action distribution
+                out.dist:   The action distribution - torch.distributions.normal.Normal https://pytorch.org/docs/stable/distributions.html#:~:text=Normal-,CLASS,torch.distributions.normal.Normal,-(loc%2C%20scale%2C%20validate_args 
                 out.state_out:  The temporal state of base
                                 (See above for details)
 
@@ -58,15 +58,15 @@ class Policy(nn.Module):
 
         # sample action
         if deterministic:
-            action = dist.mode()
+            action = dist.mode() # 최빈값 = 평균값 (for Gaussian) dl/modules/distributions.py - class Normal
         elif reparameterization_trick:
             try:
                 action = dist.rsample()
             except Exception:
                 assert False, f"{dist.__class__.__name__} distribution"
                 " does not have a reparameterization trick."
-        else:
-            action = dist.sample()
+        else: # stochastic action
+            action = dist.sample() 
         return self.outputs(value=value, action=action, dist=dist,
                             state_out=state_out)
 

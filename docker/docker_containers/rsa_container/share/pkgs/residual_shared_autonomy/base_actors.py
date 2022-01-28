@@ -3,6 +3,7 @@
 
 """Base actors on which residuals are learned."""
 import numpy as np
+import time
 import torch
 from residual_shared_autonomy.imitation_learning import BCNet
 from residual_shared_autonomy.lunar_lander import lunar_lander_policy_fn
@@ -10,6 +11,7 @@ from residual_shared_autonomy.drone_sim import drone_ppo_policy_fn
 from dl import Checkpointer
 import gin
 import os
+import pygame
 
 # ros library
 import rospy
@@ -90,6 +92,76 @@ class UR10RandomActor(object):
             print("action: ", self.action_samples)
         return np.asarray(self.action_samples)
 
+#####################################
+# Change these to match your joystick
+RIGHT_UP_AXIS = 4
+RIGHT_SIDE_AXIS = 3
+LEFT_UP_AXIS = 1
+LEFT_SIDE_AXIS = 0
+#####################################
+
+@gin.configurable
+class UR10JoystickActor(object):
+    """Joystick Controller for Lunar Lander."""
+
+    def __init__(self, env, fps=50):
+        """Init."""
+        if env.num_envs > 1:
+            raise ValueError("Only one env can be controlled with the joystick.")
+        self.env = env
+        self.human_agent_action = np.array([[0., 0.], [0., 0.]], dtype=np.float32)  # noop
+        self.button = np.array([0], dtype=np.int32)
+        pygame.joystick.init()
+        joysticks = [pygame.joystick.Joystick(x)
+                     for x in range(pygame.joystick.get_count())]
+        if len(joysticks) != 1:
+            raise ValueError("There must be exactly 1 joystick connected.",
+                             "Found {len(joysticks)}")
+        self.joy = joysticks[0]
+        self.joy.init()
+        pygame.init()
+        self.t = None
+        self.fps = fps
+
+    def _get_human_action(self):
+        for event in pygame.event.get():
+            if event.type == pygame.JOYAXISMOTION:
+                if event.axis == LEFT_SIDE_AXIS:
+                    self.human_agent_action[0, 1] = event.value
+                elif event.axis == LEFT_UP_AXIS:
+                    self.human_agent_action[0, 0] = -1.0 * event.value
+                if event.axis == RIGHT_SIDE_AXIS:
+                    self.human_agent_action[1, 1] = event.value
+                elif event.axis == RIGHT_UP_AXIS:
+                    self.human_agent_action[1, 0] = -1.0 * event.value
+            if event.type == pygame.JOYBUTTONDOWN:
+                self.button[0] = event.button
+            else:
+                # button clear
+                self.button[0] = -1
+                #print(event.button)
+        if abs(self.human_agent_action[0, 0]) < 0.01:
+            self.human_agent_action[0, 0] = 0.0
+        if abs(self.human_agent_action[1, 0]) < 0.01:
+            self.human_agent_action[1, 0] = 0.0
+        result = np.array([self.human_agent_action[0][0], self.human_agent_action[0][1], self.human_agent_action[1][0], 0., 0., self.human_agent_action[1][1]], dtype=np.float32)
+        return result, self.button[0]
+
+    def __call__(self, ob):
+        """Act."""
+        print("Actor call")
+        action, button = self._get_human_action()
+        print("action:", action)
+        if self.t and (time.time() - self.t) < 1. / self.fps:
+            st = 1. / self.fps - (time.time() - self.t)
+            if st > 0.:
+                time.sleep(st)
+        self.t = time.time()
+        
+        return action
+
+    def reset(self):
+        self.human_agent_action[:] = 0.
 
 @gin.configurable
 class PolicyActor(object):

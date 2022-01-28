@@ -268,7 +268,7 @@ class DiagGaussian(nn.Module):
             logstd = torch.clamp(self.fc_logstd(x), self.log_std_min,
                                  self.log_std_max)
         if return_logstd:
-            return Normal(mean, logstd.exp()), logstd
+            return Normal(mean, logstd.exp()), logstd 
         else:
             return Normal(mean, logstd.exp())
 

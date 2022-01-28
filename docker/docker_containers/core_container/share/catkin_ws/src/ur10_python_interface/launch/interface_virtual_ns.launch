@@ -5,6 +5,7 @@
     <arg name="gui" default="true" doc="Starts gazebo gui" />
     <arg name="sim" default="true" />
     <arg name="debug" default="false"/>
+
     <arg name="gripper" default="false"/>
     <arg name="robot_name" default="unity"/>
 
@@ -13,6 +14,7 @@
     <remap unless="$(arg sim)" from="/follow_joint_trajectory" to="/$(arg robot_name)/scaled_pos_joint_traj_controller/follow_joint_trajectory"/>
 
     <group ns="$(arg robot_name)">
+
         <group unless="$(arg gripper)">
             <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
             <include file="$(find ur10_moveit_config)/launch/move_group.launch">
@@ -45,6 +47,7 @@
 
         <!-- mode manager node -->
         <node name="mode_manager" pkg="ur10_python_interface" type="mode_manager.py" args="$(arg robot_name)" output="log"/>
+        
     </group>
 
 </launch>

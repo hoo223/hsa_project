@@ -31,6 +31,7 @@ class ResidualWrapper(VecEnvWrapper):
         """Reset."""
         ob = self.venv.reset()
         self._action = np.asarray(self.act_fn(ob))
+        print(self._action)
         if hasattr(self.act_fn, 'reset'):
             # reset joystick to zero action
             self.act_fn.reset()
@@ -45,7 +46,7 @@ class ResidualWrapper(VecEnvWrapper):
             info['action'] = action[i]
             info['assistant_action'] = np.asarray(action)[i]
             info['player_action'] = self._action[i]
-        self._action = self.act_fn(ob) # residual action
+        self._action = self.act_fn(ob) # human action
         return (ob, self._norm_action(self._action)), rs, dones, infos
 
     def _clip_action(self, ac):

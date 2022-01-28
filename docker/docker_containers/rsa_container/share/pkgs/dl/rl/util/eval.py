@@ -63,14 +63,19 @@ def rl_evaluate(env, actor, nepisodes, outfile=None, device='cpu',
     env = ensure_vec_env(env)
     ep_lengths = []
     ep_rewards = []
+    print("test")
     obs = env.reset()
     lengths = np.zeros(env.num_envs, dtype=np.int32)
     rewards = np.zeros(env.num_envs, dtype=np.float32)
     all_infos = []
     dones = None
+    
     actor = Actor(actor, device)
+    print("test")
     while len(ep_lengths) < nepisodes:
-        obs, rs, dones, infos = env.step(actor(obs, dones))
+        ac = actor(obs, dones)
+        print(ac)
+        obs, rs, dones, infos = env.step(ac)
         rewards += rs
         lengths += 1
         if save_info:

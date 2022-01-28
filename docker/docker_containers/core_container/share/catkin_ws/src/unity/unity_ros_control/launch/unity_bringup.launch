@@ -1,6 +1,0 @@
- <launch>
-  <include file="$(find ros_tcp_endpoint)/launch/endpoint.launch"/>
-  <include file="$(find ur10_python_interface)/launch/controller.launch"/>
-  <include file="$(find unity_ros_control)/launch/unity_hardware_interface.launch"/>
-  <include file="$(find ur10_python_interface)/launch/interface_virtual_ns.launch"/>
- </launch>    

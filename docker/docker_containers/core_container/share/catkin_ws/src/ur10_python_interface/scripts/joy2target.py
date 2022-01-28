@@ -32,7 +32,7 @@ from ur10_python_interface.srv import SolveIk
 from move_group_python_interface import MoveGroupPythonInteface
 
 class Joy2Target(object):
-  def __init__(self, verbose=False, prefix="", random_agent=False, env=False, rsa=False):
+  def __init__(self, verbose=False, prefix="", random_agent=False, rsa=False):
 
     # debugging
     self.verbose = verbose
@@ -43,13 +43,12 @@ class Joy2Target(object):
     # agent type
     self.random_agent = random_agent
 
-    # with RL env
-    self.env = env
+    # with RSA
     self.rsa = rsa
     
     # param
-    self.with_gripper = rospy.get_param('with_gripper')
-    self.unity = rospy.get_param('unity')
+    self.with_gripper = rospy.get_param(self.prefix+'/with_gripper')
+    self.unity = rospy.get_param(self.prefix+'/unity')
 
     # teleoperation variable
     self.pre_button = None
@@ -57,7 +56,7 @@ class Joy2Target(object):
     self.joy_command = np.zeros(7)
     self.joy_command[6] = -0.1
     self.speed_gain = 0.00024 # for input scale
-    self.speed_level = 3 # 로봇 움직임 속도 - 1~10 단계
+    self.speed_level = 5 # 로봇 움직임 속도 - 1~10 단계
 
     # random agent
     self.random_action = np.zeros(6)
@@ -115,8 +114,10 @@ class Joy2Target(object):
     else:
       #self.init_pose = [0.17480582, 0.50746106, 0.69538257, 0.09267109, 0.00379392, 1.59158403]
       self.init_pose = [0.18030333 , 0.53379531 , 0.49639836 , 0.11906708 , 1.54552132 , 1.56969254] # for gazebo
-    
     self.init_joint_states = [-1.601372543965475, -1.3494799772845667, -2.0361130873309534, -1.3006231672108264, 1.5698880420405317, 0.09116100519895554]
+    
+    #self.init_pose = [-0.48767368,  0.19575538,  0.52674516, -1.564, -0.031, 1.535]
+    #self.init_joint_states = [-0.07101899782289678, -1.3066085020648401, -1.968621079121725, -3.000958267842428, -1.60651141801943, 3.1105711460113525]
     self.current_joints = copy.deepcopy(self.init_joint_states)
 
     # input device에 의해 조작되는 end-effector target pose
@@ -144,8 +145,7 @@ class Joy2Target(object):
   def input_conversion(self):
     # get input
     button = int(self.joy_command[6])
-
-    if self.rsa: # rsa random agent
+    if self.rsa: # rsa 
       command = self.env_command
       x_input = -command[0] * self.action_mask[0]
       y_input = command[1] * self.action_mask[1]
@@ -153,7 +153,7 @@ class Joy2Target(object):
       roll_input = command[3] * self.action_mask[3]
       pitch_input = command[4] * self.action_mask[4]
       yaw_input = -command[5]  * self.action_mask[5]
-    else:
+    else: # no rsa
       command = self.joy_command
       if self.random_agent: # random action model
         # For smoothing noisy action
@@ -308,7 +308,7 @@ class Joy2Target(object):
     
     # # target pose의 Euler angle로 mapping 
     # self.target_pose[3] = -self.haptic_rpy[2] + np.pi + np.pi/2
-    # self.target_pose[4] = -self.haptic_rpy[1] + np.pi/4
+    # self.target_pose[4] = -self.haptic_rpy[1] + np.pi/4print("target_pose initialized")
     # #self.target_pose[5] = -self.haptic_rpy[0]
     
     # haptic move state = 버튼을 누르고 있는 동안에만 
@@ -398,12 +398,11 @@ def main():
   else:
     prefix = ''
   
-  env_flag = rospy.get_param('gym_env')
   rsa_flag = rospy.get_param('rsa')
-  rand_agent = rospy.get_param('rand_agent')
+  rand_agent = rospy.get_param('rand_agent') 
 
   rospy.init_node("joy2target_converter", anonymous=True)
-  j2t = Joy2Target(prefix=prefix, random_agent=rand_agent, env=env_flag, rsa=rsa_flag)
+  j2t = Joy2Target(prefix=prefix, random_agent=rand_agent, rsa=rsa_flag)
   rate = rospy.Rate(250)
   while not rospy.is_shutdown():
     if rospy.get_param(prefix+'/teleop_state') == "start": # teleop is running
@@ -415,15 +414,15 @@ def main():
       result = j2t.ik_solver(target_pose)
       if result.success:
         # first 3 joints 
-        j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.wrist_1_joint, j2t.wrist_2_joint, j2t.wrist_3_joint]
-                              #result.ik_result.data[3], result.ik_result.data[4], result.ik_result.data[5]] 
+        #j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.wrist_1_joint, j2t.wrist_2_joint, j2t.wrist_3_joint]
+        j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], result.ik_result.data[3], result.ik_result.data[4], result.ik_result.data[5]] 
+        #j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.init_joint_states[3], j2t.init_joint_states[4], j2t.init_joint_states[5]]
+                              
         j2t.ik_result_pub.publish(j2t.ik_result)
         j2t.gripper_action_pub.publish(j2t.gripper_command)
       else:
         print("ik failed")
         rospy.set_param(prefix+'/teleop_state', "stop")
-        if not j2t.env: # rl 환경과 연동하지 않을 때만
-          j2t.reset_pose()
     else: # teleop is stopped
       j2t.target_pose = copy.deepcopy(j2t.init_pose)
       j2t.ik_result.data = copy.deepcopy(j2t.init_joint_states)

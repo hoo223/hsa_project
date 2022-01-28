@@ -21,7 +21,7 @@ class FeedForwardActorCriticBase(ActorCriticBase):
                    + self.observation_space.spaces[1].shape[0])
         self.fc1 = nn.Linear(inshape, self.nunits)
         self.fc2 = nn.Linear(self.nunits, self.nunits)
-        self.dist = DiagGaussian(self.nunits, self.action_space.shape[0])
+        self.dist = DiagGaussian(self.nunits, self.action_space.shape[0]) # dl.modules.distributions.py - 
         for p in self.dist.fc_mean.parameters():
             nn.init.constant_(p, 0.)
 
@@ -31,6 +31,7 @@ class FeedForwardActorCriticBase(ActorCriticBase):
 
     def forward(self, x):
         """Forward."""
+        print("x: ", x)
         ob = torch.cat(x, axis=1)
         net = ob
         net = F.relu(self.fc1(net))

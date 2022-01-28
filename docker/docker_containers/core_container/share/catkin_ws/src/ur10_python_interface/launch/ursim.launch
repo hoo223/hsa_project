@@ -5,6 +5,7 @@
   <arg name="gui" default="true" doc="Starts gazebo gui" />
   <arg name="gripper" default="false"/>
   <arg name="display" default="false"/>
+  <arg name="robot_name" default="gazebo"/>
 
   <param name="with_gripper" value="$(arg gripper)" type="bool"/>
 
@@ -12,11 +13,13 @@
     <arg name="limited" value="$(arg limited)"/>
     <arg name="gripper" value="$(arg gripper)"/>
     <arg name="display" value="$(arg display)"/>
+    <arg name="robot_name" value="$(arg robot_name)"/>
   </include>
   <include file="$(find ur10_python_interface)/launch/ur10_gazebo.launch">
     <arg name="paused" value="$(arg paused)"/>
     <arg name="gripper" value="$(arg gripper)"/>
     <arg name="gui" value="$(arg gui)"/>
+    <arg name="robot_name" value="$(arg robot_name)"/>
   </include>
 
 </launch>

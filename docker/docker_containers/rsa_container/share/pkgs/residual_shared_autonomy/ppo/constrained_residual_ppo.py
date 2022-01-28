@@ -35,9 +35,9 @@ class ResidualPPOActor(object):
                 raise ValueError("Pi should be initialized to output zero "
                                  "actions so that an acurate value function "
                                  "can be learned for the base policy.")
-        else: # before training -> stochastic action
+        else: # after starting training -> stochastic action
             outs = self.pi(ob, state_in, mask) 
-            
+        print(outs)
         # calculate residual norm
         residual_norm = torch.mean(torch.sum(torch.abs(outs.action), dim=1))
         logger.add_scalar('actor/l1_residual_norm', residual_norm, self.t,
@@ -61,7 +61,7 @@ class ResidualPPOActor(object):
         self.t = state_dict['t']
 
 
-@gin.configurable(denylist=['logdir'])
+@gin.configurable(denylist=['logdir']) # dl/trainer.py/train -> train.algorithm
 class ConstrainedResidualPPO(Algorithm):
     """Constrained Residual PPO algorithm."""
 
@@ -121,6 +121,7 @@ class ConstrainedResidualPPO(Algorithm):
         # vectorized env
         self.env = VecEpisodeLogger(env_fn(nenv=nenv)) # env_fn = @make_env (from gin file)
                                                        # make_env (from dl/envs/env_fns.py)
+                                                       # .env_id -> gin file
                                                        # VecEpisodeLogger (from dl/envs/logging_wrappers.py)
         
         # residual env
@@ -145,9 +146,11 @@ class ConstrainedResidualPPO(Algorithm):
         
         # lambda parameter
         if lambda_init < 10: 
-            lambda_init = np.log(np.exp(lambda_init) - 1) 
+            lambda_init = np.log(np.exp(lambda_init) - 1) # 0 또는 음수일 경우 에러남
         self.log_lambda_ = nn.Parameter(
                             torch.Tensor([lambda_init]).to(self.device))
+        # -- result -- #
+        # Parameter containing: tensor([20.], device='cuda:0', requires_grad=True)
         
         # optimizer for lambda loss
         self.opt_l = optimizer([self.log_lambda_], lr=lambda_lr)
@@ -157,8 +160,8 @@ class ConstrainedResidualPPO(Algorithm):
         
         # create a RolloutDataManager (from dl/rl/data_collection/rollout_data_collection.py)
         self.data_manager = RolloutDataManager(
-            self.env,
-            self._actor, # act_fn
+            self.env, # shared autonomy framework 포함
+            self._actor, # residual action 
             self.device,
             rollout_length=rollout_length,
             batch_size=batch_size,
@@ -245,7 +248,7 @@ class ConstrainedResidualPPO(Algorithm):
 
     def step(self):
         """Compute rollout, loss, and update model."""
-        self.pi.train()
+        self.pi.train() # eval flag -> False
         # adjust learning rate
         lr_frac = self.lr_decay_rate ** (self.t // self.lr_decay_freq)
         for g in self.opt.param_groups:
@@ -255,7 +258,7 @@ class ConstrainedResidualPPO(Algorithm):
 
         # compute entire rollout and advantage targets.
         print("rollout")
-        self.data_manager.rollout() 
+        self.data_manager.rollout() # dl/rl/data_collection -> rollout_step 함수에서 실질적으로 policy network로부터 residual action을 끄집어냄
 
         # increse step 
         print("increase step")
@@ -297,7 +300,7 @@ class ConstrainedResidualPPO(Algorithm):
     def evaluate(self):
         """Evaluate model."""
         print("----------------------- eval -----------------------")
-        self.pi.eval()
+        self.pi.eval() # eval flag -> True
         misc.set_env_to_eval_mode(self.env)
 
         # Eval policy
@@ -305,7 +308,7 @@ class ConstrainedResidualPPO(Algorithm):
         outfile = os.path.join(self.logdir, 'eval',
                                self.ckptr.format.format(self.t) + '.json')
         stats = rl_evaluate(self.env, self.pi, self.eval_num_episodes,
-                            outfile, self.device)
+                            outfile, self.device) # dl/rl/util/eval.py
         logger.add_scalar('eval/mean_episode_reward', stats['mean_reward'],
                           self.t, time.time())
         logger.add_scalar('eval/mean_episode_length', stats['mean_length'],
