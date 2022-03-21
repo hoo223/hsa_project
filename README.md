@@ -68,7 +68,7 @@ additional terminal -> docker exec -it [CONTAINER_NAME] bash
         ~~~
         terminal 4
         ~~~
-        teleop
+        teleop_unity
         ~~~
   
         
