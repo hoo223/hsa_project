@@ -1,0 +1,40 @@
+export DISPLAY=:0
+alias eb='gedit ~/.bashrc'
+alias sb='source ~/.bashrc'
+
+alias cw='cd ~/share/catkin_ws'
+alias cm='catkin_make'
+alias sd='source devel/setup.bash'
+alias cmi='cd ~/catkin_ws && catkin_make_isolated'
+alias sdi='source ~/catkin_ws/devel_isolated/setup.bash'
+alias rg='rqt_graph'
+alias tree='rosrun rqt_tf_tree rqt_tf_tree'
+alias con_list='rosrun controller_manager controller_manager list'
+alias rd='rosdep install --from-paths src --ignore-src -r -y'
+
+# Unity
+alias ut='roslaunch ros_tcp_endpoint endpoint.launch'
+alias uhi='roslaunch unity_ros_control unity_hardware_interface.launch'
+alias unity_bringup='roslaunch ur10_python_interface unity_bringup.launch'
+alias controller_ns='roslaunch ur10_python_interface controller_ns.launch'
+alias interface_vns='roslaunch ur10_python_interface interface_virtual_ns.launch'
+alias teleop_unity='roslaunch ur10_python_interface teleop_unity.launch'
+
+# Gazebo
+alias ursim='roslaunch ur10_python_interface ursim.launch'
+alias controller='roslaunch ur10_python_interface controller.launch'
+alias interface_v='roslaunch ur10_python_interface interface_virtual.launch'
+alias teleop='roslaunch ur10_python_interface teleop.launch'
+
+# real UR10
+alias ur10_tcp='roslaunch ur_robot_driver ur10_bringup.launch robot_ip:=192.168.0.2'
+alias interface_r='roslaunch ur10_python_interface interface_real.launch'
+alias teleop_real_with_unity='roslaunch ur10_python_interface teleop_real_with_unity.launch'
+
+# rsa
+alias teleop_rsa='roslaunch ur10_python_interface teleop_rsa.launch'
+
+source /opt/ros/melodic/setup.bash
+source ~/share/catkin_ws/devel/setup.bash
+
+export PYTHONPATH="${PYTHONPATH}:/root/share/catkin_ws/src" 
