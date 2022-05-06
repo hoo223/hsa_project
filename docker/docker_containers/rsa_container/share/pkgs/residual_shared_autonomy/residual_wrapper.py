@@ -31,17 +31,20 @@ class ResidualWrapper(VecEnvWrapper):
         """Reset."""
         ob = self.venv.reset()
         self._action = np.asarray(self.act_fn(ob))
-        print(self._action)
         if hasattr(self.act_fn, 'reset'):
             # reset joystick to zero action
             self.act_fn.reset()
         return (ob, self._norm_action(self._action))
 
-    def step(self, action):
+    def step(self, action): # from rollout_data_collection.py - rollout_step
         """Step."""
-        print("residual step")
+        print("residual step - human_action", self._action)
+        print("residual step - agent_action", action[0][1])
+        #r_a = abs(action[0][1])
+        #print(r_a)
         action = self._add_actions(np.asarray(action), self._action)
         ob, rs, dones, infos = self.venv.step(action)
+        #rs -= r_a*100
         for i, info in enumerate(infos):
             info['action'] = action[i]
             info['assistant_action'] = np.asarray(action)[i]

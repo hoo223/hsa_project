@@ -29,6 +29,7 @@ class ResidualPPOActor(object):
 
     def __call__(self, ob, state_in=None, mask=None):
         """Produce decision from model."""
+        #print("ResidualPPOActor")
         if self.t < self.policy_training_start: # before training -> deterministic action
             outs = self.pi(ob, state_in, mask, deterministic=True)
             if not torch.allclose(outs.action, torch.zeros_like(outs.action)):
@@ -37,7 +38,7 @@ class ResidualPPOActor(object):
                                  "can be learned for the base policy.")
         else: # after starting training -> stochastic action
             outs = self.pi(ob, state_in, mask) 
-        print(outs)
+        #print(outs)
         # calculate residual norm
         residual_norm = torch.mean(torch.sum(torch.abs(outs.action), dim=1))
         logger.add_scalar('actor/l1_residual_norm', residual_norm, self.t,
@@ -237,9 +238,7 @@ class ConstrainedResidualPPO(Algorithm):
             loss['lambda'] = torch.Tensor([0.0]).to(self.device)
         else:
             neps = (1.0 - batch['mask']).sum()
-            loss['lambda'] = (lambda_ * (batch['reward'].sum()
-                                         - self.reward_threshold * neps)
-                              / batch['reward'].size()[0])
+            loss['lambda'] = (lambda_ * (batch['reward'].sum() - self.reward_threshold * neps) / batch['reward'].size()[0])
         if self.t >= self.policy_training_start:
             loss['pi'] = (reg_loss + lambda_ * loss['pi']) / (1. + lambda_)
         loss['total'] = (loss['pi'] + self.vf_coef * vf_loss
@@ -285,6 +284,7 @@ class ConstrainedResidualPPO(Algorithm):
                     nn.utils.clip_grad_norm_(self.pi.parameters(),
                                              self.max_grad_norm)
                 self.opt.step()
+        print("weight updated")
         
         # save loss to logger
         print("save to logger")

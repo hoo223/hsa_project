@@ -51,13 +51,12 @@ class RandomActor(object):
         
 @gin.configurable
 class UR10RandomActor(object):
-    def __init__(self, env, action_period=5, space_type="task", action_mask=[1,0,0,0,0,0]):
+    def __init__(self, env, action_period=5, space_type="task"):
         self.action_space = env.action_space
         self.batch_size = env.num_envs
         self.action_cnt = action_period
         self.action_period = action_period
         self.space_type = space_type
-        self.action_mask = action_mask
         
     def ik_solver(self, target_pose):
         rospy.wait_for_service('solve_ik')
@@ -77,19 +76,9 @@ class UR10RandomActor(object):
             else:
                 print("task")
                 self.action_samples = [self.action_space.sample() for _ in range(self.batch_size)]
-                # self.action_samples = []
-                # for _ in range(self.batch_size):
-                #     action_sample = self.action_space.sample()
-                #     action_sample[1] = 0
-                #     action_sample[2] = 0
-                #     action_sample[3] = 0
-                #     action_sample[4] = 0
-                #     action_sample[5] = 0
-                #     self.action_samples.append(action_sample)
-                #     print(self.action_samples)
-                    
             self.action_cnt = 0
-            print("action: ", self.action_samples)
+            #print("action: ", self.action_samples)
+        #print(type(self.action_space.sample()))
         return np.asarray(self.action_samples)
 
 #####################################
@@ -109,7 +98,8 @@ class UR10JoystickActor(object):
         if env.num_envs > 1:
             raise ValueError("Only one env can be controlled with the joystick.")
         self.env = env
-        self.human_agent_action = np.array([[0., 0.], [0., 0.]], dtype=np.float32)  # noop
+        self.joystick_action = np.array([[0., 0.], [0., 0.]], dtype=np.float32)  # noop
+        self.human_action = np.array([[0., 0., 0., 0., 0., 0.]], dtype=np.float32)
         self.button = np.array([0], dtype=np.int32)
         pygame.joystick.init()
         joysticks = [pygame.joystick.Joystick(x)
@@ -127,25 +117,30 @@ class UR10JoystickActor(object):
         for event in pygame.event.get():
             if event.type == pygame.JOYAXISMOTION:
                 if event.axis == LEFT_SIDE_AXIS:
-                    self.human_agent_action[0, 1] = event.value
+                    self.joystick_action[0, 1] = event.value
                 elif event.axis == LEFT_UP_AXIS:
-                    self.human_agent_action[0, 0] = -1.0 * event.value
+                    self.joystick_action[0, 0] = -1.0 * event.value
                 if event.axis == RIGHT_SIDE_AXIS:
-                    self.human_agent_action[1, 1] = event.value
+                    self.joystick_action[1, 1] = event.value
                 elif event.axis == RIGHT_UP_AXIS:
-                    self.human_agent_action[1, 0] = -1.0 * event.value
+                    self.joystick_action[1, 0] = -1.0 * event.value
             if event.type == pygame.JOYBUTTONDOWN:
                 self.button[0] = event.button
             else:
                 # button clear
                 self.button[0] = -1
                 #print(event.button)
-        if abs(self.human_agent_action[0, 0]) < 0.01:
-            self.human_agent_action[0, 0] = 0.0
-        if abs(self.human_agent_action[1, 0]) < 0.01:
-            self.human_agent_action[1, 0] = 0.0
-        result = np.array([self.human_agent_action[0][0], self.human_agent_action[0][1], self.human_agent_action[1][0], 0., 0., self.human_agent_action[1][1]], dtype=np.float32)
-        return result, self.button[0]
+        if abs(self.joystick_action[0, 0]) < 0.01:
+            self.joystick_action[0, 0] = 0.0
+        if abs(self.joystick_action[1, 0]) < 0.01:
+            self.joystick_action[1, 0] = 0.0
+        self.human_action[0][0] = self.joystick_action[0][0]
+        self.human_action[0][1] = self.joystick_action[0][1]
+        self.human_action[0][2] = self.joystick_action[1][0]
+        self.human_action[0][3] = 0.
+        self.human_action[0][4] = 0.
+        self.human_action[0][5] = self.joystick_action[1][1]
+        return self.human_action, self.button[0]
 
     def __call__(self, ob):
         """Act."""
@@ -157,11 +152,12 @@ class UR10JoystickActor(object):
             if st > 0.:
                 time.sleep(st)
         self.t = time.time()
-        
+        print(type(action))
         return action
 
     def reset(self):
-        self.human_agent_action[:] = 0.
+        self.joystick_action[:] = 0.
+        self.human_action[:] = 0.
 
 @gin.configurable
 class PolicyActor(object):

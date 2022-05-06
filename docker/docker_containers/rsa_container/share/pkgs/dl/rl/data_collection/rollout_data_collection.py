@@ -54,6 +54,7 @@ class RolloutDataManager(object):
         
         # environment reset
         state = self.env.reset()
+        print("env reset")
         
         # 각 state value에 _to_torch 함수를 mapping
         self._ob = nest.map_structure(_to_torch, state) # nest.map_structure (from dl/util/nest.py)
@@ -113,6 +114,7 @@ class RolloutDataManager(object):
             print("no storage - make new storage")
             self.init_rollout_storage()
             
+        # get action
         with torch.no_grad(): # gradient 연산을 옵션을 끌 때 사용 https://easy-going-programming.tistory.com/14 
             # 현재 observation을 이용해 policy로부터 residual action 생성
             if self.recurrent:
@@ -155,6 +157,7 @@ class RolloutDataManager(object):
             self.rollout_step()
             
         # compute advantage target  from rollout data
+        print("compute advantage target")
         with torch.no_grad(): # gradient 연산을 옵션을 끌 때 사용 https://easy-going-programming.tistory.com/14 
             if self.recurrent:
                 outs = self.act(self._ob, state_in=self._state, mask=self._mask)

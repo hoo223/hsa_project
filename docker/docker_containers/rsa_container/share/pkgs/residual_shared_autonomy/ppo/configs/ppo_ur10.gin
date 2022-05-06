@@ -15,20 +15,20 @@ optim.Adam.lr = 0.001
 optim.Adam.betas = (0.9, 0.999)
 optim.Adam.eps = 1e-5
 
-ConstrainedResidualPPO.policy_training_start = 100000
-ConstrainedResidualPPO.lambda_training_start = 2000000
-ConstrainedResidualPPO.lambda_lr = 0.003
+ConstrainedResidualPPO.policy_training_start = 1000 #100000
+ConstrainedResidualPPO.lambda_training_start = 2000 #2000000
+ConstrainedResidualPPO.lambda_lr = 0.1 #0.003
 ConstrainedResidualPPO.lambda_init = 20
 ConstrainedResidualPPO.lr_decay_rate = 0.31622776601
 ConstrainedResidualPPO.lr_decay_freq = 20000000
 ConstrainedResidualPPO.l2_reg = False
-ConstrainedResidualPPO.reward_threshold = -155
+ConstrainedResidualPPO.reward_threshold = -1000
 ConstrainedResidualPPO.env_fn = @make_env               # dl/rl/envs/env_fns.py
 ConstrainedResidualPPO.policy_fn = @ppo_policy_fn       # ppo/actor.py
 ConstrainedResidualPPO.nenv = 1
 ConstrainedResidualPPO.eval_num_episodes = 1
 ConstrainedResidualPPO.record_num_episodes = 100
-ConstrainedResidualPPO.rollout_length = 1024 # must be larger thane batch size 
+ConstrainedResidualPPO.rollout_length = 512 # 1024 must be larger thane batch size 
 ConstrainedResidualPPO.batch_size = 256
 ConstrainedResidualPPO.gamma = 0.99
 ConstrainedResidualPPO.lambda_ = 0.95
@@ -40,14 +40,14 @@ ConstrainedResidualPPO.max_grad_norm = 0.5
 ConstrainedResidualPPO.ent_coef = 0.01
 ConstrainedResidualPPO.vf_coef = 0.5
 ConstrainedResidualPPO.gpu = True
-ConstrainedResidualPPO.base_actor_cls = @UR10RandomActor # residual_shared_autonomy/base_actors.py
+ConstrainedResidualPPO.base_actor_cls = @UR10JoystickActor #@UR10JoystickActor #@UR10RandomActor # residual_shared_autonomy/base_actors.py 
 #ConstrainedResidualPPO.wrapper_fn = @lunar_lander_fuel_wrapper #v
 
 #BCMultiActor.logdir = "./models/behavioral_cloning_agents_lunar" #v
 #BCMultiActor.device = "cuda:0"
 #BCMultiActor.switch_prob = 0.001
 
-UR10RandomActor.action_period = 200
+UR10RandomActor.action_period = 50
 UR10RandomActor.space_type = "task" # "task", "joint"
 
 
@@ -56,10 +56,10 @@ UR10RandomActor.space_type = "task" # "task", "joint"
 #BCNet.nunits = 128
 
 
-Checkpointer.ckpt_period = 100000
+Checkpointer.ckpt_period = 10000 #100000
 
 make_env.env_id = "ur10_env:ur10-v0"
-make_env.norm_observations = True
+make_env.norm_observations = False # True
 
 VecObsNormWrapper.steps = 10000
 #VecObsNormWrapper.mean = @bc_mean() #v

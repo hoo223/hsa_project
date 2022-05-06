@@ -1,0 +1,7 @@
+export DISPLAY=:0
+alias eb='gedit ~/.bashrc'
+alias sb='source ~/.bashrc'
+alias cm='catkin_make'
+alias sd='source devel/setup.bash'
+alias cw='cd ~/share/catkin_ws'
+alias unity='~/share/unity/UnityHub.AppImage --no-sandbox'

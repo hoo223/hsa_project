@@ -31,7 +31,6 @@ class FeedForwardActorCriticBase(ActorCriticBase):
 
     def forward(self, x):
         """Forward."""
-        print("x: ", x)
         ob = torch.cat(x, axis=1)
         net = ob
         net = F.relu(self.fc1(net))

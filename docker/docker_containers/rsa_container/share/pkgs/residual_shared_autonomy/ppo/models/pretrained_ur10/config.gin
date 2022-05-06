@@ -23,14 +23,14 @@ ConstrainedResidualPPO.clip_param = 0.2
 ConstrainedResidualPPO.ent_coef = 0.01
 ConstrainedResidualPPO.env_fn = @make_env
 ConstrainedResidualPPO.epochs_per_rollout = 4
-ConstrainedResidualPPO.eval_num_episodes = 100
+ConstrainedResidualPPO.eval_num_episodes = 1
 ConstrainedResidualPPO.gamma = 0.99
 ConstrainedResidualPPO.gpu = True
 ConstrainedResidualPPO.l2_reg = False
 ConstrainedResidualPPO.lambda_ = 0.95
 ConstrainedResidualPPO.lambda_init = 20
 ConstrainedResidualPPO.lambda_lr = 0.003
-ConstrainedResidualPPO.lambda_training_start = 2000000
+ConstrainedResidualPPO.lambda_training_start = 20000
 ConstrainedResidualPPO.lr_decay_freq = 20000000
 ConstrainedResidualPPO.lr_decay_rate = 0.31622776601
 ConstrainedResidualPPO.max_grad_norm = 0.5
@@ -38,10 +38,10 @@ ConstrainedResidualPPO.nenv = 1
 ConstrainedResidualPPO.norm_advantages = True
 ConstrainedResidualPPO.optimizer = @optim.Adam
 ConstrainedResidualPPO.policy_fn = @ppo_policy_fn
-ConstrainedResidualPPO.policy_training_start = 100000
-ConstrainedResidualPPO.record_num_episodes = 0
-ConstrainedResidualPPO.reward_threshold = -155
-ConstrainedResidualPPO.rollout_length = 1024
+ConstrainedResidualPPO.policy_training_start = 1000
+ConstrainedResidualPPO.record_num_episodes = 100
+ConstrainedResidualPPO.reward_threshold = -1000
+ConstrainedResidualPPO.rollout_length = 512
 ConstrainedResidualPPO.vf_coef = 0.5
 ConstrainedResidualPPO.wrapper_fn = None
 
@@ -77,8 +77,7 @@ train.seed = 0
 
 # Parameters for UR10RandomActor:
 # ==============================================================================
-UR10RandomActor.action_mask = [1, 0, 0, 0, 0, 0]
-UR10RandomActor.action_period = 100
+UR10RandomActor.action_period = 50
 UR10RandomActor.space_type = 'task'
 
 # Parameters for VecObsNormWrapper:

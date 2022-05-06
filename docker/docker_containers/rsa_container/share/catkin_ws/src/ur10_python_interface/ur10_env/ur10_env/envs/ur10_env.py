@@ -221,7 +221,7 @@ class UR10Env(gym.Env, EzPickle):
             done = True
         else:
             done = False
-        
+         
         return (ob_next, reward, done, {})
 
 
@@ -321,7 +321,7 @@ class UR10Env(gym.Env, EzPickle):
             print("self collision")
            
         # reward for time
-        reward += 1
+        #reward += 1
         #print(reward)
         return reward
 
