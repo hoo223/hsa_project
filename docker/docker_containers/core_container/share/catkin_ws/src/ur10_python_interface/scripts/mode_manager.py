@@ -126,7 +126,7 @@ def main():
       mm.reset_pose()
       print("teleop stop")
       
-    # # singularity reset
+    # Reset for singularity 
     # if teleop_state == 'start' and mm.check_singularity:
     #   mm.reset_pose()
     #   print("teleop stop")

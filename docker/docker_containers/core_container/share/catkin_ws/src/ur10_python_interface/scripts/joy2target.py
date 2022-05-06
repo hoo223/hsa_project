@@ -16,7 +16,7 @@ import ros
 from rospy.service import ServiceException
 import tf
 from tf.transformations import euler_from_quaternion, quaternion_from_euler, quaternion_multiply
-from std_msgs.msg import Float64MultiArray, String
+from std_msgs.msg import Float64MultiArray, String, Header
 from std_srvs.srv import Trigger, TriggerResponse, TriggerRequest
 from sensor_msgs.msg import JointState
 from geometry_msgs.msg import PoseStamped, Quaternion, Pose
@@ -25,6 +25,10 @@ from omni_msgs.msg import OmniButtonEvent
 from robotiq_2f_gripper_control.msg import Robotiq2FGripper_robot_input  as inputMsg
 from robotiq_2f_gripper_control.msg import Robotiq2FGripper_robot_output as outputMsg
 from ur10_python_interface.srv import SolveIk
+from moveit_msgs.srv import GetPositionFK
+from moveit_msgs.srv import GetPositionFKRequest
+from moveit_msgs.srv import GetPositionFKResponse
+from moveit_msgs.msg import RobotState
 
 #from cv_bridge import CvBridge
 
@@ -47,8 +51,8 @@ class Joy2Target(object):
     self.rsa = rsa
     
     # param
-    self.with_gripper = rospy.get_param(self.prefix+'/with_gripper')
-    self.unity = rospy.get_param(self.prefix+'/unity')
+    self.with_gripper = rospy.get_param(self.prefix+'/with_gripper', False)
+    self.unity = rospy.get_param(self.prefix+'/unity', True)
 
     # teleoperation variable
     self.pre_button = None
@@ -61,7 +65,7 @@ class Joy2Target(object):
     # random agent
     self.random_action = np.zeros(6)
     self.delay_step = 0
-    self.action_mask = [0,1,0,0,0,0] # x,y,z,roll,pitch,yaw
+    self.action_mask = [0., 1., 0., 0., 0., 0.] # x,y,z,roll,pitch,yaw
 
     self.xyzw_array = lambda o: np.array([o.x, o.y, o.z, o.w])
 
@@ -95,7 +99,7 @@ class Joy2Target(object):
     self.gripper_action_pub = rospy.Publisher('Robotiq2FGripperRobotOutput', outputMsg, queue_size=10)
     self.gripper_action_sim_pub = rospy.Publisher('/gripper_controller/gripper_cmd/goal', GripperCommandActionGoal, queue_size=10)
     self.ik_result_pub = rospy.Publisher("ik_result", Float64MultiArray, queue_size=10)
-    
+    self.fk_result_pub = rospy.Publisher("fk_result",PoseStamped, queue_size=10)
     # gripper
     self.gripper_command = outputMsg()
     self.gripper_command.rACT = 1
@@ -108,7 +112,6 @@ class Joy2Target(object):
     self.listener = tf.TransformListener()
     
     # UR10 initial pose
-    
     if self.unity:
       self.init_pose = [0.1804118,   0.53400565 , 0.4968567 ,  0.05515337 , 1.54491309 , 1.50427668] # for unity
     else:
@@ -129,6 +132,7 @@ class Joy2Target(object):
     self.wrist_2_joint = self.init_joint_states[4]
     self.wrist_3_joint = self.init_joint_states[5]
 
+    self.fk_result = PoseStamped()
     # reset target service
     self.reset_target_service = rospy.Service('reset_target_pose', Trigger, self.reset_target)
 
@@ -298,8 +302,7 @@ class Joy2Target(object):
     # #self.target_orientation =  Quaternion(q_new[1], q_new[0], q_new[2], q_new[3]) # yxz
     # #self.target_orientation =  Quaternion(q_new[2], q_new[1], q_new[0], q_new[3]) # zyx
     
-    
-    # # Orientation 정보 quaternion -> Euler angle 변환
+    # Orientation 정보 quaternion -> Euler angle 변환
     # self.haptic_rpy = euler_from_quaternion(self.xyzw_array(self.haptic_pose.orientation))
     # if self.verbose:
     #   rpy = Float64MultiArray()
@@ -308,7 +311,15 @@ class Joy2Target(object):
     
     # # target pose의 Euler angle로 mapping 
     # self.target_pose[3] = -self.haptic_rpy[2] + np.pi + np.pi/2
-    # self.target_pose[4] = -self.haptic_rpy[1] + np.pi/4print("target_pose initialized")
+    # self.target_pose[4] = -self.haptic_rpy[1] + np.pi/4
+    # #self.target_pose[5] = -self.haptic_rpy[0]
+    #   rpy = Float64MultiArray()
+    #   rpy.data = self.haptic_rpy
+    #   self.haptic_rpy_pub.publish(rpy)
+    
+    # # target pose의 Euler angle로 mapping 
+    # self.target_pose[3] = -self.haptic_rpy[2] + np.pi + np.pi/2
+    # self.target_pose[4] = -self.haptic_rpy[1] + np.pi/4
     # #self.target_pose[5] = -self.haptic_rpy[0]
     
     # haptic move state = 버튼을 누르고 있는 동안에만 
@@ -383,6 +394,28 @@ class Joy2Target(object):
       return res
     except rospy.ServiceException as e:
       print("Service call failed: %s"%e)
+     
+  def fk_solver(self, joint_state):
+    rospy.wait_for_service('/unity/compute_fk')
+    try:
+      solve_fk = rospy.ServiceProxy('/unity/compute_fk', GetPositionFK)
+      header = Header()
+      header.stamp = rospy.Time.now()
+      header.frame_id = 'world'
+      links = ['ee_link','base_link']
+      joints = ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint', 'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint']
+      rs = RobotState()
+      
+      js = JointState()
+      js.header = header
+      js.name = joints
+      js.position = joint_state
+      rs.joint_state = js
+      res = solve_fk(header, links, rs)
+      return res
+    
+    except rospy.ServiceException as e:
+      print("Service call failed: %s"%e)
 
   def reset_pose(self):
     rospy.wait_for_service(self.prefix+'/reset_pose')
@@ -398,8 +431,8 @@ def main():
   else:
     prefix = ''
   
-  rsa_flag = rospy.get_param('rsa')
-  rand_agent = rospy.get_param('rand_agent') 
+  rsa_flag = rospy.get_param('rsa', False)
+  rand_agent = rospy.get_param('rand_agent', False) 
 
   rospy.init_node("joy2target_converter", anonymous=True)
   j2t = Joy2Target(prefix=prefix, random_agent=rand_agent, rsa=rsa_flag)
@@ -409,15 +442,19 @@ def main():
       # calculate target pose 
       target_pose = j2t.input_conversion()
       j2t.target_pose_pub.publish(target_pose)
-      #print("target_pose calculated")
+      print("target_pose calculated")
       # solve ik
       result = j2t.ik_solver(target_pose)
+      
       if result.success:
         # first 3 joints 
-        #j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.wrist_1_joint, j2t.wrist_2_joint, j2t.wrist_3_joint]
-        j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], result.ik_result.data[3], result.ik_result.data[4], result.ik_result.data[5]] 
+        j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.wrist_1_joint, j2t.wrist_2_joint, j2t.wrist_3_joint]
+        #j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], result.ik_result.data[3], result.ik_result.data[4], result.ik_result.data[5]] 
         #j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.init_joint_states[3], j2t.init_joint_states[4], j2t.init_joint_states[5]]
-                              
+        fk_result = j2t.fk_solver(j2t.ik_result.data)
+        j2t.fk_result = fk_result.pose_stamped[0]
+        
+        j2t.fk_result_pub.publish(j2t.fk_result)                      
         j2t.ik_result_pub.publish(j2t.ik_result)
         j2t.gripper_action_pub.publish(j2t.gripper_command)
       else:

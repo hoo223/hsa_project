@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <launch>
+
   <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
   <arg name="display" default="false"/>
 
@@ -9,6 +10,7 @@
   <param name="/$(arg robot_name)/with_gripper" value="$(arg gripper)" type="bool"/>
   
   <group ns="$(arg robot_name)">
+
     <group unless="$(arg gripper)">
       <!-- send robot urdf to param server -->
       <include file="$(find ur_description)/launch/ur10_upload.launch">
@@ -46,7 +48,8 @@
 
       <!-- load other controllers -->
       <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" args="load joint_group_vel_controller" respawn="false" output="screen"/>
-
     </group>
+    
   </group>
+  
 </launch>

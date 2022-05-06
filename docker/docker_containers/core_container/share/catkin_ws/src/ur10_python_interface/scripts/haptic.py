@@ -35,7 +35,7 @@ class Haptic(object):
     self.CurFBABeta = np.array([1.0,1.0,1.0,1.0,1.0,1.0])
     self.prev_pos = np.array([0.0,0.0,0.0,0.0,0.0,0.0])
     self.delay_time = 200 #milli second
-    self.MinVisDamping = np.array([1.0,1.0,1.0,1.0,1.0,1.0])
+    self.MinVisDamping = np.array([0.1,0.1,0.1,0.1,0.1,0.1])
     self.FBA_force = np.array([0.0,0.0,0.0,0.0,0.0,0.0])
   
 
@@ -62,10 +62,9 @@ class Haptic(object):
   
     diff_pos = cur_pos - self.prev_pos
     #print("Current Force :", cur_force)
-    FBAGamma = 2*PreFBABeta * np.abs(diff_pos) + np.abs(cur_force)
-    #print("FBA Gamma :", FBAGamma[0])
+    FBAGamma = 2*PreFBABeta * np.abs(diff_pos)*100000 + np.abs(cur_force)
+    print("FBA Gamma :", FBAGamma[0], FBAGamma[1],FBAGamma[2])
     self.CurFBABeta = PreFBABeta * cur_force * cur_force / (FBAGamma * FBAGamma + 10e-7)
-    #print("CurFBA Beta :", self.CurFBABeta[0])
     #print(np.sum(np.abs(cur_force)))
     if np.sum(np.abs(cur_force))<0.1:
       self.CurFBABeta = self.MinVisDamping
@@ -74,11 +73,14 @@ class Haptic(object):
       if self.CurFBABeta[i] > self.MinVisDamping[i]:
         self.CurFBABeta[i] = self.MinVisDamping[i]
     #print("Refined_Cur_FBA_Beta :", self.CurFBABeta)
+    print("PreFBA Beta :", PreFBABeta[0], PreFBABeta[1], PreFBABeta[2])
+    print("CurFBA Beta :", self.CurFBABeta[0], self.CurFBABeta[1], self.CurFBABeta[2])
     
     FBAForMax = FBAGamma * np.sqrt(self.CurFBABeta / (PreFBABeta +10e-7))
     FBAForMin = - FBAGamma * np.sqrt(self.CurFBABeta / (PreFBABeta + 10e-7))
-    #print("Max Force :", FBAForMax[0], "Min Force :", FBAForMin[0])
+    print("Max Force :", FBAForMax[0], FBAForMax[1], FBAForMax[2])
     
+    # force reduction이 가장 큰 비율인 녀석의 index를 찾고, cur_force * force reduction rate을 곱해서 일정한 비율로 크기가 줄어들게 해서 방향 투명성을 유지하도록 하기
     for i in range(6):
       if cur_force[i] > FBAForMax[i]:
         self.FBA_force[i] = FBAForMax[i]
@@ -86,12 +88,12 @@ class Haptic(object):
         self.FBA_force[i] = FBAForMin[i]
       else:
         self.FBA_force[i] = cur_force[i]
-    print("Force reduction (%) :", (1-self.FBA_force/cur_force)[0]*100)
+    print("Force reduction (%) :", (1-self.FBA_force/cur_force)[2]*100)
     self.FBA_Force_msg.data = [self.FBA_force[0],self.FBA_force[1],self.FBA_force[2],self.FBA_force[3],self.FBA_force[4],self.FBA_force[5]]
     self.force_feedback.force.x = self.FBA_Force_msg.data[0]
     self.force_feedback.force.y = self.FBA_Force_msg.data[1]
     self.force_feedback.force.z = self.FBA_Force_msg.data[2]
-    
+    print(self.FBA_Force_msg.data[2])
     self.prev_pos = cur_pos
 
   
