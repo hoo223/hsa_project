@@ -1,0 +1,32 @@
+https://githubmemory.com/repo/HTrang28/SDK-Installation-ROS-Wrapper-for-Kinect-v2-on-Ubuntu-18.04
+
+# 1. Kinect v2 SDK Installation
+## Download the Libraries:
+> git clone https://github.com/OpenKinect/libfreenect2.git
+
+## install opencv:
+> sudo apt-get install build-essential cmake pkg-config libturbojpeg libjpeg-turbo8-dev mesa-common-dev freeglut3-dev libxrandr-dev libxi-dev
+
+
+## Start Installation:
+
+> cd libfreenect2
+> mkdir build 
+> cd build
+> cmake ..
+> make
+> sudo make install
+
+### error1 : "CMake Error at /usr/share/cmake-3.9/Modules/FindPackageHandleStandardArgs. cmake:137 (message):Could NOT find TurboJPEG (missing: TurboJPEG_INCLUDE_DIRS TURBOJPEG_WORKS)...)"
+> sudo apt-get install libturbojpeg0-dev
+
+### error2 : "error: helper_math.h: No such file or directory"
+# https://programmerall.com/article/1454306625/
+Copy the "/usr/local/cuda/samples/common/inc/helper_math.h" in host PC to .../libfreenect2/include folder
+
+
+Set the udev rules for communicating with device:
+> sudo cp /path_to_libfreenect2/libfreenect2/platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/
+
+Replug the Microsoft Kinect Xbox One. (If in docker containerThen run in the build directory:
+

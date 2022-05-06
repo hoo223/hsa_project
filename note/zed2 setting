@@ -1,0 +1,23 @@
+zed ros github - https://github.com/stereolabs/zed-ros-wrapper
+How to Install ZED SDK on Linux - https://www.stereolabs.com/docs/installation/linux/
+
+1. Download the SDK
+https://www.stereolabs.com/developers/release/ -> ZED SDK for Ubuntu18 (CUDA 11.X)
+=> ZED_SDK_Ubuntu18_cuda11.4_v3.6.1.run
+
+2. Install the SDK
+Run the downloaded file and install
+$ ./ZED_SDK_Ubuntu18_cuda11.4_v3.6.1.run
+
+
+3. Download and build the zed-ros-warpper package
+$ cd ~/catkin_ws/src
+$ git clone --recursive https://github.com/stereolabs/zed-ros-wrapper.git
+$ cd ../
+$ rosdep install --from-paths src --ignore-src -r -y
+$ catkin_make -DCMAKE_BUILD_TYPE=Release
+$ source ./devel/setup.bash
+
+4. Test the camera
+$ ZED_Diagnostic
+

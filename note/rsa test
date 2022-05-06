@@ -1,0 +1,10 @@
+
+* core container
+ursim
+interface_v
+teleop gym_env:=true rsa:=true
+
+* rsa container
+ppo 
+python joystick_control.py --ur10 models/pretrained_ur10/
+

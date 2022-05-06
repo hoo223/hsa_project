@@ -1,0 +1,56 @@
+## UR10-2f_85 URDF Import to Unity
+# https://github.com/Unity-Technologies/URDF-Importer
+
+1. xacro -> urdf
+$ roscd ur_description/urdf
+$ rosrun xacro xacro --inorder -o ur_gripper_85.urdf ur_gripper_85.urdf.xacro
+
+2. make a new folder (UR10_Gripper) in Assets and copy files
+Assets/UR10_Gripper
+- ur_gripper_85.urdf
+- ur_description
+- robotiq_description
+
+3. right click on th URDF file and 'Import Robot from Selected URDF file'
+Y Axis, VHACD -> Import URDF
+
+4. Click the location where you want to put the robot in the scene
+
+5. Click base_link and check 'Is Base Link' and 'Immovable'
+
+6. Add Objects
+- UR10ActionSubscriber
+- UR10StatePublisher
+- UR10StatePrinter
+- Canvas
+
+
+코드 추가
+unity_hardware_interface_with_gripper.h
+unity_hardware_interface_with_gripper.cpp 
+
+
+UR10GripperActionSubsrciber.cs
+UR10GripperStatePublisher.cs
+
+
+## 21.11.18 수정
+https://github.com/Unity-Technologies/Robotics-Object-Pose-Estimation -> ur3 + 2f-140 예제 참고
+
+ROS/src/ur3_moveit/URDF/ur3_with_gripper.xacro -> ur10 버전으로 수정하고 urdf로 변환
+$ rosrun xacro xacro --inorder -o model.urdf model.urdf.xacro
+
+* 주의사항
+기존의 존재하던 'connected_to' 인자가 사라져 통합된 urdf 상에서 ur10과 gripper가 연결이 안됨
+<xacro:robotiq_arg2f_85 prefix="" connected_to="tool0"/> -> connected_to 인자 삭제
+
+ur10과 gripper를 연결하기 위해 통합된 urdf 파일에 다음 부분을 추가해야 함
+-------------------------------------------------------------------------------------
+<joint name="measurement_tool_joint" type="fixed">
+    <!-- The parent link must be read from the robot model it is attached to. -->
+    <parent link="tool0"/>
+    <child link="robotiq_arg2f_base_link"/>
+    <!-- The tool is directly attached to the flange. -->
+    <origin rpy="0 0 1.57" xyz="0 0 0"/>
+</joint>
+-------------------------------------------------------------------------------------
