@@ -13,11 +13,6 @@ CONTAINER_NAME=test
 alias ds='docker start $CONTAINER_NAME'
 alias da='docker attach $CONTAINER_NAME'
 alias de='docker exec -it $CONTAINER_NAME bash'
-CONTAINER_NAME1=ros
-alias rs='docker start $CONTAINER_NAME1'
-alias ra='docker attach $CONTAINER_NAME1'
-alias re='docker exec -it $CONTAINER_NAME1 bash'
-alias ros='rs && ra'
 CONTAINER_NAME2=unity
 alias us='docker start $CONTAINER_NAME2'
 alias ua='docker attach $CONTAINER_NAME2'
@@ -33,6 +28,26 @@ alias cs='docker start $CONTAINER_NAME4'
 alias ca='docker attach $CONTAINER_NAME4'
 alias ce='docker exec -it $CONTAINER_NAME4 bash'
 alias core='cs && ca'
+CONTAINER_NAME5=indy
+alias is='docker start $CONTAINER_NAME5'
+alias ia='docker attach $CONTAINER_NAME5'
+alias ie='docker exec -it $CONTAINER_NAME5 bash'
+alias indy='is && ia'
+CONTAINER_NAME6=rsa
+alias rs='docker start $CONTAINER_NAME6'
+alias ra='docker attach $CONTAINER_NAME6'
+alias re='docker exec -it $CONTAINER_NAME6 bash'
+alias rsa='rs && ra'
+CONTAINER_NAME7=dyros
+alias ds='docker start $CONTAINER_NAME7'
+alias da='docker attach $CONTAINER_NAME7'
+alias de='docker exec -it $CONTAINER_NAME7 bash'
+alias dyros='ds && da'
+CONTAINER_NAME8=ur3
+alias ur3s='docker start $CONTAINER_NAME8'
+alias ur3a='docker attach $CONTAINER_NAME8'
+alias ur3e='docker exec -it $CONTAINER_NAME8 bash'
+alias ur3='ur3s && ur3a'
 
 # CUDA
 export PATH=/usr/local/cuda-11.4/bin:$PATH
@@ -41,6 +56,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-11.4/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 
 # Haptic
 alias haptic='roslaunch omni_common omni_state.launch'
+alias hp='sudo chmod 777 /dev/ttyACM0'
 
 # Gripper
 alias gripper='rosrun robotiq_2f_gripper_control Robotiq2FGripperRtuNode.py /dev/ttyUSB0'
@@ -52,3 +68,11 @@ alias cm='catkin_make'
 alias sd='source devel/setup.bash'
 alias cw='cd ~/catkin_ws'
 alias tree='rosrun rqt_tf_tree rqt_tf_tree'
+
+export ROS_IP=localhost
+export ROS_MASTER_URI=http://localhost:11311/
+export ROS_HOSTNAME=$ROS_IP
+
+
+source /opt/ros/melodic/setup.bash
+source ~/catkin_ws/devel/setup.bash
