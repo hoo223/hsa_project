@@ -11,6 +11,8 @@ alias rg='rqt_graph'
 alias tree='rosrun rqt_tf_tree rqt_tf_tree'
 alias con_list='rosrun controller_manager controller_manager list'
 alias rd='rosdep install --from-paths src --ignore-src -r -y'
+alias wm='rosrun wrench_marker wrench_marker_publisher _wrench_marker_scale:=0.3 _force_arrow_scale:=0.03'
+alias rviz_wrench='rosrun rviz rviz -d ~/share/wrench_visualization.rviz'
 
 # Unity
 alias ut='roslaunch ros_tcp_endpoint endpoint.launch'

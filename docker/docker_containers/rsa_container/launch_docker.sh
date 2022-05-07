@@ -4,5 +4,5 @@ sudo docker run --gpus all -it --net=host --privileged \
     -v /home/hmci/Downloads:/root/Downloads \
     -v `pwd`/share:/root/share \
     --name rsa \
-    lhs223/ros_noetic:rsa \
+    lhs223/hsa_project:rsa \
     bash
