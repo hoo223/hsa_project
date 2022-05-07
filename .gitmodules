@@ -1,0 +1,3 @@
+[submodule "docker/docker_containers/core_container/share/catkin_ws/src/wrench_marker"]
+	path = docker/docker_containers/core_container/share/catkin_ws/src/wrench_marker
+	url = https://github.com/tecnalia-medical-robotics/wrench_marker
