@@ -826,6 +826,8 @@ set(CMAKE_DEPEND_INFO_FILES
   "universal_robot/ur_kinematics/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/DependInfo.cmake"
   "universal_robot/ur_kinematics/CMakeFiles/moveit_msgs_generate_messages_py.dir/DependInfo.cmake"
   "universal_robot/ur_kinematics/CMakeFiles/object_recognition_msgs_generate_messages_cpp.dir/DependInfo.cmake"
+  "ur10_python_interface/CMakeFiles/move_group_interface_example.dir/DependInfo.cmake"
+  "ur10_python_interface/CMakeFiles/arm_state_publisher.dir/DependInfo.cmake"
   "ur10_python_interface/CMakeFiles/ik_publisher.dir/DependInfo.cmake"
   "ur10_python_interface/CMakeFiles/ur10_python_interface_genpy.dir/DependInfo.cmake"
   "ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_py.dir/DependInfo.cmake"

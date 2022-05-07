@@ -391,10 +391,12 @@
 /root/share/catkin_ws/build/universal_robot/ur_kinematics/CMakeFiles/moveit_msgs_generate_messages_py.dir
 /root/share/catkin_ws/build/universal_robot/ur_kinematics/CMakeFiles/object_recognition_msgs_generate_messages_cpp.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/install/strip.dir
-/root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/install/local.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/list_install_components.dir
-/root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/rebuild_cache.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/test.dir
+/root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/rebuild_cache.dir
+/root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/move_group_interface_example.dir
+/root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/install/local.dir
+/root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/arm_state_publisher.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/ik_publisher.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/ur10_python_interface_genpy.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/edit_cache.dir

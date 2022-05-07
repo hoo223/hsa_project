@@ -3080,6 +3080,32 @@ object_recognition_msgs_generate_messages_cpp/fast:
 .PHONY : object_recognition_msgs_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named move_group_interface_example
+
+# Build rule for target.
+move_group_interface_example: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 move_group_interface_example
+.PHONY : move_group_interface_example
+
+# fast build rule for target.
+move_group_interface_example/fast:
+	$(MAKE) -f ur10_python_interface/CMakeFiles/move_group_interface_example.dir/build.make ur10_python_interface/CMakeFiles/move_group_interface_example.dir/build
+.PHONY : move_group_interface_example/fast
+
+#=============================================================================
+# Target rules for targets named arm_state_publisher
+
+# Build rule for target.
+arm_state_publisher: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 arm_state_publisher
+.PHONY : arm_state_publisher
+
+# fast build rule for target.
+arm_state_publisher/fast:
+	$(MAKE) -f ur10_python_interface/CMakeFiles/arm_state_publisher.dir/build.make ur10_python_interface/CMakeFiles/arm_state_publisher.dir/build
+.PHONY : arm_state_publisher/fast
+
+#=============================================================================
 # Target rules for targets named ik_publisher
 
 # Build rule for target.
@@ -3979,6 +4005,8 @@ help:
 	@echo "... moveit_msgs_generate_messages_lisp"
 	@echo "... moveit_msgs_generate_messages_py"
 	@echo "... object_recognition_msgs_generate_messages_cpp"
+	@echo "... move_group_interface_example"
+	@echo "... arm_state_publisher"
 	@echo "... ik_publisher"
 	@echo "... ur10_python_interface_genpy"
 	@echo "... ur10_python_interface_generate_messages_py"

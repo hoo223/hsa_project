@@ -156,6 +156,7 @@ ur10_python_interface/CMakeFiles/ik_publisher.dir/src/ik_publisher.cpp.o
  /root/share/catkin_ws/devel/include/ur10_python_interface/SolveIk.h
  /root/share/catkin_ws/devel/include/ur10_python_interface/SolveIkRequest.h
  /root/share/catkin_ws/devel/include/ur10_python_interface/SolveIkResponse.h
+ /root/share/catkin_ws/src/ur10_python_interface/include/move_group_interface.h
  /root/share/catkin_ws/src/ur10_python_interface/src/ik_publisher.cpp
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core

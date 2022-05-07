@@ -68,18 +68,6 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -89,6 +77,17 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -101,16 +100,17 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -166,6 +166,36 @@ preinstall/fast:
 depend:
 	cd /root/share/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/move_group_interface_example.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/move_group_interface_example.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/move_group_interface_example.dir/rule
+
+# Convenience name for target.
+move_group_interface_example: ur10_python_interface/CMakeFiles/move_group_interface_example.dir/rule
+
+.PHONY : move_group_interface_example
+
+# fast build rule for target.
+move_group_interface_example/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/move_group_interface_example.dir/build.make ur10_python_interface/CMakeFiles/move_group_interface_example.dir/build
+.PHONY : move_group_interface_example/fast
+
+# Convenience name for target.
+ur10_python_interface/CMakeFiles/arm_state_publisher.dir/rule:
+	cd /root/share/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur10_python_interface/CMakeFiles/arm_state_publisher.dir/rule
+.PHONY : ur10_python_interface/CMakeFiles/arm_state_publisher.dir/rule
+
+# Convenience name for target.
+arm_state_publisher: ur10_python_interface/CMakeFiles/arm_state_publisher.dir/rule
+
+.PHONY : arm_state_publisher
+
+# fast build rule for target.
+arm_state_publisher/fast:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/arm_state_publisher.dir/build.make ur10_python_interface/CMakeFiles/arm_state_publisher.dir/build
+.PHONY : arm_state_publisher/fast
 
 # Convenience name for target.
 ur10_python_interface/CMakeFiles/ik_publisher.dir/rule:
@@ -797,6 +827,33 @@ ur10_python_interface_geneus/fast:
 	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/build.make ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir/build
 .PHONY : ur10_python_interface_geneus/fast
 
+src/arm_state_publisher.o: src/arm_state_publisher.cpp.o
+
+.PHONY : src/arm_state_publisher.o
+
+# target to build an object file
+src/arm_state_publisher.cpp.o:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/arm_state_publisher.dir/build.make ur10_python_interface/CMakeFiles/arm_state_publisher.dir/src/arm_state_publisher.cpp.o
+.PHONY : src/arm_state_publisher.cpp.o
+
+src/arm_state_publisher.i: src/arm_state_publisher.cpp.i
+
+.PHONY : src/arm_state_publisher.i
+
+# target to preprocess a source file
+src/arm_state_publisher.cpp.i:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/arm_state_publisher.dir/build.make ur10_python_interface/CMakeFiles/arm_state_publisher.dir/src/arm_state_publisher.cpp.i
+.PHONY : src/arm_state_publisher.cpp.i
+
+src/arm_state_publisher.s: src/arm_state_publisher.cpp.s
+
+.PHONY : src/arm_state_publisher.s
+
+# target to generate assembly for a file
+src/arm_state_publisher.cpp.s:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/arm_state_publisher.dir/build.make ur10_python_interface/CMakeFiles/arm_state_publisher.dir/src/arm_state_publisher.cpp.s
+.PHONY : src/arm_state_publisher.cpp.s
+
 src/ik_publisher.o: src/ik_publisher.cpp.o
 
 .PHONY : src/ik_publisher.o
@@ -824,6 +881,33 @@ src/ik_publisher.cpp.s:
 	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/ik_publisher.dir/build.make ur10_python_interface/CMakeFiles/ik_publisher.dir/src/ik_publisher.cpp.s
 .PHONY : src/ik_publisher.cpp.s
 
+src/move_group_interface_example.o: src/move_group_interface_example.cpp.o
+
+.PHONY : src/move_group_interface_example.o
+
+# target to build an object file
+src/move_group_interface_example.cpp.o:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/move_group_interface_example.dir/build.make ur10_python_interface/CMakeFiles/move_group_interface_example.dir/src/move_group_interface_example.cpp.o
+.PHONY : src/move_group_interface_example.cpp.o
+
+src/move_group_interface_example.i: src/move_group_interface_example.cpp.i
+
+.PHONY : src/move_group_interface_example.i
+
+# target to preprocess a source file
+src/move_group_interface_example.cpp.i:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/move_group_interface_example.dir/build.make ur10_python_interface/CMakeFiles/move_group_interface_example.dir/src/move_group_interface_example.cpp.i
+.PHONY : src/move_group_interface_example.cpp.i
+
+src/move_group_interface_example.s: src/move_group_interface_example.cpp.s
+
+.PHONY : src/move_group_interface_example.s
+
+# target to generate assembly for a file
+src/move_group_interface_example.cpp.s:
+	cd /root/share/catkin_ws/build && $(MAKE) -f ur10_python_interface/CMakeFiles/move_group_interface_example.dir/build.make ur10_python_interface/CMakeFiles/move_group_interface_example.dir/src/move_group_interface_example.cpp.s
+.PHONY : src/move_group_interface_example.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -831,10 +915,12 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install/local"
 	@echo "... list_install_components"
-	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... rebuild_cache"
+	@echo "... move_group_interface_example"
+	@echo "... install/local"
+	@echo "... arm_state_publisher"
 	@echo "... ik_publisher"
 	@echo "... ur10_python_interface_genpy"
 	@echo "... edit_cache"
@@ -879,9 +965,15 @@ help:
 	@echo "... bond_generate_messages_cpp"
 	@echo "... ur10_python_interface_generate_messages_lisp"
 	@echo "... ur10_python_interface_geneus"
+	@echo "... src/arm_state_publisher.o"
+	@echo "... src/arm_state_publisher.i"
+	@echo "... src/arm_state_publisher.s"
 	@echo "... src/ik_publisher.o"
 	@echo "... src/ik_publisher.i"
 	@echo "... src/ik_publisher.s"
+	@echo "... src/move_group_interface_example.o"
+	@echo "... src/move_group_interface_example.i"
+	@echo "... src/move_group_interface_example.s"
 .PHONY : help
 
 

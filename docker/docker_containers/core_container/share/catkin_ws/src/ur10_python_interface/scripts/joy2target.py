@@ -452,7 +452,7 @@ def main():
       # Calculate target pose from input devices (Joystick + Haptic device)
       target_pose = j2t.input_conversion()
       j2t.target_pose_pub.publish(target_pose)
-      print("target_pose calculated")
+      # print("target_pose calculated")
       
       # Solve IK
       result = j2t.ik_solver(target_pose)

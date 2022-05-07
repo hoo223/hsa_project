@@ -2178,7 +2178,7 @@ ros/message_operations.h
 std_msgs/Float64MultiArray.h
 -
 
-/root/share/catkin_ws/src/ur10_python_interface/src/ik_publisher.cpp
+/root/share/catkin_ws/src/ur10_python_interface/include/move_group_interface.h
 ros/ros.h
 -
 time.h
@@ -2189,7 +2189,9 @@ moveit/robot_model/robot_model.h
 -
 moveit/robot_state/robot_state.h
 -
-sensor_msgs/JointState.h
+moveit/kinematics_metrics/kinematics_metrics.h
+-
+moveit/planning_scene/planning_scene.h
 -
 std_msgs/Float64MultiArray.h
 -
@@ -2199,13 +2201,23 @@ std_msgs/Bool.h
 -
 geometry_msgs/Pose.h
 -
-eigen_conversions/eigen_msg.h
--
-moveit/kinematics_metrics/kinematics_metrics.h
+sensor_msgs/JointState.h
 -
 ur10_python_interface/SolveIk.h
 -
-moveit/planning_scene/planning_scene.h
+eigen_conversions/eigen_msg.h
+-
+
+/root/share/catkin_ws/src/ur10_python_interface/src/ik_publisher.cpp
+ros/ros.h
+-
+geometry_msgs/Pose.h
+-
+time.h
+-
+eigen_conversions/eigen_msg.h
+-
+move_group_interface.h
 -
 
 /usr/include/eigen3/Eigen/Cholesky

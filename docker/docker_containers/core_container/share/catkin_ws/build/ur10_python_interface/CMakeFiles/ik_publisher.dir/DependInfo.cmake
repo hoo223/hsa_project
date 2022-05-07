@@ -20,6 +20,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/root/share/catkin_ws/devel/include"
   "/root/share/catkin_ws/src/ur10_python_interface/doc/interactivity/include"
   "/root/share/catkin_ws/src/ur10_python_interface/env"
+  "/root/share/catkin_ws/src/ur10_python_interface/include"
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/opt/ros/melodic/share/orocos_kdl/cmake/../../../include"
