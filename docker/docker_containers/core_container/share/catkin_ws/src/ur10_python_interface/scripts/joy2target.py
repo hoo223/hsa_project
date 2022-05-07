@@ -426,40 +426,56 @@ class Joy2Target(object):
     
 def main():
   args = rospy.myargv()
-  if len(args) > 1: 
+  if len(args) > 2:
     prefix = '/'+args[1]
+    haptic_feedback = args[2]
+  elif len(args) == 2: 
+    prefix = '/'+args[1]
+    haptic_feedback = False
   else:
     prefix = ''
+    haptic_feedback = False
   
   rsa_flag = rospy.get_param('rsa', False)
   rand_agent = rospy.get_param('rand_agent', False) 
 
+  # Node initialization
   rospy.init_node("joy2target_converter", anonymous=True)
+  # Class instantiation
   j2t = Joy2Target(prefix=prefix, random_agent=rand_agent, rsa=rsa_flag)
-  rate = rospy.Rate(250)
+  # Set loop period
+  rate = rospy.Rate(250) 
+  
   while not rospy.is_shutdown():
+    
     if rospy.get_param(prefix+'/teleop_state') == "start": # teleop is running
-      # calculate target pose 
+      # Calculate target pose from input devices (Joystick + Haptic device)
       target_pose = j2t.input_conversion()
       j2t.target_pose_pub.publish(target_pose)
       print("target_pose calculated")
-      # solve ik
-      result = j2t.ik_solver(target_pose)
       
-      if result.success:
-        # first 3 joints 
-        j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.wrist_1_joint, j2t.wrist_2_joint, j2t.wrist_3_joint]
-        #j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], result.ik_result.data[3], result.ik_result.data[4], result.ik_result.data[5]] 
-        #j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.init_joint_states[3], j2t.init_joint_states[4], j2t.init_joint_states[5]]
-        fk_result = j2t.fk_solver(j2t.ik_result.data)
-        j2t.fk_result = fk_result.pose_stamped[0]
-        
-        j2t.fk_result_pub.publish(j2t.fk_result)                      
+      # Solve IK
+      result = j2t.ik_solver(target_pose)
+      if result.success:# IK가 성공하면 결과를 저장
+        if not rsa_flag: 
+          # first 3 joints
+          j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.wrist_1_joint, j2t.wrist_2_joint, j2t.wrist_3_joint]
+          #j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], result.ik_result.data[3], result.ik_result.data[4], result.ik_result.data[5]] 
+          #j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.init_joint_states[3], j2t.init_joint_states[4], j2t.init_joint_states[5]]                      
+        else: # rsa mode일 경우
+          j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], result.ik_result.data[3], result.ik_result.data[4], result.ik_result.data[5]] 
+        # IK로 얻은 target joint values 발행
         j2t.ik_result_pub.publish(j2t.ik_result)
         j2t.gripper_action_pub.publish(j2t.gripper_command)
-      else:
+      else: # IK가 실패하면 teleop 정지
         print("ik failed")
         rospy.set_param(prefix+'/teleop_state', "stop")
+      
+      # # solve fk
+      # fk_result = j2t.fk_solver(j2t.ik_result.data)
+      # j2t.fk_result = fk_result.pose_stamped[0]
+      # j2t.fk_result_pub.publish(j2t.fk_result)
+      
     else: # teleop is stopped
       j2t.target_pose = copy.deepcopy(j2t.init_pose)
       j2t.ik_result.data = copy.deepcopy(j2t.init_joint_states)

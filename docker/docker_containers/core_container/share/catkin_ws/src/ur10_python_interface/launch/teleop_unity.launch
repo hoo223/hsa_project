@@ -5,18 +5,26 @@
   <arg name="rsa" default="false"/>
   <arg name="rand_agent" default="false"/>
   <arg name="joint_mapping" default="false"/>
+  <arg name="haptic_feedback" default="false"/>
 
   <group ns="$(arg robot_name)">
     <param name="unity" value="$(arg unity)" type="bool"/>
     <param name="rsa" value="$(arg rsa)" type="bool"/>
     <param name="rand_agent" value="$(arg rand_agent)" type="bool"/>
+
     <group unless="$(arg joint_mapping)">
       <node name="ik_solver" pkg="ur10_python_interface" type="ik_publisher" args="$(arg robot_name)" output="screen"/>
-      <node name="joy2target_converter" pkg="ur10_python_interface" type="joy2target.py" args="$(arg robot_name)" output="screen"/>
+      <node name="joy2target_converter" pkg="ur10_python_interface" type="joy2target.py" args="$(arg robot_name) $(arg haptic_feedback)" output="screen"/>
     </group>
     <group if="$(arg joint_mapping)">
       <node name="joint_mapper" pkg="ur10_python_interface" type="joint_mapper.py" args="$(arg robot_name)" output="screen"/>
     </group>
+
     <node name="teleop_controller" pkg="ur10_python_interface" type="teleop_controller.py" args="$(arg robot_name)" output="screen"/> 
   </group>
+
+  <!-- <group if="$(arg haptic_feedback)">
+    <node name="haptic_renderer" pkg="ur10_python_interface" type="haptic.py" output="log"/>
+  </group> -->
+
 </launch>
