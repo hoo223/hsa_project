@@ -152,6 +152,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/root/share/catkin_ws/build/universal_robot/ur_gazebo/cmake_install.cmake")
   include("/root/share/catkin_ws/build/universal_robot/ur_kinematics/cmake_install.cmake")
   include("/root/share/catkin_ws/build/ur10_python_interface/cmake_install.cmake")
+  include("/root/share/catkin_ws/build/wrench_marker/cmake_install.cmake")
   include("/root/share/catkin_ws/build/universal_robot/ur10_moveit_config/cmake_install.cmake")
 
 endif()

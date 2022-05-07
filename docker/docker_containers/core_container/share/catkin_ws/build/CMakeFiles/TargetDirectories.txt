@@ -439,6 +439,15 @@
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/bond_generate_messages_cpp.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/ur10_python_interface_generate_messages_lisp.dir
 /root/share/catkin_ws/build/ur10_python_interface/CMakeFiles/ur10_python_interface_geneus.dir
+/root/share/catkin_ws/build/wrench_marker/CMakeFiles/install/strip.dir
+/root/share/catkin_ws/build/wrench_marker/CMakeFiles/install.dir
+/root/share/catkin_ws/build/wrench_marker/CMakeFiles/wrench_marker_publisher.dir
+/root/share/catkin_ws/build/wrench_marker/CMakeFiles/wrench_marker.dir
+/root/share/catkin_ws/build/wrench_marker/CMakeFiles/rebuild_cache.dir
+/root/share/catkin_ws/build/wrench_marker/CMakeFiles/install/local.dir
+/root/share/catkin_ws/build/wrench_marker/CMakeFiles/test.dir
+/root/share/catkin_ws/build/wrench_marker/CMakeFiles/list_install_components.dir
+/root/share/catkin_ws/build/wrench_marker/CMakeFiles/edit_cache.dir
 /root/share/catkin_ws/build/universal_robot/ur10_moveit_config/CMakeFiles/install/strip.dir
 /root/share/catkin_ws/build/universal_robot/ur10_moveit_config/CMakeFiles/install.dir
 /root/share/catkin_ws/build/universal_robot/ur10_moveit_config/CMakeFiles/list_install_components.dir

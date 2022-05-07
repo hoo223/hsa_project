@@ -3626,6 +3626,32 @@ ur10_python_interface_geneus/fast:
 .PHONY : ur10_python_interface_geneus/fast
 
 #=============================================================================
+# Target rules for targets named wrench_marker_publisher
+
+# Build rule for target.
+wrench_marker_publisher: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 wrench_marker_publisher
+.PHONY : wrench_marker_publisher
+
+# fast build rule for target.
+wrench_marker_publisher/fast:
+	$(MAKE) -f wrench_marker/CMakeFiles/wrench_marker_publisher.dir/build.make wrench_marker/CMakeFiles/wrench_marker_publisher.dir/build
+.PHONY : wrench_marker_publisher/fast
+
+#=============================================================================
+# Target rules for targets named wrench_marker
+
+# Build rule for target.
+wrench_marker: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 wrench_marker
+.PHONY : wrench_marker
+
+# fast build rule for target.
+wrench_marker/fast:
+	$(MAKE) -f wrench_marker/CMakeFiles/wrench_marker.dir/build.make wrench_marker/CMakeFiles/wrench_marker.dir/build
+.PHONY : wrench_marker/fast
+
+#=============================================================================
 # Target rules for targets named clean_test_results_ur10_moveit_config
 
 # Build rule for target.
@@ -3995,6 +4021,8 @@ help:
 	@echo "... bond_generate_messages_cpp"
 	@echo "... ur10_python_interface_generate_messages_lisp"
 	@echo "... ur10_python_interface_geneus"
+	@echo "... wrench_marker_publisher"
+	@echo "... wrench_marker"
 	@echo "... clean_test_results_ur10_moveit_config"
 	@echo "... _run_tests_ur10_moveit_config"
 	@echo "... _run_tests_ur10_moveit_config_roslaunch-check"
