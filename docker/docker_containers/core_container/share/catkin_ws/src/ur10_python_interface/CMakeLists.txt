@@ -38,6 +38,7 @@ find_package(Boost REQUIRED system filesystem date_time thread)
 set(THIS_PACKAGE_INCLUDE_DIRS
   doc/interactivity/include
   env
+  include
 )
 
 add_message_files(
@@ -85,3 +86,9 @@ include_directories(${THIS_PACKAGE_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${Boost_
 
 add_executable(ik_publisher src/ik_publisher.cpp)
 target_link_libraries(ik_publisher ${catkin_LIBRARIES})
+
+add_executable(arm_state_publisher src/arm_state_publisher.cpp)
+target_link_libraries(arm_state_publisher ${catkin_LIBRARIES})
+
+add_executable(move_group_interface_example src/move_group_interface_example.cpp)
+target_link_libraries(move_group_interface_example ${catkin_LIBRARIES})
