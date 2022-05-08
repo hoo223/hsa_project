@@ -13,7 +13,7 @@
   <param name="rand_agent" value="$(arg rand_agent)" type="bool"/>
 
   <node name="ik_solver" pkg="ur10_python_interface" type="ik_publisher" args="$(arg robot_name)" output="log"/>
-  <node name="arm_state_publisher" pkg="ur10_python_interface" type="arm_state_publisher" args="$(arg robot_name)" output="log"/>
+  <!-- <node name="arm_state_publisher" pkg="ur10_python_interface" type="arm_state_publisher" args="$(arg robot_name)" output="log"/> -->
   <node name="joy2target_converter" pkg="ur10_python_interface" type="joy2target.py" args="$(arg robot_name)" output="screen"/>
   <node name="teleop_controller" pkg="ur10_python_interface" type="teleop_controller.py" args="$(arg robot_name)" output="screen"/> 
 

@@ -74,6 +74,8 @@ int main(int argc, char** argv)
                                move_group_interface.kinematic_state->getLinkModel(move_group_interface.joint_model_group->getLinkModelNames().back()),
                                reference_point_position, jacobian);
   ROS_INFO_STREAM("Jacobian: \n" << jacobian << "\n");
+  ROS_INFO_STREAM("Inverse Jacobian: \n" << jacobian.inverse() << "\n");
+
 
   // Get the Manipulabilty ------------------------------------------------------------------------------------------------------------------------------
   // ^^^^^^^^^^^^^^^^
