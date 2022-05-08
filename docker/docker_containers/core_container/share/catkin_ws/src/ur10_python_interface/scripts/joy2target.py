@@ -36,7 +36,7 @@ from moveit_msgs.msg import RobotState
 from move_group_python_interface import MoveGroupPythonInteface
 
 class Joy2Target(object):
-  def __init__(self, verbose=False, prefix="", random_agent=False, rsa=False):
+  def __init__(self, verbose=False, prefix="", random_agent=False, rsa_flag=False):
 
     # debugging
     self.verbose = verbose
@@ -48,7 +48,7 @@ class Joy2Target(object):
     self.random_agent = random_agent
 
     # with RSA
-    self.rsa = rsa
+    self.rsa_flag = rsa_flag
     
     # param
     self.with_gripper = rospy.get_param(self.prefix+'/with_gripper', False)
@@ -149,7 +149,7 @@ class Joy2Target(object):
   def input_conversion(self):
     # get input
     button = int(self.joy_command[6])
-    if self.rsa: # rsa 
+    if self.rsa_flag: # rsa 
       command = self.env_command
       x_input = -command[0] * self.action_mask[0]
       y_input = command[1] * self.action_mask[1]
@@ -225,7 +225,7 @@ class Joy2Target(object):
     q_new = quaternion_from_euler(self.target_pose[3], self.target_pose[4], self.target_pose[5]) # roll, pitch, yaw
     self.target_orientation = Quaternion(q_new[0], q_new[1], q_new[2], q_new[3])
 
-    #Workspace limit
+    # Workspace limit
     # # if self.target_pose[0] < X_LOWER:
     # #   self.target_pose[0] = X_LOWER
     # # elif self.target_pose[0] > X_UPPER:
@@ -394,6 +394,23 @@ class Joy2Target(object):
       return res
     except rospy.ServiceException as e:
       print("Service call failed: %s"%e)
+      
+  def solve_ik_by_moveit(self, target_pose):
+    result = self.ik_solver(target_pose)
+    if result.success:# IK가 성공하면 결과를 저장
+      if not self.rsa_flag: 
+        # first 3 joints
+        #j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], self.wrist_1_joint, self.wrist_2_joint, self.wrist_3_joint]
+        self.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], result.ik_result.data[3], result.ik_result.data[4], result.ik_result.data[5]] 
+        #j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], self.init_joint_states[3], self.init_joint_states[4], self.init_joint_states[5]]                      
+      else: # rsa mode일 경우
+        self.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], result.ik_result.data[3], result.ik_result.data[4], result.ik_result.data[5]] 
+      # IK로 얻은 target joint values 발행
+      self.ik_result_pub.publish(self.ik_result)
+      self.gripper_action_pub.publish(self.gripper_command)
+    else: # IK가 실패하면 teleop 정지
+      print("ik failed")
+      rospy.set_param(self.prefix+'/teleop_state', "stop")
      
   def fk_solver(self, joint_state):
     rospy.wait_for_service('/unity/compute_fk')
@@ -442,7 +459,7 @@ def main():
   # Node initialization
   rospy.init_node("joy2target_converter", anonymous=True)
   # Class instantiation
-  j2t = Joy2Target(prefix=prefix, random_agent=rand_agent, rsa=rsa_flag)
+  j2t = Joy2Target(prefix=prefix, random_agent=rand_agent, rsa_flag=rsa_flag)
   # Set loop period
   rate = rospy.Rate(250) 
   
@@ -455,21 +472,7 @@ def main():
       print("target_pose calculated")
       
       # Solve IK
-      result = j2t.ik_solver(target_pose)
-      if result.success:# IK가 성공하면 결과를 저장
-        if not rsa_flag: 
-          # first 3 joints
-          j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.wrist_1_joint, j2t.wrist_2_joint, j2t.wrist_3_joint]
-          #j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], result.ik_result.data[3], result.ik_result.data[4], result.ik_result.data[5]] 
-          #j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], j2t.init_joint_states[3], j2t.init_joint_states[4], j2t.init_joint_states[5]]                      
-        else: # rsa mode일 경우
-          j2t.ik_result.data = [result.ik_result.data[0], result.ik_result.data[1], result.ik_result.data[2], result.ik_result.data[3], result.ik_result.data[4], result.ik_result.data[5]] 
-        # IK로 얻은 target joint values 발행
-        j2t.ik_result_pub.publish(j2t.ik_result)
-        j2t.gripper_action_pub.publish(j2t.gripper_command)
-      else: # IK가 실패하면 teleop 정지
-        print("ik failed")
-        rospy.set_param(prefix+'/teleop_state', "stop")
+      j2t.solve_ik_by_moveit(target_pose)
       
       # # solve fk
       # fk_result = j2t.fk_solver(j2t.ik_result.data)
