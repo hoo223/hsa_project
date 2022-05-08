@@ -29,8 +29,9 @@ private:
   std::vector<double> joint_position_command_;
   std::vector<double> joint_velocity_command_;
   std::vector<double> joint_positions_;
-  std::vector<double> unity_joint_positions_;
   std::vector<double> joint_velocities_;
+  std::vector<double> unity_joint_positions_;
+  std::vector<double> unity_joint_velocities_;
   std::vector<double> joint_efforts_;
   std::vector<std::string> joint_names_;
   bool position_controller_running_;
@@ -101,6 +102,7 @@ UnityUR10::UnityUR10()
 void UnityUR10::read(const ros::Time& time, const ros::Duration& period)
 {
   joint_positions_ = unity_joint_positions_;
+  joint_velocities_ = unity_joint_velocities_;
 }
 
 void UnityUR10::write(const ros::Time& time, const ros::Duration& period)
@@ -121,6 +123,7 @@ void UnityUR10::write(const ros::Time& time, const ros::Duration& period)
 void UnityUR10::stateCallback(const sensor_msgs::JointStateConstPtr& msg)
 {
   unity_joint_positions_ = msg->position;
+  unity_joint_velocities_ = msg->velocity;
   // ROS_INFO_STREAM("joint1: " << joint_positions_[0] << "\n");
   // ROS_INFO_STREAM("joint2: " << joint_positions_[1] << "\n");
   // ROS_INFO_STREAM("joint3: " << joint_positions_[2] << "\n");
