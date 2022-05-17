@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro"
+       name="ur10" >
+
+  <xacro:arg name="peg_shape" default="cylinder" /> <!-- cylinder cube hexagone -->
+
+  <!-- ur10_robot -->
+  <xacro:include filename="$(find ur_description)/urdf/ur10_robot.urdf.xacro" />
+
+  <link name="peg">
+    <visual>
+      <geometry>
+        <mesh filename="package://ur3_description/meshes/gripper/$(arg peg_shape)_gripper.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ur3_description/meshes/gripper/$(arg peg_shape)_gripper.dae" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0   0  0" rpy="0 0 0" />
+      <mass value="0.1" />
+      <inertia ixx="1" ixy="0" ixz="0" 
+               iyy="1" iyz="0" izz="1"/>
+    </inertial>
+  </link>
+
+</robot>
