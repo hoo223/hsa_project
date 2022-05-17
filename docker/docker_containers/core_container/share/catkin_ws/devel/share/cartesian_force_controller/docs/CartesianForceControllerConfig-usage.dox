@@ -1,0 +1,7 @@
+\subsubsection usage Usage
+\verbatim
+<node name="cartesian_force_controller" pkg="cartesian_force_controller" type="cartesian_force_controller">
+  <param name="hand_frame_control" type="bool" value="True" />
+</node>
+\endverbatim
+

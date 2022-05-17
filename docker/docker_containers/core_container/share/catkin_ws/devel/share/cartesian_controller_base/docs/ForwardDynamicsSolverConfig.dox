@@ -1,0 +1,6 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~link_mass" : \b [double] Virtual mass of the manipulator's links. The smaller this value, the more does the end-effector (which has a unit mass of 1) dominate dynamic behavior. Near singularities, a bigger value leads to smoother motion. min: 0.001, default: 0.01, max: 1.0
+

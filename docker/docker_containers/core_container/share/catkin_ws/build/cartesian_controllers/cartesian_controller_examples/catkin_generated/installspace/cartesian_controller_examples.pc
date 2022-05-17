@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: cartesian_controller_examples
+Description: Description of cartesian_controller_examples
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,6 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~hand_frame_control" : \b [bool] Indicate in which frame the target_wrench is given: True = given in end_effector_link coordinates, False = given in robot_base_link coordinates min: False, default: True, max: True
+
