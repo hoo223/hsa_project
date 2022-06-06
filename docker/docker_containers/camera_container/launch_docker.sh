@@ -4,5 +4,5 @@ sudo docker run --gpus all -it --net=host --privileged \
     -v /home/hmci/Downloads:/root/Downloads \
     -v `pwd`/share:/root/share \
     --name camera \
-    lhs223/ros_noetic:latest \
+    lhs223/ros_noetic:base \
     bash
