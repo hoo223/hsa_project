@@ -1,5 +1,8 @@
 FROM lhs223/cuda_20.04:base
 
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
+
 # setup timezone
 #RUN echo 'Etc/UTC' > /etc/timezone && \
 #    ln -s /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
@@ -36,6 +39,9 @@ RUN /bin/bash -c "source ~/.bashrc"
 RUN apt update
 RUN apt install -y python3-rosdep-modules python3-rosinstall python3-rosinstall-generator python3-wstool build-essential python3-flask python3-pymodbus
 RUN apt install -y python3-pip
+RUN pip install -U rosdep
+RUN rosdep init
+RUN rosdep update
 
 # setup entrypoint
 COPY ./ros_entrypoint.sh /
