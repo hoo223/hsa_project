@@ -1,8 +1,0 @@
-prefix=/root/share/catkin_ws/devel
-
-Name: kinect2_registration
-Description: Description of kinect2_registration
-Version: 0.0.1
-Cflags: -I/root/share/catkin_ws/src/SDK-Installation-ROS-Wrapper-for-Kinect-v2-on-Ubuntu-18.04/kinect2_registration/include
-Libs: -L${prefix}/lib -lkinect2_registration
-Requires: 

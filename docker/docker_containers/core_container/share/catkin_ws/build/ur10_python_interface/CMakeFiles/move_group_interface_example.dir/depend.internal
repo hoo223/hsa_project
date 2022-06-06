@@ -153,9 +153,6 @@ ur10_python_interface/CMakeFiles/move_group_interface_example.dir/src/move_group
  /opt/ros/melodic/include/visualization_msgs/MarkerArray.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
- /root/share/catkin_ws/devel/include/ur10_python_interface/SolveIk.h
- /root/share/catkin_ws/devel/include/ur10_python_interface/SolveIkRequest.h
- /root/share/catkin_ws/devel/include/ur10_python_interface/SolveIkResponse.h
  /root/share/catkin_ws/src/ur10_python_interface/include/move_group_interface.h
  /root/share/catkin_ws/src/ur10_python_interface/src/move_group_interface_example.cpp
  /usr/include/eigen3/Eigen/Cholesky

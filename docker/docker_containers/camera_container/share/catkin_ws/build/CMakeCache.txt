@@ -47,7 +47,7 @@ CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=Release
+CMAKE_BUILD_TYPE:STRING=
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -340,32 +340,8 @@ LSB_RELEASE_EXECUTABLE:FILEPATH=/usr/bin/lsb_release
 //Path to a program.
 NOSETESTS:FILEPATH=/usr/bin/nosetests3
 
-//Path to a file.
-OpenCL_INCLUDE_DIR:PATH=OpenCL_INCLUDE_DIR-NOTFOUND
-
-//Path to a library.
-OpenCL_LIBRARY:FILEPATH=OpenCL_LIBRARY-NOTFOUND
-
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/opencv4
-
-//CXX compiler flags for OpenMP parallelization
-OpenMP_CXX_FLAGS:STRING=-fopenmp
-
-//CXX compiler libraries for OpenMP parallelization
-OpenMP_CXX_LIB_NAMES:STRING=gomp;pthread
-
-//C compiler flags for OpenMP parallelization
-OpenMP_C_FLAGS:STRING=-fopenmp
-
-//C compiler libraries for OpenMP parallelization
-OpenMP_C_LIB_NAMES:STRING=gomp;pthread
-
-//Path to the gomp library for OpenMP
-OpenMP_gomp_LIBRARY:FILEPATH=/usr/lib/gcc/x86_64-linux-gnu/9/libgomp.so
-
-//Path to the pthread library for OpenMP
-OpenMP_pthread_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libpthread.so
 
 //Path to a program.
 PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3
@@ -409,17 +385,77 @@ _gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
 //Path to a file.
 _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
 
+//The directory containing a CMake configuration file for actionlib.
+actionlib_DIR:PATH=/opt/ros/noetic/share/actionlib/cmake
+
+//The directory containing a CMake configuration file for actionlib_msgs.
+actionlib_msgs_DIR:PATH=/opt/ros/noetic/share/actionlib_msgs/cmake
+
+//Value Computed by CMake
+aruco_BINARY_DIR:STATIC=/root/share/catkin_ws/build/aruco_ros/aruco
+
+//The directory containing a CMake configuration file for aruco.
+aruco_DIR:PATH=/root/share/catkin_ws/devel/share/aruco/cmake
+
+//Dependencies for the target
+aruco_LIB_DEPENDS:STATIC=general;opencv_calib3d;general;opencv_core;general;opencv_dnn;general;opencv_features2d;general;opencv_flann;general;opencv_highgui;general;opencv_imgcodecs;general;opencv_imgproc;general;opencv_ml;general;opencv_objdetect;general;opencv_photo;general;opencv_stitching;general;opencv_video;general;opencv_videoio;general;opencv_aruco;general;opencv_bgsegm;general;opencv_bioinspired;general;opencv_ccalib;general;opencv_datasets;general;opencv_dnn_objdetect;general;opencv_dnn_superres;general;opencv_dpm;general;opencv_face;general;opencv_freetype;general;opencv_fuzzy;general;opencv_hdf;general;opencv_hfs;general;opencv_img_hash;general;opencv_line_descriptor;general;opencv_optflow;general;opencv_phase_unwrapping;general;opencv_plot;general;opencv_quality;general;opencv_reg;general;opencv_rgbd;general;opencv_saliency;general;opencv_shape;general;opencv_stereo;general;opencv_structured_light;general;opencv_superres;general;opencv_surface_matching;general;opencv_text;general;opencv_tracking;general;opencv_videostab;general;opencv_viz;general;opencv_ximgproc;general;opencv_xobjdetect;general;opencv_xphoto;
+
+//Value Computed by CMake
+aruco_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/aruco_ros/aruco
+
+//Value Computed by CMake
+aruco_msgs_BINARY_DIR:STATIC=/root/share/catkin_ws/build/aruco_ros/aruco_msgs
+
+//The directory containing a CMake configuration file for aruco_msgs.
+aruco_msgs_DIR:PATH=/root/share/catkin_ws/devel/share/aruco_msgs/cmake
+
+//Value Computed by CMake
+aruco_msgs_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/aruco_ros/aruco_msgs
+
+//Value Computed by CMake
+aruco_ros_BINARY_DIR:STATIC=/root/share/catkin_ws/build/aruco_ros/aruco_ros
+
+//Value Computed by CMake
+aruco_ros_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/aruco_ros/aruco_ros
+
+//Dependencies for the target
+aruco_ros_utils_LIB_DEPENDS:STATIC=general;/opt/ros/noetic/lib/libcv_bridge.so;general;/usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_dnn.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_features2d.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_flann.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_highgui.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_ml.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_video.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_videoio.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_aruco.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_bgsegm.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_bioinspired.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_ccalib.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_datasets.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_dnn_objdetect.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_dnn_superres.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_dpm.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_face.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_freetype.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_fuzzy.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_hdf.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_hfs.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_img_hash.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_line_descriptor.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_optflow.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_phase_unwrapping.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_plot.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_quality.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_reg.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_rgbd.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_saliency.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_shape.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_stereo.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_structured_light.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_superres.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_surface_matching.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_text.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_tracking.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_videostab.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_viz.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_ximgproc.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_core.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.2.0;general;/usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.4.2.0;general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/noetic/lib/libimage_transport.so;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/x86_64-linux-gnu/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython3.8.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/noetic/lib/libtf.so;general;/opt/ros/noetic/lib/libtf2_ros.so;general;/opt/ros/noetic/lib/libactionlib.so;general;/opt/ros/noetic/lib/libmessage_filters.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/libtf2.so;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so.1.71.0;general;aruco;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4;
+
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/noetic/share/catkin/cmake
 
-//The directory containing a CMake configuration file for cmake_modules.
-cmake_modules_DIR:PATH=/opt/ros/noetic/share/cmake_modules/cmake
+//The directory containing a CMake configuration file for class_loader.
+class_loader_DIR:PATH=/opt/ros/noetic/share/class_loader/cmake
 
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/noetic/share/cpp_common/cmake
 
-//The directory containing a CMake configuration file for freenect2.
-freenect2_DIR:PATH=freenect2_DIR-NOTFOUND
+//The directory containing a CMake configuration file for cv_bridge.
+cv_bridge_DIR:PATH=/opt/ros/noetic/share/cv_bridge/cmake
+
+//The directory containing a CMake configuration file for dynamic_reconfigure.
+dynamic_reconfigure_DIR:PATH=/opt/ros/noetic/share/dynamic_reconfigure/cmake
+
+//The directory containing a CMake configuration file for gencpp.
+gencpp_DIR:PATH=/opt/ros/noetic/share/gencpp/cmake
+
+//The directory containing a CMake configuration file for geneus.
+geneus_DIR:PATH=/opt/ros/noetic/share/geneus/cmake
+
+//The directory containing a CMake configuration file for genlisp.
+genlisp_DIR:PATH=/opt/ros/noetic/share/genlisp/cmake
+
+//The directory containing a CMake configuration file for genmsg.
+genmsg_DIR:PATH=/opt/ros/noetic/share/genmsg/cmake
+
+//The directory containing a CMake configuration file for gennodejs.
+gennodejs_DIR:PATH=/opt/ros/noetic/share/gennodejs/cmake
+
+//The directory containing a CMake configuration file for genpy.
+genpy_DIR:PATH=/opt/ros/noetic/share/genpy/cmake
+
+//The directory containing a CMake configuration file for geometry_msgs.
+geometry_msgs_DIR:PATH=/opt/ros/noetic/share/geometry_msgs/cmake
 
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/root/share/catkin_ws/build/gtest/googlemock
@@ -467,32 +503,26 @@ gtest_hide_internal_symbols:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;gtest;
 
-//Value Computed by CMake
-iai_kinect2_BINARY_DIR:STATIC=/root/share/catkin_ws/build/SDK-Installation-ROS-Wrapper-for-Kinect-v2-on-Ubuntu-18.04/iai_kinect2
-
-//Value Computed by CMake
-iai_kinect2_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/SDK-Installation-ROS-Wrapper-for-Kinect-v2-on-Ubuntu-18.04/iai_kinect2
-
-//Value Computed by CMake
-kinect2_bridge_BINARY_DIR:STATIC=/root/share/catkin_ws/build/SDK-Installation-ROS-Wrapper-for-Kinect-v2-on-Ubuntu-18.04/kinect2_bridge
-
-//Value Computed by CMake
-kinect2_bridge_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/SDK-Installation-ROS-Wrapper-for-Kinect-v2-on-Ubuntu-18.04/kinect2_bridge
-
-//Value Computed by CMake
-kinect2_registration_BINARY_DIR:STATIC=/root/share/catkin_ws/build/SDK-Installation-ROS-Wrapper-for-Kinect-v2-on-Ubuntu-18.04/kinect2_registration
-
-//Dependencies for the target
-kinect2_registration_LIB_DEPENDS:STATIC=general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4;general;opencv_calib3d;general;opencv_core;general;opencv_dnn;general;opencv_features2d;general;opencv_flann;general;opencv_highgui;general;opencv_imgcodecs;general;opencv_imgproc;general;opencv_ml;general;opencv_objdetect;general;opencv_photo;general;opencv_stitching;general;opencv_video;general;opencv_videoio;general;opencv_aruco;general;opencv_bgsegm;general;opencv_bioinspired;general;opencv_ccalib;general;opencv_datasets;general;opencv_dnn_objdetect;general;opencv_dnn_superres;general;opencv_dpm;general;opencv_face;general;opencv_freetype;general;opencv_fuzzy;general;opencv_hdf;general;opencv_hfs;general;opencv_img_hash;general;opencv_line_descriptor;general;opencv_optflow;general;opencv_phase_unwrapping;general;opencv_plot;general;opencv_quality;general;opencv_reg;general;opencv_rgbd;general;opencv_saliency;general;opencv_shape;general;opencv_stereo;general;opencv_structured_light;general;opencv_superres;general;opencv_surface_matching;general;opencv_text;general;opencv_tracking;general;opencv_videostab;general;opencv_viz;general;opencv_ximgproc;general;opencv_xobjdetect;general;opencv_xphoto;
-
-//Value Computed by CMake
-kinect2_registration_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/SDK-Installation-ROS-Wrapper-for-Kinect-v2-on-Ubuntu-18.04/kinect2_registration
+//The directory containing a CMake configuration file for image_transport.
+image_transport_DIR:PATH=/opt/ros/noetic/share/image_transport/cmake
 
 //Path to a library.
 lib:FILEPATH=/opt/ros/noetic/lib/libxmlrpcpp.so
 
+//The directory containing a CMake configuration file for message_filters.
+message_filters_DIR:PATH=/opt/ros/noetic/share/message_filters/cmake
+
+//The directory containing a CMake configuration file for message_generation.
+message_generation_DIR:PATH=/opt/ros/noetic/share/message_generation/cmake
+
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/noetic/share/message_runtime/cmake
+
+//The directory containing a CMake configuration file for moveit_core.
+moveit_core_DIR:PATH=moveit_core_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for pluginlib.
+pluginlib_DIR:PATH=/opt/ros/noetic/share/pluginlib/cmake
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/noetic/share/rosconsole/cmake
@@ -506,14 +536,74 @@ roscpp_serialization_DIR:PATH=/opt/ros/noetic/share/roscpp_serialization/cmake
 //The directory containing a CMake configuration file for roscpp_traits.
 roscpp_traits_DIR:PATH=/opt/ros/noetic/share/roscpp_traits/cmake
 
+//The directory containing a CMake configuration file for rosgraph.
+rosgraph_DIR:PATH=/opt/ros/noetic/share/rosgraph/cmake
+
 //The directory containing a CMake configuration file for rosgraph_msgs.
 rosgraph_msgs_DIR:PATH=/opt/ros/noetic/share/rosgraph_msgs/cmake
+
+//The directory containing a CMake configuration file for roslaunch.
+roslaunch_DIR:PATH=/opt/ros/noetic/share/roslaunch/cmake
+
+//The directory containing a CMake configuration file for roslib.
+roslib_DIR:PATH=/opt/ros/noetic/share/roslib/cmake
+
+//The directory containing a CMake configuration file for rospack.
+rospack_DIR:PATH=/opt/ros/noetic/share/rospack/cmake
+
+//The directory containing a CMake configuration file for rospy.
+rospy_DIR:PATH=/opt/ros/noetic/share/rospy/cmake
 
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/noetic/share/rostime/cmake
 
+//The directory containing a CMake configuration file for sensor_msgs.
+sensor_msgs_DIR:PATH=/opt/ros/noetic/share/sensor_msgs/cmake
+
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/noetic/share/std_msgs/cmake
+
+//The directory containing a CMake configuration file for tf2.
+tf2_DIR:PATH=/opt/ros/noetic/share/tf2/cmake
+
+//The directory containing a CMake configuration file for tf2_msgs.
+tf2_msgs_DIR:PATH=/opt/ros/noetic/share/tf2_msgs/cmake
+
+//The directory containing a CMake configuration file for tf2_py.
+tf2_py_DIR:PATH=/opt/ros/noetic/share/tf2_py/cmake
+
+//The directory containing a CMake configuration file for tf2_ros.
+tf2_ros_DIR:PATH=/opt/ros/noetic/share/tf2_ros/cmake
+
+//The directory containing a CMake configuration file for tf.
+tf_DIR:PATH=/opt/ros/noetic/share/tf/cmake
+
+//Value Computed by CMake
+universal_robots_BINARY_DIR:STATIC=/root/share/catkin_ws/build/fmauch_universal_robot/universal_robots
+
+//Value Computed by CMake
+universal_robots_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/fmauch_universal_robot/universal_robots
+
+//Value Computed by CMake
+ur_description_BINARY_DIR:STATIC=/root/share/catkin_ws/build/fmauch_universal_robot/ur_description
+
+//Value Computed by CMake
+ur_description_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/fmauch_universal_robot/ur_description
+
+//Value Computed by CMake
+ur_gazebo_BINARY_DIR:STATIC=/root/share/catkin_ws/build/fmauch_universal_robot/ur_gazebo
+
+//Value Computed by CMake
+ur_gazebo_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/fmauch_universal_robot/ur_gazebo
+
+//Value Computed by CMake
+ur_kinematics_BINARY_DIR:STATIC=/root/share/catkin_ws/build/fmauch_universal_robot/ur_kinematics
+
+//Value Computed by CMake
+ur_kinematics_SOURCE_DIR:STATIC=/root/share/catkin_ws/src/fmauch_universal_robot/ur_kinematics
+
+//The directory containing a CMake configuration file for visualization_msgs.
+visualization_msgs_DIR:PATH=/opt/ros/noetic/share/visualization_msgs/cmake
 
 //The directory containing a CMake configuration file for xmlrpcpp.
 xmlrpcpp_DIR:PATH=/opt/ros/noetic/share/xmlrpcpp/cmake
@@ -666,7 +756,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=11
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -709,18 +799,8 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//Test COMPILER_SUPPORTS_CXX0X
-COMPILER_SUPPORTS_CXX0X:INTERNAL=1
-//Test COMPILER_SUPPORTS_CXX11
-COMPILER_SUPPORTS_CXX11:INTERNAL=1
 //Details about finding OpenCV
 FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr][v4.2.0()]
-//Details about finding OpenMP
-FIND_PACKAGE_MESSAGE_DETAILS_OpenMP:INTERNAL=[TRUE][TRUE][c ][v()]
-//Details about finding OpenMP_C
-FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_C:INTERNAL=[-fopenmp][/usr/lib/gcc/x86_64-linux-gnu/9/libgomp.so][/usr/lib/x86_64-linux-gnu/libpthread.so][v()]
-//Details about finding OpenMP_CXX
-FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_CXX:INTERNAL=[-fopenmp][/usr/lib/gcc/x86_64-linux-gnu/9/libgomp.so][/usr/lib/x86_64-linux-gnu/libpthread.so][v()]
 //Details about finding PY_em
 FIND_PACKAGE_MESSAGE_DETAILS_PY_em:INTERNAL=[/usr/lib/python3/dist-packages/em.py][v()]
 //Details about finding PythonInterp
@@ -747,42 +827,6 @@ GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
 GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//Have symbol CL_VERSION_1_0
-OPENCL_VERSION_1_0:INTERNAL=
-//Have symbol CL_VERSION_1_1
-OPENCL_VERSION_1_1:INTERNAL=
-//Have symbol CL_VERSION_1_2
-OPENCL_VERSION_1_2:INTERNAL=
-//Have symbol CL_VERSION_2_0
-OPENCL_VERSION_2_0:INTERNAL=
-//ADVANCED property for variable: OpenCL_INCLUDE_DIR
-OpenCL_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: OpenCL_LIBRARY
-OpenCL_LIBRARY-ADVANCED:INTERNAL=1
-//Result of TRY_COMPILE
-OpenMP_COMPILE_RESULT_CXX_fopenmp:INTERNAL=TRUE
-//Result of TRY_COMPILE
-OpenMP_COMPILE_RESULT_C_fopenmp:INTERNAL=TRUE
-//ADVANCED property for variable: OpenMP_CXX_FLAGS
-OpenMP_CXX_FLAGS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: OpenMP_CXX_LIB_NAMES
-OpenMP_CXX_LIB_NAMES-ADVANCED:INTERNAL=1
-//CXX compiler's OpenMP specification date
-OpenMP_CXX_SPEC_DATE:INTERNAL=201511
-//ADVANCED property for variable: OpenMP_C_FLAGS
-OpenMP_C_FLAGS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: OpenMP_C_LIB_NAMES
-OpenMP_C_LIB_NAMES-ADVANCED:INTERNAL=1
-//C compiler's OpenMP specification date
-OpenMP_C_SPEC_DATE:INTERNAL=201511
-//Result of TRY_COMPILE
-OpenMP_SPECTEST_CXX_:INTERNAL=TRUE
-//Result of TRY_COMPILE
-OpenMP_SPECTEST_C_:INTERNAL=TRUE
-//ADVANCED property for variable: OpenMP_gomp_LIBRARY
-OpenMP_gomp_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: OpenMP_pthread_LIBRARY
-OpenMP_pthread_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //This needs to be in PYTHONPATH when 'setup.py install' is called.

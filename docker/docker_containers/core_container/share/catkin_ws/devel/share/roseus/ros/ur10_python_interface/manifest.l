@@ -8,6 +8,7 @@
 (ros::load-ros-package "actionlib")
 (ros::load-ros-package "actionlib_msgs")
 (ros::load-ros-package "bond")
+(ros::load-ros-package "diagnostic_msgs")
 (ros::load-ros-package "dynamic_reconfigure")
 (ros::load-ros-package "geometry_msgs")
 (ros::load-ros-package "graph_msgs")

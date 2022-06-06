@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/devel
+
+Name: ur10_acg_configuration
+Description: Description of ur10_acg_configuration
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

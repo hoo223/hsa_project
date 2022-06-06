@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/install
+
+Name: direct_force_controller
+Description: Description of direct_force_controller
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: actionlib_msgs

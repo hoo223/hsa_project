@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/devel
+
+Name: acg_control_msg
+Description: Description of acg_control_msg
+Version: 0.0.0
+Cflags: -I/root/share/catkin_ws/devel/include
+Libs: -L${prefix}/lib 
+Requires: actionlib_msgs workspace_trajectory_msgs

@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/devel
+
+Name: workspace_trajectory_msgs
+Description: Description of workspace_trajectory_msgs
+Version: 0.0.0
+Cflags: -I/root/share/catkin_ws/devel/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime geometry_msgs

@@ -1,2 +1,2 @@
-SDK-Installation-ROS-Wrapper-for-Kinect-v2-on-Ubuntu-18.04/iai_kinect2:SDK-Installation-ROS-Wrapper-for-Kinect-v2-on-Ubuntu-18.04/kinect2_bridge:SDK-Installation-ROS-Wrapper-for-Kinect-v2-on-Ubuntu-18.04/kinect2_calibration:SDK-Installation-ROS-Wrapper-for-Kinect-v2-on-Ubuntu-18.04/kinect2_registration:SDK-Installation-ROS-Wrapper-for-Kinect-v2-on-Ubuntu-18.04/kinect2_viewer
--DCMAKE_BUILD_TYPE=Release -DCATKIN_DEVEL_PREFIX=/root/share/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/root/share/catkin_ws/install -G Unix Makefiles
+aruco_ros/aruco:aruco_ros/aruco_msgs:aruco_ros/aruco_ros:fmauch_universal_robot/universal_robots:fmauch_universal_robot/ur_description:fmauch_universal_robot/ur_gazebo:fmauch_universal_robot/ur_kinematics
+-DCATKIN_DEVEL_PREFIX=/root/share/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/root/share/catkin_ws/install -G Unix Makefiles

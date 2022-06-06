@@ -1,0 +1,2 @@
+set(acg_control_msg_MESSAGE_FILES "msg/FollowWorkspaceTrajectoryAction.msg;msg/FollowWorkspaceTrajectoryActionGoal.msg;msg/FollowWorkspaceTrajectoryActionResult.msg;msg/FollowWorkspaceTrajectoryActionFeedback.msg;msg/FollowWorkspaceTrajectoryGoal.msg;msg/FollowWorkspaceTrajectoryResult.msg;msg/FollowWorkspaceTrajectoryFeedback.msg")
+set(acg_control_msg_SERVICE_FILES "")

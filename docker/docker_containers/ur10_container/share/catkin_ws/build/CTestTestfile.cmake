@@ -5,9 +5,14 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
+subdirs("robotiq/robotiq_2f_85_gripper_visualization")
 subdirs("fmauch_universal_robot/universal_robots")
 subdirs("Universal_Robots_ROS_Driver/ur_dashboard_msgs")
+subdirs("robotiq/robotiq_ethercat")
+subdirs("robotiq/robotiq_2f_gripper_control")
+subdirs("robotiq/robotiq_ft_sensor")
 subdirs("Universal_Robots_ROS_Driver/controller_stopper")
+subdirs("robotiq/robotiq_2f_gripper_action_server")
 subdirs("fmauch_universal_robot/ur_description")
 subdirs("fmauch_universal_robot/ur_gazebo")
 subdirs("fmauch_universal_robot/ur_kinematics")

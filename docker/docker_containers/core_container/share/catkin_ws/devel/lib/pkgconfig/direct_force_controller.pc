@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/devel
+
+Name: direct_force_controller
+Description: Description of direct_force_controller
+Version: 0.0.0
+Cflags: -I/root/share/catkin_ws/src/interaction_controllers/ros_control_controllers/direct_force_controller/include
+Libs: -L${prefix}/lib 
+Requires: actionlib_msgs
