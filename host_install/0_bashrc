@@ -48,6 +48,21 @@ alias ur3s='docker start $CONTAINER_NAME8'
 alias ur3a='docker attach $CONTAINER_NAME8'
 alias ur3e='docker exec -it $CONTAINER_NAME8 bash'
 alias ur3='ur3s && ur3a'
+CONTAINER_NAME9=admit
+alias ads='docker start $CONTAINER_NAME9'
+alias ada='docker attach $CONTAINER_NAME9'
+alias ade='docker exec -it $CONTAINER_NAME9 bash'
+alias admit='ads && ada'
+CONTAINER_NAME10=admit2
+alias ad2s='docker start $CONTAINER_NAME10'
+alias ad2a='docker attach $CONTAINER_NAME10'
+alias ad2e='docker exec -it $CONTAINER_NAME10 bash'
+alias admit2='ad2s && ad2a'
+CONTAINER_NAME11=camera
+alias cams='docker start $CONTAINER_NAME11'
+alias cama='docker attach $CONTAINER_NAME11'
+alias came='docker exec -it $CONTAINER_NAME11 bash'
+alias cam='cams && cama'
 
 # CUDA
 export PATH=/usr/local/cuda-11.4/bin:$PATH
@@ -72,7 +87,28 @@ alias tree='rosrun rqt_tf_tree rqt_tf_tree'
 export ROS_IP=localhost
 export ROS_MASTER_URI=http://localhost:11311/
 export ROS_HOSTNAME=$ROS_IP
-
+#export ROS_IP=localhost
+#export ROS_MASTER_URI=http://34.64.190.193:11311/
+#export ROS_HOSTNAME=$ROS_IP
 
 source /opt/ros/melodic/setup.bash
 source ~/catkin_ws/devel/setup.bash
+
+# Camera 
+alias realsense='roslaunch realsense2_camera rs_camera.launch'
+
+# gem
+export GEM_HOME="$HOME/.gems"
+export PATH="$HOME/.gems/bin:$PATH"
+
+
+function pfwd {
+  for i in ${@:2}
+  do
+    echo Forwarding port $i
+    ssh -N -R $i:localhost:$i $1 &
+  done  
+}
+
+# CoppeliaSim
+alias coppeliasim='cd /home/hmci/dyros_bootcamp/CoppeliaSim_Edu_V4_0_0_Ubuntu18_04 && ./coppeliaSim.sh'
