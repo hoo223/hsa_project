@@ -1,0 +1,23 @@
+Kinect Azure Setup for ROS melodic
+
+https://www.youtube.com/watch?v=XJQtAod5v2A
+
+
+AMD64 users, please follow these instructions to configure Microsoft's Package Repository on your machine.
+
+Ubuntu 18.04 (Bionic)
+
+	curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+	sudo apt-add-repository https://packages.microsoft.com/ubuntu/18.04/prod
+	sudo apt-get update
+
+
+Once you have configured Microsoft's Package Repository you should have access to the following packages:
+
+libk4a<major>.<minor> (Runtime package)
+libk4a<major>.<minor>-dev (Development package)
+k4a-tools (Tools package)
+
+	sudo apt-get install k4a-tools
+	sudo apt search k4a (for checking)
+	sudo apt-get install libk4a1.4-dev

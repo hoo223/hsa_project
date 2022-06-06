@@ -1,0 +1,8 @@
+prefix=/root/share/catkin_ws/devel
+
+Name: aruco
+Description: Description of aruco
+Version: 3.0.3
+Cflags: -I/root/share/catkin_ws/src/aruco_ros/aruco/include
+Libs: -L${prefix}/lib -laruco
+Requires: 

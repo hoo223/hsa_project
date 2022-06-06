@@ -21,3 +21,8 @@ $ source ./devel/setup.bash
 4. Test the camera
 $ ZED_Diagnostic
 
+
+
+# Reference
+https://github.com/stereolabs/zed-ros-examples
+https://www.stereolabs.com/docs/ros/
