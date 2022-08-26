@@ -6,6 +6,7 @@ alias per='sudo chmod +x *'
 alias gp='git pull origin master'
 alias ga='git add *'
 alias gs='git status'
+alias gc='git commit -m'
 
 # Docker
 xhost +local:docker
