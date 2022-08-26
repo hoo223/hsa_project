@@ -5,7 +5,7 @@ alias per='sudo chmod +x *'
 # Git
 alias gp='git pull origin master'
 alias ga='git add . -p'
-alias gs='git status'
+alias gs='git status .'
 alias gc='git commit -m'
 alias gi='git rm -r --cached --ignore-unmatch'
 
