@@ -1,8 +1,0 @@
-prefix=/root/share/catkin_ws/devel
-
-Name: cartesian_controller_handles
-Description: Description of cartesian_controller_handles
-Version: 0.0.0
-Cflags: -I/root/share/catkin_ws/src/cartesian_controllers/cartesian_controller_handles/include
-Libs: -L${prefix}/lib -lcartesian_controller_handles
-Requires: roscpp geometry_msgs

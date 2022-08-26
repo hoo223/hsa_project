@@ -1,8 +1,0 @@
-prefix=/root/share/catkin_ws/install
-
-Name: joint_to_cartesian_controller
-Description: Description of joint_to_cartesian_controller
-Version: 0.0.0
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib -ljoint_to_cartesian_controller
-Requires: cartesian_controller_base controller_interface controller_manager geometry_msgs hardware_interface joint_limits_interface kdl_parser pluginlib roscpp sensor_msgs urdf

@@ -1,8 +1,0 @@
-prefix=/root/share/catkin_ws/devel
-
-Name: wrench_marker
-Description: Description of wrench_marker
-Version: 0.0.0
-Cflags: -I/root/share/catkin_ws/src/wrench_marker/include
-Libs: -L${prefix}/lib -lwrench_marker
-Requires: geometry_msgs visualization_msgs

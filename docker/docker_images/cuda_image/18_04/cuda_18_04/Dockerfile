@@ -21,6 +21,10 @@ RUN /bin/bash -c "echo \"alias sb='source ~/.bashrc'\" >> /root/.bashrc"
 RUN /bin/bash -c "echo \"export DISPLAY=:0\" >> /root/.bashrc"
 RUN /bin/bash -c "source ~/.bashrc"
 
+# for NO_PUBKEY A4B469963BF863CC error
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
+
 WORKDIR /root
 # Bash entrypoint
 ENTRYPOINT /bin/bash

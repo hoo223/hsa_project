@@ -1,8 +1,0 @@
-prefix=/root/share/catkin_ws/devel
-
-Name: aruco_ros
-Description: Description of aruco_ros
-Version: 3.0.3
-Cflags: -I/root/share/catkin_ws/devel/include -I/root/share/catkin_ws/src/aruco_ros/aruco_ros/include
-Libs: -L${prefix}/lib -laruco_ros_utils
-Requires: aruco sensor_msgs tf

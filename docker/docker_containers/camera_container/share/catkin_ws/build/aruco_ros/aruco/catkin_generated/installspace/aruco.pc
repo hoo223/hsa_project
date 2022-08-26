@@ -1,8 +1,0 @@
-prefix=/root/share/catkin_ws/install
-
-Name: aruco
-Description: Description of aruco
-Version: 3.0.3
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib -laruco
-Requires: 

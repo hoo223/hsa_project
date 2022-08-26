@@ -1,8 +1,0 @@
-prefix=/root/share/catkin_ws/devel
-
-Name: unity_robotics_demo_msgs
-Description: Description of unity_robotics_demo_msgs
-Version: 0.0.1
-Cflags: -I/root/share/catkin_ws/devel/include
-Libs: -L${prefix}/lib 
-Requires: message_runtime

@@ -1,8 +1,0 @@
-prefix=/root/share/catkin_ws/devel
-
-Name: admittance_controller
-Description: Description of admittance_controller
-Version: 0.0.0
-Cflags: -I/root/share/catkin_ws/src/interaction_controllers/ros_control_controllers/admittance_controller/include
-Libs: -L${prefix}/lib 
-Requires: actionlib_msgs
