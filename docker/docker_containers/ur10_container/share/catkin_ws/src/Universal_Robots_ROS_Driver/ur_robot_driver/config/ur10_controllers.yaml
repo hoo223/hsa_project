@@ -16,7 +16,13 @@ ur_hardware_interface:
 joint_state_controller:
    type:         joint_state_controller/JointStateController
    publish_rate: *loop_hz
-   joints: *robot_joints
+   joints: 
+      - shoulder_pan_joint
+      - shoulder_lift_joint
+      - elbow_joint
+      - wrist_1_joint
+      - wrist_2_joint
+      - wrist_3_joint
 
 # Publish wrench ----------------------------------
 force_torque_sensor_controller:
@@ -126,10 +132,15 @@ vel_joint_traj_controller:
    state_publish_rate: *loop_hz
    action_monitor_rate: 20
 
+joint_group_pos_controller:
+   type: position_controllers/JointGroupPositionController
+   joints: *robot_joints
+
 # Pass an array of joint velocities directly to the joints
 joint_group_vel_controller:
    type: velocity_controllers/JointGroupVelocityController
    joints: *robot_joints
+   
 
 forward_joint_traj_controller:
     type: "pass_through_controllers/JointTrajectoryController"

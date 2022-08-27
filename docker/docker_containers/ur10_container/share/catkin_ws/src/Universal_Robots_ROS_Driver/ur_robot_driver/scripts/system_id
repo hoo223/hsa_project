@@ -1,0 +1,114 @@
+#!/usr/bin/python
+# -*- coding: utf8 -*- 
+
+import sys
+import copy
+import rospy
+import moveit_msgs.msg
+import geometry_msgs.msg
+from math import pi
+from std_msgs.msg import String, Header, Float64MultiArray
+from geometry_msgs.msg import PoseStamped, Pose
+from moveit_msgs.srv import GetPositionIK, GetPositionIKRequest
+from moveit_msgs.srv import GetPositionFK
+from moveit_msgs.msg import RobotState
+from sensor_msgs.msg import JointState
+from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
+import math
+import numpy as np
+
+target_pose_pub = rospy.Publisher("/scaled_pos_joint_traj_controller/command", JointTrajectory, queue_size= 10)
+current_joint_sub = rospy.Subscriber('/joint_states', JointState, current_joint_callback)
+current_joints = []
+
+def make_trajectory(start_freq=0.1, end_freq=5, end_time=300, amplitude=0.001, sampling_freq=100):
+    current_pose = get_current_pose()
+    
+    t = np.linspace(0,end_time, end_time*sampling_freq+1)
+    z_traj = current_pose.pose.position.z + amplitude * np.sin(np.pi*((end_freq-start_freq)*(t/end_time)+start_freq))
+    z_traj = z_traj.tolist()
+    current_pose.pose.position.z = z_traj
+    desired_pose = current_pose
+    desired_joint_angle = ik_solver(desired_pose)
+    
+    jt = JointTrajectory()
+    header = Header()
+    header.stamp = rospy.Time.now()
+    jtp = JointTrajectoryPoint()
+    jtp.positions = desired_joint_angle # Float64MultiArray로 변환해야 함
+    jtp.time_from_start = 300
+    
+    jt.header = header
+    jt.joint_names = ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint', 'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint']
+    jt.points = jtp
+
+    return jtp # action? msg?  현재는 msg
+
+        
+def ik_solver(target_pose):
+    rospy.wait_for_service('compute_ik')
+    try:
+        ps = PoseStamped()
+        header = Header()
+        header.stamp = rospy.Time.now()
+        ps.header = header
+        ps.pose = target_pose # position / Quaternion
+        
+        ik_request = GetPositionIKRequest()
+        ik_request.ik_request.ik_link_name = ['ee_link']
+        ik_request.ik_request.pose_stamped = ps
+        solve_ik = rospy.ServiceProxy('compute_ik', GetPositionIK)
+        res = solve_ik(ik_request)
+        return res
+    except rospy.ServiceException as e:
+        print("Service call failed: %s"%e)
+
+def fk_solver(joint_state):
+    rospy.wait_for_service('/compute_fk')
+    try:
+        solve_fk = rospy.ServiceProxy('/compute_fk', GetPositionFK)
+        header = Header()
+        header.stamp = rospy.Time.now()
+        header.frame_id = 'world'
+        links = ['ee_link','base_link']
+        joints = ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint', 'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint']
+        rs = RobotState()
+        js = JointState()
+        js.header = header
+        js.name = joints
+        js.position = joint_state
+        rs.joint_state = js
+        res = solve_fk(header, links, rs)
+        return res
+    
+    except rospy.ServiceException as e:
+        print("Service call failed: %s"%e)
+
+def current_joint_callback(data):
+    current_joints = list(data.position)
+    # gazebo에서 나온 joint states 순서가 바뀌어 있음
+    # [elbow_joint, shoulder_lift_joint, shoulder_pan_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint] - 2 1 0 3 4 5 
+    if len(current_joints) == 6:
+      current_joints[0] = current_joints[2]
+      current_joints[1] = current_joints[1]
+      current_joints[2] = current_joints[0]
+      current_joints[3] = current_joints[3]
+      current_joints[4] = current_joints[4]
+      current_joints[5] = current_joints[5]
+
+def get_current_joint_angle():
+    return current_joints
+
+def get_current_pose():
+    current_joint_angle = get_current_joint_angle()
+    current_pose = fk_solver(current_joint_angle)
+    return current_pose
+    
+if __name__ == '__main__':
+    rospy.init_node('system_id', anonymous=True)
+    try:
+        jtp = make_trajectory()
+        
+        target_pose_pub.publish(jtp)
+    except rospy.ROSInterruptException:
+        pass

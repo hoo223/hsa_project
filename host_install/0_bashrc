@@ -8,6 +8,7 @@ alias ga='git add . -p'
 alias gs='git status .'
 alias gc='git commit -m'
 alias gi='git rm -r --cached --ignore-unmatch'
+alias gb='git branch -a'
 
 # Docker
 xhost +local:docker
