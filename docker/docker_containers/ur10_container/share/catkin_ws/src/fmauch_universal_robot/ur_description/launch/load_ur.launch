@@ -6,10 +6,14 @@
   <arg name="physical_params" doc="YAML file containing the phycical parameters of the robots"/>
   <arg name="visual_params" doc="YAML file containing the visual model of the robots"/>
   <!--common parameters  -->
-  <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface" />
+  <arg name="transmission_hw_interface" default="hardware_interface/VelocityJointInterface" />
   <arg name="safety_limits" default="false" doc="If True, enable the safety limits controller"/>
   <arg name="safety_pos_margin" default="0.15" doc="The lower/upper limits in the safety controller" />
   <arg name="safety_k_position" default="20" doc="Used to set k position in the safety controller" />
+  <!-- with gripper -->
+  <arg name="with_gripper" default="false" />
+  <arg name="urdf_name" default="ur" unless="$(arg with_gripper)" />
+  <arg name="urdf_name" value="ur_gripper" if="$(arg with_gripper)" />
 
   <!-- Load the top-level (ie: stand-alone and complete) xacro for the UR
        variant defined by the set of yaml parameter files (so to load a UR5
@@ -28,7 +32,9 @@
        include the ur_macro.xacro file into it. Then write a new .launch file
        to load it onto the parameter server.
   -->
-  <param name="robot_description" command="$(find xacro)/xacro '$(find ur_description)/urdf/ur.xacro'
+
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find ur_description)/urdf/$(arg urdf_name).xacro'
     joint_limit_params:=$(arg joint_limit_params)
     kinematics_params:=$(arg kinematics_params)
     physical_params:=$(arg physical_params)
