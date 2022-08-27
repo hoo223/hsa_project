@@ -1,0 +1,14 @@
+# Gripper Simulation
+
+* Gazebo
+- 실행방법
+	$ ursim gripper:=true
+	$ interface_v gripper:=true
+	$ teleop
+- 그리퍼 동작 -> Touch 회색 버튼
+
+* Unity
+- 실행방법
+	$ unity_bringup
+	$ teleop_unity
+- 그리퍼 동작 -> UI 버튼 

@@ -1,0 +1,27 @@
+* Hardware setting
+wiring -> https://www.youtube.com/watch?v=oDlAzFtKLMc
+rs485 usb -> host pc 
+
+
+* ROS setting
+http://wiki.ros.org/robotiq/Tutorials/Control%20of%20a%202-Finger%20Gripper%20using%20the%20Modbus%20RTU%20protocol%20%28ros%20kinetic%20and%20newer%20releases%29
+
+Install at Host PC 
+
+usermod -a -G dialout YOURUSERNAME
+
+dmesg | grep tty
+
+git clone https://github.com/ros-industrial/robotiq
+
+cm & sd
+
+
+# Node
+rosrun robotiq_2f_gripper_control Robotiq2FGripperRtuNode.py /dev/ttyUSB0
+
+# Controller node
+rosrun robotiq_2f_gripper_control Robotiq2FGripperSimpleController.py
+
+# Listener node
+rosrun robotiq_2f_gripper_control Robotiq2FGripperStatusListener.py

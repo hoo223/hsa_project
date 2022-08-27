@@ -1,0 +1,25 @@
+# ur10 docker 
+1. Building
+# https://github.com/UniversalRobots/Universal_Robots_ROS_Driver#:~:text=time%20of%20writing.-,Building,-Note%3A%20The%20driver
+
+> mkdir -p share/catkin_ws/src && cd share/catkin_ws
+> git clone https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git src/Universal_Robots_ROS_Driver
+> git clone -b calibration_devel https://github.com/fmauch/universal_robot.git src/fmauch_universal_robot
+> sudo apt update -qq
+> rosdep update
+> rosdep install --from-paths src --ignore-src -y
+> catkin_make
+> source devel/setup.bash
+
+2. Change the joint order in joint_state_controller
+Universal_Robots_ROS_Driver -> ur_robot_driver -> config -> ur10_controllers.yaml
+
+--------------------------------------------------------------------------
+joint_state_controller:
+   type:         joint_state_controller/JointStateController
+   publish_rate: *loop_hz
+   joints: *robot_joints # add this line
+--------------------------------------------------------------------------
+
+3. Execution
+roslaunch ur_robot_driver ur10_bringup.launch robot_ip:=192.168.0.2

@@ -1,0 +1,117 @@
+alias eb='gedit ~/.bashrc'
+alias sb='source ~/.bashrc'
+alias per='sudo chmod +x *'
+
+# Git
+alias gp='git pull origin master'
+alias ga='git add . -p'
+alias gs='git status .'
+alias gc='git commit -m'
+alias gi='git rm -r --cached --ignore-unmatch'
+alias gb='git branch -a'
+
+# Docker
+xhost +local:docker
+CONTAINER_NAME=test
+alias ds='docker start $CONTAINER_NAME'
+alias da='docker attach $CONTAINER_NAME'
+alias de='docker exec -it $CONTAINER_NAME bash'
+CONTAINER_NAME2=unity
+alias us='docker start $CONTAINER_NAME2'
+alias ua='docker attach $CONTAINER_NAME2'
+alias ue='docker exec -it $CONTAINER_NAME2 bash'
+alias unity='us && ua'
+CONTAINER_NAME3=ur10
+alias urs='docker start $CONTAINER_NAME3'
+alias ura='docker attach $CONTAINER_NAME3'
+alias ure='docker exec -it $CONTAINER_NAME3 bash'
+alias ur10='urs && ura'
+CONTAINER_NAME4=core
+alias cs='docker start $CONTAINER_NAME4'
+alias ca='docker attach $CONTAINER_NAME4'
+alias ce='docker exec -it $CONTAINER_NAME4 bash'
+alias core='cs && ca'
+CONTAINER_NAME5=indy
+alias is='docker start $CONTAINER_NAME5'
+alias ia='docker attach $CONTAINER_NAME5'
+alias ie='docker exec -it $CONTAINER_NAME5 bash'
+alias indy='is && ia'
+CONTAINER_NAME6=rsa
+alias rs='docker start $CONTAINER_NAME6'
+alias ra='docker attach $CONTAINER_NAME6'
+alias re='docker exec -it $CONTAINER_NAME6 bash'
+alias rsa='rs && ra'
+CONTAINER_NAME7=dyros
+alias ds='docker start $CONTAINER_NAME7'
+alias da='docker attach $CONTAINER_NAME7'
+alias de='docker exec -it $CONTAINER_NAME7 bash'
+alias dyros='ds && da'
+CONTAINER_NAME8=ur3
+alias ur3s='docker start $CONTAINER_NAME8'
+alias ur3a='docker attach $CONTAINER_NAME8'
+alias ur3e='docker exec -it $CONTAINER_NAME8 bash'
+alias ur3='ur3s && ur3a'
+CONTAINER_NAME9=admit
+alias ads='docker start $CONTAINER_NAME9'
+alias ada='docker attach $CONTAINER_NAME9'
+alias ade='docker exec -it $CONTAINER_NAME9 bash'
+alias admit='ads && ada'
+CONTAINER_NAME10=admit2
+alias ad2s='docker start $CONTAINER_NAME10'
+alias ad2a='docker attach $CONTAINER_NAME10'
+alias ad2e='docker exec -it $CONTAINER_NAME10 bash'
+alias admit2='ad2s && ad2a'
+CONTAINER_NAME11=camera
+alias cams='docker start $CONTAINER_NAME11'
+alias cama='docker attach $CONTAINER_NAME11'
+alias came='docker exec -it $CONTAINER_NAME11 bash'
+alias cam='cams && cama'
+
+# CUDA
+export PATH=/usr/local/cuda-11.4/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-11.4/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+
+# Haptic
+alias haptic='roslaunch omni_common omni_state.launch'
+alias hp='sudo chmod 777 /dev/ttyACM0'
+
+# Gripper
+alias gripper='rosrun robotiq_2f_gripper_control Robotiq2FGripperRtuNode.py /dev/ttyUSB0'
+alias gripper_controller='rosrun robotiq_2f_gripper_control Robotiq2FGripperSimpleController.py'
+alias gripper_listener='rosrun robotiq_2f_gripper_control Robotiq2FGripperStatusListener.py'
+
+# ROS
+alias cm='catkin_make'
+alias sd='source devel/setup.bash'
+alias cw='cd ~/catkin_ws'
+alias tree='rosrun rqt_tf_tree rqt_tf_tree'
+
+export ROS_IP=localhost
+export ROS_MASTER_URI=http://localhost:11311/
+export ROS_HOSTNAME=$ROS_IP
+#export ROS_IP=localhost
+#export ROS_MASTER_URI=http://34.64.190.193:11311/
+#export ROS_HOSTNAME=$ROS_IP
+
+source /opt/ros/melodic/setup.bash
+source ~/catkin_ws/devel/setup.bash
+
+# Camera 
+alias realsense='roslaunch realsense2_camera rs_camera.launch'
+
+# gem
+export GEM_HOME="$HOME/.gems"
+export PATH="$HOME/.gems/bin:$PATH"
+
+
+function pfwd {
+  for i in ${@:2}
+  do
+    echo Forwarding port $i
+    ssh -N -R $i:localhost:$i $1 &
+  done  
+}
+
+# CoppeliaSim
+alias coppeliasim='cd /home/hmci/dyros_bootcamp/CoppeliaSim_Edu_V4_0_0_Ubuntu18_04 && ./coppeliaSim.sh'

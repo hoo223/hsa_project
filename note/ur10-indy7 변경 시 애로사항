@@ -1,0 +1,21 @@
+ur10 -> indy7 변경 시 애로사항
+
+ur10에서 조인트 순서가 바뀌어 있어서 대응했던 부분을 다시 원래대로 바꿔야 함
+* ur10에서 1번-3번 조인트가 바뀌어 있었음
+* 이에 대응했던 코드들 -> joint_states 토픽을 구독한 노드들
+	joy2target.py
+	teleop_controller.py
+	ik_publisher.cpp
+
+ik_publisher.cpp
+* group_name 변경 - "manipulator" -> "indy7" (moveit_config 패키지의 srdf 파일에서 확인 가능, setup_assistant에서 만든 planning_group 이름)
+* end_effector 좌표계 이름 변경 - "ee_link" -> "tcp"
+
+urdf file 수정
+* 기존 indy7 urdf는 PositionJointInterface -> 속도제어하기 위해 VelocityJointInterface로 변경
+* SelfCollide 추가하여 링크끼리 충돌 가능하도록 
+* effort, velocity limit 값이 작아서 로봇이 limit을 초과하는 경우 제어권 상실되고 힘 없이 진자 운동함 -> limit 크기를 키우니 해결됨
+
+기타
+* 기존 코드를 옮겨서 launch 파일로 실행시키니 각 코드의 에러를 확인하기 어려움 -> 하나씩 확인할 것
+* build, devel 폴더도 삭제하고 다시 빌드하기

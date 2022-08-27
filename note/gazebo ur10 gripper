@@ -1,0 +1,69 @@
+## 2f-85 그리퍼 추가
+
+* robotiq package 추가 
+$ git clone -b melodic-devel https://github.com/cambel/robotiq.git
+
+* ur10+gripper urdf 추가
+universal_robot/ur_description/urdf/ur_gripper_85.urdf.xacro 
+(https://github.com/cambel/ur3/tree/master/ur3_gazebo/urdf)
+
+universal_robot/ur_description/urdf/inc/ur_common.xacro
+universal_robot/ur_description/urdf/inc/ur_macro.xacro
+universal_robot/ur_description/urdf/inc/ur_transmission.xacro
+(https://github.com/fmauch/universal_robot/tree/calibration_devel/ur_description/urdf/inc)
+
+universal_robot/ur_description/config/ur10/default_kinematics.yaml
+universal_robot/ur_description/config/ur10/joint_limits.yaml
+universal_robot/ur_description/config/ur10/physical_parameters.yaml
+universal_robot/ur_description/config/ur10/visual_parameters.yaml
+(https://github.com/fmauch/universal_robot/tree/calibration_devel/ur_description/config/ur10)
+
+* rviz config 추가
+universal_robot/ur_description/cfg/config.rviz
+(https://github.com/cambel/ur3/tree/master/ur3_description/config)
+
+* rviz visualization 
+universal_robot/ur_description/launch/display_with_gripper_85.launch
+(https://github.com/cambel/ur3/tree/master/ur3_description/launch)
+
+
+## moveit_config 생성
+"URDF/COLLADA file is not a valid robot model" 에러 뜨는 경우 -> source devel/setup.bash 필요
+https://github.com/cambel/ur3/ur_gripper_85_moveit_config 과 ur10_moveit_config를 참고하여 ur10 버전으로 생성
+group -> 'manipulator' 'endeffector' 'gripper'
+
+
+# 오류 수정
+ur_robot_gazebo_moveit_controller_manager.launch.xml에 다음 추가
+<arg name="execution_type" default="interpolate" />
+
+## gripper action controller 설치
+apt install ros-melodic-gripper-action-controller
+
+
+## 코드 수정
+# joint_states callback
+joint_states 순서가 변경되어 subscribe callback 인덱스 순서 수정 필요
+전: [elbow_joint, shoulder_lift_joint, shoulder_pan_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint] - 2 1 0 3 4 5 
+후: [elbow_joint, robotiq_85_left_knuckle_joint, shoulder_lift_joint, shoulder_pan_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint] - 3 2 0 4 5 6 
+
+ursim.launch 파일에서 'with_gripper' parameter 설정 
+아래 3개의 코드에서 parameter를 읽어 그리퍼 유무에 따라 callback 함수 변경
+ur10_python_interface/joy2target.py
+ur10_python_interface/teleop_controller.py
+ur10_python_interface/ik_publisher
+
+# gripper action 
+햅틱 장치의 회색버튼을 누르면 그리퍼가 열리고 닫힘 (joy2target.py에서 구현)
+/gripper_controller/gripper_cmd/goal topic으로 command 전송
+* position - 0: 열림, 1: 닫힘
+* max_effort
+
+## Gazebo gripper simulation 문제점
+grasping이 realistic하지 않음 
+그리퍼 위치제어를 하면 물체를 적절한 힘으로 잡지 못하고 물체를 뚫고 들어감 (힘 제어 필요?)
+그리퍼와 물체와의 충돌 -> force controller
+
+https://github.com/neka-nat/ur_ws/issues/2
+https://answers.gazebosim.org//question/22303/object-slips-from-gripper-fingers-when-grasping-in-simulation/
+https://github.com/jsbruglie/grasp
