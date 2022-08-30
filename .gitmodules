@@ -4,3 +4,6 @@
 [submodule "docker_containers/unity_container"]
 	path = docker_containers/unity_container
 	url = https://github.com/hoo223/unity_container.git
+[submodule "docker_containers/ur10_container"]
+	path = docker_containers/ur10_container
+	url = https://github.com/hoo223/ur10_container.git
