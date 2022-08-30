@@ -15,12 +15,12 @@
 
 ## How to Run
 ### Docker container
-#### commands
+#### Commands
 start contianer -> docker start [CONTAINER_NAME]   
 attach to container -> docker attach [CONTAINER_NAME]    
 additional terminal -> docker exec -it [CONTAINER_NAME] bash   
 
-#### shortcut
+#### Shortcut
 
 |container name|command(start)|command(attach)|command(exec)|command(start & attach)|
 |--|--|--|--|--|
@@ -30,70 +30,71 @@ additional terminal -> docker exec -it [CONTAINER_NAME] bash
 |indy|is|ia|ie|indy|
 
 ### Teleoperation
-1. Gazebo
+1. Gazebo (in update)
     * Host PC (Terminal 1)    
         ```
         hp
         haptic
         ```
-    * core container (Terminal 2~4)   
-        terminal 2
+    * core container (3 terminals)   
         ~~~
-        ursim
+        gazebo
         ~~~
-        terminal 3
         ~~~
-        interface_v
+        gc && mgi
         ~~~
-        terminal 4
         ~~~
-        teleop
+        ti
         ~~~
 
 2. Unity
-    * Host PC (Terminal 1)    
+    * Host PC (2 terminals)
         ```
-        hp
-        haptic
+        # allow authority to the device
+        hp 
+        # Run haptic device node
+        haptic 
         ```
-    * unity contatiner (Terminal 2)   
         ```
+        # Run gripper node
+        gripper __ns:=gripper 
+        ```
+    * unity contatiner (1 terminal)   
+        ```
+        # Run unity hub
         unity
         ```
-        run the project and start     
-    * core container (Terminal 3~4)    
-        terminal 3    
+        run the Unity-Main-Project and play 'ur10' scene     
+    * core container (2 terminals)       
         ~~~
         unity_bringup
         ~~~
-        terminal 4
         ~~~
-        teleop_unity
+        unity_teleop
         ~~~
   
         
 3. Real UR10
-    * Host PC (Terminal 1)
+    * Host PC (1 terminal)
         ```
         hp
         haptic
         ```
-    * ur10 contatiner (Terminal 2)
+    * ur10 contatiner (1 terminal)
         ```
-        ur10_tcp
+        # Run ur10 hardware interface
+        ur10_tcp __ns:=ur10
         ```
     * Teachpendent   
         1) run program   
         2) load program -> ExternalControl.urp   
         3) play button   
-    * core container (Terminal 3~4)
-        terminal 3
+    * core container (2 terminal)
         ~~~
-        interface_r
+        real_bringup
         ~~~
-        terminal 4
         ~~~
-        teleop
+        real_teleop
         ~~~
 
 ***
