@@ -27,7 +27,6 @@ additional terminal -> docker exec -it [CONTAINER_NAME] bash
 |core|cs|ca|ce|core|
 |unity|us|ua|ue|unity|
 |ur10|urs|ura|ure|ur10|
-|indy|is|ia|ie|indy|
 
 ### Teleoperation
 1. Gazebo (in update)
@@ -77,13 +76,15 @@ additional terminal -> docker exec -it [CONTAINER_NAME] bash
         haptic
         ```
         ```
-        # Run gripper node
-        gripper __ns:=gripper 
+        # Run gripper node (optional, when need to operate gripper)
+        roslaunch robotiq_2f_gripper_control robotiq_action_server_client.launch __ns:=gripper
+        or
+        gripper
         ```
     * ur10 contatiner (1 terminal)
         ```
         # Run ur10 hardware interface
-        ur10_tcp __ns:=ur10
+        ur10_tcp
         ```
     * Teachpendent   
         1) run program   
