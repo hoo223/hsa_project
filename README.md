@@ -55,10 +55,6 @@ additional terminal -> docker exec -it [CONTAINER_NAME] bash
         # Run haptic device node
         haptic 
         ```
-        ```
-        # Run gripper node
-        gripper __ns:=gripper 
-        ```
     * unity contatiner (1 terminal)   
         ```
         # Run unity hub
@@ -79,6 +75,10 @@ additional terminal -> docker exec -it [CONTAINER_NAME] bash
         ```
         hp
         haptic
+        ```
+        ```
+        # Run gripper node
+        gripper __ns:=gripper 
         ```
     * ur10 contatiner (1 terminal)
         ```
