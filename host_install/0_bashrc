@@ -77,7 +77,7 @@ alias haptic='roslaunch omni_common omni_state.launch'
 alias hp='sudo chmod 777 /dev/ttyACM0'
 
 # Gripper
-alias gripper='rosrun robotiq_2f_gripper_control Robotiq2FGripperRtuNode.py /dev/ttyUSB0'
+alias gripper='roslaunch robotiq_2f_gripper_control robotiq_action_server_client.launch __ns:=gripper'
 alias gripper_controller='rosrun robotiq_2f_gripper_control Robotiq2FGripperSimpleController.py'
 alias gripper_listener='rosrun robotiq_2f_gripper_control Robotiq2FGripperStatusListener.py'
 
