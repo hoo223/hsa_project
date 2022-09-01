@@ -29,12 +29,16 @@ additional terminal -> docker exec -it [CONTAINER_NAME] bash
 |ur10|urs|ura|ure|ur10|
 
 ### Teleoperation
-1. Gazebo (in update)
+0. Haptic 
     * Host PC (Terminal 1)    
         ```
-        hp
-        haptic
+        # allow authority to the device
+        hp 
+        # Run haptic device node
+        haptic 
         ```
+        
+1. Gazebo (in update)
     * core container (3 terminals)   
         ~~~
         gazebo
@@ -47,13 +51,6 @@ additional terminal -> docker exec -it [CONTAINER_NAME] bash
         ~~~
 
 2. Unity
-    * Host PC (2 terminals)
-        ```
-        # allow authority to the device
-        hp 
-        # Run haptic device node
-        haptic 
-        ```
     * unity contatiner (1 terminal)   
         ```
         # Run unity hub
@@ -71,10 +68,6 @@ additional terminal -> docker exec -it [CONTAINER_NAME] bash
         
 3. Real UR10
     * Host PC (1 terminal)
-        ```
-        hp
-        haptic
-        ```
         ```
         # Run gripper node (optional, when need to operate gripper)
         roslaunch robotiq_2f_gripper_control robotiq_action_server_client.launch __ns:=gripper
