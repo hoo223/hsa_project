@@ -1,10 +1,10 @@
 # hsa_project
-## [docker](https://github.com/hoo223/hsa_project/tree/master/docker)
+## docker
 : docker image and container generation code
-   * [docker_images](https://github.com/hoo223/hsa_project/tree/main/docker_images)
-   * [docker_containers](https://github.com/hoo223/hsa_project/tree/main/docker_containers)
+   * [docker_images](https://github.com/hoo223/hsa_project/tree/master/docker_images)
+   * [docker_containers](https://github.com/hoo223/hsa_project/tree/master/docker_containers)
 
-## [host_install](https://github.com/hoo223/hsa_project/tree/main/host_install)
+## [host_install](https://github.com/hoo223/hsa_project/tree/master/host_install)
 : .sh files for host PC setting (Ubuntu 18.04), which include
 * CUDA 11.4
 * (nvidia) docker    
