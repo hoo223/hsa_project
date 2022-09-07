@@ -7,3 +7,9 @@
 [submodule "docker_containers/ur10_container"]
 	path = docker_containers/ur10_container
 	url = https://github.com/hoo223/ur10_container.git
+[submodule "docker_containers/rsa_container"]
+	path = docker_containers/rsa_container
+	url = https://github.com/hoo223/rsa_container.git
+[submodule "core_container"]
+	path = core_container
+	url = https://github.com/hoo223/core_container.git
