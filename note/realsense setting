@@ -1,4 +1,4 @@
-https://github.com/IntelRealSense/realsense-ros
+https://github.com/IntelRealSense/realsense-ros/tree/ros1-legacy
 
 1. [SDK install](https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md#installing-the-packages)
 
@@ -9,8 +9,7 @@ Add the server to the list of repositories:
 > sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo $(lsb_release -cs) main" -u
 
 Install the libraries (see section below if upgrading packages):
-> sudo apt-get install librealsense2-dkms
-> sudo apt-get install librealsense2-utils
+> sudo apt-get install -y librealsense2-dkms librealsense2-utils
 
 Execute the viewer
 > realsense-viewer
