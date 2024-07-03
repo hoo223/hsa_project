@@ -13,3 +13,9 @@ images
 pose_estimation
 backup
 camera_calibration_d435
+
+*.pyc
+
+docker/docker_containers/ur10_container/share/catkin_ws/build/
+
+docker/docker_containers/ur10_container/share/catkin_ws/devel/
